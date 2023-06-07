@@ -8,7 +8,7 @@ This repository contains code and analysis for a manuscript that compares point 
 
 This manuscript is currently in _progress_. Please reach out to the repository owner if you have questions.  
 
-### [Readable version](add link here)
+### [Readable version](https://vjjan91.github.io/pointCount-Acoustics/)
 
 A readable version of this analysis is available in bookdown format by clicking on the heading above.  
 
