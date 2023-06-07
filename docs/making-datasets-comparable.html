@@ -142,14 +142,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html"><i class="fa fa-check"></i><b>2</b> Making datasets comparable</a>
 <ul>
-<li class="chapter" data-level="2.0.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#install-required-libraries"><i class="fa fa-check"></i><b>2.0.1</b> Install required libraries</a></li>
-<li class="chapter" data-level="2.0.2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-point-count-data"><i class="fa fa-check"></i><b>2.0.2</b> Loading point count data</a></li>
-<li class="chapter" data-level="2.0.3" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-the-acoustic-data"><i class="fa fa-check"></i><b>2.0.3</b> Loading the acoustic data</a></li>
-<li class="chapter" data-level="2.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data"><i class="fa fa-check"></i><b>2.1</b> Subset acoustic data and point count data</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis"><i class="fa fa-check"></i><b>2.1.1</b> Evaluating both subsets of data before combining them into a single dataframe for further analysis</a></li>
-<li class="chapter" data-level="2.1.2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe"><i class="fa fa-check"></i><b>2.1.2</b> Bind the acoustic and point count datasets into a single dataframe</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#install-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Install required libraries</a></li>
+<li class="chapter" data-level="2.2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-point-count-data"><i class="fa fa-check"></i><b>2.2</b> Loading point count data</a></li>
+<li class="chapter" data-level="2.3" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-the-acoustic-data"><i class="fa fa-check"></i><b>2.3</b> Loading the acoustic data</a></li>
+<li class="chapter" data-level="2.4" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data"><i class="fa fa-check"></i><b>2.4</b> Subset acoustic data and point count data</a></li>
+<li class="chapter" data-level="2.5" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis"><i class="fa fa-check"></i><b>2.5</b> Evaluating both subsets of data before combining them into a single dataframe for further analysis</a></li>
+<li class="chapter" data-level="2.6" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe"><i class="fa fa-check"></i><b>2.6</b> Bind the acoustic and point count datasets into a single dataframe</a></li>
 </ul></li>
 </ul>
 
@@ -171,8 +169,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="making-datasets-comparable" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Section 2</span> Making datasets comparable<a href="making-datasets-comparable.html#making-datasets-comparable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this script, we will ensure that the point count data and the acoustic data are comparable to one another.</p>
-<div id="install-required-libraries" class="section level3 hasAnchor" number="2.0.1">
-<h3><span class="header-section-number">2.0.1</span> Install required libraries<a href="making-datasets-comparable.html#install-required-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="install-required-libraries" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Install required libraries<a href="making-datasets-comparable.html#install-required-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="making-datasets-comparable.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="making-datasets-comparable.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="making-datasets-comparable.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
@@ -193,8 +191,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-18"><a href="making-datasets-comparable.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
 <span id="cb1-19"><a href="making-datasets-comparable.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
 </div>
-<div id="loading-point-count-data" class="section level3 hasAnchor" number="2.0.2">
-<h3><span class="header-section-number">2.0.2</span> Loading point count data<a href="making-datasets-comparable.html#loading-point-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="loading-point-count-data" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Loading point count data<a href="making-datasets-comparable.html#loading-point-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="making-datasets-comparable.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is data from Hariharan and Raman (2021), which consists of point counts carried out across 69 sites</span></span>
 <span id="cb2-2"><a href="making-datasets-comparable.html#cb2-2" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/point-count-data.csv&quot;</span>)</span>
 <span id="cb2-3"><a href="making-datasets-comparable.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -213,8 +211,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-16"><a href="making-datasets-comparable.html#cb2-16" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
 <span id="cb2-17"><a href="making-datasets-comparable.html#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bird_mammal <span class="sc">==</span> <span class="st">&quot;Bird&quot;</span>) </span></code></pre></div>
 </div>
-<div id="loading-the-acoustic-data" class="section level3 hasAnchor" number="2.0.3">
-<h3><span class="header-section-number">2.0.3</span> Loading the acoustic data<a href="making-datasets-comparable.html#loading-the-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="loading-the-acoustic-data" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Loading the acoustic data<a href="making-datasets-comparable.html#loading-the-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="making-datasets-comparable.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The acoustic data consists of annotations of 10-s chunks of audio files across summer and winter months. We will load both these annotation sets and process them further to ensure that it is comparable to the point count dataset</span></span>
 <span id="cb3-2"><a href="making-datasets-comparable.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="making-datasets-comparable.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach the annotation data for summer and winter</span></span>
@@ -235,8 +233,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-18"><a href="making-datasets-comparable.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># split the filename column into 4 columns : Site, Date, Time and Splits  </span></span>
 <span id="cb3-19"><a href="making-datasets-comparable.html#cb3-19" aria-hidden="true" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(acoustic_data, <span class="at">col =</span> Filename, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;site&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;time&quot;</span>, <span class="st">&quot;splits&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
 </div>
-<div id="subset-acoustic-data-and-point-count-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Subset acoustic data and point count data<a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="subset-acoustic-data-and-point-count-data" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Subset acoustic data and point count data<a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To ensure that the datasets are comparable, we carry out the following:<br />
 a) Subset only data from those sites for which both point count data and acoustic data was collected.<br />
 b) Similar numbers of visits to sites (for point count data and acoustic data) - in other words, if 6 point counts were carried out at a site, we want to ensure that we have a minimum of 6 acoustic ‘visits’ to the same site.</p>
@@ -324,8 +322,9 @@ b) Similar numbers of visits to sites (for point count data and acoustic data) -
 <span id="cb4-82"><a href="making-datasets-comparable.html#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-83"><a href="making-datasets-comparable.html#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="co"># left-join with the original dataframe to subset the data for analysis</span></span>
 <span id="cb4-84"><a href="making-datasets-comparable.html#cb4-84" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(nonConVisits,acoustic_data)</span></code></pre></div>
-<div id="evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis" class="section level3 hasAnchor" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Evaluating both subsets of data before combining them into a single dataframe for further analysis<a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Evaluating both subsets of data before combining them into a single dataframe for further analysis<a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For the point count dataset, we shall remove the extra columns. For the acoustic dataset, we will dplyr::pivot_longer() and add the same columns as point count dataset before binding rows to create a single dataframe.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="making-datasets-comparable.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove unnecessary columns from the point-count dataset</span></span>
 <span id="cb5-2"><a href="making-datasets-comparable.html#cb5-2" aria-hidden="true" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> pc_subset[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">20</span>)]</span>
@@ -379,8 +378,8 @@ b) Similar numbers of visits to sites (for point count data and acoustic data) -
 <span id="cb5-50"><a href="making-datasets-comparable.html#cb5-50" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(aru_subset, species_codes[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)],</span>
 <span id="cb5-51"><a href="making-datasets-comparable.html#cb5-51" aria-hidden="true" tabindex="-1"></a>                   <span class="at">by =</span> <span class="st">&quot;eBird_codes&quot;</span>)</span></code></pre></div>
 </div>
-<div id="bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Bind the acoustic and point count datasets into a single dataframe<a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Bind the acoustic and point count datasets into a single dataframe<a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The subsequent dataframe from this code chunk can be used directly in the following scripts to run other analyses.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="making-datasets-comparable.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the structure and names of both subsets prior to creating a single dataframe</span></span>
 <span id="cb6-2"><a href="making-datasets-comparable.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pc_subset)</span>
@@ -396,21 +395,20 @@ b) Similar numbers of visits to sites (for point count data and acoustic data) -
 <span id="cb6-12"><a href="making-datasets-comparable.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># write to file</span></span>
 <span id="cb6-13"><a href="making-datasets-comparable.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(datSubset, <span class="st">&quot;results/datSubset.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
 <p><strong>Metadata for the above dataframe is provided below:</strong></p>
-<p><strong>date</strong>: Date of the point count/acoustic survey (str: Date)<br />
-<strong>siteid</strong>: Site name and can be cross-referenced to the <strong>list-of-sites.csv</strong> file (str: Character)<br />
-<strong>restorationType</strong>: Sites can be actively restored, passively restored (naturally regenerating) or benchmark (undisturbed) forests (str: Character)<br />
-<strong>startTime</strong>: Start time for the point count and the acoustic data (str: Character)<br />
-<strong>timeSegment</strong>: The point count data was carried out in three 5-min segments and indicated as 1, 2, and 3. The acoustic data was segmented into four 4-min segments and indicated by the startTime of each segment unlike the point count data (str: Character)<br />
-<strong>commonName</strong>: Species common name (str: Character)<br />
-<strong>number</strong>: For the point count data, this column indicates the number of individuals of a species seen/heard/flying above within a time segment. For the acoustic data, this column indicates the number of vocalizations of a species within a time segment (str: Integer)<br />
-<strong>distance</strong>: For the point count data, this column indicates the distance at which an individual of a species was observed (seen) within a time segment. This number varied from 0 to 50 metres and all individuals/species above that distance was not reported in the point count dataset. For the acoustic dataset, such values are not available and marked as NA (str: Integer)<br />
-<strong>HSF</strong>: Heard/Seen/Flying was recorded for the point count dataset and indicated by H/S/F. For the acoustic data, the column has been filled with the letter H only (str: Character)<br />
-<strong>scientificName</strong>: Species scientific name (str: Character)<br />
-<strong>eBirdCodes</strong>: The four-letter quick common name codes are indicated in this column and can be cross-referenced with the <strong>species-annotation-codes.csv</strong> file (str: Character)<br />
-<strong>timeOfDay</strong>: Depending on the start times of the point count or the acoustic data survey/visit, this column indicates if a survey was within any one-hour duration between 6AM to 10AM. For example, if the start time of the point count was ‘7.42’, this column would indicate the timeOfDay as ‘7AM to 8AM’. Similarly, if the start time of the acoustic survey was ‘091000’, this column would indicated the timeOfDay as ‘9AM to 10AM’ (str: Character)<br />
-<strong>dataType</strong>: Point count or acoustic data (str: Character)</p>
+<p><strong>date</strong>: Date of the point count/acoustic survey (str: Date)</p>
+<p><strong>siteid</strong>: Site name and can be cross-referenced to the <em>list-of-sites.csv</em> file (str: Character)</p>
+<p><strong>restorationType</strong>: Sites can be actively restored, passively restored (naturally regenerating) or benchmark (undisturbed) forests (str: Character)</p>
+<p><strong>startTime</strong>: Start time for the point count and the acoustic data (str: Character)</p>
+<p><strong>timeSegment</strong>: The point count data was carried out in three 5-min segments and indicated as 1, 2, and 3. The acoustic data was segmented into four 4-min segments and indicated by the startTime of each segment unlike the point count data (str: Character)</p>
+<p><strong>commonName</strong>: Species common name (str: Character)</p>
+<p><strong>number</strong>: For the point count data, this column indicates the number of individuals of a species seen/heard/flying above within a time segment. For the acoustic data, this column indicates the number of vocalizations of a species within a time segment (str: Integer)</p>
+<p><strong>distance</strong>: For the point count data, this column indicates the distance at which an individual of a species was observed (seen) within a time segment. This number varied from 0 to 50 metres and all individuals/species above that distance was not reported in the point count dataset. For the acoustic dataset, such values are not available and marked as NA (str: Integer)</p>
+<p><strong>HSF</strong>: Heard/Seen/Flying was recorded for the point count dataset and indicated by H/S/F. For the acoustic data, the column has been filled with the letter H only (str: Character)</p>
+<p><strong>scientificName</strong>: Species scientific name (str: Character)</p>
+<p><strong>eBirdCodes</strong>: The four-letter quick common name codes are indicated in this column and can be cross-referenced with the <em>species-annotation-codes.csv</em> file (str: Character)</p>
+<p><strong>timeOfDay</strong>: Depending on the start times of the point count or the acoustic data survey/visit, this column indicates if a survey was within any one-hour duration between 6AM to 10AM. For example, if the start time of the point count was ‘7.42’, this column would indicate the timeOfDay as ‘7AM to 8AM’. Similarly, if the start time of the acoustic survey was ‘091000’, this column would indicated the timeOfDay as ‘9AM to 10AM’ (str: Character)</p>
+<p><strong>dataType</strong>: Point count or acoustic data (str: Character)</p>
 
-</div>
 </div>
 </div>
             </section>
