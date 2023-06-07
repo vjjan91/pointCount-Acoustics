@@ -242,19 +242,19 @@ datSubset <- bind_rows(pc_subset, aru_subset)
 write.csv(datSubset, "results/datSubset.csv", row.names = F)
 ```
 
-Metadata for the above dataframe is provided below:  
+**Metadata for the above dataframe is provided below:**    
 
-_date_: Date of the point count/acoustic survey (str: Date)  
-_siteid_: Site name and can be cross-referenced to the _list-of-sites.csv_ file (str: Character)  
-_restorationType_: Sites can be actively restored, passively restored (naturally regenerating) or benchmark (undisturbed) forests (str: Character)  
-_startTime_: Start time for the point count and the acoustic data (str: Character)  
-_timeSegment_: The point count data was carried out in three 5-min segments and indicated as 1, 2, and 3. The acoustic data was segmented into four 4-min segments and indicated by the startTime of each segment unlike the point count data (str: Character)    
-_commonName_: Species common name (str: Character)   
-_number_: For the point count data, this column indicates the number of individuals of a species seen/heard/flying above within a time segment. For the acoustic data, this column indicates the number of vocalizations of a species within a time segment (str: Integer)  
-_distance_: For the point count data, this column indicates the distance at which an individual of a species was observed (seen) within a time segment. This number varied from 0 to 50 metres and all individuals/species above that distance was not reported in the point count dataset. For the acoustic dataset, such values are not available and marked as NA (str: Integer)  
-_HSF_: Heard/Seen/Flying was recorded for the point count dataset and indicated by H/S/F. For the acoustic data, the column has been filled with the letter H only (str: Character)  
-_scientificName_: Species scientific name (str: Character)  
-_eBirdCodes_: The four-letter quick common name codes are indicated in this column and can be cross-referenced with the _species-annotation-codes.csv_ file (str: Character)  
-_timeOfDay_: Depending on the start times of the point count or the acoustic data survey/visit, this column indicates if a survey was within any one-hour duration between 6AM to 10AM. For example, if the start time of the point count was '7.42',  this column would indicate the timeOfDay as '7AM to 8AM'. Similarly, if the start time of the acoustic survey was '091000', this column would indicated the timeOfDay as '9AM to 10AM' (str: Character)  
-_dataType_: Point count or acoustic data (str: Character)  
+**date**: Date of the point count/acoustic survey (str: Date)  
+**siteid**: Site name and can be cross-referenced to the **list-of-sites.csv** file (str: Character)  
+**restorationType**: Sites can be actively restored, passively restored (naturally regenerating) or benchmark (undisturbed) forests (str: Character)  
+**startTime**: Start time for the point count and the acoustic data (str: Character)  
+**timeSegment**: The point count data was carried out in three 5-min segments and indicated as 1, 2, and 3. The acoustic data was segmented into four 4-min segments and indicated by the startTime of each segment unlike the point count data (str: Character)    
+**commonName**: Species common name (str: Character)   
+**number**: For the point count data, this column indicates the number of individuals of a species seen/heard/flying above within a time segment. For the acoustic data, this column indicates the number of vocalizations of a species within a time segment (str: Integer)  
+**distance**: For the point count data, this column indicates the distance at which an individual of a species was observed (seen) within a time segment. This number varied from 0 to 50 metres and all individuals/species above that distance was not reported in the point count dataset. For the acoustic dataset, such values are not available and marked as NA (str: Integer)  
+**HSF**: Heard/Seen/Flying was recorded for the point count dataset and indicated by H/S/F. For the acoustic data, the column has been filled with the letter H only (str: Character)  
+**scientificName**: Species scientific name (str: Character)  
+**eBirdCodes**: The four-letter quick common name codes are indicated in this column and can be cross-referenced with the **species-annotation-codes.csv** file (str: Character)  
+**timeOfDay**: Depending on the start times of the point count or the acoustic data survey/visit, this column indicates if a survey was within any one-hour duration between 6AM to 10AM. For example, if the start time of the point count was '7.42',  this column would indicate the timeOfDay as '7AM to 8AM'. Similarly, if the start time of the acoustic survey was '091000', this column would indicated the timeOfDay as '9AM to 10AM' (str: Character)  
+**dataType**: Point count or acoustic data (str: Character)  
 
