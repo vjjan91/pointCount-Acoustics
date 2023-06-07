@@ -1,0 +1,260 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+# Making datasets comparable
+
+In this script, we will ensure that the point count data and the acoustic data are comparable to one another.  
+
+### Install required libraries
+```{r}
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(vegan)
+library(ggplot2)
+library(scico)
+library(data.table)
+library(extrafont)
+library(sf)
+library(raster)
+
+# for plotting
+library(scales)
+library(ggplot2)
+library(ggspatial)
+library(colorspace)
+
+# Source any custom/other internal functions necessary for analysis
+source("code/01_internal-functions.R")
+```
+
+### Loading point count data
+```{r}
+# This is data from Hariharan and Raman (2021), which consists of point counts carried out across 69 sites
+point_counts <- read.csv("data/point-count-data.csv")
+
+# add eBird species code to the point-count data for comparison with acoustic data later on
+species_codes <- read.csv("data/species-annotation-codes.csv")
+
+# for the sake of comparability, some issues were fixed in the point-count dataset
+# please note that these issues were fixed using the .csv file and not through R
+# leading spaces were removed from the common_name
+# species that start with the common_name 'Grey' were changed to 'Gray'
+
+# merge with point_count data
+point_counts <- left_join(point_counts, species_codes, by = "common_name")
+
+# remove mammal and unidentified bird species
+point_counts <- point_counts %>%
+  filter(bird_mammal == "Bird") 
+```
+
+### Loading the acoustic data
+```{r}
+# The acoustic data consists of annotations of 10-s chunks of audio files across summer and winter months. We will load both these annotation sets and process them further to ensure that it is comparable to the point count dataset
+
+# Attach the annotation data for summer and winter
+# The two .csvs below are not uploaded to GitHub and can be provided upon request
+# Please write to Vijay Ramesh if you would like to access the raw data - vr292@cornell.edu)
+
+summer_data <- read.csv("data/summer-dawn-annotations.csv")
+winter_data <- read.csv("data/winter-dawn-annotations.csv")
+
+# combine the datasets to a single dataframe
+acoustic_data <- bind_rows(summer_data,winter_data)
+names(acoustic_data)
+
+# reorder columns to ensure the species codes appear one after another
+acoustic_data <- acoustic_data %>%
+  relocate(c("BFOW","SBEO", "JUNI", "ASKO", "HSWO","TBWA"),  .after = "CORO") 
+
+# split the filename column into 4 columns : Site, Date, Time and Splits  
+acoustic_data <- separate(acoustic_data, col = Filename, into = c("site", "date", "time", "splits"), sep = "_")
+```
+
+## Subset acoustic data and point count data
+
+To ensure that the datasets are comparable, we carry out the following:  
+a) Subset only data from those sites for which both point count data and acoustic data was collected.  
+b) Similar numbers of visits to sites (for point count data and acoustic data) - in other words, if 6 point counts were carried out at a site, we want to ensure that we have a minimum of 6 acoustic 'visits' to the same site.  
+```{r}
+# load list of sites
+# a subset of sites that were included in the Hariharan and Raman (2021) study were included in the Ramesh et al. (2023) study due to logistical constraints of placing audio recorders
+sites <- read.csv("data/list-of-sites.csv") %>%
+  filter(site_id != "OLCAP5B")
+
+# convert date column to YMD format using lubridate::ymd()
+point_counts$date <- lubridate::ymd(point_counts$date)
+
+# subset point count data to only include the above list of sites
+point_counts <- point_counts %>%
+  mutate(site_id = str_replace_all(site_id, "_", "")) 
+
+point_counts <- left_join(sites[,c(2,3,4,5)], 
+                   point_counts, by = c("site_id"="site_id"))
+
+# In the acoustic study, a maximum of six visits were made to each site. To ensure that the datasets are comparable, we will choose a maximum of six visits to each site from the point count study as well
+nSitesDays <- point_counts %>%
+  dplyr::select(site_id, date) %>%
+  distinct() %>% arrange(site_id) %>% count(site_id)
+
+# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits
+
+# unique date site combination to give you a sense of sampling
+uniqueSiteDate <- point_counts %>%
+  group_by(site_id) %>%
+  distinct(date)
+
+# the below lines of code were written following a query on stackOverflow to select six non-consecutive visits to any site
+# Link: https://stackoverflow.com/questions/67212152/select-non-consecutive-dates-for-every-grouped-element-in-r
+
+nonConVisits <- uniqueSiteDate %>% 
+  ungroup() %>% 
+  group_split(site_id) %>% 
+  map_df(., ~ .x %>% ungroup() %>%
+           arrange(date) %>%
+           mutate(n = 1) %>%
+           complete(date = seq.Date(first(date), last(date), by = 'days'))%>%
+           group_by(n = cumsum(is.na(n))) %>%
+           filter(!is.na(site_id)) %>%
+           filter(row_number() %% 2 == 1) %>%
+           ungroup() %>%
+           sample_n(min(n(), 6))) %>%
+  dplyr::select(-n)
+
+# left-join with the original dataframe to subset the data
+pc_subset <- left_join(nonConVisits, point_counts)
+
+## subset acoustic data (similar to point count data)
+
+# first we will remove OLCAP5B - a site for which only 3 visits were made in summer and not sampled as a result of logistic reasons in winter
+acoustic_data <- acoustic_data %>%
+  filter(!str_detect(site, 'OLCAP5B'))
+
+# Convert date column to YMD format using lubridate::ymd()
+acoustic_data$date <- lubridate::ymd(acoustic_data$date)
+
+# number of visits to a particular site
+# only INBS04U has 5 visits because another visit was not possible due to rain
+nSitesDays <- acoustic_data %>%
+  dplyr::select(site, date)%>%
+  distinct() %>% arrange(site) %>% count(site)
+
+# unique date site combination to give you a sense of sampling
+uniqueSiteDate <- acoustic_data %>%
+  group_by(site) %>%
+  distinct(date)
+
+nonConVisits <- uniqueSiteDate %>% 
+  ungroup() %>% 
+  group_split(site) %>% 
+  map_df(., ~ .x %>% ungroup() %>%
+           arrange(date) %>%
+           mutate(n = 1) %>%
+           complete(date = seq.Date(first(date), last(date), by = 'days'))%>%
+           group_by(n = cumsum(is.na(n))) %>%
+           filter(!is.na(site)) %>%
+           filter(row_number() %% 2 == 1) %>%
+           ungroup() %>%
+           sample_n(min(n(), 6))
+         ) %>%
+  dplyr::select(-n)
+
+# left-join with the original dataframe to subset the data for analysis
+aru_subset <- left_join(nonConVisits,acoustic_data)
+```
+
+### Evaluating both subsets of data before combining them into a single dataframe for further analysis  
+
+For the point count dataset, we shall remove the extra columns. For the acoustic dataset, we will dplyr::pivot_longer() and add the same columns as point count dataset before binding rows to create a single dataframe.  
+```{r}
+# remove unnecessary columns from the point-count dataset
+pc_subset <- pc_subset[,-c(4,5,6,9,11,15,17,19,20)]
+
+# add a time of day column to the point-count dataset for future calculations and a data_type column
+pc_subset <- pc_subset %>%
+  mutate(time_of_day = 
+      case_when(start_time >= 6 & start_time < 7 ~ "6AM to 7AM",
+                start_time >= 7 & start_time < 8 ~ "7AM to 8AM",
+                start_time >= 8 & start_time < 9 ~ "8AM to 9AM",
+                start_time >= 9 & start_time <= 10 ~"9AM to 10AM")) %>% mutate(data_type = "point_count")
+
+# rename acoustic data columns
+aru_subset <- rename(aru_subset, site_id = site)
+aru_subset <- rename(aru_subset, restoration_type = Restoration.Type..Benchmark.Active.Passive.)
+
+# pivot_longer the acoustic data and remove zero values
+aru_subset <- aru_subset %>%
+group_by(site_id, date, time, restoration_type) %>%
+  transform() %>% replace(is.na(.), 0) %>%
+  summarise_at(.vars = vars(c("INPE":"TBWA")),.funs = sum) %>%
+  pivot_longer(cols=INPE:TBWA, names_to = "eBird_codes", values_to = "number") %>% 
+  filter(number != 0) # one way to remove zeros
+
+# add a start_time column based on the time the acoustic visit was started at that site-day combination
+# for example, if HP36P1B's first datapoint/visit came from 091000, then the start_time for all the 16-min would have the value 091000
+aru_subset <- aru_subset %>%
+  group_by(site_id,date) %>%
+  mutate(start_time = min(time)) %>%
+  ungroup()
+
+# add time_of_day column to indicate time-windows for when the acoustic-visit was started and add a data_type column
+aru_subset <- aru_subset %>%
+  mutate(time_of_day = 
+    case_when(start_time >= "060000" & start_time < "070000" 
+              ~ "6AM to 7AM",
+              start_time >= "070000" & start_time < "080000" 
+              ~ "7AM to 8AM",
+              start_time >= "080000" & start_time < "090000" 
+              ~ "8AM to 9AM",
+              start_time >= "090000" & start_time <= "100000" 
+              ~ "9AM to 10AM")) %>%
+  mutate(data_type = "acoustic_data")
+
+# rename columns and add additional columns to ensure it is comparable to the point count dataset
+aru_subset <- rename(aru_subset, time_segment = time)
+aru_subset$HSF <- "H"
+aru_subset$distance <- NA
+
+# add species scientific_name and common_name to the aru_subset data
+aru_subset <- left_join(aru_subset, species_codes[,c(1,2,4)],
+                   by = "eBird_codes")
+```
+
+### Bind the acoustic and point count datasets into a single dataframe
+
+The subsequent dataframe from this code chunk can be used directly in the following scripts to run other analyses.  
+```{r}
+# check the structure and names of both subsets prior to creating a single dataframe
+str(pc_subset)
+str(aru_subset)
+
+# change structures to match across subsets
+pc_subset$start_time <- as.character(pc_subset$start_time)
+pc_subset$time_segment <- as.character(pc_subset$time_segment)
+
+# bind_rows to create a single dataframe
+datSubset <- bind_rows(pc_subset, aru_subset)
+
+# write to file
+write.csv(datSubset, "results/datSubset.csv", row.names = F)
+```
+
+Metadata for the above dataframe is provided below:  
+
+_date_: Date of the point count/acoustic survey (str: Date)  
+_siteid_: Site name and can be cross-referenced to the _list-of-sites.csv_ file (str: Character)  
+_restorationType_: Sites can be actively restored, passively restored (naturally regenerating) or benchmark (undisturbed) forests (str: Character)  
+_startTime_: Start time for the point count and the acoustic data (str: Character)  
+_timeSegment_: The point count data was carried out in three 5-min segments and indicated as 1, 2, and 3. The acoustic data was segmented into four 4-min segments and indicated by the startTime of each segment unlike the point count data (str: Character)    
+_commonName_: Species common name (str: Character)   
+_number_: For the point count data, this column indicates the number of individuals of a species seen/heard/flying above within a time segment. For the acoustic data, this column indicates the number of vocalizations of a species within a time segment (str: Integer)  
+_distance_: For the point count data, this column indicates the distance at which an individual of a species was observed (seen) within a time segment. This number varied from 0 to 50 metres and all individuals/species above that distance was not reported in the point count dataset. For the acoustic dataset, such values are not available and marked as NA (str: Integer)  
+_HSF_: Heard/Seen/Flying was recorded for the point count dataset and indicated by H/S/F. For the acoustic data, the column has been filled with the letter H only (str: Character)  
+_scientificName_: Species scientific name (str: Character)  
+_eBirdCodes_: The four-letter quick common name codes are indicated in this column and can be cross-referenced with the _species-annotation-codes.csv_ file (str: Character)  
+_timeOfDay_: Depending on the start times of the point count or the acoustic data survey/visit, this column indicates if a survey was within any one-hour duration between 6AM to 10AM. For example, if the start time of the point count was '7.42',  this column would indicate the timeOfDay as '7AM to 8AM'. Similarly, if the start time of the acoustic survey was '091000', this column would indicated the timeOfDay as '9AM to 10AM' (str: Character)  
+_dataType_: Point count or acoustic data (str: Character)  
+
