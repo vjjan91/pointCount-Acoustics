@@ -1,0 +1,11 @@
+introduction
+attribution
+data-access
+data-processing
+making-datasets-comparable
+install-required-libraries
+loading-point-count-data
+loading-the-acoustic-data
+subset-acoustic-data-and-point-count-data
+evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis
+bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe

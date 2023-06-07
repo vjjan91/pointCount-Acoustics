@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 5 Generalized linear mixed modeling (acoustic space use and richness, vocal activity and time since restoration) | R Notebook</title>
+  <meta name="description" content="Section 5 Generalized linear mixed modeling (acoustic space use and richness, vocal activity and time since restoration) | R Notebook" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 5 Generalized linear mixed modeling (acoustic space use and richness, vocal activity and time since restoration) | R Notebook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 5 Generalized linear mixed modeling (acoustic space use and richness, vocal activity and time since restoration) | R Notebook" />
+  
+  
+  
+
+<meta name="author" content="Priyanka Hari Haran" />
+<meta name="author" content="Vijay Ramesh" />
+
+
+<meta name="date" content="2023-06-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="richness-estimates-across-point-counts-and-acoustic-data.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#attribution"><i class="fa fa-check"></i><b>1.1</b> Attribution</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-access"><i class="fa fa-check"></i><b>1.2</b> Data access</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-processing"><i class="fa fa-check"></i><b>1.3</b> Data processing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html"><i class="fa fa-check"></i><b>2</b> Making datasets comparable</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#install-required-libraries"><i class="fa fa-check"></i><b>2.0.1</b> Install required libraries</a></li>
+<li class="chapter" data-level="2.0.2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-point-count-data"><i class="fa fa-check"></i><b>2.0.2</b> Loading point count data</a></li>
+<li class="chapter" data-level="2.0.3" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-the-acoustic-data"><i class="fa fa-check"></i><b>2.0.3</b> Loading the acoustic data</a></li>
+<li class="chapter" data-level="2.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data"><i class="fa fa-check"></i><b>2.1</b> Subset acoustic data and point count data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis"><i class="fa fa-check"></i><b>2.1.1</b> Evaluating both subsets of data before combining them into a single dataframe for further analysis</a></li>
+<li class="chapter" data-level="2.1.2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe"><i class="fa fa-check"></i><b>2.1.2</b> Bind the acoustic and point count datasets into a single dataframe</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="point-count-data-and-vocal-detections.html"><a href="point-count-data-and-vocal-detections.html"><i class="fa fa-check"></i><b>3</b> Point count data and vocal detections</a></li>
+<li class="chapter" data-level="4" data-path="richness-estimates-across-point-counts-and-acoustic-data.html"><a href="richness-estimates-across-point-counts-and-acoustic-data.html"><i class="fa fa-check"></i><b>4</b> Richness estimates across point counts and acoustic data</a></li>
+<li class="chapter" data-level="5" data-path="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html"><i class="fa fa-check"></i><b>5</b> Generalized linear mixed modeling (acoustic space use and richness, vocal activity and time since restoration)</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Notebook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Section 5</span> Generalized linear mixed modeling (acoustic space use and richness, vocal activity and time since restoration)<a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this script, we run generalized linear models to test the association between acoustic space use values and species richness, vocal activity (total calling rate at each site, which is a proxy for the total number of vocal detections/unit of recording time) and time since restoration.</p>
+<p>Install required libraries</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-2"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-3"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb14-4"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb14-5"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-6"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb14-7"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb14-8"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rcompanion)</span>
+<span id="cb14-9"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb14-10"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb14-11"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb14-12"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb14-13"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb14-15"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<p>Load necessary data for statistical modeling</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load list of sites</span></span>
+<span id="cb15-2"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-2" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/list-of-sites.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">&quot;Site.code&quot;</span>,<span class="st">&quot;Restoration.type&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Site.code <span class="sc">!=</span> <span class="st">&quot;OLCAP5B&quot;</span>)</span>
+<span id="cb15-5"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># loading jacknife scores </span></span>
+<span id="cb15-7"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-7" aria-hidden="true" tabindex="-1"></a>jackAll <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/jackAll.csv&quot;</span>)</span>
+<span id="cb15-8"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># loading vocal activity data</span></span>
+<span id="cb15-10"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-10" aria-hidden="true" tabindex="-1"></a>vocalAct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/total-calling-rate-per-site.csv&quot;</span>)</span>
+<span id="cb15-11"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load vegetation data from previous scripts </span></span>
+<span id="cb15-13"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-13" aria-hidden="true" tabindex="-1"></a>vegData <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/summaryVeg.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-14"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(Site_ID, <span class="st">&#39;OLCAP5B&#39;</span>))</span>
+<span id="cb15-15"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-15" aria-hidden="true" tabindex="-1"></a>vegPcaScores <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pcaVeg.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-16"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(Site_ID, <span class="st">&#39;OLCAP5B&#39;</span>))</span>
+<span id="cb15-17"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach the annotation data</span></span>
+<span id="cb15-19"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-19" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/datSubset.csv&quot;</span>)</span>
+<span id="cb15-20"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the overall number of detections for each site where each temporal duration chosen is a 10s clip</span></span>
+<span id="cb15-22"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-22" aria-hidden="true" tabindex="-1"></a>nDetections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb15-23"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Site, Restoration.type) <span class="sc">%&gt;%</span></span>
+<span id="cb15-24"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>() <span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-25"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_at</span>(<span class="at">.vars =</span> <span class="fu">vars</span>(<span class="fu">c</span>(<span class="st">&quot;IP&quot;</span><span class="sc">:</span><span class="st">&quot;HSWP&quot;</span>)),<span class="at">.funs =</span> sum) </span>
+<span id="cb15-26"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># total number of detections at each site</span></span>
+<span id="cb15-28"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-28" aria-hidden="true" tabindex="-1"></a>totDetections <span class="ot">&lt;-</span>  nDetections <span class="sc">%&gt;%</span></span>
+<span id="cb15-29"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-29" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-30"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-30" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(IP<span class="sc">:</span>HSWP)))</span>
+<span id="cb15-31"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a dataframe of average space use by site</span></span>
+<span id="cb15-33"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-33" aria-hidden="true" tabindex="-1"></a>siteWiseAsu <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/site-wise-asu.csv&quot;</span>)</span>
+<span id="cb15-34"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="co"># add restoration type</span></span>
+<span id="cb15-36"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-36" aria-hidden="true" tabindex="-1"></a>siteWiseAsu <span class="ot">&lt;-</span> <span class="fu">left_join</span>(siteWiseAsu, sites, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;Site&quot;</span><span class="ot">=</span><span class="st">&quot;Site.code&quot;</span>))</span>
+<span id="cb15-37"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate analysis: space use during certain times of day alone</span></span>
+<span id="cb15-39"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s look only at dawn chorus to explore what the data looks like</span></span>
+<span id="cb15-40"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-40" aria-hidden="true" tabindex="-1"></a>dawn <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;05:00-06:00&quot;</span>,<span class="st">&quot;06:00-07:00&quot;</span>,<span class="st">&quot;07:00-08:00&quot;</span>,<span class="st">&quot;08:00-09:00&quot;</span>,</span>
+<span id="cb15-41"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-41" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;09:00-10:00&quot;</span>)</span>
+<span id="cb15-42"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-42" aria-hidden="true" tabindex="-1"></a>dawnChorusAvgAsu <span class="ot">&lt;-</span> siteWiseAsu <span class="sc">%&gt;%</span></span>
+<span id="cb15-43"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time_of_day <span class="sc">%in%</span> dawn)</span>
+<span id="cb15-44"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate analysis: space use during certain times of day alone</span></span>
+<span id="cb15-46"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s look only at dusk chorus to explore what the data looks like</span></span>
+<span id="cb15-47"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-47" aria-hidden="true" tabindex="-1"></a>dusk <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;16:00-17:00&quot;</span>,<span class="st">&quot;17:00-18:00&quot;</span>,<span class="st">&quot;18:00-19:00&quot;</span>,<span class="st">&quot;19:00-20:00&quot;</span>)</span>
+<span id="cb15-48"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-48" aria-hidden="true" tabindex="-1"></a>duskChorusAvgAsu <span class="ot">&lt;-</span> siteWiseAsu <span class="sc">%&gt;%</span></span>
+<span id="cb15-49"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time_of_day <span class="sc">%in%</span> dusk)</span>
+<span id="cb15-50"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-51"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating total space use across all frequency bins and times of day: 128*24 for each site-day combination</span></span>
+<span id="cb15-52"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-53"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-53" aria-hidden="true" tabindex="-1"></a>avgSpaceUse <span class="ot">&lt;-</span> siteWiseAsu <span class="sc">%&gt;%</span></span>
+<span id="cb15-54"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Site, Restoration.type) <span class="sc">%&gt;%</span></span>
+<span id="cb15-55"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totSpaceuse =</span> <span class="fu">sum</span>(f.cont.sum)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-56"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(jackAll, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;Site&quot;</span>,<span class="st">&quot;Restoration.type&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-57"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="st">&quot;roundjk&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(jack1)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-58"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;roundSpaceUse&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(totSpaceuse)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-59"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">year =</span> vegData<span class="sc">$</span>plantingYear) <span class="sc">%&gt;%</span></span>
+<span id="cb15-60"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">vocalAct =</span> vocalAct<span class="sc">$</span>totCallingRate) <span class="sc">%&gt;%</span></span>
+<span id="cb15-61"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">totDetections =</span> totDetections<span class="sc">$</span>totDetections)</span>
+<span id="cb15-62"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-63"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-63" aria-hidden="true" tabindex="-1"></a><span class="co"># dawn</span></span>
+<span id="cb15-64"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-64" aria-hidden="true" tabindex="-1"></a>dawnAvgSpaceUse <span class="ot">&lt;-</span> dawnChorusAvgAsu <span class="sc">%&gt;%</span></span>
+<span id="cb15-65"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Site, Restoration.type) <span class="sc">%&gt;%</span></span>
+<span id="cb15-66"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totSpaceuse =</span> <span class="fu">sum</span>(f.cont.sum)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-67"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(jackAll, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;Site&quot;</span>,<span class="st">&quot;Restoration.type&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-68"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="st">&quot;roundjk&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(jack1)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-69"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;roundSpaceUse&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(totSpaceuse)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-70"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">year =</span> vegData<span class="sc">$</span>plantingYear) <span class="sc">%&gt;%</span></span>
+<span id="cb15-71"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">vocalAct =</span> vocalAct<span class="sc">$</span>totCallingRate) <span class="sc">%&gt;%</span></span>
+<span id="cb15-72"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">totDetections =</span> totDetections<span class="sc">$</span>totDetections)</span>
+<span id="cb15-73"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-74"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-74" aria-hidden="true" tabindex="-1"></a><span class="co">#dusk</span></span>
+<span id="cb15-75"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-75" aria-hidden="true" tabindex="-1"></a>duskAvgSpaceUse <span class="ot">&lt;-</span> duskChorusAvgAsu <span class="sc">%&gt;%</span></span>
+<span id="cb15-76"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Site, Restoration.type) <span class="sc">%&gt;%</span></span>
+<span id="cb15-77"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totSpaceuse =</span> <span class="fu">sum</span>(f.cont.sum)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-78"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(jackAll, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;Site&quot;</span>,<span class="st">&quot;Restoration.type&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-79"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="st">&quot;roundjk&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(jack1)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-80"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;roundSpaceUse&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(totSpaceuse)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-81"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">year =</span> vegData<span class="sc">$</span>plantingYear) <span class="sc">%&gt;%</span></span>
+<span id="cb15-82"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">vocalAct =</span> vocalAct<span class="sc">$</span>totCallingRate) <span class="sc">%&gt;%</span></span>
+<span id="cb15-83"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb15-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">totDetections =</span> totDetections<span class="sc">$</span>totDetections)</span></code></pre></div>
+<p>Let’s first explore richness (as measured through first order jacknife scores and test for associations with space use)</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># running generalized linear models</span></span>
+<span id="cb16-2"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-2" aria-hidden="true" tabindex="-1"></a>glmRichnessSpace <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> roundjk, <span class="at">data =</span> avgSpaceUse, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb16-3"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmRichnessSpace)</span>
+<span id="cb16-4"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmRichnessSpace, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb16-6"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-6" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmRichnessSpace)</span>
+<span id="cb16-7"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The results suggest a significant and negative association between overall space use and first-order jacknife scores</span></span>
+<span id="cb16-9"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s look at how this varies by restoration type</span></span>
+<span id="cb16-11"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-11" aria-hidden="true" tabindex="-1"></a>benchmark <span class="ot">&lt;-</span> avgSpaceUse <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Restoration.type<span class="sc">==</span><span class="st">&quot;Benchmark&quot;</span>)</span>
+<span id="cb16-13"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-13" aria-hidden="true" tabindex="-1"></a>active <span class="ot">&lt;-</span> avgSpaceUse <span class="sc">%&gt;%</span></span>
+<span id="cb16-14"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Restoration.type<span class="sc">==</span><span class="st">&quot;Active&quot;</span>)</span>
+<span id="cb16-15"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-15" aria-hidden="true" tabindex="-1"></a>passive <span class="ot">&lt;-</span> avgSpaceUse <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Restoration.type<span class="sc">==</span><span class="st">&quot;Passive&quot;</span>)</span>
+<span id="cb16-17"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># benchmark</span></span>
+<span id="cb16-19"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-19" aria-hidden="true" tabindex="-1"></a>glmRichnessBench <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> roundjk, <span class="at">data =</span> benchmark, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb16-20"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmRichnessBench)</span>
+<span id="cb16-21"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmRichnessBench, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb16-23"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-23" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmRichnessBench)</span>
+<span id="cb16-24"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># for benchmark sites, The effect of roundjk is statistically significant and positive (beta = 8.80e-03, 95% CI [6.62e-03, 0.01], p &lt; .001; Std. beta = 0.09, 95% CI [0.07, 0.11])</span></span>
+<span id="cb16-26"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># active</span></span>
+<span id="cb16-28"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-28" aria-hidden="true" tabindex="-1"></a>glmRichnessActive <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> roundjk, <span class="at">data =</span> active, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb16-29"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmRichnessActive)</span>
+<span id="cb16-30"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-31"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmRichnessActive, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb16-32"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-32" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmRichnessActive)</span>
+<span id="cb16-33"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-34"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="co"># For actively restored sites, The effect of roundjk is statistically significant and negative (beta = -0.01, 95% CI [-0.02, -6.71e-03], p &lt; .001; Std. beta = -0.08, 95% CI [-0.12, -0.04])</span></span>
+<span id="cb16-35"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-36"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-36" aria-hidden="true" tabindex="-1"></a><span class="co"># passive</span></span>
+<span id="cb16-37"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-37" aria-hidden="true" tabindex="-1"></a>glmRichnessPassive <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> roundjk, <span class="at">data =</span> passive, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb16-38"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmRichnessPassive)</span>
+<span id="cb16-39"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmRichnessPassive, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb16-41"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-41" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmRichnessPassive)</span>
+<span id="cb16-42"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-43"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="co"># For passively restored sites, The effect of roundjk is statistically non-significant and negative (beta = -1.98e-03, 95% CI [-6.30e-03, 2.32e-03], p = 0.368; Std. beta = -0.02, 95% CI [-0.06, 0.02])</span></span></code></pre></div>
+<p>Let’s look at year since restoration and ask if space use has a significant association with time</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-1" aria-hidden="true" tabindex="-1"></a>allRestored <span class="ot">&lt;-</span> avgSpaceUse <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Restoration.type<span class="sc">==</span><span class="st">&quot;Active&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearSinceRestoration =</span> (<span class="dv">2022</span><span class="sc">-</span>year))</span>
+<span id="cb17-4"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-5" aria-hidden="true" tabindex="-1"></a>dawnRestored <span class="ot">&lt;-</span> dawnAvgSpaceUse <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Restoration.type<span class="sc">==</span><span class="st">&quot;Active&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearSinceRestoration =</span> (<span class="dv">2022</span><span class="sc">-</span>year))</span>
+<span id="cb17-8"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-9" aria-hidden="true" tabindex="-1"></a>duskRestored <span class="ot">&lt;-</span> duskAvgSpaceUse <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Restoration.type<span class="sc">==</span><span class="st">&quot;Active&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearSinceRestoration =</span> (<span class="dv">2022</span><span class="sc">-</span>year))</span>
+<span id="cb17-12"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-13" aria-hidden="true" tabindex="-1"></a>glmAll <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> yearSinceRestoration, <span class="at">data =</span> allRestored, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb17-14"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmAll)</span>
+<span id="cb17-15"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmAll, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb17-17"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-17" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmAll)</span>
+<span id="cb17-18"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-19" aria-hidden="true" tabindex="-1"></a>glmDawn <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> yearSinceRestoration, <span class="at">data =</span> dawnRestored, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb17-20"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmDawn)</span>
+<span id="cb17-21"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmDawn, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb17-23"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-23" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmDawn)</span>
+<span id="cb17-24"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-25"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-25" aria-hidden="true" tabindex="-1"></a>glmDusk <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> yearSinceRestoration, <span class="at">data =</span> duskRestored, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb17-26"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmDusk)</span>
+<span id="cb17-27"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmDusk, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb17-29"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-29" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmDusk)</span>
+<span id="cb17-30"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co"># all three analysis report a statistically significant and negative association with year since restoration and spaceuse values</span></span></code></pre></div>
+<p>Let’s look at associations between acoustic space use and sum total of detections of species at each site</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-1" aria-hidden="true" tabindex="-1"></a>glmDetections<span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> totDetections, <span class="at">data =</span> avgSpaceUse, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb18-2"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmDetections)</span>
+<span id="cb18-3"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmDetections, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb18-5"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-5" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmDetections)</span>
+<span id="cb18-6"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The effect of totDetections is statistically significant and positive (beta = 7.93e-05, 95% CI [5.19e-05, 1.07e-04], p &lt; .001; Std. beta = 0.05, 95% CI [0.03, 0.07])</span></span>
+<span id="cb18-8"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># # What if we look at it by treatment type</span></span>
+<span id="cb18-10"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Model each of them separately:</span></span>
+<span id="cb18-11"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-12" aria-hidden="true" tabindex="-1"></a>glmBenchDet <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> totDetections, <span class="at">data =</span> benchmark, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb18-13"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmBenchDet)</span>
+<span id="cb18-14"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmBenchDet, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb18-16"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-16" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmBenchDet)</span>
+<span id="cb18-17"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># For benchmark sites, The effect of totDetections is statistically significant and positive (beta = 7.07e-05, 95% CI [2.79e-05, 1.13e-04], p = 0.001; Std. beta = 0.04, 95% CI [0.02, 0.06])</span></span>
+<span id="cb18-19"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-20" aria-hidden="true" tabindex="-1"></a>glmActiveDet <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> totDetections, <span class="at">data =</span> active, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb18-21"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmActiveDet)</span>
+<span id="cb18-22"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmActiveDet, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb18-24"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-24" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmActiveDet)</span>
+<span id="cb18-25"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># For actively restored sites, The effect of totDetections is statistically non-significant and negative (beta = -2.61e-05, 95% CI [-9.25e-05, 4.04e-05], p = 0.442; Std. beta = -0.01, 95% CI [-0.05, 0.02])</span></span>
+<span id="cb18-27"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-28" aria-hidden="true" tabindex="-1"></a>glmPassiveDet <span class="ot">&lt;-</span> <span class="fu">glm</span>(roundSpaceUse <span class="sc">~</span> totDetections, <span class="at">data =</span> passive, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> log))</span>
+<span id="cb18-29"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmPassiveDet)</span>
+<span id="cb18-30"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-31"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(glmPassiveDet, <span class="at">type=</span><span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb18-32"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-32" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(glmPassiveDet)</span>
+<span id="cb18-33"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="generalized-linear-mixed-modeling-acoustic-space-use-and-richness-vocal-activity-and-time-since-restoration.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="co"># For passively restored sites,  The effect of totDetections is statistically non-significant and negative (beta = -4.86e-05, 95% CI [-9.93e-05, 1.49e-06], p = 0.059; Std. beta = -0.04, 95% CI [-0.08, 1.17e-03])</span></span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="richness-estimates-across-point-counts-and-acoustic-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/glms-acoustic-space-use-richness-vocalAct-plantingYear.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
