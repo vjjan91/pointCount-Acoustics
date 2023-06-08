@@ -1,0 +1,86 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+# Indicator species analysis  
+
+This analysis aims to identify what species are “indicators” of groups of samples or treatment type and asks if this varies between point count estimates and acoustic surveys. 
+
+If the aim is to determine which species can be used as indicators of certain site group, an approach commonly used in ecology is the Indicator Value (Dufrene and Legendre, 1997). These authors defined an Indicator Value (IndVal) index to measure the association between a species and a site group. The method of Dufrene and Legendre (1997) calculates the IndVal index between the species and each site group and then looks for the group corresponding to the highest association value. Finally, the statistical significance of this relationship is tested using a permutation test.  
+
+Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as fidelity, not to be confounded with the indicator value component) between species and vegetation types is Pearson’s phi coefficient of association
+(Chytry et al., 2002). This coefficient is a measure of the correlation between two binary vectors. The abundance-based counterpart of the phi coefficient is called the point biserial correlation coefficient (which is defined as "r.g").  
+
+See: https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf  
+
+## Load necessary libraries
+```{r}
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(vegan)
+library(ggplot2)
+library(scico)
+library(psych)
+library(ecodist)
+library(RColorBrewer)
+library(ggforce)
+library(ggalt)
+library(patchwork)
+library(sjPlot)
+library(indicspecies)
+
+# Source any custom/other internal functions necessary for analysis
+source("code/01_internal-functions.R")
+```
+
+## Load dataframe containing point count and acoustic data
+```{r}
+datSubset <- read.csv("results/datSubset.csv")
+```
+
+## Preparing matrix data to run the indicator species analysis
+
+
+Questions to ask Priyanka:
+-If I estimate vocal activity as (number of detections in every 4-min divided by
+24 - which translates to 24 10-second clips and then sum them up across the 16-min?)
+- or estimate vocal activity as (number of detectins across 16-min divided by 96 - which translates to 96 10-s clips)
+- or if data is pooled for each site (96 * 6 = 576 10-s clips)
+-maybe this is a measure of vocal usage/acoustic use of the habitat - for example, CBSU was recorded in 551 10s clips out of a total of 576 clips in HP4008R
+
+For point count data
+: 6 visits would ~ 90 min of data
+how do I compare 17 individuals of SHMY across 6 visits
+
+
+```{r}
+# point count data
+# estimate total abundance across all species for each site
+abundance <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes, habitat, foraging_habit) %>%
+  summarise(totAbundance = sum(number)) %>%
+  ungroup()
+
+# estimate richness for point count data
+pc_richness <- abundance %>%
+  mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
+  group_by(site_id,restoration_type) %>%
+  summarise(richness = sum(forRichness)) %>%
+  mutate(data_type = "point_count") %>%
+  ungroup()
+```
+
+
+
+
+
+
+
+
+
+
+
