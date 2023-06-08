@@ -238,6 +238,12 @@ pc_subset$time_segment <- as.character(pc_subset$time_segment)
 # bind_rows to create a single dataframe
 datSubset <- bind_rows(pc_subset, aru_subset)
 
+# rename values within the restoration_type column to acronyms (for ease of plotting)
+datSubset <- datSubset %>%
+  mutate(restoration_type = str_replace(restoration_type, "Benchmark", "BM")) %>%
+  mutate(restoration_type = str_replace(restoration_type, "Active", "AR")) %>%
+  mutate(restoration_type = str_replace(restoration_type, "Passive", "NR"))
+
 # write to file
 write.csv(datSubset, "results/datSubset.csv", row.names = F)
 ```
@@ -248,7 +254,7 @@ write.csv(datSubset, "results/datSubset.csv", row.names = F)
 
 **siteid**: Site name and can be cross-referenced to the _list-of-sites.csv_ file (str: Character)  
 
-**restorationType**: Sites can be actively restored, passively restored (naturally regenerating) or benchmark (undisturbed) forests (str: Character)  
+**restorationType**: Sites can be actively restored (AR), passively restored (naturally regenerating/NR) or benchmark (undisturbed/BM) forests (str: Character)  
 
 **startTime**: Start time for the point count and the acoustic data (str: Character)  
 
