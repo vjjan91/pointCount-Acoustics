@@ -2,6 +2,7 @@ introduction
 attribution
 data-access
 data-processing
+the-data-processing-for-this-project-is-described-in-the-following-sections.-navigate-through-them-using-the-links-in-the-sidebar.
 making-datasets-comparable
 install-required-libraries
 loading-point-count-data
@@ -9,3 +10,13 @@ loading-the-acoustic-data
 subset-acoustic-data-and-point-count-data
 evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis
 bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe
+richness-estimates
+load-dataframe-containing-point-count-and-acoustic-data
+load-species-trait-data
+estimate-richness-for-point-count-and-acoustic-data
+visualize-differences-in-richness-between-point-count-data-and-acoustic-data
+visualize-differences-in-richness-as-a-function-of-species-trait
+indicator-species-analysis
+load-necessary-libraries
+load-dataframe-containing-point-count-and-acoustic-data-1
+preparing-matrix-data-to-run-the-indicator-species-analysis

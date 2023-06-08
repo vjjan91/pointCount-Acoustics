@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
-  <meta name="description" content="Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <title>Section 4 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
+  <meta name="description" content="Section 4 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta property="og:title" content="Section 4 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta name="twitter:title" content="Section 4 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   
   
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="richness-estimates.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -181,18 +181,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="indicator-species-analysis" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Section 4</span> Indicator species analysis<a href="indicator-species-analysis.html#indicator-species-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This analysis aims to identify what species are “indicators” of groups of samples or treatment type and asks if this varies between point count estimates and acoustic surveys.</p>
+<p>If the aim is to determine which species can be used as indicators of certain site group, an approach commonly used in ecology is the Indicator Value (Dufrene and Legendre, 1997). These authors defined an Indicator Value (IndVal) index to measure the association between a species and a site group. The method of Dufrene and Legendre (1997) calculates the IndVal index between the species and each site group and then looks for the group corresponding to the highest association value. Finally, the statistical significance of this relationship is tested using a permutation test.</p>
+<p>Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as fidelity, not to be confounded with the indicator value component) between species and vegetation types is Pearson’s phi coefficient of association
+(Chytry et al., 2002). This coefficient is a measure of the correlation between two binary vectors. The abundance-based counterpart of the phi coefficient is called the point biserial correlation coefficient (which is defined as “r.g”).</p>
+<p>See: <a href="https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf" class="uri">https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf</a></p>
+<div id="load-necessary-libraries" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Load necessary libraries<a href="indicator-species-analysis.html#load-necessary-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="indicator-species-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="indicator-species-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-3"><a href="indicator-species-analysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb13-4"><a href="indicator-species-analysis.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb13-5"><a href="indicator-species-analysis.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-6"><a href="indicator-species-analysis.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb13-7"><a href="indicator-species-analysis.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb13-8"><a href="indicator-species-analysis.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
+<span id="cb13-9"><a href="indicator-species-analysis.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb13-10"><a href="indicator-species-analysis.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb13-11"><a href="indicator-species-analysis.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
+<span id="cb13-12"><a href="indicator-species-analysis.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb13-13"><a href="indicator-species-analysis.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb13-14"><a href="indicator-species-analysis.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(indicspecies)</span>
+<span id="cb13-15"><a href="indicator-species-analysis.html#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="indicator-species-analysis.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb13-17"><a href="indicator-species-analysis.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+</div>
+<div id="load-dataframe-containing-point-count-and-acoustic-data-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Load dataframe containing point count and acoustic data<a href="indicator-species-analysis.html#load-dataframe-containing-point-count-and-acoustic-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="indicator-species-analysis.html#cb14-1" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="preparing-matrix-data-to-run-the-indicator-species-analysis" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Preparing matrix data to run the indicator species analysis<a href="indicator-species-analysis.html#preparing-matrix-data-to-run-the-indicator-species-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Questions to ask Priyanka:
+-If I estimate vocal activity as (number of detections in every 4-min divided by
+24 - which translates to 24 10-second clips and then sum them up across the 16-min?)
+- or estimate vocal activity as (number of detectins across 16-min divided by 96 - which translates to 96 10-s clips)
+- or if data is pooled for each site (96 * 6 = 576 10-s clips)
+-maybe this is a measure of vocal usage/acoustic use of the habitat - for example, CBSU was recorded in 551 10s clips out of a total of 576 clips in HP4008R</p>
+<dl>
+<dt>For point count data</dt>
+<dd>
+6 visits would ~ 90 min of data
+how do I compare 17 individuals of SHMY across 6 visits
+</dd>
+</dl>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="richness-estimates.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -214,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/%s",
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/03_indicator-species-analysis.Rmd",
 "text": "Edit"
 },
 "history": {
