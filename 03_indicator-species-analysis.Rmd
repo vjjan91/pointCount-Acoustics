@@ -56,22 +56,7 @@ how do I compare 17 individuals of SHMY across 6 visits
 
 
 ```{r}
-# point count data
-# estimate total abundance across all species for each site
-abundance <- datSubset %>%
-  filter(data_type == "point_count") %>%
-  group_by(site_id, restoration_type, scientific_name,
-           common_name, eBird_codes, habitat, foraging_habit) %>%
-  summarise(totAbundance = sum(number)) %>%
-  ungroup()
 
-# estimate richness for point count data
-pc_richness <- abundance %>%
-  mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type) %>%
-  summarise(richness = sum(forRichness)) %>%
-  mutate(data_type = "point_count") %>%
-  ungroup()
 ```
 
 
