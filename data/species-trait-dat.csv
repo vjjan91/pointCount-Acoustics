@@ -1,0 +1,126 @@
+scientific_name,common_name,species_annotation_codes,eBird_codes,Order,Notes,habitat,habit
+Dicrurus leucophaeus,Ashy Drongo,AD,ASDR,Passeriformes,,RF,CAN
+Muscicapa dauurica,Asian Brown Flycatcher,ABF,ABFL,Passeriformes,,OC,MID
+Chalcophaps indica,Asian Emerald Dove,AED,AEDO,Columbiformes,,RF,GRD
+Irena puella,Asian Fairy-bluebird,AFB,AFBL,Passeriformes,,RF,CAN
+Eudynamys scolopaceus,Asian Koel,AK,ASKO,Cuculiformes,,OC,MID
+Hemipus picatus,Bar-winged Flycatcher-shrike,BWFS,BWFS,Passeriformes,,RF,CAN
+Ictinaetus malaiensis,Black Eagle,BE,BLEA,Accipitriformes,,RF,CAN
+Milvus migrans,Black Kite,BK,BLKI,Accipitriformes,,OC,GRD
+Ficedula nigrorufa,Black-and-orange Flycatcher,BAOF,BAOF,Passeriformes,,RF,UND
+Oriolus xanthornus,Black-hooded Oriole,BHO,BHOR,Passeriformes,,OC,CAN
+Hypothymis azurea,Black-naped Monarch,BNM,BNMO,Passeriformes,,RF,MID
+Dinopium benghalense,Black-rumped Flameback,BRF,BRFL,Piciformes,,OC,MID
+Lonchura kelaarti,Black-throated Munia,BTM,BTMU,Passeriformes,,RF,GRD
+Cyornis rubeculoides,Blue-throated Flycatcher,BTF,BTFL,Passeriformes,,RF,UND
+Acrocephalus dumetorum,Blyth's Reed Warbler,BRW,BRWA,Passeriformes,order NA,OC,UND
+Iduna caligata,Booted Warbler,BW,BOWA,Passeriformes,,OC,UND
+Haliastur indus,Brahminy Kite,BRK,BRKI,Accipitriformes,,OC,AQU
+Dicrurus aeneus,Bronzed Drongo,BD,BRDR,Passeriformes,,RF,MID
+Ninox scutulata,Brown Boobook,BB,BRBO,Strigiformes,,RF,MID
+Ketupa zeylonensis,Brown Fish-Owl,BFO,BFOW,Strigiformes,,RF,AQU
+Lanius cristatus,Brown Shrike,BS,BRSH,Passeriformes,,OC,GRD
+Strix leptogrammica,Brown Wood-owl,BWO,BRWO,Strigiformes,order NA,RF,CAN
+Muscicapa muttui,Brown-breasted Flycatcher,BBF,BBFL,Passeriformes,,RF,UND
+Yungipicus nanus,Brown-capped Pygmy Woodpecker,BCPW,BCPW,Piciformes,,OC,CAN
+Alcippe poioicephala,Brown-cheeked Fulvetta,BCF,BCFU,Passeriformes,,RF,MID
+Merops leschenaulti,Chestnut-headed Bee-eater,CHBE,CHBE,Coraciiformes,,RF,AER
+Dinopium javanense,Common Flameback,CF,COFL,Piciformes,,RF,MID
+Hierococcyx varius,Common Hawk-Cuckoo,CHC,CHCU,Cuculiformes,order NA,OC,CAN
+Aegithina tiphia,Common Iora,CI,COIO,Passeriformes,,OC,MID
+Carpodacus erythrinus,Common Rosefinch,CR,CORO,Passeriformes,eBird_code NA,OC,CAN
+Orthotomus sutorius,Common Tailorbird,CT,COTA,Passeriformes,,OC,UND
+Accipiter trivirgatus,Crested Goshawk,CG,CRGO,Accipitriformes,,RF,CAN
+Spilornis cheela,Crested Serpent-Eagle,CSE,CSEA,Accipitriformes,,RF,GRD
+Leptocoma minima,Crimson-backed Sunbird,CBS,CBSU,Passeriformes,,RF,CAN
+Dumetia atriceps,Dark-fronted Babbler,DFB,DFBA,Passeriformes,,RF,UND
+Upupa epops,Eurasian Hoopoe,EH,EUHO,Bucerotiformes,,OC,GRD
+Rubigula gularis,Flame-throated Bulbul,FTB,FTBU,Passeriformes,,RF,MID
+Dendronanthus indicus,Forest Wagtail,FW,FOWA,Passeriformes,,RF,GRD
+Chloropsis aurifrons,Golden-fronted Leafbird,GFL,GFLE,Passeriformes,,RF,CAN
+Gallus sonneratii,Gray Junglefowl,GJ,GRJU,Galliformes,,RF,GRD
+Motacilla cinerea,Gray Wagtail,GW,GREW,Passeriformes,eBird_code GRWA,RF,GRD
+Cacomantis passerinus,Gray-bellied Cuckoo,GBC,GBCU,Cuculiformes,,OC,MID
+Prinia hodgsonii,Gray-breasted Prinia,GBP,GBPR,Passeriformes,,OC,UND
+Treron affinis,Gray-fronted Green-Pigeon,GFGP,GFGP,Columbiformes,,RF,CAN
+Culicicapa ceylonensis,Gray-headed Canary-Flycatcher,GHCF,GHCF,Passeriformes,,RF,MID
+Lyncornis macrotis,Great-eared Nightjar,GENI,GENI,Caprimulgiformes,,RF,MID
+Buceros bicornis,Great Hornbill,GH,GRHO,Bucerotiformes,,RF,CAN
+Centropus sinensis,Greater Coucal,GC,GRCO,Cuculiformes,,OC,UND
+Chrysocolaptes guttacristatus,Greater Flameback,GF,GRFL,Piciformes,,RF,CAN
+Dicrurus paradiseus,Greater Racket-tailed Drongo,GRTD,GRTD,Passeriformes,,RF,CAN
+Phylloscopus nitidus,Green Warbler,GRW,GRNW,Passeriformes,,RF,CAN
+Phylloscopus trochiloides,Greenish Warbler,GNW,GRWA,Passeriformes,eBird_code GRWA,RF,CAN
+Hemicircus canente,Heart-spotted Woodpecker,HSWP,HSWO,Piciformes,,RF,CAN
+Corvus splendens,House Crow,HC,HOCR,Passeriformes,,OC,GRD
+Turdus simillimus,Indian Blackbird,IB,INBL,Passeriformes,,RF,GRD
+Larvivora brunnea,Indian Blue Robin,IBR,IBRO,Passeriformes,,RF,UND
+Oriolus kundoo,Indian Golden Oriole,IGO,IGOR,Passeriformes,,OC,CAN
+Terpsiphone paradisi,Indian Paradise-Flycatcher,IPF,IPFL,Passeriformes,,RF,MID
+Pavo cristatus,Indian Peafowl,IP,INPE,Galliformes,eBird_code NA,OC,GRD
+Pitta brachyura,Indian Pitta,IPT,INPI,Passeriformes,,RF,GRD
+Pomatorhinus horsfieldii,Indian Scimitar-Babbler,ISB,ISBA,Passeriformes,,RF,UND
+Otus bakkamoena,Indian Scops-Owl,ISO,ISOW,Strigiformes,,RF,MID
+Zosterops palpebrosus,Indian White-eye,OWE,IWEY,Passeriformes,,RF,MID
+Machlolophus aplonotus,Indian Yellow Tit,IYT,IYTI,Passeriformes,,RF,CAN
+Argya striata,Jungle Babbler,JB,JUBA,Passeriformes,,OC,GRD
+Acridotheres fuscus,Jungle Myna,JM,JUMY,Passeriformes,,OC,GRD
+Caprimulgus indicus,Jungle Nightjar,JN,JUNI,Caprimulgiformes,,OC,GRD
+Glaucidium radiatum,Jungle Owlet,JUOW,JUOW,Strigiformes,,RF,MID
+Corvus macrorhynchos,Large-billed Crow,LBC,LBCR,Passeriformes,,OC,GRD
+Phylloscopus magnirostris,Large-billed Leaf Warbler,LBLW,LBLW,Passeriformes,,RF,UND
+Picus chlorolophus,Lesser Yellownape,LY,LEYE,Piciformes,,RF,CAN
+Arachnothera longirostra,Little Spiderhunter,LS,LISP,Passeriformes,,RF,MID
+Lanius schach,Long-tailed Shrike,LTS,LTSH,Passeriformes,,OC,GRD
+Psilopogon malabaricus,Malabar Barbet,MB,MABA,Piciformes,,RF,CAN
+Ocyceros griseus,Malabar Gray Hornbill,MGH,MGHO,Bucerotiformes,,RF,CAN
+Psittacula columboides,Malabar Parakeet,MP,MAPA,Psittaciformes,,RF,CAN
+Harpactes fasciatus,Malabar Trogon,MT,MATR,Trogoniformes,,RF,MID
+Myophonus horsfieldii,Malabar Whistling-Thrush,MWT,MWTH,Passeriformes,,RF,GRD
+Tephrodornis sylvicola,Malabar Woodshrike,MW,MAWO,Passeriformes,,RF,CAN
+Ducula badia,Mountain Imperial-Pigeon,MIP,MIPI,Columbiformes,,RF,CAN
+Dicaeum concolor,Nilgiri Flowerpecker,NFP,NIFP,Passeriformes,eBird_code NIFL,RF,CAN
+Eumyias albicaudatus,Nilgiri Flycatcher,NF,NIFL,Passeriformes,,RF,CAN
+Columba elphinstonii,Nilgiri Wood-Pigeon,NWP,NWPI,Columbiformes,,RF,MID
+Pericrocotus flammeus,Orange Minivet,OM,ORMI,Passeriformes,,RF,CAN
+Geokichla citrina,Orange-headed Thrush,OHT,OHTH,Passeriformes,,RF,GRD
+Pernis ptilorhynchus,Oriental Honey-buzzard,OHB,OHBU,Accipitriformes,,RF,CAN
+Copsychus saularis,Oriental Magpie-Robin,OMR,OMRO,Passeriformes,,OC,GRD
+Dicaeum erythrorhynchos,Pale-billed Flowerpecker,PBF,PBFL,Passeriformes,,OC,CAN
+Falco peregrinus,Peregrine Falcon,PF,PEFA,Falconiformes,,OC,AER
+Saxicola caprata,Pied Bushchat,PIBU,PIBU,Passeriformes,,OC,UND
+Clamator jacobinus,Pied Cuckoo,PC,PICU,Cuculiformes,,OC,MID
+Psittacula cyanocephala,Plum-headed Parakeet,PHP,PHPA,Psittaciformes,,OC,CAN
+Pellorneum ruficeps,Puff-throated Babbler,PTB,PTBA,Passeriformes,,RF,GRD
+Cinnyris asiaticus,Purple Sunbird,PS,PUSU,Passeriformes,,OC,MID
+Galloperdix spadicea,Red Spurfowl,RS,RESP,Galliformes,,RF,GRD
+Pycnonotus cafer,Red-vented Bulbul,RVB,RVBU,Passeriformes,,OC,MID
+Vanellus indicus,Red-wattled Lapwing,RWL,RWLA,Charadriiformes,,OC,AQU
+Pycnonotus jocosus,Red-whiskered Bulbul,RWB,RWBU,Passeriformes,,OC,MID
+Columba livia,Rock Pigeon,RP,ROPI,Columbiformes,,OC,GRD
+Argya subrufa,Rufous Babbler,RB,RUBA,Passeriformes,,RF,UND
+Micropternus brachyurus,Rufous Woodpecker,RW,RUWO,Piciformes,,OC,MID
+Ficedula ruficauda,Rusty-tailed Flycatcher,RTF,RTFL,Passeriformes,,RF,CAN
+Accipiter badius,Shikra,SKR,SHIK,Accipitriformes,,OC,MID
+Pericrocotus cinnamomeus,Small Minivet,SM,SMMI,Passeriformes,,OC,CAN
+Gracula indica,Southern Hill Myna,SHM,SHMY,Passeriformes,,RF,CAN
+Picumnus innominatus,Speckled Piculet,SP,SPPI,Piciformes,,RF,CAN
+Bubo nipalensis,Spot-bellied Eagle-Owl,SBEO,SBEO,Strigiformes,,RF,CAN
+Streptopelia chinensis,Spotted Dove,SD,SPDO,Columbiformes,,OC,GRD
+Hypsipetes ganeesa ganeesa,Square-tailed Bulbul,STB,STBU,Passeriformes,,RF,CAN
+Picus xanthopygaeus,Streak-throated Woodpecker,STW,STWO,Piciformes,,OC,MID
+Arundinax aedon,Thick-billed Warbler,TBW,TBWA,Passeriformes,eBird_code NA,OC,UND
+Cyornis tickelliae,Tickell's Blue Flycatcher,TBF,TBFL,Passeriformes,,OC,MID
+Phylloscopus affinis,Tickell's Leaf Warbler,TLW,TLWA,Passeriformes,,RF,UND
+Sitta frontalis,Velvet-fronted Nuthatch,VFN,VFNU,Passeriformes,,RF,MID
+Loriculus vernalis,Vernal Hanging-Parrot,VHP,VHPA,Psittaciformes,,RF,CAN
+Pterorhinus delesserti,Wayanad Laughingthrush,WL,WALA,Passeriformes,,RF,GRD
+Cyornis pallidipes,White-bellied Blue Flycatcher,WBBF,WBBF,Passeriformes,,RF,UND
+Dendrocitta leucogastra,White-bellied Treepie,WBT,WBTR,Passeriformes,,RF,CAN
+Dryocopus javensis,White-bellied Woodpecker,WBW,WBWO,Piciformes,,RF,CAN
+Amaurornis phoenicurus,White-breasted Waterhen,WBWH,WBWA,Gruiformes,,OC,AQU
+Psilopogon viridis,White-cheeked Barbet,WCB,WCBA,Piciformes,,RF,CAN
+Lonchura striata,White-rumped Munia,WRM,WRMU,Passeriformes,,OC,UND
+Halcyon smyrnensis,White-throated Kingfisher,WTK,WTKI,Coraciiformes,,OC,AQU
+Iole indica,Yellow-browed Bulbul,YBB,YBBU,Passeriformes,,RF,MID
+Chrysomma sinense,Yellow-eyed Babbler,YEB,YEBA,Passeriformes,,OC,UND
