@@ -34,7 +34,7 @@ Please contact the following in case of interest in the project.
 
 The data used in this work will be archived on Zenodo.  
 
-## Data processing
+### Data processing
 
 The data processing for this project is described in the following sections. Navigate through them using the links in the sidebar.  
 ---
