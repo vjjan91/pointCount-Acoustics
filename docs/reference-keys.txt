@@ -11,6 +11,7 @@ subset-acoustic-data-and-point-count-data
 evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis
 bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe
 richness-estimates
+install-necessary-libraries
 load-dataframe-containing-point-count-and-acoustic-data
 load-species-trait-data
 estimate-richness-for-point-count-and-acoustic-data
@@ -19,4 +20,7 @@ visualize-differences-in-richness-as-a-function-of-species-trait
 indicator-species-analysis
 load-necessary-libraries
 load-dataframe-containing-point-count-and-acoustic-data-1
-preparing-matrix-data-to-run-the-indicator-species-analysis
+load-species-trait-data-1
+estimate-detections-across-visits-for-point-count-data-and-acoustic-data
+indicator-species-analysis-of-the-point-count-dataset
+indicator-species-analysis-for-acoustic-data
