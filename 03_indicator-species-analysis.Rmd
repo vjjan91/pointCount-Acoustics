@@ -40,32 +40,199 @@ source("code/01_internal-functions.R")
 datSubset <- read.csv("results/datSubset.csv")
 ```
 
-## Preparing matrix data to run the indicator species analysis
-
-
-Questions to ask Priyanka:
--If I estimate vocal activity as (number of detections in every 4-min divided by
-24 - which translates to 24 10-second clips and then sum them up across the 16-min?)
-- or estimate vocal activity as (number of detectins across 16-min divided by 96 - which translates to 96 10-s clips)
-- or if data is pooled for each site (96 * 6 = 576 10-s clips)
--maybe this is a measure of vocal usage/acoustic use of the habitat - for example, CBSU was recorded in 551 10s clips out of a total of 576 clips in HP4008R
-
-For point count data
-: 6 visits would ~ 90 min of data
-how do I compare 17 individuals of SHMY across 6 visits
-
-
+## Load species trait data
 ```{r}
+trait <- read.csv("data/species-trait-dat.csv")
 
+# add it to the subset data
+datSubset <- left_join(datSubset,trait[,c(1,7,8)], by = "scientific_name")
 ```
 
+## Estimate detections across visits for point count data and acoustic data  
 
+These detections are calculate at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6. These detections are estimated for the indicator species analysis since the matrix required for the same cannot be a presence/absence matrix.    
+```{r}
+## we will estimate abundance across point counts by site-date (essentially corresponding to visit)
+abundance <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  group_by(date, site_id, restoration_type, scientific_name,
+           common_name, eBird_codes, habitat, foraging_habit) %>%
+  summarise(totAbundance = sum(number)) %>%
+  ungroup()
 
+# estimate across visit detections for point count data
+pc_visit_detections <- abundance %>%
+  mutate(forDetections = case_when(totAbundance > 0 ~ 1)) %>%
+  group_by(scientific_name, site_id,restoration_type) %>%
+  summarise(across_visit_detections = sum(forDetections)) %>%
+  mutate(data_type = "point_count") %>%
+  ungroup()
 
+# estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)
+# note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
+detections <- datSubset %>%
+  filter(data_type == "acoustic_data") %>%
+  group_by(date, site_id, restoration_type, scientific_name,
+           common_name, eBird_codes, habitat, foraging_habit) %>%
+  summarise(totDetections = sum(number)) %>%
+  ungroup()
 
+# estimate across visit detections for acoustic data
+aru_visit_detections <- detections %>%
+  mutate(forDetections = case_when(totDetections > 0 ~ 1)) %>%
+  group_by(scientific_name, site_id,restoration_type) %>%
+  summarise(across_visit_detections = sum(forDetections)) %>%
+  mutate(data_type = "acoustic_data") %>%
+  ungroup()
+```
 
+## Indicator species analysis of the point-count dataset
 
+The detections across visits is converted to a wide format for the sake of analysis.  
+```{r}
+## preparing the point count data for the indicator species analysis
+pc_indicator <-  pc_visit_detections %>%
+  group_by(scientific_name, site_id, restoration_type) %>%
+  pivot_wider(names_from = scientific_name, 
+               values_from = across_visit_detections, 
+               values_fill = list(across_visit_detections=0))
 
+## indicator species analysis
+indic_pc <- multipatt(pc_indicator[,4:ncol(pc_indicator)], pc_indicator$restoration_type, func = "r.g", control = how(nperm=999))
 
+# analyze/summarize the results
+summary(indic_pc)
+```
 
+Multilevel pattern analysis for point count data
+ ----------------------------------------------
 
+ Association function: r.g
+ Significance level (alpha): 0.05
+
+ Total number of species: 84
+ Selected number of species: 26 
+ Number of species associated to 1 group: 18 
+ Number of species associated to 2 groups: 8 
+
+ List of species associated to each combination: 
+
+ Group AR  #sps.  2 
+                        stat p.value  
+Psittacula columboides 0.433   0.013 *
+Rubigula gularis       0.387   0.032 *
+
+ Group BM  #sps.  13 
+                           stat p.value    
+Alcippe poioicephala      0.838   0.001 ***
+Culicicapa ceylonensis    0.783   0.001 ***
+Hypothymis azurea         0.647   0.001 ***
+Pellorneum ruficeps       0.582   0.002 ** 
+Harpactes fasciatus       0.542   0.002 ** 
+Ducula badia              0.540   0.002 ** 
+Phylloscopus magnirostris 0.540   0.001 ***
+Cyornis pallidipes        0.522   0.001 ***
+Leptocoma minima          0.479   0.004 ** 
+Chalcophaps indica        0.445   0.013 *  
+Dicrurus paradiseus       0.437   0.010 ** 
+Dicrurus aeneus           0.432   0.012 *  
+Irena puella              0.423   0.015 *  
+
+ Group NR  #sps.  3 
+                        stat p.value    
+Cinnyris asiaticus     0.712   0.001 ***
+Acrocephalus dumetorum 0.495   0.004 ** 
+Machlolophus aplonotus 0.329   0.046 *  
+
+ Group AR+BM  #sps.  2 
+                  stat p.value   
+Muscicapa muttui 0.530   0.003 **
+Iole indica      0.489   0.004 **
+
+ Group AR+NR  #sps.  6 
+                         stat p.value    
+Pycnonotus jocosus      0.742   0.001 ***
+Streptopelia chinensis  0.714   0.001 ***
+Dicaeum concolor        0.433   0.016 *  
+Psittacula cyanocephala 0.420   0.022 *  
+Zosterops palpebrosus   0.392   0.031 *  
+Orthotomus sutorius     0.372   0.042 *  
+
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1   
+
+## Indicator species analysis for acoustic data  
+
+The detections across visits is converted to a wide format for the sake of analysis.  
+```{r}
+## preparing the acoustic data for the indicator species analysis
+aru_indicator <-  aru_visit_detections %>%
+  group_by(scientific_name, site_id, restoration_type) %>%
+  pivot_wider(names_from = scientific_name, 
+               values_from = across_visit_detections, 
+               values_fill = list(across_visit_detections=0))
+
+## indicator species analysis
+indic_aru <- multipatt(aru_indicator[,4:ncol(aru_indicator)], aru_indicator$restoration_type, func = "r.g", control = how(nperm=999))
+
+# analyze/summarize the results
+summary(indic_aru)
+```
+
+ Multilevel pattern analysis for the acoustic dataset
+ ----------------------------------------------------
+
+ Association function: r.g
+ Significance level (alpha): 0.05
+
+ Total number of species: 115
+ Selected number of species: 32 
+ Number of species associated to 1 group: 21 
+ Number of species associated to 2 groups: 11 
+
+ List of species associated to each combination: 
+
+ Group AR  #sps.  1 
+                    stat p.value   
+Halcyon smyrnensis 0.431   0.008 **
+
+ Group BM  #sps.  15 
+                               stat p.value    
+Alcippe poioicephala          0.689   0.001 ***
+Phylloscopus magnirostris     0.664   0.001 ***
+Cyornis pallidipes            0.655   0.001 ***
+Hypothymis azurea             0.599   0.001 ***
+Sitta frontalis               0.567   0.001 ***
+Culicicapa ceylonensis        0.565   0.002 ** 
+Harpactes fasciatus           0.502   0.002 ** 
+Leptocoma minima              0.482   0.003 ** 
+Ducula badia                  0.432   0.011 *  
+Dryocopus javensis            0.430   0.011 *  
+Muscicapa muttui              0.424   0.013 *  
+Accipiter trivirgatus         0.401   0.023 *  
+Chrysocolaptes guttacristatus 0.400   0.023 *  
+Irena puella                  0.395   0.024 *  
+Picumnus innominatus          0.367   0.036 *  
+
+ Group NR  #sps.  5 
+                       stat p.value   
+Orthotomus sutorius   0.487   0.004 **
+Prinia hodgsonii      0.421   0.023 * 
+Phylloscopus affinis  0.408   0.018 * 
+Carpodacus erythrinus 0.357   0.035 * 
+Treron affinis        0.329   0.047 * 
+
+ Group AR+NR  #sps.  11 
+                         stat p.value    
+Pycnonotus jocosus      0.885   0.001 ***
+Pavo cristatus          0.568   0.001 ***
+Acrocephalus dumetorum  0.522   0.002 ** 
+Streptopelia chinensis  0.509   0.001 ***
+Merops leschenaulti     0.476   0.003 ** 
+Corvus splendens        0.395   0.022 *  
+Corvus macrorhynchos    0.390   0.029 *  
+Copsychus saularis      0.375   0.045 *  
+Aegithina tiphia        0.375   0.035 *  
+Psittacula cyanocephala 0.372   0.047 *  
+Acridotheres fuscus     0.364   0.034 *  
+
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
