@@ -1,0 +1,83 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+# Abundance vs. detections  
+
+In this script, we test for correlations between abundance (as estimated from point count data) and detections (as estimated from acoustic data).  
+
+## Install necessary libraries
+```{r}
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(vegan)
+library(ggplot2)
+library(scico)
+library(data.table)
+library(extrafont)
+library(ggstatsplot)
+
+# Source any custom/other internal functions necessary for analysis
+source("code/01_internal-functions.R")
+```
+
+## Load dataframe containing point count and acoustic data
+```{r}
+datSubset <- read.csv("results/datSubset.csv")
+```
+
+## Estimate abundance for point count and detections for acoustic data  
+
+Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips. Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).  
+```{r}
+# point-count data
+# estimate total abundance across all species for each site
+abundance <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(abundance_pc = sum(number)) %>%
+  ungroup()
+
+# estimate total number of detections across the acoustic data
+# note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
+detections <- datSubset %>%
+  filter(data_type == "acoustic_data") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(detections_aru = sum(number)) %>%
+  ungroup()
+```
+
+## Correlations between abundance and detections
+```{r}
+# create a single dataframe
+data <- full_join(abundance, detections)%>%
+  replace_na(list(abundance_pc = 0, detections_aru = 0))
+
+# reordering factors for plotting
+data$restoration_type <- factor(data$restoration_type, levels = c("BM", "AR", "NR"))
+
+# visualization
+fig_abund_detec <- grouped_ggscatterstats(
+  data = data,
+  x = detections_aru,
+  y = abundance_pc,
+  grouping.var = restoration_type,
+  type = "r",
+  plotgrid.args = list(nrow = 3, ncol = 1),
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_abund_detec, filename = "figs/fig_abundance_vs_detections.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types](figs/fig_abundance_vs_detections.png)
+
