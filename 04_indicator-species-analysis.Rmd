@@ -11,7 +11,6 @@ If the aim is to determine which species can be used as indicators of certain si
 
 Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as fidelity, not to be confounded with the indicator value component) between species and vegetation types is Pearson’s phi coefficient of association
 (Chytry et al., 2002). This coefficient is a measure of the correlation between two binary vectors. The abundance-based counterpart of the phi coefficient is called the point biserial correlation coefficient (which is defined as "r.g").  
-
 See: https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf  
 
 ## Load necessary libraries
@@ -56,8 +55,7 @@ These detections are calculate at the site level (for a total of six visits). If
 abundance <- datSubset %>%
   filter(data_type == "point_count") %>%
   group_by(date, site_id, restoration_type, scientific_name,
-           common_name, eBird_codes, habitat, foraging_habit) %>%
-  summarise(totAbundance = sum(number)) %>%
+           common_name, eBird_codes, habitat, foraging_habit) %>% summarise(totAbundance = sum(number)) %>%
   ungroup()
 
 # estimate across visit detections for point count data
@@ -73,8 +71,7 @@ pc_visit_detections <- abundance %>%
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
   group_by(date, site_id, restoration_type, scientific_name,
-           common_name, eBird_codes, habitat, foraging_habit) %>%
-  summarise(totDetections = sum(number)) %>%
+           common_name, eBird_codes, habitat, foraging_habit) %>% summarise(totDetections = sum(number)) %>%
   ungroup()
 
 # estimate across visit detections for acoustic data
