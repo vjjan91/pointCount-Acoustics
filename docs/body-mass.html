@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
+  <meta name="description" content="Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  
+  
+  
+
+<meta name="author" content="Priyanka Hari Haran" />
+<meta name="author" content="Vijay Ramesh" />
+
+
+<meta name="date" content="2023-06-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="indicator-species-analysis.html"/>
+<link rel="next" href="frequency.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#attribution"><i class="fa fa-check"></i><b>1.1</b> Attribution</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-access"><i class="fa fa-check"></i><b>1.2</b> Data access</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#data-processing"><i class="fa fa-check"></i><b>1.2.1</b> Data processing</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-data-processing-for-this-project-is-described-in-the-following-sections.-navigate-through-them-using-the-links-in-the-sidebar."><i class="fa fa-check"></i><b>1.3</b> The data processing for this project is described in the following sections. Navigate through them using the links in the sidebar.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html"><i class="fa fa-check"></i><b>2</b> Making datasets comparable</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#install-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Install required libraries</a></li>
+<li class="chapter" data-level="2.2" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-point-count-data"><i class="fa fa-check"></i><b>2.2</b> Loading point count data</a></li>
+<li class="chapter" data-level="2.3" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#loading-the-acoustic-data"><i class="fa fa-check"></i><b>2.3</b> Loading the acoustic data</a></li>
+<li class="chapter" data-level="2.4" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data"><i class="fa fa-check"></i><b>2.4</b> Subset acoustic data and point count data</a></li>
+<li class="chapter" data-level="2.5" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis"><i class="fa fa-check"></i><b>2.5</b> Evaluating both subsets of data before combining them into a single dataframe for further analysis</a></li>
+<li class="chapter" data-level="2.6" data-path="making-datasets-comparable.html"><a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe"><i class="fa fa-check"></i><b>2.6</b> Bind the acoustic and point count datasets into a single dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="richness-estimates.html"><a href="richness-estimates.html"><i class="fa fa-check"></i><b>3</b> Richness estimates</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="richness-estimates.html"><a href="richness-estimates.html#install-necessary-libraries"><i class="fa fa-check"></i><b>3.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="3.2" data-path="richness-estimates.html"><a href="richness-estimates.html#load-dataframe-containing-point-count-and-acoustic-data"><i class="fa fa-check"></i><b>3.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="3.3" data-path="richness-estimates.html"><a href="richness-estimates.html#load-species-trait-data"><i class="fa fa-check"></i><b>3.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="3.4" data-path="richness-estimates.html"><a href="richness-estimates.html#estimate-richness-for-point-count-and-acoustic-data"><i class="fa fa-check"></i><b>3.4</b> Estimate richness for point count and acoustic data</a></li>
+<li class="chapter" data-level="3.5" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-richness-between-point-count-data-and-acoustic-data"><i class="fa fa-check"></i><b>3.5</b> Visualize differences in richness between point count data and acoustic data</a></li>
+<li class="chapter" data-level="3.6" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-richness-as-a-function-of-species-habitat-affiliation"><i class="fa fa-check"></i><b>3.6</b> Visualize differences in richness as a function of species habitat affiliation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html"><i class="fa fa-check"></i><b>4</b> Time of day analyses</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#install-necessary-libraries-1"><i class="fa fa-check"></i><b>4.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="4.2" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-1"><i class="fa fa-check"></i><b>4.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="4.3" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#load-species-trait-data-1"><i class="fa fa-check"></i><b>4.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="4.4" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#what-times-of-day-have-been-sampled-across-sites"><i class="fa fa-check"></i><b>4.4</b> What times of day have been sampled across sites?</a></li>
+<li class="chapter" data-level="4.5" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#estimate-richness-by-time-of-day"><i class="fa fa-check"></i><b>4.5</b> Estimate richness by time of day</a></li>
+<li class="chapter" data-level="4.6" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#visualize-differences-in-richness-between-point-count-data-and-acoustic-data-1"><i class="fa fa-check"></i><b>4.6</b> Visualize differences in richness between point count data and acoustic data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>5</b> Abundance vs. detections</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>5.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="5.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-2"><i class="fa fa-check"></i><b>5.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="5.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>5.3</b> Estimate abundance for point count and detections for acoustic data</a></li>
+<li class="chapter" data-level="5.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>5.4</b> Correlations between abundance and detections</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html"><i class="fa fa-check"></i><b>6</b> Indicator species analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-necessary-libraries"><i class="fa fa-check"></i><b>6.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>6.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="6.3" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-species-trait-data-2"><i class="fa fa-check"></i><b>6.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="6.4" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#estimate-detections-across-visits-for-point-count-data-and-acoustic-data"><i class="fa fa-check"></i><b>6.4</b> Estimate detections across visits for point count data and acoustic data</a></li>
+<li class="chapter" data-level="6.5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset"><i class="fa fa-check"></i><b>6.5</b> Indicator species analysis of the point-count dataset</a></li>
+<li class="chapter" data-level="6.6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data"><i class="fa fa-check"></i><b>6.6</b> Indicator species analysis for acoustic data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>7</b> Body mass</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>7.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>7.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="7.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>7.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="7.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>7.4</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="7.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>7.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="frequency.html"><a href="frequency.html"><i class="fa fa-check"></i><b>8</b> Frequency</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="frequency.html"><a href="frequency.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="8.2" data-path="frequency.html"><a href="frequency.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>8.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="8.3" data-path="frequency.html"><a href="frequency.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>8.3</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="8.4" data-path="frequency.html"><a href="frequency.html#process-frequency-data"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
+<li class="chapter" data-level="8.5" data-path="frequency.html"><a href="frequency.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="8.6" data-path="frequency.html"><a href="frequency.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Source code and supporting information for <em>Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="body-mass" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Section 7</span> Body mass<a href="body-mass.html#body-mass" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the body mass of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis).</p>
+<p>To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count and acoustic survey.</p>
+<div id="load-necessary-libraries-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Load necessary libraries<a href="body-mass.html#load-necessary-libraries-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="body-mass.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-2"><a href="body-mass.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb31-3"><a href="body-mass.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb31-4"><a href="body-mass.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb31-5"><a href="body-mass.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb31-6"><a href="body-mass.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb31-7"><a href="body-mass.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb31-8"><a href="body-mass.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
+<span id="cb31-9"><a href="body-mass.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb31-10"><a href="body-mass.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb31-11"><a href="body-mass.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
+<span id="cb31-12"><a href="body-mass.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb31-13"><a href="body-mass.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb31-14"><a href="body-mass.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb31-15"><a href="body-mass.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb31-16"><a href="body-mass.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb31-17"><a href="body-mass.html#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="body-mass.html#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb31-19"><a href="body-mass.html#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+</div>
+<div id="load-dataframe-containing-point-count-and-acoustic-data-4" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Load dataframe containing point count and acoustic data<a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="body-mass.html#cb32-1" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="load-species-trait-data-3" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Load species trait data<a href="body-mass.html#load-species-trait-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="body-mass.html#cb33-1" aria-hidden="true" tabindex="-1"></a>trait <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-trait-dat.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="visit-level-detection-estimates-for-each-species" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Visit-level detection estimates for each species<a href="body-mass.html#visit-level-detection-estimates-for-each-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We estimate the total number of detections of each species across all visits (maximum number = 6; minimum number = 1) for point count data and acoustic surveys.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="body-mass.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we will estimate abundance across point counts by site-date (essentially corresponding to visit)</span></span>
+<span id="cb34-2"><a href="body-mass.html#cb34-2" aria-hidden="true" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="body-mass.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="body-mass.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
+<span id="cb34-5"><a href="body-mass.html#cb34-5" aria-hidden="true" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-6"><a href="body-mass.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-7"><a href="body-mass.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb34-8"><a href="body-mass.html#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="body-mass.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate across visit detections for point count data</span></span>
+<span id="cb34-10"><a href="body-mass.html#cb34-10" aria-hidden="true" tabindex="-1"></a>pc_visit_detections <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
+<span id="cb34-11"><a href="body-mass.html#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-12"><a href="body-mass.html#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb34-13"><a href="body-mass.html#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">pc_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-14"><a href="body-mass.html#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-15"><a href="body-mass.html#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb34-16"><a href="body-mass.html#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="body-mass.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)</span></span>
+<span id="cb34-18"><a href="body-mass.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
+<span id="cb34-19"><a href="body-mass.html#cb34-19" aria-hidden="true" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb34-20"><a href="body-mass.html#cb34-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-21"><a href="body-mass.html#cb34-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
+<span id="cb34-22"><a href="body-mass.html#cb34-22" aria-hidden="true" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-23"><a href="body-mass.html#cb34-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-24"><a href="body-mass.html#cb34-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb34-25"><a href="body-mass.html#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="body-mass.html#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate across visit detections for acoustic data</span></span>
+<span id="cb34-27"><a href="body-mass.html#cb34-27" aria-hidden="true" tabindex="-1"></a>aru_visit_detections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
+<span id="cb34-28"><a href="body-mass.html#cb34-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-29"><a href="body-mass.html#cb34-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb34-30"><a href="body-mass.html#cb34-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">aru_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-31"><a href="body-mass.html#cb34-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-32"><a href="body-mass.html#cb34-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+</div>
+<div id="exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species<a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="body-mass.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb35-2"><a href="body-mass.html#cb35-2" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">full_join</span>(pc_visit_detections[,<span class="sc">-</span><span class="dv">5</span>], aru_visit_detections[,<span class="sc">-</span><span class="dv">5</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="body-mass.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">pc_visit_detections =</span> <span class="dv">0</span>, <span class="at">aru_visit_detections =</span> <span class="dv">0</span>))</span>
+<span id="cb35-4"><a href="body-mass.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-5"><a href="body-mass.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create column of ratio of detections of point counts to total number of detections from point count and acoustic data</span></span>
+<span id="cb35-6"><a href="body-mass.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. </span></span>
+<span id="cb35-7"><a href="body-mass.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="body-mass.html#cb35-8" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> visit_detections <span class="sc">%&gt;%</span></span>
+<span id="cb35-9"><a href="body-mass.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc_to_total =</span> (pc_visit_detections)<span class="sc">/</span></span>
+<span id="cb35-10"><a href="body-mass.html#cb35-10" aria-hidden="true" tabindex="-1"></a>           (pc_visit_detections <span class="sc">+</span> aru_visit_detections))</span>
+<span id="cb35-11"><a href="body-mass.html#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="body-mass.html#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add species trait data i.e. body mass to the above dataframe</span></span>
+<span id="cb35-13"><a href="body-mass.html#cb35-13" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">left_join</span>(visit_detections, </span>
+<span id="cb35-14"><a href="body-mass.html#cb35-14" aria-hidden="true" tabindex="-1"></a>                   trait[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">26</span>)], <span class="at">by =</span> <span class="st">&quot;scientific_name&quot;</span>)  </span>
+<span id="cb35-15"><a href="body-mass.html#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="body-mass.html#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co"># log-transform body mass</span></span>
+<span id="cb35-17"><a href="body-mass.html#cb35-17" aria-hidden="true" tabindex="-1"></a>visit_detections<span class="sc">$</span>log_mass <span class="ot">&lt;-</span> <span class="fu">log10</span>(visit_detections<span class="sc">$</span>mass)</span>
+<span id="cb35-18"><a href="body-mass.html#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="body-mass.html#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
+<span id="cb35-20"><a href="body-mass.html#cb35-20" aria-hidden="true" tabindex="-1"></a>visit_detections<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(visit_detections<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb35-21"><a href="body-mass.html#cb35-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-22"><a href="body-mass.html#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb35-23"><a href="body-mass.html#cb35-23" aria-hidden="true" tabindex="-1"></a>fig_bodyMass <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
+<span id="cb35-24"><a href="body-mass.html#cb35-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> visit_detections,</span>
+<span id="cb35-25"><a href="body-mass.html#cb35-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> log_mass,</span>
+<span id="cb35-26"><a href="body-mass.html#cb35-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> pc_to_total,</span>
+<span id="cb35-27"><a href="body-mass.html#cb35-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
+<span id="cb35-28"><a href="body-mass.html#cb35-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb35-29"><a href="body-mass.html#cb35-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb35-30"><a href="body-mass.html#cb35-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb35-31"><a href="body-mass.html#cb35-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb35-32"><a href="body-mass.html#cb35-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb35-33"><a href="body-mass.html#cb35-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb35-34"><a href="body-mass.html#cb35-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb35-35"><a href="body-mass.html#cb35-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb35-36"><a href="body-mass.html#cb35-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-37"><a href="body-mass.html#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(fig_bodyMass, <span class="at">filename =</span> <span class="st">&quot;figs/fig_bodyMass_detectionRatio.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb35-38"><a href="body-mass.html#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="figure">
+<img src="figs/fig_bodyMass_detectionRatio.png" alt="" />
+<p class="caption">Larger-bodied birds are detected more often in acoustic surveys compared to point count data across treatment types</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="indicator-species-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="frequency.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/06_body-mass.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
