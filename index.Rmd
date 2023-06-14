@@ -3,6 +3,7 @@ knit: "bookdown::render_book"
 title: "Source code and supporting information for _Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats_"
 author:
     - Priyanka Hari Haran
+    - Meghana P Srivathsa
     - Vijay Ramesh    
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -19,22 +20,22 @@ link-citations: yes
 github-repo: vjjan91/pointCount-Acoustics
 ---
 
-# Introduction
+# Introduction  
 
 This is the readable version that showcases analyses comparing point count data and acoustic data for a tropical bird community in the Western Ghats.  
 
-## Attribution
+## Attribution  
 
 Please contact the following in case of interest in the project.  
 
 - Vijay Ramesh (repo maintainer)
     - Postdoctoral Research Associate, Cornell Lab of Ornithology  
 
-## Data access
+## Data access  
 
 The data used in this work will be archived on Zenodo.  
 
-### Data processing
+## Data processing  
 
-The data processing for this project is described in the following sections. Navigate through them using the links in the sidebar.  
+The data processing for this project is described in the following sections. Navigate through them using the links in the sidebar.    
 ---
