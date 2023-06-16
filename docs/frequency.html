@@ -159,6 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="richness-estimates.html"><a href="richness-estimates.html#estimate-richness-for-point-count-and-acoustic-data"><i class="fa fa-check"></i><b>3.4</b> Estimate richness for point count and acoustic data</a></li>
 <li class="chapter" data-level="3.5" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-richness-between-point-count-data-and-acoustic-data"><i class="fa fa-check"></i><b>3.5</b> Visualize differences in richness between point count data and acoustic data</a></li>
 <li class="chapter" data-level="3.6" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-richness-as-a-function-of-species-habitat-affiliation"><i class="fa fa-check"></i><b>3.6</b> Visualize differences in richness as a function of species habitat affiliation</a></li>
+<li class="chapter" data-level="3.7" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-species-richness-as-a-function-of-species-foraging-guilds"><i class="fa fa-check"></i><b>3.7</b> Visualize differences in species richness as a function of species foraging guilds</a></li>
+<li class="chapter" data-level="3.8" data-path="richness-estimates.html"><a href="richness-estimates.html#stacked-barplots-for-richness-across-foraging-guilds"><i class="fa fa-check"></i><b>3.8</b> Stacked barplots for richness across foraging guilds</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html"><i class="fa fa-check"></i><b>4</b> Time of day analyses</a>
 <ul>
@@ -203,6 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="frequency.html"><a href="frequency.html#process-frequency-data"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
 <li class="chapter" data-level="8.5" data-path="frequency.html"><a href="frequency.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
 <li class="chapter" data-level="8.6" data-path="frequency.html"><a href="frequency.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+<li class="chapter" data-level="8.7" data-path="frequency.html"><a href="frequency.html#rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates"><i class="fa fa-check"></i><b>8.7</b> Rerun analyses by including only species with a minimum of 10 templates</a></li>
+<li class="chapter" data-level="8.8" data-path="frequency.html"><a href="frequency.html#visualizations-that-do-not-group-treatment-types"><i class="fa fa-check"></i><b>8.8</b> Visualizations that do not group treatment types</a></li>
 </ul></li>
 </ul>
 
@@ -350,8 +354,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb43-41"><a href="frequency.html#cb43-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-42"><a href="frequency.html#cb43-42" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(fig_medFreq, <span class="at">filename =</span> <span class="st">&quot;figs/fig_medianPeakFreq_detectionRatio.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
 <span id="cb43-43"><a href="frequency.html#cb43-43" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
-<p><img src="figs/fig_medianPeakFreq_detectionRatio.png" alt="Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types" />
-## Rerun analyses by including only species with a minimum of 10 templates</p>
+<div class="figure">
+<img src="figs/fig_medianPeakFreq_detectionRatio.png" alt="" />
+<p class="caption">Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types</p>
+</div>
+</div>
+<div id="rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Rerun analyses by including only species with a minimum of 10 templates<a href="frequency.html#rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="frequency.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only a total of 87 species are left after filtering species with very few templates</span></span>
 <span id="cb44-2"><a href="frequency.html#cb44-2" aria-hidden="true" tabindex="-1"></a>nTemplates_10 <span class="ot">&lt;-</span> freq <span class="sc">%&gt;%</span></span>
 <span id="cb44-3"><a href="frequency.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(eBird_codes) <span class="sc">%&gt;%</span></span>
@@ -406,8 +415,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb44-52"><a href="frequency.html#cb44-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-53"><a href="frequency.html#cb44-53" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(fig_medFreq_10, <span class="at">filename =</span> <span class="st">&quot;figs/fig_medianPeakFreq_min10templates_detectionRatio.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
 <span id="cb44-54"><a href="frequency.html#cb44-54" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
-<p><img src="figs/fig_medianPeakFreq_min10templates_detectionRatio.png" alt="Results are similar to previous analysis that included species with less than 10 templates (for the calculation of median peak frequency)" />
-## Visualizations that do not group treatment types</p>
+<div class="figure">
+<img src="figs/fig_medianPeakFreq_min10templates_detectionRatio.png" alt="" />
+<p class="caption">Results are similar to previous analysis that included species with less than 10 templates (for the calculation of median peak frequency)</p>
+</div>
+</div>
+<div id="visualizations-that-do-not-group-treatment-types" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Visualizations that do not group treatment types<a href="frequency.html#visualizations-that-do-not-group-treatment-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, we would like to see/visualize the relationships between the ratio of detections of point counts to total detections (point counts + acoustic data) across visits without grouping by treatment type. We will continue to use the dataframe that excludes species with less than 10 templates for the calculation of median peak frequency.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="frequency.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
 <span id="cb45-2"><a href="frequency.html#cb45-2" aria-hidden="true" tabindex="-1"></a>fig_medFreq_overall <span class="ot">&lt;-</span> <span class="fu">ggscatterstats</span>(</span>

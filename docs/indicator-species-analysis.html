@@ -159,6 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="richness-estimates.html"><a href="richness-estimates.html#estimate-richness-for-point-count-and-acoustic-data"><i class="fa fa-check"></i><b>3.4</b> Estimate richness for point count and acoustic data</a></li>
 <li class="chapter" data-level="3.5" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-richness-between-point-count-data-and-acoustic-data"><i class="fa fa-check"></i><b>3.5</b> Visualize differences in richness between point count data and acoustic data</a></li>
 <li class="chapter" data-level="3.6" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-richness-as-a-function-of-species-habitat-affiliation"><i class="fa fa-check"></i><b>3.6</b> Visualize differences in richness as a function of species habitat affiliation</a></li>
+<li class="chapter" data-level="3.7" data-path="richness-estimates.html"><a href="richness-estimates.html#visualize-differences-in-species-richness-as-a-function-of-species-foraging-guilds"><i class="fa fa-check"></i><b>3.7</b> Visualize differences in species richness as a function of species foraging guilds</a></li>
+<li class="chapter" data-level="3.8" data-path="richness-estimates.html"><a href="richness-estimates.html#stacked-barplots-for-richness-across-foraging-guilds"><i class="fa fa-check"></i><b>3.8</b> Stacked barplots for richness across foraging guilds</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html"><i class="fa fa-check"></i><b>4</b> Time of day analyses</a>
 <ul>
@@ -203,6 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="frequency.html"><a href="frequency.html#process-frequency-data"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
 <li class="chapter" data-level="8.5" data-path="frequency.html"><a href="frequency.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
 <li class="chapter" data-level="8.6" data-path="frequency.html"><a href="frequency.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+<li class="chapter" data-level="8.7" data-path="frequency.html"><a href="frequency.html#rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates"><i class="fa fa-check"></i><b>8.7</b> Rerun analyses by including only species with a minimum of 10 templates</a></li>
+<li class="chapter" data-level="8.8" data-path="frequency.html"><a href="frequency.html#visualizations-that-do-not-group-treatment-types"><i class="fa fa-check"></i><b>8.8</b> Visualizations that do not group treatment types</a></li>
 </ul></li>
 </ul>
 
@@ -308,47 +312,46 @@ See: <a href="https://cran.r-project.org/web/packages/indicspecies/vignettes/ind
 <span id="cb31-10"><a href="indicator-species-analysis.html#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-11"><a href="indicator-species-analysis.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co"># analyze/summarize the results</span></span>
 <span id="cb31-12"><a href="indicator-species-analysis.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(indic_pc)</span></code></pre></div>
-<p>Multilevel pattern analysis for point count data
-———————————————-</p>
-<p>Association function: r.g
+<p>Multilevel pattern analysis for point count data</p>
+<p>Association function: r.g<br />
 Significance level (alpha): 0.05</p>
-<p>Total number of species: 84
-Selected number of species: 26
-Number of species associated to 1 group: 18
+<p>Total number of species: 84<br />
+Selected number of species: 26<br />
+Number of species associated to 1 group: 18<br />
 Number of species associated to 2 groups: 8</p>
 <p>List of species associated to each combination:</p>
-<p>Group AR #sps. 2
+<p>Group AR #sps. 2<br />
 stat p.value<br />
-Psittacula columboides 0.433 0.013 <em>
-Rubigula gularis 0.387 0.032 </em></p>
-<p>Group BM #sps. 13
+Psittacula columboides 0.433 0.013 *<br />
+Rubigula gularis 0.387 0.032 *</p>
+<p>Group BM #sps. 13<br />
 stat p.value<br />
-Alcippe poioicephala 0.838 0.001 <strong><em>
-Culicicapa ceylonensis 0.783 0.001 </em></strong>
-Hypothymis azurea 0.647 0.001 <em><strong>
-Pellorneum ruficeps 0.582 0.002 </strong>
-Harpactes fasciatus 0.542 0.002 <strong>
-Ducula badia 0.540 0.002 </strong>
-Phylloscopus magnirostris 0.540 0.001 </em><strong>
-Cyornis pallidipes 0.522 0.001 </strong><em>
-Leptocoma minima 0.479 0.004 <strong>
+Alcippe poioicephala 0.838 0.001 ***<br />
+Culicicapa ceylonensis 0.783 0.001 ***<br />
+Hypothymis azurea 0.647 0.001 ***<br />
+Pellorneum ruficeps 0.582 0.002 **<br />
+Harpactes fasciatus 0.542 0.002 **<br />
+Ducula badia 0.540 0.002 **<br />
+Phylloscopus magnirostris 0.540 0.001 ***<br />
+Cyornis pallidipes 0.522 0.001 ***<br />
+Leptocoma minima 0.479 0.004 **<br />
 Chalcophaps indica 0.445 0.013 *<br />
-Dicrurus paradiseus 0.437 0.010 </strong>
-Dicrurus aeneus 0.432 0.012 </em><br />
+Dicrurus paradiseus 0.437 0.010 **<br />
+Dicrurus aeneus 0.432 0.012 *<br />
 Irena puella 0.423 0.015 *</p>
-<p>Group NR #sps. 3
+<p>Group NR #sps. 3<br />
 stat p.value<br />
-Cinnyris asiaticus 0.712 0.001 <em><strong>
-Acrocephalus dumetorum 0.495 0.004 </strong>
-Machlolophus aplonotus 0.329 0.046 </em></p>
-<p>Group AR+BM #sps. 2
+Cinnyris asiaticus 0.712 0.001 ***<br />
+Acrocephalus dumetorum 0.495 0.004 **<br />
+Machlolophus aplonotus 0.329 0.046 *</p>
+<p>Group AR+BM #sps. 2<br />
 stat p.value<br />
-Muscicapa muttui 0.530 0.003 <strong>
-Iole indica 0.489 0.004 </strong></p>
-<p>Group AR+NR #sps. 6
+Muscicapa muttui 0.530 0.003 **<br />
+Iole indica 0.489 0.004 **</p>
+<p>Group AR+NR #sps. 6<br />
 stat p.value<br />
-Pycnonotus jocosus 0.742 0.001 <strong><em>
-Streptopelia chinensis 0.714 0.001 </em></strong>
+Pycnonotus jocosus 0.742 0.001 ***<br />
+Streptopelia chinensis 0.714 0.001 ***<br />
 Dicaeum concolor 0.433 0.016 *<br />
 Psittacula cyanocephala 0.420 0.022 *<br />
 Zosterops palpebrosus 0.392 0.031 *<br />
@@ -370,50 +373,49 @@ Orthotomus sutorius 0.372 0.042 *</p>
 <span id="cb32-10"><a href="indicator-species-analysis.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-11"><a href="indicator-species-analysis.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># analyze/summarize the results</span></span>
 <span id="cb32-12"><a href="indicator-species-analysis.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(indic_aru)</span></code></pre></div>
-<p>Multilevel pattern analysis for the acoustic dataset
-—————————————————-</p>
-<p>Association function: r.g
+<p>Multilevel pattern analysis for the acoustic dataset</p>
+<p>Association function: r.g<br />
 Significance level (alpha): 0.05</p>
-<p>Total number of species: 115
-Selected number of species: 32
-Number of species associated to 1 group: 21
+<p>Total number of species: 115<br />
+Selected number of species: 32<br />
+Number of species associated to 1 group: 21<br />
 Number of species associated to 2 groups: 11</p>
 <p>List of species associated to each combination:</p>
-<p>Group AR #sps. 1
+<p>Group AR #sps. 1<br />
 stat p.value<br />
 Halcyon smyrnensis 0.431 0.008 **</p>
-<p>Group BM #sps. 15
+<p>Group BM #sps. 15<br />
 stat p.value<br />
-Alcippe poioicephala 0.689 0.001 <strong><em>
-Phylloscopus magnirostris 0.664 0.001 </em></strong>
-Cyornis pallidipes 0.655 0.001 <strong><em>
-Hypothymis azurea 0.599 0.001 </em></strong>
-Sitta frontalis 0.567 0.001 <em><strong>
-Culicicapa ceylonensis 0.565 0.002 </strong>
-Harpactes fasciatus 0.502 0.002 <strong>
-Leptocoma minima 0.482 0.003 </strong>
-Ducula badia 0.432 0.011 </em><br />
+Alcippe poioicephala 0.689 0.001 ***<br />
+Phylloscopus magnirostris 0.664 0.001 ***<br />
+Cyornis pallidipes 0.655 0.001 ***<br />
+Hypothymis azurea 0.599 0.001 ***<br />
+Sitta frontalis 0.567 0.001 ***<br />
+Culicicapa ceylonensis 0.565 0.002 **<br />
+Harpactes fasciatus 0.502 0.002 **<br />
+Leptocoma minima 0.482 0.003 **<br />
+Ducula badia 0.432 0.011 *<br />
 Dryocopus javensis 0.430 0.011 *<br />
 Muscicapa muttui 0.424 0.013 *<br />
 Accipiter trivirgatus 0.401 0.023 *<br />
 Chrysocolaptes guttacristatus 0.400 0.023 *<br />
 Irena puella 0.395 0.024 *<br />
 Picumnus innominatus 0.367 0.036 *</p>
-<p>Group NR #sps. 5
+<p>Group NR #sps. 5<br />
 stat p.value<br />
-Orthotomus sutorius 0.487 0.004 **
-Prinia hodgsonii 0.421 0.023 *
-Phylloscopus affinis 0.408 0.018 *
-Carpodacus erythrinus 0.357 0.035 *
+Orthotomus sutorius 0.487 0.004 **<br />
+Prinia hodgsonii 0.421 0.023 *<br />
+Phylloscopus affinis 0.408 0.018 *<br />
+Carpodacus erythrinus 0.357 0.035 *<br />
 Treron affinis 0.329 0.047 *</p>
-<p>Group AR+NR #sps. 11
+<p>Group AR+NR #sps. 11<br />
 stat p.value<br />
-Pycnonotus jocosus 0.885 0.001 <strong><em>
-Pavo cristatus 0.568 0.001 </em></strong>
-Acrocephalus dumetorum 0.522 0.002 **
-Streptopelia chinensis 0.509 0.001 <em><strong>
-Merops leschenaulti 0.476 0.003 </strong>
-Corvus splendens 0.395 0.022 </em><br />
+Pycnonotus jocosus 0.885 0.001 ***<br />
+Pavo cristatus 0.568 0.001 ***<br />
+Acrocephalus dumetorum 0.522 0.002 **<br />
+Streptopelia chinensis 0.509 0.001 ***<br />
+Merops leschenaulti 0.476 0.003 **<br />
+Corvus splendens 0.395 0.022 *<br />
 Corvus macrorhynchos 0.390 0.029 *<br />
 Copsychus saularis 0.375 0.045 *<br />
 Aegithina tiphia 0.375 0.035 *<br />

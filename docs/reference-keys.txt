@@ -16,6 +16,8 @@ load-species-trait-data
 estimate-richness-for-point-count-and-acoustic-data
 visualize-differences-in-richness-between-point-count-data-and-acoustic-data
 visualize-differences-in-richness-as-a-function-of-species-habitat-affiliation
+visualize-differences-in-species-richness-as-a-function-of-species-foraging-guilds
+stacked-barplots-for-richness-across-foraging-guilds
 time-of-day-analyses
 install-necessary-libraries-1
 load-dataframe-containing-point-count-and-acoustic-data-1
@@ -50,3 +52,5 @@ load-species-trait-data-and-frequency-data
 process-frequency-data
 visit-level-detection-estimates-for-each-species-1
 exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species
+rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates
+visualizations-that-do-not-group-treatment-types
