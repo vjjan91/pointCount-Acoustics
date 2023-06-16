@@ -53,4 +53,5 @@ process-frequency-data
 visit-level-detection-estimates-for-each-species-1
 exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species
 rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates
+exploring-center-frequency-instead-of-peak-frequency
 visualizations-that-do-not-group-treatment-types
