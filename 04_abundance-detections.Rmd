@@ -77,10 +77,29 @@ fig_abund_detec <- grouped_ggscatterstats(
 
 ggsave(fig_abund_detec, filename = "figs/fig_abundance_vs_detections.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
+
+## visualization without grouping across treatment types
+fig_abund_detec_notGrouped <- ggscatterstats(
+  data = data,
+  x = detections_aru,
+  y = abundance_pc,
+  type = "r",
+  plotgrid.args = list(nrow = 3, ncol = 1),
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_abund_detec_notGrouped, filename = "figs/fig_abundance_vs_detections_notGrouped.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
 ```
 
 ![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types](figs/fig_abundance_vs_detections.png)  
 
+![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) in the scenario where data was not grouped by treatment type](figs/fig_abundance_vs_detections_notGrouped.png)  
+  
 ## Group data on abundance and detections across sites (at the level of the treatment type) for each species
 
 ```{r}
