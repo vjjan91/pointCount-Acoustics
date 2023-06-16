@@ -29,6 +29,8 @@ install-necessary-libraries-2
 load-dataframe-containing-point-count-and-acoustic-data-2
 estimate-abundance-for-point-count-and-detections-for-acoustic-data
 correlations-between-abundance-and-detections
+group-data-on-abundance-and-detections-across-sites-at-the-level-of-the-treatment-type-for-each-species
+species-specific-plots-of-correlations-between-abundance-and-detections
 indicator-species-analysis
 load-necessary-libraries
 load-dataframe-containing-point-count-and-acoustic-data-3
