@@ -101,61 +101,60 @@ indic_pc <- multipatt(pc_indicator[,4:ncol(pc_indicator)], pc_indicator$restorat
 summary(indic_pc)
 ```
 
-Multilevel pattern analysis for point count data
- ----------------------------------------------
+Multilevel pattern analysis for point count data    
 
- Association function: r.g
- Significance level (alpha): 0.05
+ Association function: r.g  
+ Significance level (alpha): 0.05  
 
- Total number of species: 84
- Selected number of species: 26 
- Number of species associated to 1 group: 18 
- Number of species associated to 2 groups: 8 
+ Total number of species: 84  
+ Selected number of species: 26     
+ Number of species associated to 1 group: 18   
+ Number of species associated to 2 groups: 8   
 
- List of species associated to each combination: 
+ List of species associated to each combination:   
 
- Group AR  #sps.  2 
-                        stat p.value  
-Psittacula columboides 0.433   0.013 *
-Rubigula gularis       0.387   0.032 *
-
- Group BM  #sps.  13 
-                           stat p.value    
-Alcippe poioicephala      0.838   0.001 ***
-Culicicapa ceylonensis    0.783   0.001 ***
-Hypothymis azurea         0.647   0.001 ***
-Pellorneum ruficeps       0.582   0.002 ** 
-Harpactes fasciatus       0.542   0.002 ** 
-Ducula badia              0.540   0.002 ** 
-Phylloscopus magnirostris 0.540   0.001 ***
-Cyornis pallidipes        0.522   0.001 ***
-Leptocoma minima          0.479   0.004 ** 
-Chalcophaps indica        0.445   0.013 *  
-Dicrurus paradiseus       0.437   0.010 ** 
-Dicrurus aeneus           0.432   0.012 *  
-Irena puella              0.423   0.015 *  
-
- Group NR  #sps.  3 
+ Group AR  #sps.  2   
                         stat p.value    
-Cinnyris asiaticus     0.712   0.001 ***
-Acrocephalus dumetorum 0.495   0.004 ** 
-Machlolophus aplonotus 0.329   0.046 *  
+Psittacula columboides 0.433   0.013 *  
+Rubigula gularis       0.387   0.032 *  
 
- Group AR+BM  #sps.  2 
-                  stat p.value   
-Muscicapa muttui 0.530   0.003 **
-Iole indica      0.489   0.004 **
+ Group BM  #sps.  13   
+                           stat p.value    
+Alcippe poioicephala      0.838   0.001 ***  
+Culicicapa ceylonensis    0.783   0.001 ***  
+Hypothymis azurea         0.647   0.001 ***  
+Pellorneum ruficeps       0.582   0.002 **     
+Harpactes fasciatus       0.542   0.002 **   
+Ducula badia              0.540   0.002 **   
+Phylloscopus magnirostris 0.540   0.001 ***  
+Cyornis pallidipes        0.522   0.001 ***  
+Leptocoma minima          0.479   0.004 **   
+Chalcophaps indica        0.445   0.013 *    
+Dicrurus paradiseus       0.437   0.010 **   
+Dicrurus aeneus           0.432   0.012 *    
+Irena puella              0.423   0.015 *    
 
- Group AR+NR  #sps.  6 
-                         stat p.value    
-Pycnonotus jocosus      0.742   0.001 ***
-Streptopelia chinensis  0.714   0.001 ***
-Dicaeum concolor        0.433   0.016 *  
-Psittacula cyanocephala 0.420   0.022 *  
-Zosterops palpebrosus   0.392   0.031 *  
-Orthotomus sutorius     0.372   0.042 *  
+ Group NR  #sps.  3   
+                        stat p.value      
+Cinnyris asiaticus     0.712   0.001 ***  
+Acrocephalus dumetorum 0.495   0.004 **   
+Machlolophus aplonotus 0.329   0.046 *    
 
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1   
+ Group AR+BM  #sps.  2   
+                  stat p.value     
+Muscicapa muttui 0.530   0.003 **  
+Iole indica      0.489   0.004 **  
+
+ Group AR+NR  #sps.  6   
+                         stat p.value      
+Pycnonotus jocosus      0.742   0.001 ***  
+Streptopelia chinensis  0.714   0.001 ***  
+Dicaeum concolor        0.433   0.016 *    
+Psittacula cyanocephala 0.420   0.022 *    
+Zosterops palpebrosus   0.392   0.031 *    
+Orthotomus sutorius     0.372   0.042 *    
+
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1     
 
 ## Indicator species analysis for acoustic data  
 
@@ -175,61 +174,60 @@ indic_aru <- multipatt(aru_indicator[,4:ncol(aru_indicator)], aru_indicator$rest
 summary(indic_aru)
 ```
 
- Multilevel pattern analysis for the acoustic dataset
- ----------------------------------------------------
+ Multilevel pattern analysis for the acoustic dataset  
 
- Association function: r.g
- Significance level (alpha): 0.05
+ Association function: r.g  
+ Significance level (alpha): 0.05  
 
- Total number of species: 115
- Selected number of species: 32 
- Number of species associated to 1 group: 21 
- Number of species associated to 2 groups: 11 
+ Total number of species: 115  
+ Selected number of species: 32   
+ Number of species associated to 1 group: 21   
+ Number of species associated to 2 groups: 11   
 
- List of species associated to each combination: 
+ List of species associated to each combination:   
 
- Group AR  #sps.  1 
-                    stat p.value   
-Halcyon smyrnensis 0.431   0.008 **
+ Group AR  #sps.  1   
+                    stat p.value     
+Halcyon smyrnensis 0.431   0.008 **  
 
- Group BM  #sps.  15 
-                               stat p.value    
-Alcippe poioicephala          0.689   0.001 ***
-Phylloscopus magnirostris     0.664   0.001 ***
-Cyornis pallidipes            0.655   0.001 ***
-Hypothymis azurea             0.599   0.001 ***
-Sitta frontalis               0.567   0.001 ***
-Culicicapa ceylonensis        0.565   0.002 ** 
-Harpactes fasciatus           0.502   0.002 ** 
-Leptocoma minima              0.482   0.003 ** 
-Ducula badia                  0.432   0.011 *  
-Dryocopus javensis            0.430   0.011 *  
-Muscicapa muttui              0.424   0.013 *  
-Accipiter trivirgatus         0.401   0.023 *  
-Chrysocolaptes guttacristatus 0.400   0.023 *  
-Irena puella                  0.395   0.024 *  
-Picumnus innominatus          0.367   0.036 *  
+ Group BM  #sps.  15   
+                               stat p.value      
+Alcippe poioicephala          0.689   0.001 ***  
+Phylloscopus magnirostris     0.664   0.001 ***  
+Cyornis pallidipes            0.655   0.001 ***  
+Hypothymis azurea             0.599   0.001 ***  
+Sitta frontalis               0.567   0.001 ***  
+Culicicapa ceylonensis        0.565   0.002 **   
+Harpactes fasciatus           0.502   0.002 **   
+Leptocoma minima              0.482   0.003 **   
+Ducula badia                  0.432   0.011 *    
+Dryocopus javensis            0.430   0.011 *    
+Muscicapa muttui              0.424   0.013 *    
+Accipiter trivirgatus         0.401   0.023 *    
+Chrysocolaptes guttacristatus 0.400   0.023 *    
+Irena puella                  0.395   0.024 *    
+Picumnus innominatus          0.367   0.036 *    
 
- Group NR  #sps.  5 
-                       stat p.value   
-Orthotomus sutorius   0.487   0.004 **
-Prinia hodgsonii      0.421   0.023 * 
-Phylloscopus affinis  0.408   0.018 * 
-Carpodacus erythrinus 0.357   0.035 * 
-Treron affinis        0.329   0.047 * 
+ Group NR  #sps.  5   
+                       stat p.value     
+Orthotomus sutorius   0.487   0.004 **  
+Prinia hodgsonii      0.421   0.023 *   
+Phylloscopus affinis  0.408   0.018 *   
+Carpodacus erythrinus 0.357   0.035 *   
+Treron affinis        0.329   0.047 *   
 
- Group AR+NR  #sps.  11 
-                         stat p.value    
-Pycnonotus jocosus      0.885   0.001 ***
-Pavo cristatus          0.568   0.001 ***
-Acrocephalus dumetorum  0.522   0.002 ** 
-Streptopelia chinensis  0.509   0.001 ***
-Merops leschenaulti     0.476   0.003 ** 
-Corvus splendens        0.395   0.022 *  
-Corvus macrorhynchos    0.390   0.029 *  
-Copsychus saularis      0.375   0.045 *  
-Aegithina tiphia        0.375   0.035 *  
-Psittacula cyanocephala 0.372   0.047 *  
-Acridotheres fuscus     0.364   0.034 *  
+ Group AR+NR  #sps.  11   
+                         stat p.value      
+Pycnonotus jocosus      0.885   0.001 ***  
+Pavo cristatus          0.568   0.001 ***  
+Acrocephalus dumetorum  0.522   0.002 **   
+Streptopelia chinensis  0.509   0.001 ***  
+Merops leschenaulti     0.476   0.003 **   
+Corvus splendens        0.395   0.022 *    
+Corvus macrorhynchos    0.390   0.029 *    
+Copsychus saularis      0.375   0.045 *    
+Aegithina tiphia        0.375   0.035 *    
+Psittacula cyanocephala 0.372   0.047 *    
+Acridotheres fuscus     0.364   0.034 *    
 
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1   

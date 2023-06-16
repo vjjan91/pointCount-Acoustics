@@ -143,8 +143,9 @@ ggsave(fig_medFreq, filename = "figs/fig_medianPeakFreq_detectionRatio.png", wid
 dev.off() 
 ```
 
-![Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types](figs/fig_medianPeakFreq_detectionRatio.png)
-## Rerun analyses by including only species with a minimum of 10 templates
+![Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types](figs/fig_medianPeakFreq_detectionRatio.png)  
+  
+## Rerun analyses by including only species with a minimum of 10 templates  
 
 ```{r}
 # Only a total of 87 species are left after filtering species with very few templates
@@ -203,10 +204,11 @@ ggsave(fig_medFreq_10, filename = "figs/fig_medianPeakFreq_min10templates_detect
 dev.off() 
 ```
 
-![Results are similar to previous analysis that included species with less than 10 templates (for the calculation of median peak frequency)](figs/fig_medianPeakFreq_min10templates_detectionRatio.png)
+![Results are similar to previous analysis that included species with less than 10 templates (for the calculation of median peak frequency)](figs/fig_medianPeakFreq_min10templates_detectionRatio.png)    
+  
 ## Visualizations that do not group treatment types
 
-Here, we would like to see/visualize the relationships between the ratio of detections of point counts to total detections (point counts + acoustic data) across visits without grouping by treatment type. We will continue to use the dataframe that excludes species with less than 10 templates for the calculation of median peak frequency. 
+Here, we would like to see/visualize the relationships between the ratio of detections of point counts to total detections (point counts + acoustic data) across visits without grouping by treatment type. We will continue to use the dataframe that excludes species with less than 10 templates for the calculation of median peak frequency.   
 ```{r}
 # visualization
 fig_medFreq_overall <- ggscatterstats(
@@ -226,4 +228,4 @@ ggsave(fig_medFreq_overall, filename = "figs/fig_medianPeakFreq_acrossTreatments
 dev.off() 
 ```
 
-![Similar to previous analyses where data was visualized by treatment types, the results do not differ when clubbed together. Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types](figs/fig_medianPeakFreq_acrossTreatments_detectionRatio.png)
+![Similar to previous analyses where data was visualized by treatment types, the results do not differ when clubbed together. Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types](figs/fig_medianPeakFreq_acrossTreatments_detectionRatio.png)  

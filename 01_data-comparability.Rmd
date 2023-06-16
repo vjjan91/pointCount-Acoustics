@@ -127,7 +127,7 @@ nonConVisits <- uniqueSiteDate %>%
 # left-join with the original dataframe to subset the data
 pc_subset <- left_join(nonConVisits, point_counts)
 
-## subset acoustic data (similar to point count data)
+# subset acoustic data (similar to point count data)
 
 # first we will remove OLCAP5B - a site for which only 3 visits were made in summer and not sampled as a result of logistic reasons in winter
 acoustic_data <- acoustic_data %>%

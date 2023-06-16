@@ -173,9 +173,10 @@ ggsave(fig_oc_richness, filename = "figs/fig_openCountryBirds_richness.png", wid
 dev.off() 
 ```
 
-![Differences in richness of rainforest birds between acoustic data and point count data across treatment types](figs/fig_rainforestBirds_richness.png)
+![Differences in richness of rainforest birds between acoustic data and point count data across treatment types](figs/fig_rainforestBirds_richness.png)  
 
-![Differences in richness of open-country birds between acoustic data and point count data across treatment types](figs/fig_openCountryBirds_richness.png)    
+![Differences in richness of open-country birds between acoustic data and point count data across treatment types](figs/fig_openCountryBirds_richness.png)      
+  
 ## Visualize differences in species richness as a function of species foraging guilds  
 
 Here, we examine if there are differences in species richness across treatment types (between point counts and acoustic surveys) as a function of foraging guilds - whether a species forages on the ground, understorey, mid-storey, or canopy.   
@@ -300,8 +301,9 @@ dev.off()
 
 ![Differences in richness of understorey birds between acoustic data and point count data across treatment types](figs/fig_understoreyBirds_richness.png)
 
-![Differences in richness of ground foraging birds between acoustic data and point count data across treatment types](figs/fig_groundBirds_richness.png) 
-## Stacked barplots for richness across foraging guilds
+![Differences in richness of ground foraging birds between acoustic data and point count data across treatment types](figs/fig_groundBirds_richness.png)    
+  
+## Stacked barplots for richness across foraging guilds  
 
 ```{r}
 # reordering factors for plotting
