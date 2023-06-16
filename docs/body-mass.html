@@ -231,110 +231,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count and acoustic survey.</p>
 <div id="load-necessary-libraries-1" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Load necessary libraries<a href="body-mass.html#load-necessary-libraries-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="body-mass.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb33-2"><a href="body-mass.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb33-3"><a href="body-mass.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb33-4"><a href="body-mass.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb33-5"><a href="body-mass.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-6"><a href="body-mass.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
-<span id="cb33-7"><a href="body-mass.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb33-8"><a href="body-mass.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
-<span id="cb33-9"><a href="body-mass.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb33-10"><a href="body-mass.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb33-11"><a href="body-mass.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
-<span id="cb33-12"><a href="body-mass.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb33-13"><a href="body-mass.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb33-14"><a href="body-mass.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
-<span id="cb33-15"><a href="body-mass.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb33-16"><a href="body-mass.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb33-17"><a href="body-mass.html#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-18"><a href="body-mass.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
-<span id="cb33-19"><a href="body-mass.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="body-mass.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb34-2"><a href="body-mass.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb34-3"><a href="body-mass.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb34-4"><a href="body-mass.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb34-5"><a href="body-mass.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb34-6"><a href="body-mass.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb34-7"><a href="body-mass.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb34-8"><a href="body-mass.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
+<span id="cb34-9"><a href="body-mass.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb34-10"><a href="body-mass.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb34-11"><a href="body-mass.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
+<span id="cb34-12"><a href="body-mass.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb34-13"><a href="body-mass.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb34-14"><a href="body-mass.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb34-15"><a href="body-mass.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb34-16"><a href="body-mass.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb34-17"><a href="body-mass.html#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-18"><a href="body-mass.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb34-19"><a href="body-mass.html#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
 </div>
 <div id="load-dataframe-containing-point-count-and-acoustic-data-4" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Load dataframe containing point count and acoustic data<a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="body-mass.html#cb34-1" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="body-mass.html#cb35-1" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="load-species-trait-data-3" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Load species trait data<a href="body-mass.html#load-species-trait-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="body-mass.html#cb35-1" aria-hidden="true" tabindex="-1"></a>trait <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-trait-dat.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="body-mass.html#cb36-1" aria-hidden="true" tabindex="-1"></a>trait <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-trait-dat.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="visit-level-detection-estimates-for-each-species" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Visit-level detection estimates for each species<a href="body-mass.html#visit-level-detection-estimates-for-each-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We estimate the total number of detections of each species across all visits (maximum number = 6; minimum number = 1) for point count data and acoustic surveys.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="body-mass.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we will estimate abundance across point counts by site-date (essentially corresponding to visit)</span></span>
-<span id="cb36-2"><a href="body-mass.html#cb36-2" aria-hidden="true" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="body-mass.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="body-mass.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
-<span id="cb36-5"><a href="body-mass.html#cb36-5" aria-hidden="true" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-6"><a href="body-mass.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-7"><a href="body-mass.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb36-8"><a href="body-mass.html#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="body-mass.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate across visit detections for point count data</span></span>
-<span id="cb36-10"><a href="body-mass.html#cb36-10" aria-hidden="true" tabindex="-1"></a>pc_visit_detections <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
-<span id="cb36-11"><a href="body-mass.html#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-12"><a href="body-mass.html#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb36-13"><a href="body-mass.html#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">pc_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-14"><a href="body-mass.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-15"><a href="body-mass.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb36-16"><a href="body-mass.html#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-17"><a href="body-mass.html#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)</span></span>
-<span id="cb36-18"><a href="body-mass.html#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
-<span id="cb36-19"><a href="body-mass.html#cb36-19" aria-hidden="true" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb36-20"><a href="body-mass.html#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-21"><a href="body-mass.html#cb36-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
-<span id="cb36-22"><a href="body-mass.html#cb36-22" aria-hidden="true" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-23"><a href="body-mass.html#cb36-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-24"><a href="body-mass.html#cb36-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb36-25"><a href="body-mass.html#cb36-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-26"><a href="body-mass.html#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate across visit detections for acoustic data</span></span>
-<span id="cb36-27"><a href="body-mass.html#cb36-27" aria-hidden="true" tabindex="-1"></a>aru_visit_detections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
-<span id="cb36-28"><a href="body-mass.html#cb36-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-29"><a href="body-mass.html#cb36-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb36-30"><a href="body-mass.html#cb36-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">aru_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-31"><a href="body-mass.html#cb36-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-32"><a href="body-mass.html#cb36-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="body-mass.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we will estimate abundance across point counts by site-date (essentially corresponding to visit)</span></span>
+<span id="cb37-2"><a href="body-mass.html#cb37-2" aria-hidden="true" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="body-mass.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-4"><a href="body-mass.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
+<span id="cb37-5"><a href="body-mass.html#cb37-5" aria-hidden="true" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-6"><a href="body-mass.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a href="body-mass.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb37-8"><a href="body-mass.html#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="body-mass.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate across visit detections for point count data</span></span>
+<span id="cb37-10"><a href="body-mass.html#cb37-10" aria-hidden="true" tabindex="-1"></a>pc_visit_detections <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
+<span id="cb37-11"><a href="body-mass.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-12"><a href="body-mass.html#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb37-13"><a href="body-mass.html#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">pc_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-14"><a href="body-mass.html#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-15"><a href="body-mass.html#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb37-16"><a href="body-mass.html#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="body-mass.html#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)</span></span>
+<span id="cb37-18"><a href="body-mass.html#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
+<span id="cb37-19"><a href="body-mass.html#cb37-19" aria-hidden="true" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb37-20"><a href="body-mass.html#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-21"><a href="body-mass.html#cb37-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
+<span id="cb37-22"><a href="body-mass.html#cb37-22" aria-hidden="true" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-23"><a href="body-mass.html#cb37-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-24"><a href="body-mass.html#cb37-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb37-25"><a href="body-mass.html#cb37-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-26"><a href="body-mass.html#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate across visit detections for acoustic data</span></span>
+<span id="cb37-27"><a href="body-mass.html#cb37-27" aria-hidden="true" tabindex="-1"></a>aru_visit_detections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
+<span id="cb37-28"><a href="body-mass.html#cb37-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-29"><a href="body-mass.html#cb37-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb37-30"><a href="body-mass.html#cb37-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">aru_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-31"><a href="body-mass.html#cb37-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-32"><a href="body-mass.html#cb37-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 </div>
 <div id="exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species<a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="body-mass.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
-<span id="cb37-2"><a href="body-mass.html#cb37-2" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">full_join</span>(pc_visit_detections[,<span class="sc">-</span><span class="dv">5</span>], aru_visit_detections[,<span class="sc">-</span><span class="dv">5</span>]) <span class="sc">%&gt;%</span></span>
-<span id="cb37-3"><a href="body-mass.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">pc_visit_detections =</span> <span class="dv">0</span>, <span class="at">aru_visit_detections =</span> <span class="dv">0</span>))</span>
-<span id="cb37-4"><a href="body-mass.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-5"><a href="body-mass.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create column of ratio of detections of point counts to total number of detections from point count and acoustic data</span></span>
-<span id="cb37-6"><a href="body-mass.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. </span></span>
-<span id="cb37-7"><a href="body-mass.html#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="body-mass.html#cb37-8" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> visit_detections <span class="sc">%&gt;%</span></span>
-<span id="cb37-9"><a href="body-mass.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc_to_total =</span> (pc_visit_detections)<span class="sc">/</span></span>
-<span id="cb37-10"><a href="body-mass.html#cb37-10" aria-hidden="true" tabindex="-1"></a>           (pc_visit_detections <span class="sc">+</span> aru_visit_detections))</span>
-<span id="cb37-11"><a href="body-mass.html#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-12"><a href="body-mass.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add species trait data i.e. body mass to the above dataframe</span></span>
-<span id="cb37-13"><a href="body-mass.html#cb37-13" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">left_join</span>(visit_detections, </span>
-<span id="cb37-14"><a href="body-mass.html#cb37-14" aria-hidden="true" tabindex="-1"></a>                   trait[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">26</span>)], <span class="at">by =</span> <span class="st">&quot;scientific_name&quot;</span>)  </span>
-<span id="cb37-15"><a href="body-mass.html#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-16"><a href="body-mass.html#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co"># log-transform body mass</span></span>
-<span id="cb37-17"><a href="body-mass.html#cb37-17" aria-hidden="true" tabindex="-1"></a>visit_detections<span class="sc">$</span>log_mass <span class="ot">&lt;-</span> <span class="fu">log10</span>(visit_detections<span class="sc">$</span>mass)</span>
-<span id="cb37-18"><a href="body-mass.html#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-19"><a href="body-mass.html#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
-<span id="cb37-20"><a href="body-mass.html#cb37-20" aria-hidden="true" tabindex="-1"></a>visit_detections<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(visit_detections<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
-<span id="cb37-21"><a href="body-mass.html#cb37-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-22"><a href="body-mass.html#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb37-23"><a href="body-mass.html#cb37-23" aria-hidden="true" tabindex="-1"></a>fig_bodyMass <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
-<span id="cb37-24"><a href="body-mass.html#cb37-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> visit_detections,</span>
-<span id="cb37-25"><a href="body-mass.html#cb37-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> log_mass,</span>
-<span id="cb37-26"><a href="body-mass.html#cb37-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> pc_to_total,</span>
-<span id="cb37-27"><a href="body-mass.html#cb37-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
-<span id="cb37-28"><a href="body-mass.html#cb37-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb37-29"><a href="body-mass.html#cb37-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb37-30"><a href="body-mass.html#cb37-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb37-31"><a href="body-mass.html#cb37-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb37-32"><a href="body-mass.html#cb37-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb37-33"><a href="body-mass.html#cb37-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb37-34"><a href="body-mass.html#cb37-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb37-35"><a href="body-mass.html#cb37-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb37-36"><a href="body-mass.html#cb37-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-37"><a href="body-mass.html#cb37-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(fig_bodyMass, <span class="at">filename =</span> <span class="st">&quot;figs/fig_bodyMass_detectionRatio.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb37-38"><a href="body-mass.html#cb37-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="body-mass.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb38-2"><a href="body-mass.html#cb38-2" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">full_join</span>(pc_visit_detections[,<span class="sc">-</span><span class="dv">5</span>], aru_visit_detections[,<span class="sc">-</span><span class="dv">5</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="body-mass.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">pc_visit_detections =</span> <span class="dv">0</span>, <span class="at">aru_visit_detections =</span> <span class="dv">0</span>))</span>
+<span id="cb38-4"><a href="body-mass.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-5"><a href="body-mass.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create column of ratio of detections of point counts to total number of detections from point count and acoustic data</span></span>
+<span id="cb38-6"><a href="body-mass.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. </span></span>
+<span id="cb38-7"><a href="body-mass.html#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="body-mass.html#cb38-8" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> visit_detections <span class="sc">%&gt;%</span></span>
+<span id="cb38-9"><a href="body-mass.html#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc_to_total =</span> (pc_visit_detections)<span class="sc">/</span></span>
+<span id="cb38-10"><a href="body-mass.html#cb38-10" aria-hidden="true" tabindex="-1"></a>           (pc_visit_detections <span class="sc">+</span> aru_visit_detections))</span>
+<span id="cb38-11"><a href="body-mass.html#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="body-mass.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add species trait data i.e. body mass to the above dataframe</span></span>
+<span id="cb38-13"><a href="body-mass.html#cb38-13" aria-hidden="true" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">left_join</span>(visit_detections, </span>
+<span id="cb38-14"><a href="body-mass.html#cb38-14" aria-hidden="true" tabindex="-1"></a>                   trait[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">26</span>)], <span class="at">by =</span> <span class="st">&quot;scientific_name&quot;</span>)  </span>
+<span id="cb38-15"><a href="body-mass.html#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="body-mass.html#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co"># log-transform body mass</span></span>
+<span id="cb38-17"><a href="body-mass.html#cb38-17" aria-hidden="true" tabindex="-1"></a>visit_detections<span class="sc">$</span>log_mass <span class="ot">&lt;-</span> <span class="fu">log10</span>(visit_detections<span class="sc">$</span>mass)</span>
+<span id="cb38-18"><a href="body-mass.html#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="body-mass.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
+<span id="cb38-20"><a href="body-mass.html#cb38-20" aria-hidden="true" tabindex="-1"></a>visit_detections<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(visit_detections<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb38-21"><a href="body-mass.html#cb38-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-22"><a href="body-mass.html#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb38-23"><a href="body-mass.html#cb38-23" aria-hidden="true" tabindex="-1"></a>fig_bodyMass <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
+<span id="cb38-24"><a href="body-mass.html#cb38-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> visit_detections,</span>
+<span id="cb38-25"><a href="body-mass.html#cb38-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> log_mass,</span>
+<span id="cb38-26"><a href="body-mass.html#cb38-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> pc_to_total,</span>
+<span id="cb38-27"><a href="body-mass.html#cb38-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
+<span id="cb38-28"><a href="body-mass.html#cb38-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb38-29"><a href="body-mass.html#cb38-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb38-30"><a href="body-mass.html#cb38-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb38-31"><a href="body-mass.html#cb38-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb38-32"><a href="body-mass.html#cb38-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb38-33"><a href="body-mass.html#cb38-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb38-34"><a href="body-mass.html#cb38-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb38-35"><a href="body-mass.html#cb38-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb38-36"><a href="body-mass.html#cb38-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-37"><a href="body-mass.html#cb38-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(fig_bodyMass, <span class="at">filename =</span> <span class="st">&quot;figs/fig_bodyMass_detectionRatio.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb38-38"><a href="body-mass.html#cb38-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="figure">
 <img src="figs/fig_bodyMass_detectionRatio.png" alt="" />
 <p class="caption">Larger-bodied birds are detected more often in acoustic surveys compared to point count data across treatment types</p>
