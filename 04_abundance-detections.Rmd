@@ -18,6 +18,7 @@ library(scico)
 library(data.table)
 library(extrafont)
 library(ggstatsplot)
+library(ggside)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -29,7 +30,6 @@ datSubset <- read.csv("results/datSubset.csv")
 ```
 
 ## Estimate abundance for point count and detections for acoustic data  
-
 Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips. Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).  
 ```{r}
 # point-count data
@@ -79,5 +79,90 @@ ggsave(fig_abund_detec, filename = "figs/fig_abundance_vs_detections.png", width
 dev.off() 
 ```
 
-![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types](figs/fig_abundance_vs_detections.png)
+![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types](figs/fig_abundance_vs_detections.png)  
+
+## Group data on abundance and detections across sites (at the level of the treatment type) for each species
+
+```{r}
+# grouping point count data at the level of the treatment type
+abundance_group <- data %>%
+  group_by(restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(abundance_pc = sum(abundance_pc)) %>%
+  ungroup()
+
+# grouping acoustic data at the level of the treatment type
+detections_group <- data %>%
+  group_by(restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(detections_aru = sum(detections_aru)) %>%
+  ungroup()
+
+# create a single dataframe
+data_group <- full_join(abundance_group, detections_group)
+
+# reordering factors for plotting
+data_group$restoration_type <- factor(data_group$restoration_type, levels = c("BM", "AR", "NR"))
+
+# visualization
+fig_abund_detec_group <- grouped_ggscatterstats(
+  data = data_group,
+  x = detections_aru,
+  y = abundance_pc,
+  grouping.var = restoration_type,
+  type = "r",
+  label.var = scientific_name, 
+  label.expression = detections_aru > 1000, 
+  point.label.args = list(alpha = 0.7, size = 4, color = "grey50"),
+  plotgrid.args = list(nrow = 3, ncol = 1),
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_abund_detec_group, filename = "figs/fig_abundance_vs_detections_grouped.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+
+
+## Species-specific plots of correlations between abundance and detections  
+
+Note: We will not be grouping data by treatment types for plot as we have insufficient data if we divided it up.  
+```{r}
+plots <- list()
+
+for(i in 1:length(unique(data$scientific_name))){
+  
+  # extract species scientific name
+  a <- unique(data$scientific_name)[i]
+  
+  # subset data for plotting
+  for_plot <- data[data$scientific_name==a,]
+  
+  # create plots
+  plots[[i]] <- ggscatterstats(
+  data = for_plot,
+  x = detections_aru,
+  y = abundance_pc,
+  type = "r",
+  title = a,
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",size = 18, face = "bold"),
+    plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+}
+
+# plot and save as a single pdf
+cairo_pdf(
+  filename = "figs/abundance-detections-by-species.pdf",
+  width = 13, height = 12,
+  onefile = TRUE
+)
+plots
+dev.off()
+```
 
