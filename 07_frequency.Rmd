@@ -206,6 +206,58 @@ dev.off()
 
 ![Results are similar to previous analysis that included species with less than 10 templates (for the calculation of median peak frequency)](figs/fig_medianPeakFreq_min10templates_detectionRatio.png)    
   
+## Exploring center frequency instead of peak frequency
+
+```{r}
+# calculate median center frequency with the list of species that have a minimum of 10 templates
+median_cf_10 <- freq_10 %>%
+  group_by(eBird_codes) %>%
+  summarise(median_center_freq =  median(center_freq_in_Hz))
+
+# create a single dataframe for visit_detections
+visit_detections <- full_join(pc_visit_detections[,-5], aru_visit_detections[,-5]) %>%
+  replace_na(list(pc_visit_detections = 0, aru_visit_detections = 0))
+
+visit_detections <- visit_detections %>%
+  mutate(pc_to_total = (pc_visit_detections)/
+           (pc_visit_detections + aru_visit_detections))
+
+# join this dataframe to species trait dat
+dat_median_cf_10 <- left_join(median_cf_10, trait, by = "eBird_codes")
+
+# join the above dataframe to the detections dataset
+visit_detections <- left_join(dat_median_cf_10[,c(1:3)],
+                              visit_detections,
+                   by = "scientific_name")
+
+# reordering factors for plotting
+visit_detections$restoration_type <- factor(visit_detections$restoration_type, levels = c("BM", "AR", "NR"))
+  
+# removing outliers prior to visualization
+visit_detections <- visit_detections %>%
+  filter(eBird_codes != "PBFL") # Pale-billed flowerpecker
+
+# visualization
+fig_medCenterFreq_10 <- grouped_ggscatterstats(
+  data = visit_detections,
+  x = median_center_freq,
+  y = pc_to_total,
+  grouping.var = restoration_type,
+  type = "r",
+  plotgrid.args = list(nrow = 3, ncol = 1),
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_medCenterFreq_10, filename = "figs/fig_medianCenterFreq_min10templates_detectionRatio.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![Results are similar for the calculation of median center frequency)](figs/fig_medianCenterFreq_min10templates_detectionRatio.png)   
+
 ## Visualizations that do not group treatment types
 
 Here, we would like to see/visualize the relationships between the ratio of detections of point counts to total detections (point counts + acoustic data) across visits without grouping by treatment type. We will continue to use the dataframe that excludes species with less than 10 templates for the calculation of median peak frequency.   
