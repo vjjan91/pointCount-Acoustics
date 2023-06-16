@@ -126,7 +126,7 @@ ggsave(fig_abund_detec_group, filename = "figs/fig_abundance_vs_detections_group
 dev.off() 
 ```
 
-
+![Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the level of the treatment](figs/fig_abundance_vs_detections_grouped.png)   
 
 ## Species-specific plots of correlations between abundance and detections  
 
