@@ -166,6 +166,6 @@ plots
 dev.off()
 ```
 
-```{r, out.width = 75%}
+```{r, out.width = "75%"}
 knitr::include_graphics(path = "figs/abundance-detections-by-species.pdf")
 ```
