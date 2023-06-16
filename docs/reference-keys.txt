@@ -2,7 +2,6 @@ introduction
 attribution
 data-access
 data-processing
-the-data-processing-for-this-project-is-described-in-the-following-sections.-navigate-through-them-using-the-links-in-the-sidebar.
 making-datasets-comparable
 install-required-libraries
 loading-point-count-data
