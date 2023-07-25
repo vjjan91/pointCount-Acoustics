@@ -40,23 +40,24 @@ species_codes <- read.csv("data/species-annotation-codes.csv")
 
 # for the sake of comparability, some issues were fixed in the point-count dataset
 # please note that these issues were fixed using the .csv file and not through R
+# the following issues were fixed: 
 # leading spaces were removed from the common_name
 # species that start with the common_name 'Grey' were changed to 'Gray'
 
 # merge with point_count data
 point_counts <- left_join(point_counts, species_codes, by = "common_name")
 
-# remove mammal and unidentified bird species
+# removing all mammal species and unidentified bird species
 point_counts <- point_counts %>%
   filter(bird_mammal == "Bird") 
 ```
 
-## Loading the acoustic data
-```{r}
-# The acoustic data consists of annotations of 10-s chunks of audio files across summer and winter months. We will load both these annotation sets and process them further to ensure that it is comparable to the point count dataset
+## Loading the acoustic data  
 
+The acoustic data consists of annotations of 10-s chunks of audio files across summer and winter months. We will load both these annotation sets and process them further to ensure that it is comparable to the point count dataset.  
+```{r}
 # Attach the annotation data for summer and winter
-# The two .csvs below are not uploaded to GitHub and can be provided upon request
+# These two .csvs below are not uploaded to GitHub and can be provided upon request
 # Please write to Vijay Ramesh if you would like to access the raw data - vr292@cornell.edu)
 
 summer_data <- read.csv("data/summer-dawn-annotations.csv")
@@ -77,7 +78,9 @@ acoustic_data <- separate(acoustic_data, col = Filename, into = c("site", "date"
 ## Subset acoustic data and point count data
 
 To ensure that the datasets are comparable, we carry out the following:  
+
 a) Subset only data from those sites for which both point count data and acoustic data was collected.  
+b) Ensure that the dates of visits (for both point count data and acoustic data) are coming from the same season (for instance, January 2020 to March 2020)  
 b) Similar numbers of visits to sites (for point count data and acoustic data) - in other words, if 6 point counts were carried out at a site, we want to ensure that we have a minimum of 6 acoustic 'visits' to the same site.  
 ```{r}
 # load list of sites
@@ -99,6 +102,9 @@ point_counts <- left_join(sites[,c(2,3,4,5)],
 nSitesDays <- point_counts %>%
   dplyr::select(site_id, date) %>%
   distinct() %>% arrange(site_id) %>% count(site_id)
+
+trial <- point_counts %>%
+  filter(date >= "2020-01-01")
 
 # we observed that some sites had as many as 7 visits. We will subset these to choose only six visits
 
@@ -135,6 +141,9 @@ acoustic_data <- acoustic_data %>%
 
 # Convert date column to YMD format using lubridate::ymd()
 acoustic_data$date <- lubridate::ymd(acoustic_data$date)
+
+trial2 <- acoustic_data %>%
+  filter(date >= "2020-03-01" & date <= "2020-05-10")
 
 # number of visits to a particular site
 # only INBS04U has 5 visits because another visit was not possible due to rain
