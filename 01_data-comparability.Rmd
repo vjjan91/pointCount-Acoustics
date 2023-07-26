@@ -80,10 +80,15 @@ acoustic_data <- separate(acoustic_data, col = Filename, into = c("site", "date"
 To ensure that the datasets are comparable, we carry out the following:  
 
 a) Subset only data from those sites for which both point count data and acoustic data was collected.  
-b) Ensure that the dates of visits (for both point count data and acoustic data) are coming from the same season (for instance, January 2020 to March 2020)  
-b) Similar numbers of visits to sites (for point count data and acoustic data) - in other words, if 6 point counts were carried out at a site, we want to ensure that we have a minimum of 6 acoustic 'visits' to the same site.  
+
+b) Ensure that the dates of visits (for both point count data and acoustic data) are coming from the same season/months.  
+
+It is important to clarify that while the point count data and acoustic data were collected across similar months (to match seasons), majority of the point count data were collected between November 2019 and March 2020, while the majority of the acoustic data were collected in March 2020, a few days in May 2020 (covid-19 related delays) and between December 2020 and January 2021. 
+
+To ensure that the point count data and acoustic data are comparable, we exclude data in May 2020 (from the acoustic dataset) as bird communities are often depauperate (majority of the migratory bird species have departed to their breeding grounds).  
+
+c) Similar levels of effort across sites (for point count data and acoustic data). Here, we define effort as the total number of minutes a site was surveyed. The duration of each point count at a site was 15 minutes long while the duration of each acoustic survey at a site was 16 minutes in duration. For the sake of comparability, we can include upto 6 point counts to each site, while including 5 acoustic 'visits' to each site. This results in a total of 90 minutes of effort at each site for point count data, while resulting in a total of 80 minutes of effort at each site for the acoustic data.  
 ```{r}
-# load list of sites
 # a subset of sites that were included in the Hariharan and Raman (2021) study were included in the Ramesh et al. (2023) study due to logistical constraints of placing audio recorders
 sites <- read.csv("data/list-of-sites.csv") %>%
   filter(site_id != "OLCAP5B")
@@ -103,10 +108,7 @@ nSitesDays <- point_counts %>%
   dplyr::select(site_id, date) %>%
   distinct() %>% arrange(site_id) %>% count(site_id)
 
-trial <- point_counts %>%
-  filter(date >= "2020-01-01")
-
-# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits
+# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above for comparable effort levels)
 
 # unique date site combination to give you a sense of sampling
 uniqueSiteDate <- point_counts %>%
@@ -122,12 +124,13 @@ nonConVisits <- uniqueSiteDate %>%
   map_df(., ~ .x %>% ungroup() %>%
            arrange(date) %>%
            mutate(n = 1) %>%
-           complete(date = seq.Date(first(date), last(date), by = 'days'))%>%
+           complete(date = seq.Date(first(date), last(date), 
+                                    by = 'days'))%>%
            group_by(n = cumsum(is.na(n))) %>%
            filter(!is.na(site_id)) %>%
            filter(row_number() %% 2 == 1) %>%
            ungroup() %>%
-           sample_n(min(n(), 6))) %>%
+           sample_n(min(n(), 6))) %>% # change n here for number of visits
   dplyr::select(-n)
 
 # left-join with the original dataframe to subset the data
@@ -142,11 +145,13 @@ acoustic_data <- acoustic_data %>%
 # Convert date column to YMD format using lubridate::ymd()
 acoustic_data$date <- lubridate::ymd(acoustic_data$date)
 
-trial2 <- acoustic_data %>%
-  filter(date >= "2020-03-01" & date <= "2020-05-10")
-
+# exclude data from May 2020 for the acoustic dataset
+acoustic_data <- acoustic_data %>%
+  filter(!(date >= "2020-05-01" & date <= "2020-05-10"))
+  
 # number of visits to a particular site
-# only INBS04U has 5 visits because another visit was not possible due to rain
+# some sites have as many as 7 visits, but many visits have only 5 visits and only INBS04U has 4 visits 
+# for the sake of comparability with point count data, we choose 5 visits across sites
 nSitesDays <- acoustic_data %>%
   dplyr::select(site, date)%>%
   distinct() %>% arrange(site) %>% count(site)
@@ -162,12 +167,13 @@ nonConVisits <- uniqueSiteDate %>%
   map_df(., ~ .x %>% ungroup() %>%
            arrange(date) %>%
            mutate(n = 1) %>%
-           complete(date = seq.Date(first(date), last(date), by = 'days'))%>%
+           complete(date = seq.Date(first(date), last(date), 
+                                    by = 'days'))%>%
            group_by(n = cumsum(is.na(n))) %>%
            filter(!is.na(site)) %>%
-           filter(row_number() %% 2 == 1) %>%
+           #filter(row_number() %% 2 == 1) %>%
            ungroup() %>%
-           sample_n(min(n(), 6))
+           sample_n(min(n(), 5)) # change n here for number of visits
          ) %>%
   dplyr::select(-n)
 
@@ -249,9 +255,12 @@ datSubset <- bind_rows(pc_subset, aru_subset)
 
 # rename values within the restoration_type column to acronyms (for ease of plotting)
 datSubset <- datSubset %>%
-  mutate(restoration_type = str_replace(restoration_type, "Benchmark", "BM")) %>%
-  mutate(restoration_type = str_replace(restoration_type, "Active", "AR")) %>%
-  mutate(restoration_type = str_replace(restoration_type, "Passive", "NR"))
+  mutate(restoration_type = 
+           str_replace(restoration_type, "Benchmark", "BM")) %>%
+  mutate(restoration_type = 
+           str_replace(restoration_type, "Active", "AR")) %>%
+  mutate(restoration_type = 
+           str_replace(restoration_type, "Passive", "NR"))
 
 # write to file
 write.csv(datSubset, "results/datSubset.csv", row.names = F)
