@@ -9,8 +9,8 @@ This analysis aims to identify what species are “indicators” of groups of sa
 
 If the aim is to determine which species can be used as indicators of certain site group, an approach commonly used in ecology is the Indicator Value (Dufrene and Legendre, 1997). These authors defined an Indicator Value (IndVal) index to measure the association between a species and a site group. The method of Dufrene and Legendre (1997) calculates the IndVal index between the species and each site group and then looks for the group corresponding to the highest association value. Finally, the statistical significance of this relationship is tested using a permutation test.  
 
-Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as fidelity, not to be confounded with the indicator value component) between species and vegetation types is Pearson’s phi coefficient of association
-(Chytry et al., 2002). This coefficient is a measure of the correlation between two binary vectors. The abundance-based counterpart of the phi coefficient is called the point biserial correlation coefficient (which is defined as "r.g").  
+Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as fidelity, not to be confounded with the indicator value component) between species and vegetation types is Pearson’s phi coefficient of association (Chytry et al., 2002). This coefficient is a measure of the correlation between two binary vectors. The abundance-based counterpart of the phi coefficient is called the point biserial correlation coefficient (which is defined as "r.g").  
+
 See: https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf  
 
 ## Load necessary libraries
@@ -49,7 +49,7 @@ datSubset <- left_join(datSubset,trait[,c(1,7,8)], by = "scientific_name")
 
 ## Estimate detections across visits for point count data and acoustic data  
 
-These detections are calculate at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6. These detections are estimated for the indicator species analysis since the matrix required for the same cannot be a presence/absence matrix.    
+These detections are calculate at the site level (for a total of five/six visits for acoustic & point count data, respectively). If the across_visit_detections = 5, that means that a species was detected every single time across each of the five visits to that site. This value ranges from 1 to 5 (or 1 to 6 for point count data). These detections are estimated for the indicator species analysis since the matrix required for the same cannot be a presence/absence matrix.      
 ```{r}
 ## we will estimate abundance across point counts by site-date (essentially corresponding to visit)
 abundance <- datSubset %>%
@@ -103,60 +103,56 @@ summary(indic_pc)
 
 Multilevel pattern analysis for point count data    
 
- Association function: r.g  
+ Association function: r.g   
  Significance level (alpha): 0.05  
 
- Total number of species: 84  
- Selected number of species: 26     
- Number of species associated to 1 group: 18   
- Number of species associated to 2 groups: 8   
+ Total number of species: 83  
+ Selected number of species: 25     
+ Number of species associated to 1 group: 16   
+ Number of species associated to 2 groups: 9   
 
  List of species associated to each combination:   
 
- Group AR  #sps.  2   
-                        stat p.value    
-Psittacula columboides 0.433   0.013 *  
-Rubigula gularis       0.387   0.032 *  
-
  Group BM  #sps.  13   
-                           stat p.value    
-Alcippe poioicephala      0.838   0.001 ***  
-Culicicapa ceylonensis    0.783   0.001 ***  
-Hypothymis azurea         0.647   0.001 ***  
-Pellorneum ruficeps       0.582   0.002 **     
-Harpactes fasciatus       0.542   0.002 **   
-Ducula badia              0.540   0.002 **   
-Phylloscopus magnirostris 0.540   0.001 ***  
-Cyornis pallidipes        0.522   0.001 ***  
-Leptocoma minima          0.479   0.004 **   
-Chalcophaps indica        0.445   0.013 *    
-Dicrurus paradiseus       0.437   0.010 **   
-Dicrurus aeneus           0.432   0.012 *    
-Irena puella              0.423   0.015 *    
+                           stat p.value      
+Alcippe poioicephala      0.812   0.001 ***  
+Culicicapa ceylonensis    0.739   0.001 ***  
+Hypothymis azurea         0.665   0.001 ***  
+Pellorneum ruficeps       0.599   0.001 ***  
+Ducula badia              0.596   0.001 ***  
+Harpactes fasciatus       0.565   0.001 ***  
+Cyornis pallidipes        0.561   0.001 ***  
+Leptocoma minima          0.531   0.002 **   
+Phylloscopus magnirostris 0.505   0.004 **   
+Irena puella              0.457   0.005 **     
+Dicrurus paradiseus       0.439   0.010 **   
+Chalcophaps indica        0.380   0.032 *    
+Dicrurus aeneus           0.376   0.029 *    
 
- Group NR  #sps.  3   
+ Group NR  #sps.  3    
                         stat p.value      
-Cinnyris asiaticus     0.712   0.001 ***  
-Acrocephalus dumetorum 0.495   0.004 **   
-Machlolophus aplonotus 0.329   0.046 *    
+Cinnyris asiaticus     0.702   0.001 ***  
+Acrocephalus dumetorum 0.507   0.003 **   
+Machlolophus aplonotus 0.396   0.021 *    
 
  Group AR+BM  #sps.  2   
                   stat p.value     
-Muscicapa muttui 0.530   0.003 **  
-Iole indica      0.489   0.004 **  
+Muscicapa muttui 0.509   0.003 **  
+Iole indica      0.498   0.003 **  
 
- Group AR+NR  #sps.  6   
+ Group AR+NR  #sps.  7   
                          stat p.value      
-Pycnonotus jocosus      0.742   0.001 ***  
-Streptopelia chinensis  0.714   0.001 ***  
-Dicaeum concolor        0.433   0.016 *    
-Psittacula cyanocephala 0.420   0.022 *    
-Zosterops palpebrosus   0.392   0.031 *    
-Orthotomus sutorius     0.372   0.042 *    
+Streptopelia chinensis  0.744   0.001 ***  
+Pycnonotus jocosus      0.744   0.001 ***  
+Dicaeum concolor        0.474   0.002 **   
+Psittacula columboides  0.403   0.020 *    
+Zosterops palpebrosus   0.394   0.025 *    
+Orthotomus sutorius     0.389   0.026 *    
+Psittacula cyanocephala 0.376   0.023 *    
 
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1     
+Signif. codes:  0 *** 0.001 ** 0.01 * 0.05 .       
 
-## Indicator species analysis for acoustic data  
+## Indicator species analysis for acoustic data    
 
 The detections across visits is converted to a wide format for the sake of analysis.  
 ```{r}
@@ -179,55 +175,53 @@ summary(indic_aru)
  Association function: r.g  
  Significance level (alpha): 0.05  
 
- Total number of species: 115  
- Selected number of species: 32   
- Number of species associated to 1 group: 21   
- Number of species associated to 2 groups: 11   
+ Total number of species: 113  
+ Selected number of species: 29   
+ Number of species associated to 1 group: 19    
+ Number of species associated to 2 groups: 10   
 
  List of species associated to each combination:   
 
  Group AR  #sps.  1   
-                    stat p.value     
-Halcyon smyrnensis 0.431   0.008 **  
+                      stat p.value     
+Chloropsis aurifrons 0.396   0.044 *   
 
- Group BM  #sps.  15   
-                               stat p.value      
-Alcippe poioicephala          0.689   0.001 ***  
-Phylloscopus magnirostris     0.664   0.001 ***  
-Cyornis pallidipes            0.655   0.001 ***  
-Hypothymis azurea             0.599   0.001 ***  
-Sitta frontalis               0.567   0.001 ***  
-Culicicapa ceylonensis        0.565   0.002 **   
-Harpactes fasciatus           0.502   0.002 **   
-Leptocoma minima              0.482   0.003 **   
-Ducula badia                  0.432   0.011 *    
-Dryocopus javensis            0.430   0.011 *    
-Muscicapa muttui              0.424   0.013 *    
-Accipiter trivirgatus         0.401   0.023 *    
-Chrysocolaptes guttacristatus 0.400   0.023 *    
-Irena puella                  0.395   0.024 *    
-Picumnus innominatus          0.367   0.036 *    
+ Group BM  #sps.  12    
+                           stat p.value       
+Alcippe poioicephala      0.666   0.001 ***   
+Hypothymis azurea         0.612   0.001 ***   
+Phylloscopus magnirostris 0.602   0.001 ***   
+Cyornis pallidipes        0.601   0.001 ***   
+Ducula badia              0.468   0.009 **    
+Culicicapa ceylonensis    0.460   0.005 **    
+Sitta frontalis           0.459   0.007 **    
+Harpactes fasciatus       0.454   0.012 *     
+Dryocopus javensis        0.430   0.007 **    
+Muscicapa muttui          0.412   0.009 **    
+Leptocoma minima          0.395   0.030 *     
+Picumnus innominatus      0.346   0.042 *     
 
- Group NR  #sps.  5   
-                       stat p.value     
-Orthotomus sutorius   0.487   0.004 **  
-Prinia hodgsonii      0.421   0.023 *   
-Phylloscopus affinis  0.408   0.018 *   
-Carpodacus erythrinus 0.357   0.035 *   
-Treron affinis        0.329   0.047 *   
+ Group NR  #sps.  6    
+                        stat p.value      
+Streptopelia chinensis 0.554   0.002 **    
+Orthotomus sutorius    0.503   0.002 **   
+Tephrodornis sylvicola 0.467   0.002 **   
+Carpodacus erythrinus  0.421   0.015 *    
+Phylloscopus affinis   0.408   0.020 *    
+Lonchura kelaarti      0.367   0.021 *    
 
- Group AR+NR  #sps.  11   
-                         stat p.value      
-Pycnonotus jocosus      0.885   0.001 ***  
-Pavo cristatus          0.568   0.001 ***  
-Acrocephalus dumetorum  0.522   0.002 **   
-Streptopelia chinensis  0.509   0.001 ***  
-Merops leschenaulti     0.476   0.003 **   
-Corvus splendens        0.395   0.022 *    
-Corvus macrorhynchos    0.390   0.029 *    
-Copsychus saularis      0.375   0.045 *    
-Aegithina tiphia        0.375   0.035 *    
-Psittacula cyanocephala 0.372   0.047 *    
-Acridotheres fuscus     0.364   0.034 *    
+ Group AR+NR  #sps.  10    
+                         stat p.value       
+Pycnonotus jocosus      0.830   0.001 ***   
+Acrocephalus dumetorum  0.543   0.002 **    
+Corvus splendens        0.507   0.003 **    
+Psittacula cyanocephala 0.447   0.007 **    
+Merops leschenaulti     0.441   0.009 **    
+Dicrurus leucophaeus    0.438   0.014 *     
+Copsychus saularis      0.430   0.016 *     
+Pavo cristatus          0.426   0.014 *    
+Halcyon smyrnensis      0.403   0.015 *    
+Dinopium benghalense    0.386   0.028 *    
 
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1   
+Signif. codes:  0 *** 0.001 ** 0.01 * 0.05 .   
+
