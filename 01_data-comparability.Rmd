@@ -153,7 +153,7 @@ acoustic_data <- acoustic_data %>%
   
 # number of visits to a particular site
 # some sites have as many as 7 visits, but many visits have only 5 visits and only INBS04U has 4 visits 
-# for the sake of comparability with point count data, we choose 5 visits across sites translating to effort of 75 min per site
+# for the sake of comparability with point count data, we choose 5 visits across sites translating to effort of 80 min per site
 nSitesDays <- acoustic_data %>%
   dplyr::select(site, date)%>%
   distinct() %>% arrange(site) %>% count(site)
