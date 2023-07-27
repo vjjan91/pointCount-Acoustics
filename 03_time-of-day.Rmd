@@ -171,6 +171,4 @@ dev.off()
 
 ![No significant differences in richness for 7am to 8am between acoustic data and point count data across treatment types](figs/fig_richness_7am_to_8am.png)
 
-![Significant differences in richness for 8am to 9am between acoustic data and point count data across treatment types](figs/fig_richness_8am_to_9am.png)
-
-
+![Significant differences in richness for 8am to 9am between acoustic data and point count data across actively restored and benchmark sites, but naturally regenerating sites showed no difference.](figs/fig_richness_8am_to_9am.png)
