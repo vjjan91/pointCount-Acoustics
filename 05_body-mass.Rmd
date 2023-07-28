@@ -27,6 +27,7 @@ library(sjPlot)
 library(ggside)
 library(ggstatsplot)
 library(extrafont)
+library(scales)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -44,7 +45,7 @@ trait <- read.csv("data/species-trait-dat.csv")
 
 ## Visit-level detection estimates for each species  
 
-We estimate the total number of detections of each species across all visits (maximum number = 6; minimum number = 1) for point count data and acoustic surveys.  
+We estimate the total number of detections of each species across all visits. This can vary between 1 and 6 for point counts (since a total of six visits were made to each site), while this number can vary between 1 to 5 for acoustic surveys. To account for the slight difference in the number of visits, we scale the data to go between 0 and 1 to ensure that the visit-level estimates are comparable.       
 ```{r}
 ## we will estimate abundance across point counts by site-date (essentially corresponding to visit)
 abundance <- datSubset %>%
@@ -62,6 +63,9 @@ pc_visit_detections <- abundance %>%
   mutate(data_type = "point_count") %>%
   ungroup()
 
+# scale values to go between 0 and 1
+pc_visit_detections$pc_visit_scaled <- rescale(pc_visit_detections$pc_visit_detections, to = c(1,10))
+
 # estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)
 # note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
 detections <- datSubset %>%
@@ -78,21 +82,24 @@ aru_visit_detections <- detections %>%
   summarise(aru_visit_detections = sum(forDetections)) %>%
   mutate(data_type = "acoustic_data") %>%
   ungroup()
+
+# scale values to go between 0 and 1
+aru_visit_detections$aru_visit_scaled <- rescale(aru_visit_detections$aru_visit_detections, to = c(1,10))
 ```
 
 ## Exploring ratios of detections in point counts & acoustic surveys to body mass of a species  
-
 ```{r}
 # create a single dataframe
 visit_detections <- full_join(pc_visit_detections[,-5], aru_visit_detections[,-5]) %>%
-  replace_na(list(pc_visit_detections = 0, aru_visit_detections = 0))
+  replace_na(list(pc_visit_detections = 0, aru_visit_detections = 0,
+                  pc_visit_scaled = 0, aru_visit_scaled = 0))
   
 # create column of ratio of detections of point counts to total number of detections from point count and acoustic data
 # note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. 
 
 visit_detections <- visit_detections %>%
-  mutate(pc_to_total = (pc_visit_detections)/
-           (pc_visit_detections + aru_visit_detections))
+  mutate(pc_to_total = (pc_visit_scaled)/
+           (pc_visit_scaled + aru_visit_scaled))
 
 # add species trait data i.e. body mass to the above dataframe
 visit_detections <- left_join(visit_detections, 
