@@ -45,7 +45,7 @@ trait <- read.csv("data/species-trait-dat.csv")
 
 ## Visit-level detection estimates for each species  
 
-We estimate the total number of detections of each species across all visits. This can vary between 1 and 6 for point counts (since a total of six visits were made to each site), while this number can vary between 1 to 5 for acoustic surveys. To account for the slight difference in the number of visits, we scale the data to go between 0 and 1 to ensure that the visit-level estimates are comparable.       
+We estimate the total number of detections of each species across all visits. This can vary between 1 and 6 for point counts (since a total of six visits were made to each site), while this number can vary between 1 to 5 for acoustic surveys. To account for the slight difference in the number of visits, we scale the data to go between 1 and 10 (arbitrarily chosen) to ensure that the visit-level estimates are comparable.       
 ```{r}
 ## we will estimate abundance across point counts by site-date (essentially corresponding to visit)
 abundance <- datSubset %>%
@@ -63,7 +63,7 @@ pc_visit_detections <- abundance %>%
   mutate(data_type = "point_count") %>%
   ungroup()
 
-# scale values to go between 0 and 1
+# scale values to go between 1 and 10
 pc_visit_detections$pc_visit_scaled <- rescale(pc_visit_detections$pc_visit_detections, to = c(1,10))
 
 # estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)
@@ -83,7 +83,7 @@ aru_visit_detections <- detections %>%
   mutate(data_type = "acoustic_data") %>%
   ungroup()
 
-# scale values to go between 0 and 1
+# scale values to go between 1 and 10
 aru_visit_detections$aru_visit_scaled <- rescale(aru_visit_detections$aru_visit_detections, to = c(1,10))
 ```
 
@@ -130,4 +130,4 @@ ggsave(fig_bodyMass, filename = "figs/fig_bodyMass_detectionRatio.png", width = 
 dev.off() 
 ```
 
-![Larger-bodied birds are detected more often in acoustic surveys compared to point count data across treatment types](figs/fig_bodyMass_detectionRatio.png)
+![No particular association/very weak result observed.](figs/fig_bodyMass_detectionRatio.png)
