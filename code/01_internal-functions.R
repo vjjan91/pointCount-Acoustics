@@ -67,7 +67,7 @@ sspectro <- function(
 ### Scaling a range of values between 0 and 1 (for the space use analysis)
 #################################################################################
 
-range01 <- function(x){(x-min(x))/(max(x)-min(x))}
+range01 <- function(x, ...) {(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
 
 ##########################################################################################################
 ### Stratified - a function that can be used to essentially choose random number of samples after grouping
