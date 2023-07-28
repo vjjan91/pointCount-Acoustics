@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 2 Making datasets comparable | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
   <meta name="description" content="Section 2 Making datasets comparable | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 2 Making datasets comparable | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta property="og:type" content="book" />
@@ -26,7 +26,7 @@
 <meta name="author" content="Laurel Symes" />
 
 
-<meta name="date" content="2023-06-16" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -171,43 +175,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#estimate-richness-by-time-of-day"><i class="fa fa-check"></i><b>4.5</b> Estimate richness by time of day</a></li>
 <li class="chapter" data-level="4.6" data-path="time-of-day-analyses.html"><a href="time-of-day-analyses.html#visualize-differences-in-richness-between-point-count-data-and-acoustic-data-1"><i class="fa fa-check"></i><b>4.6</b> Visualize differences in richness between point count data and acoustic data</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>5</b> Abundance vs. detections</a>
+<li class="chapter" data-level="5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html"><i class="fa fa-check"></i><b>5</b> Indicator species analysis</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>5.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="5.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-2"><i class="fa fa-check"></i><b>5.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="5.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>5.3</b> Estimate abundance for point count and detections for acoustic data</a></li>
-<li class="chapter" data-level="5.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>5.4</b> Correlations between abundance and detections</a></li>
-<li class="chapter" data-level="5.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#group-data-on-abundance-and-detections-across-sites-at-the-level-of-the-treatment-type-for-each-species"><i class="fa fa-check"></i><b>5.5</b> Group data on abundance and detections across sites (at the level of the treatment type) for each species</a></li>
-<li class="chapter" data-level="5.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>5.6</b> Species-specific plots of correlations between abundance and detections</a></li>
+<li class="chapter" data-level="5.1" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-necessary-libraries"><i class="fa fa-check"></i><b>5.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="5.2" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-dataframe-containing-point-count-and-acoustic-data-2"><i class="fa fa-check"></i><b>5.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="5.3" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-species-trait-data-2"><i class="fa fa-check"></i><b>5.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="5.4" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#estimate-detections-across-visits-for-point-count-data-and-acoustic-data"><i class="fa fa-check"></i><b>5.4</b> Estimate detections across visits for point count data and acoustic data</a></li>
+<li class="chapter" data-level="5.5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset"><i class="fa fa-check"></i><b>5.5</b> Indicator species analysis of the point-count dataset</a></li>
+<li class="chapter" data-level="5.6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data"><i class="fa fa-check"></i><b>5.6</b> Indicator species analysis for acoustic data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html"><i class="fa fa-check"></i><b>6</b> Indicator species analysis</a>
+<li class="chapter" data-level="6" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>6</b> Body mass</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-necessary-libraries"><i class="fa fa-check"></i><b>6.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="6.2" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>6.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="6.3" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#load-species-trait-data-2"><i class="fa fa-check"></i><b>6.3</b> Load species trait data</a></li>
-<li class="chapter" data-level="6.4" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#estimate-detections-across-visits-for-point-count-data-and-acoustic-data"><i class="fa fa-check"></i><b>6.4</b> Estimate detections across visits for point count data and acoustic data</a></li>
-<li class="chapter" data-level="6.5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset"><i class="fa fa-check"></i><b>6.5</b> Indicator species analysis of the point-count dataset</a></li>
-<li class="chapter" data-level="6.6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data"><i class="fa fa-check"></i><b>6.6</b> Indicator species analysis for acoustic data</a></li>
+<li class="chapter" data-level="6.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>6.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>6.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="6.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>6.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="6.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>6.4</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="6.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>6.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>7</b> Body mass</a>
+<li class="chapter" data-level="7" data-path="frequency.html"><a href="frequency.html"><i class="fa fa-check"></i><b>7</b> Frequency</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>7.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="7.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>7.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="7.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>7.3</b> Load species trait data</a></li>
-<li class="chapter" data-level="7.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>7.4</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="7.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>7.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
+<li class="chapter" data-level="7.1" data-path="frequency.html"><a href="frequency.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>7.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="frequency.html"><a href="frequency.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>7.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="7.3" data-path="frequency.html"><a href="frequency.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>7.3</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="7.4" data-path="frequency.html"><a href="frequency.html#process-frequency-data"><i class="fa fa-check"></i><b>7.4</b> Process frequency data</a></li>
+<li class="chapter" data-level="7.5" data-path="frequency.html"><a href="frequency.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>7.5</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="7.6" data-path="frequency.html"><a href="frequency.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>7.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+<li class="chapter" data-level="7.7" data-path="frequency.html"><a href="frequency.html#rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates"><i class="fa fa-check"></i><b>7.7</b> Rerun analyses by including only species with a minimum of 10 templates</a></li>
+<li class="chapter" data-level="7.8" data-path="frequency.html"><a href="frequency.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>7.8</b> Exploring center frequency instead of peak frequency</a></li>
+<li class="chapter" data-level="7.9" data-path="frequency.html"><a href="frequency.html#visualizations-that-do-not-group-treatment-types"><i class="fa fa-check"></i><b>7.9</b> Visualizations that do not group treatment types</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="frequency.html"><a href="frequency.html"><i class="fa fa-check"></i><b>8</b> Frequency</a>
+<li class="chapter" data-level="8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>8</b> Abundance vs. detections</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="frequency.html"><a href="frequency.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="8.2" data-path="frequency.html"><a href="frequency.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>8.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="8.3" data-path="frequency.html"><a href="frequency.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>8.3</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="8.4" data-path="frequency.html"><a href="frequency.html#process-frequency-data"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
-<li class="chapter" data-level="8.5" data-path="frequency.html"><a href="frequency.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="8.6" data-path="frequency.html"><a href="frequency.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
-<li class="chapter" data-level="8.7" data-path="frequency.html"><a href="frequency.html#rerun-analyses-by-including-only-species-with-a-minimum-of-10-templates"><i class="fa fa-check"></i><b>8.7</b> Rerun analyses by including only species with a minimum of 10 templates</a></li>
-<li class="chapter" data-level="8.8" data-path="frequency.html"><a href="frequency.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>8.8</b> Exploring center frequency instead of peak frequency</a></li>
-<li class="chapter" data-level="8.9" data-path="frequency.html"><a href="frequency.html#visualizations-that-do-not-group-treatment-types"><i class="fa fa-check"></i><b>8.9</b> Visualizations that do not group treatment types</a></li>
+<li class="chapter" data-level="8.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>8.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="8.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>8.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="8.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>8.3</b> Estimate abundance for point count and detections for acoustic data</a></li>
+<li class="chapter" data-level="8.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>8.4</b> Correlations between abundance and detections</a></li>
+<li class="chapter" data-level="8.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>8.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
+<li class="chapter" data-level="8.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>8.6</b> Species-specific plots of correlations between abundance and detections</a></li>
 </ul></li>
 </ul>
 
@@ -231,235 +235,252 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this script, we will ensure that the point count data and the acoustic data are comparable to one another.</p>
 <div id="install-required-libraries" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Install required libraries<a href="making-datasets-comparable.html#install-required-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="making-datasets-comparable.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="making-datasets-comparable.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="making-datasets-comparable.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-4"><a href="making-datasets-comparable.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb1-5"><a href="making-datasets-comparable.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-6"><a href="making-datasets-comparable.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
-<span id="cb1-7"><a href="making-datasets-comparable.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb1-8"><a href="making-datasets-comparable.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb1-9"><a href="making-datasets-comparable.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-10"><a href="making-datasets-comparable.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb1-11"><a href="making-datasets-comparable.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="making-datasets-comparable.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># for plotting</span></span>
-<span id="cb1-13"><a href="making-datasets-comparable.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-14"><a href="making-datasets-comparable.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-15"><a href="making-datasets-comparable.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
-<span id="cb1-16"><a href="making-datasets-comparable.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
-<span id="cb1-17"><a href="making-datasets-comparable.html#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="making-datasets-comparable.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
-<span id="cb1-19"><a href="making-datasets-comparable.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="making-datasets-comparable.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="making-datasets-comparable.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="making-datasets-comparable.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-4"><a href="making-datasets-comparable.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb1-5"><a href="making-datasets-comparable.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="making-datasets-comparable.html#cb1-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb1-7"><a href="making-datasets-comparable.html#cb1-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-8"><a href="making-datasets-comparable.html#cb1-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb1-9"><a href="making-datasets-comparable.html#cb1-9" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-10"><a href="making-datasets-comparable.html#cb1-10" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb1-11"><a href="making-datasets-comparable.html#cb1-11" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="making-datasets-comparable.html#cb1-12" tabindex="-1"></a><span class="co"># for plotting</span></span>
+<span id="cb1-13"><a href="making-datasets-comparable.html#cb1-13" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-14"><a href="making-datasets-comparable.html#cb1-14" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-15"><a href="making-datasets-comparable.html#cb1-15" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb1-16"><a href="making-datasets-comparable.html#cb1-16" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
+<span id="cb1-17"><a href="making-datasets-comparable.html#cb1-17" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="making-datasets-comparable.html#cb1-18" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb1-19"><a href="making-datasets-comparable.html#cb1-19" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
 </div>
 <div id="loading-point-count-data" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Loading point count data<a href="making-datasets-comparable.html#loading-point-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="making-datasets-comparable.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is data from Hariharan and Raman (2021), which consists of point counts carried out across 69 sites</span></span>
-<span id="cb2-2"><a href="making-datasets-comparable.html#cb2-2" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/point-count-data.csv&quot;</span>)</span>
-<span id="cb2-3"><a href="making-datasets-comparable.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="making-datasets-comparable.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add eBird species code to the point-count data for comparison with acoustic data later on</span></span>
-<span id="cb2-5"><a href="making-datasets-comparable.html#cb2-5" aria-hidden="true" tabindex="-1"></a>species_codes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-annotation-codes.csv&quot;</span>)</span>
-<span id="cb2-6"><a href="making-datasets-comparable.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="making-datasets-comparable.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># for the sake of comparability, some issues were fixed in the point-count dataset</span></span>
-<span id="cb2-8"><a href="making-datasets-comparable.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># please note that these issues were fixed using the .csv file and not through R</span></span>
-<span id="cb2-9"><a href="making-datasets-comparable.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># leading spaces were removed from the common_name</span></span>
-<span id="cb2-10"><a href="making-datasets-comparable.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># species that start with the common_name &#39;Grey&#39; were changed to &#39;Gray&#39;</span></span>
-<span id="cb2-11"><a href="making-datasets-comparable.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="making-datasets-comparable.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># merge with point_count data</span></span>
-<span id="cb2-13"><a href="making-datasets-comparable.html#cb2-13" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(point_counts, species_codes, <span class="at">by =</span> <span class="st">&quot;common_name&quot;</span>)</span>
-<span id="cb2-14"><a href="making-datasets-comparable.html#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="making-datasets-comparable.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># remove mammal and unidentified bird species</span></span>
-<span id="cb2-16"><a href="making-datasets-comparable.html#cb2-16" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
-<span id="cb2-17"><a href="making-datasets-comparable.html#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bird_mammal <span class="sc">==</span> <span class="st">&quot;Bird&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="making-datasets-comparable.html#cb2-1" tabindex="-1"></a><span class="co"># This is data from Hariharan and Raman (2021), which consists of point counts carried out across 69 sites</span></span>
+<span id="cb2-2"><a href="making-datasets-comparable.html#cb2-2" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/point-count-data.csv&quot;</span>)</span>
+<span id="cb2-3"><a href="making-datasets-comparable.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="making-datasets-comparable.html#cb2-4" tabindex="-1"></a><span class="co"># add eBird species code to the point-count data for comparison with acoustic data later on</span></span>
+<span id="cb2-5"><a href="making-datasets-comparable.html#cb2-5" tabindex="-1"></a>species_codes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-annotation-codes.csv&quot;</span>)</span>
+<span id="cb2-6"><a href="making-datasets-comparable.html#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="making-datasets-comparable.html#cb2-7" tabindex="-1"></a><span class="co"># for the sake of comparability, some issues were fixed in the point-count dataset</span></span>
+<span id="cb2-8"><a href="making-datasets-comparable.html#cb2-8" tabindex="-1"></a><span class="co"># please note that these issues were fixed using the .csv file and not through R</span></span>
+<span id="cb2-9"><a href="making-datasets-comparable.html#cb2-9" tabindex="-1"></a><span class="co"># the following issues were fixed: </span></span>
+<span id="cb2-10"><a href="making-datasets-comparable.html#cb2-10" tabindex="-1"></a><span class="co"># leading spaces were removed from the common_name</span></span>
+<span id="cb2-11"><a href="making-datasets-comparable.html#cb2-11" tabindex="-1"></a><span class="co"># species that start with the common_name &#39;Grey&#39; were changed to &#39;Gray&#39;</span></span>
+<span id="cb2-12"><a href="making-datasets-comparable.html#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="making-datasets-comparable.html#cb2-13" tabindex="-1"></a><span class="co"># merge with point_count data</span></span>
+<span id="cb2-14"><a href="making-datasets-comparable.html#cb2-14" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(point_counts, species_codes, <span class="at">by =</span> <span class="st">&quot;common_name&quot;</span>)</span>
+<span id="cb2-15"><a href="making-datasets-comparable.html#cb2-15" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="making-datasets-comparable.html#cb2-16" tabindex="-1"></a><span class="co"># removing all mammal species and unidentified bird species</span></span>
+<span id="cb2-17"><a href="making-datasets-comparable.html#cb2-17" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="making-datasets-comparable.html#cb2-18" tabindex="-1"></a>  <span class="fu">filter</span>(bird_mammal <span class="sc">==</span> <span class="st">&quot;Bird&quot;</span>) </span></code></pre></div>
 </div>
 <div id="loading-the-acoustic-data" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Loading the acoustic data<a href="making-datasets-comparable.html#loading-the-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="making-datasets-comparable.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The acoustic data consists of annotations of 10-s chunks of audio files across summer and winter months. We will load both these annotation sets and process them further to ensure that it is comparable to the point count dataset</span></span>
-<span id="cb3-2"><a href="making-datasets-comparable.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="making-datasets-comparable.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach the annotation data for summer and winter</span></span>
-<span id="cb3-4"><a href="making-datasets-comparable.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The two .csvs below are not uploaded to GitHub and can be provided upon request</span></span>
-<span id="cb3-5"><a href="making-datasets-comparable.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Please write to Vijay Ramesh if you would like to access the raw data - vr292@cornell.edu)</span></span>
-<span id="cb3-6"><a href="making-datasets-comparable.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="making-datasets-comparable.html#cb3-7" aria-hidden="true" tabindex="-1"></a>summer_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/summer-dawn-annotations.csv&quot;</span>)</span>
-<span id="cb3-8"><a href="making-datasets-comparable.html#cb3-8" aria-hidden="true" tabindex="-1"></a>winter_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/winter-dawn-annotations.csv&quot;</span>)</span>
-<span id="cb3-9"><a href="making-datasets-comparable.html#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="making-datasets-comparable.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># combine the datasets to a single dataframe</span></span>
-<span id="cb3-11"><a href="making-datasets-comparable.html#cb3-11" aria-hidden="true" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(summer_data,winter_data)</span>
-<span id="cb3-12"><a href="making-datasets-comparable.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(acoustic_data)</span>
-<span id="cb3-13"><a href="making-datasets-comparable.html#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="making-datasets-comparable.html#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder columns to ensure the species codes appear one after another</span></span>
-<span id="cb3-15"><a href="making-datasets-comparable.html#cb3-15" aria-hidden="true" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-16"><a href="making-datasets-comparable.html#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="fu">c</span>(<span class="st">&quot;BFOW&quot;</span>,<span class="st">&quot;SBEO&quot;</span>, <span class="st">&quot;JUNI&quot;</span>, <span class="st">&quot;ASKO&quot;</span>, <span class="st">&quot;HSWO&quot;</span>,<span class="st">&quot;TBWA&quot;</span>),  <span class="at">.after =</span> <span class="st">&quot;CORO&quot;</span>) </span>
-<span id="cb3-17"><a href="making-datasets-comparable.html#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="making-datasets-comparable.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># split the filename column into 4 columns : Site, Date, Time and Splits  </span></span>
-<span id="cb3-19"><a href="making-datasets-comparable.html#cb3-19" aria-hidden="true" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(acoustic_data, <span class="at">col =</span> Filename, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;site&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;time&quot;</span>, <span class="st">&quot;splits&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<p>The acoustic data consists of annotations of 10-s chunks of audio files across summer and winter months. We will load both these annotation sets and process them further to ensure that it is comparable to the point count dataset.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="making-datasets-comparable.html#cb3-1" tabindex="-1"></a><span class="co"># Attach the annotation data for summer and winter</span></span>
+<span id="cb3-2"><a href="making-datasets-comparable.html#cb3-2" tabindex="-1"></a><span class="co"># These two .csvs below are not uploaded to GitHub and can be provided upon request</span></span>
+<span id="cb3-3"><a href="making-datasets-comparable.html#cb3-3" tabindex="-1"></a><span class="co"># Please write to Vijay Ramesh if you would like to access the raw data - vr292@cornell.edu)</span></span>
+<span id="cb3-4"><a href="making-datasets-comparable.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="making-datasets-comparable.html#cb3-5" tabindex="-1"></a>summer_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/summer-dawn-annotations.csv&quot;</span>)</span>
+<span id="cb3-6"><a href="making-datasets-comparable.html#cb3-6" tabindex="-1"></a>winter_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/winter-dawn-annotations.csv&quot;</span>)</span>
+<span id="cb3-7"><a href="making-datasets-comparable.html#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="making-datasets-comparable.html#cb3-8" tabindex="-1"></a><span class="co"># combine the datasets to a single dataframe</span></span>
+<span id="cb3-9"><a href="making-datasets-comparable.html#cb3-9" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(summer_data,winter_data)</span>
+<span id="cb3-10"><a href="making-datasets-comparable.html#cb3-10" tabindex="-1"></a><span class="fu">names</span>(acoustic_data)</span>
+<span id="cb3-11"><a href="making-datasets-comparable.html#cb3-11" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="making-datasets-comparable.html#cb3-12" tabindex="-1"></a><span class="co"># reorder columns to ensure the species codes appear one after another</span></span>
+<span id="cb3-13"><a href="making-datasets-comparable.html#cb3-13" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="making-datasets-comparable.html#cb3-14" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="fu">c</span>(<span class="st">&quot;BFOW&quot;</span>,<span class="st">&quot;SBEO&quot;</span>, <span class="st">&quot;JUNI&quot;</span>, <span class="st">&quot;ASKO&quot;</span>, <span class="st">&quot;HSWO&quot;</span>,<span class="st">&quot;TBWA&quot;</span>),  <span class="at">.after =</span> <span class="st">&quot;CORO&quot;</span>) </span>
+<span id="cb3-15"><a href="making-datasets-comparable.html#cb3-15" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="making-datasets-comparable.html#cb3-16" tabindex="-1"></a><span class="co"># split the filename column into 4 columns : Site, Date, Time and Splits  </span></span>
+<span id="cb3-17"><a href="making-datasets-comparable.html#cb3-17" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(acoustic_data, <span class="at">col =</span> Filename, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;site&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;time&quot;</span>, <span class="st">&quot;splits&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
 </div>
 <div id="subset-acoustic-data-and-point-count-data" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Subset acoustic data and point count data<a href="making-datasets-comparable.html#subset-acoustic-data-and-point-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To ensure that the datasets are comparable, we carry out the following:<br />
-a) Subset only data from those sites for which both point count data and acoustic data was collected.<br />
-b) Similar numbers of visits to sites (for point count data and acoustic data) - in other words, if 6 point counts were carried out at a site, we want to ensure that we have a minimum of 6 acoustic ‘visits’ to the same site.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="making-datasets-comparable.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load list of sites</span></span>
-<span id="cb4-2"><a href="making-datasets-comparable.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a subset of sites that were included in the Hariharan and Raman (2021) study were included in the Ramesh et al. (2023) study due to logistical constraints of placing audio recorders</span></span>
-<span id="cb4-3"><a href="making-datasets-comparable.html#cb4-3" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/list-of-sites.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="making-datasets-comparable.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site_id <span class="sc">!=</span> <span class="st">&quot;OLCAP5B&quot;</span>)</span>
-<span id="cb4-5"><a href="making-datasets-comparable.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="making-datasets-comparable.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># convert date column to YMD format using lubridate::ymd()</span></span>
-<span id="cb4-7"><a href="making-datasets-comparable.html#cb4-7" aria-hidden="true" tabindex="-1"></a>point_counts<span class="sc">$</span>date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(point_counts<span class="sc">$</span>date)</span>
-<span id="cb4-8"><a href="making-datasets-comparable.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="making-datasets-comparable.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># subset point count data to only include the above list of sites</span></span>
-<span id="cb4-10"><a href="making-datasets-comparable.html#cb4-10" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="making-datasets-comparable.html#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">str_replace_all</span>(site_id, <span class="st">&quot;_&quot;</span>, <span class="st">&quot;&quot;</span>)) </span>
-<span id="cb4-12"><a href="making-datasets-comparable.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="making-datasets-comparable.html#cb4-13" aria-hidden="true" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(sites[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)], </span>
-<span id="cb4-14"><a href="making-datasets-comparable.html#cb4-14" aria-hidden="true" tabindex="-1"></a>                   point_counts, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;site_id&quot;</span><span class="ot">=</span><span class="st">&quot;site_id&quot;</span>))</span>
-<span id="cb4-15"><a href="making-datasets-comparable.html#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="making-datasets-comparable.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># In the acoustic study, a maximum of six visits were made to each site. To ensure that the datasets are comparable, we will choose a maximum of six visits to each site from the point count study as well</span></span>
-<span id="cb4-17"><a href="making-datasets-comparable.html#cb4-17" aria-hidden="true" tabindex="-1"></a>nSitesDays <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
-<span id="cb4-18"><a href="making-datasets-comparable.html#cb4-18" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(site_id, date) <span class="sc">%&gt;%</span></span>
-<span id="cb4-19"><a href="making-datasets-comparable.html#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(site_id) <span class="sc">%&gt;%</span> <span class="fu">count</span>(site_id)</span>
-<span id="cb4-20"><a href="making-datasets-comparable.html#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="making-datasets-comparable.html#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># we observed that some sites had as many as 7 visits. We will subset these to choose only six visits</span></span>
-<span id="cb4-22"><a href="making-datasets-comparable.html#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="making-datasets-comparable.html#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># unique date site combination to give you a sense of sampling</span></span>
-<span id="cb4-24"><a href="making-datasets-comparable.html#cb4-24" aria-hidden="true" tabindex="-1"></a>uniqueSiteDate <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
-<span id="cb4-25"><a href="making-datasets-comparable.html#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
-<span id="cb4-26"><a href="making-datasets-comparable.html#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(date)</span>
-<span id="cb4-27"><a href="making-datasets-comparable.html#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="making-datasets-comparable.html#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># the below lines of code were written following a query on stackOverflow to select six non-consecutive visits to any site</span></span>
-<span id="cb4-29"><a href="making-datasets-comparable.html#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Link: https://stackoverflow.com/questions/67212152/select-non-consecutive-dates-for-every-grouped-element-in-r</span></span>
-<span id="cb4-30"><a href="making-datasets-comparable.html#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="making-datasets-comparable.html#cb4-31" aria-hidden="true" tabindex="-1"></a>nonConVisits <span class="ot">&lt;-</span> uniqueSiteDate <span class="sc">%&gt;%</span> </span>
-<span id="cb4-32"><a href="making-datasets-comparable.html#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb4-33"><a href="making-datasets-comparable.html#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_split</span>(site_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-34"><a href="making-datasets-comparable.html#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(., <span class="sc">~</span> .x <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-35"><a href="making-datasets-comparable.html#cb4-35" aria-hidden="true" tabindex="-1"></a>           <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb4-36"><a href="making-datasets-comparable.html#cb4-36" aria-hidden="true" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-37"><a href="making-datasets-comparable.html#cb4-37" aria-hidden="true" tabindex="-1"></a>           <span class="fu">complete</span>(<span class="at">date =</span> <span class="fu">seq.Date</span>(<span class="fu">first</span>(date), <span class="fu">last</span>(date), <span class="at">by =</span> <span class="st">&#39;days&#39;</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb4-38"><a href="making-datasets-comparable.html#cb4-38" aria-hidden="true" tabindex="-1"></a>           <span class="fu">group_by</span>(<span class="at">n =</span> <span class="fu">cumsum</span>(<span class="fu">is.na</span>(n))) <span class="sc">%&gt;%</span></span>
-<span id="cb4-39"><a href="making-datasets-comparable.html#cb4-39" aria-hidden="true" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(site_id)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-40"><a href="making-datasets-comparable.html#cb4-40" aria-hidden="true" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-41"><a href="making-datasets-comparable.html#cb4-41" aria-hidden="true" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-42"><a href="making-datasets-comparable.html#cb4-42" aria-hidden="true" tabindex="-1"></a>           <span class="fu">sample_n</span>(<span class="fu">min</span>(<span class="fu">n</span>(), <span class="dv">6</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb4-43"><a href="making-datasets-comparable.html#cb4-43" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n)</span>
-<span id="cb4-44"><a href="making-datasets-comparable.html#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="making-datasets-comparable.html#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># left-join with the original dataframe to subset the data</span></span>
-<span id="cb4-46"><a href="making-datasets-comparable.html#cb4-46" aria-hidden="true" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(nonConVisits, point_counts)</span>
-<span id="cb4-47"><a href="making-datasets-comparable.html#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-48"><a href="making-datasets-comparable.html#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co"># subset acoustic data (similar to point count data)</span></span>
-<span id="cb4-49"><a href="making-datasets-comparable.html#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="making-datasets-comparable.html#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="co"># first we will remove OLCAP5B - a site for which only 3 visits were made in summer and not sampled as a result of logistic reasons in winter</span></span>
-<span id="cb4-51"><a href="making-datasets-comparable.html#cb4-51" aria-hidden="true" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-52"><a href="making-datasets-comparable.html#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(site, <span class="st">&#39;OLCAP5B&#39;</span>))</span>
-<span id="cb4-53"><a href="making-datasets-comparable.html#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="making-datasets-comparable.html#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert date column to YMD format using lubridate::ymd()</span></span>
-<span id="cb4-55"><a href="making-datasets-comparable.html#cb4-55" aria-hidden="true" tabindex="-1"></a>acoustic_data<span class="sc">$</span>date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(acoustic_data<span class="sc">$</span>date)</span>
-<span id="cb4-56"><a href="making-datasets-comparable.html#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-57"><a href="making-datasets-comparable.html#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co"># number of visits to a particular site</span></span>
-<span id="cb4-58"><a href="making-datasets-comparable.html#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># only INBS04U has 5 visits because another visit was not possible due to rain</span></span>
-<span id="cb4-59"><a href="making-datasets-comparable.html#cb4-59" aria-hidden="true" tabindex="-1"></a>nSitesDays <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-60"><a href="making-datasets-comparable.html#cb4-60" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(site, date)<span class="sc">%&gt;%</span></span>
-<span id="cb4-61"><a href="making-datasets-comparable.html#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(site) <span class="sc">%&gt;%</span> <span class="fu">count</span>(site)</span>
-<span id="cb4-62"><a href="making-datasets-comparable.html#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-63"><a href="making-datasets-comparable.html#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co"># unique date site combination to give you a sense of sampling</span></span>
-<span id="cb4-64"><a href="making-datasets-comparable.html#cb4-64" aria-hidden="true" tabindex="-1"></a>uniqueSiteDate <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-65"><a href="making-datasets-comparable.html#cb4-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site) <span class="sc">%&gt;%</span></span>
-<span id="cb4-66"><a href="making-datasets-comparable.html#cb4-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(date)</span>
-<span id="cb4-67"><a href="making-datasets-comparable.html#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-68"><a href="making-datasets-comparable.html#cb4-68" aria-hidden="true" tabindex="-1"></a>nonConVisits <span class="ot">&lt;-</span> uniqueSiteDate <span class="sc">%&gt;%</span> </span>
-<span id="cb4-69"><a href="making-datasets-comparable.html#cb4-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb4-70"><a href="making-datasets-comparable.html#cb4-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_split</span>(site) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-71"><a href="making-datasets-comparable.html#cb4-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(., <span class="sc">~</span> .x <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-72"><a href="making-datasets-comparable.html#cb4-72" aria-hidden="true" tabindex="-1"></a>           <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb4-73"><a href="making-datasets-comparable.html#cb4-73" aria-hidden="true" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-74"><a href="making-datasets-comparable.html#cb4-74" aria-hidden="true" tabindex="-1"></a>           <span class="fu">complete</span>(<span class="at">date =</span> <span class="fu">seq.Date</span>(<span class="fu">first</span>(date), <span class="fu">last</span>(date), <span class="at">by =</span> <span class="st">&#39;days&#39;</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb4-75"><a href="making-datasets-comparable.html#cb4-75" aria-hidden="true" tabindex="-1"></a>           <span class="fu">group_by</span>(<span class="at">n =</span> <span class="fu">cumsum</span>(<span class="fu">is.na</span>(n))) <span class="sc">%&gt;%</span></span>
-<span id="cb4-76"><a href="making-datasets-comparable.html#cb4-76" aria-hidden="true" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(site)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-77"><a href="making-datasets-comparable.html#cb4-77" aria-hidden="true" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-78"><a href="making-datasets-comparable.html#cb4-78" aria-hidden="true" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-79"><a href="making-datasets-comparable.html#cb4-79" aria-hidden="true" tabindex="-1"></a>           <span class="fu">sample_n</span>(<span class="fu">min</span>(<span class="fu">n</span>(), <span class="dv">6</span>))</span>
-<span id="cb4-80"><a href="making-datasets-comparable.html#cb4-80" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-81"><a href="making-datasets-comparable.html#cb4-81" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n)</span>
-<span id="cb4-82"><a href="making-datasets-comparable.html#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="making-datasets-comparable.html#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="co"># left-join with the original dataframe to subset the data for analysis</span></span>
-<span id="cb4-84"><a href="making-datasets-comparable.html#cb4-84" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(nonConVisits,acoustic_data)</span></code></pre></div>
+<p>To ensure that the datasets are comparable, we carry out the following:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Subset only data from those sites for which both point count data and acoustic data was collected.</p></li>
+<li><p>Ensure that the dates of visits (for both point count data and acoustic data) are coming from the same season/months.</p></li>
+</ol>
+<p>It is important to clarify that while the point count data and acoustic data were collected across similar months (to match seasons), majority of the point count data were collected between November 2019 and March 2020, while the majority of the acoustic data were collected in March 2020, a few days in May 2020 (covid-19 related delays) and between December 2020 and January 2021.</p>
+<p>To ensure that the point count data and acoustic data are comparable, we exclude data in May 2020 (from the acoustic dataset) as bird communities are often depauperate (majority of the migratory bird species have departed to their breeding grounds).</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Similar levels of effort across sites (for point count data and acoustic data). Here, we define effort as the total number of minutes a site was surveyed. The duration of each point count at a site was 15 minutes long while the duration of each acoustic survey at a site was 16 minutes in duration. For the sake of comparability, we can include upto 6 point counts to each site, while including 5 acoustic ‘visits’ to each site. This results in a total of 90 minutes of effort at each site for point count data, while resulting in a total of 80 minutes of effort at each site for the acoustic data.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="making-datasets-comparable.html#cb4-1" tabindex="-1"></a><span class="co"># a subset of sites that were included in the Hariharan and Raman (2021) study were included in the Ramesh et al. (2023) study due to logistical constraints of placing audio recorders</span></span>
+<span id="cb4-2"><a href="making-datasets-comparable.html#cb4-2" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/list-of-sites.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="making-datasets-comparable.html#cb4-3" tabindex="-1"></a>  <span class="fu">filter</span>(site_id <span class="sc">!=</span> <span class="st">&quot;OLCAP5B&quot;</span>)</span>
+<span id="cb4-4"><a href="making-datasets-comparable.html#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="making-datasets-comparable.html#cb4-5" tabindex="-1"></a><span class="co"># convert date column to YMD format using lubridate::ymd()</span></span>
+<span id="cb4-6"><a href="making-datasets-comparable.html#cb4-6" tabindex="-1"></a>point_counts<span class="sc">$</span>date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(point_counts<span class="sc">$</span>date)</span>
+<span id="cb4-7"><a href="making-datasets-comparable.html#cb4-7" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="making-datasets-comparable.html#cb4-8" tabindex="-1"></a><span class="co"># subset point count data to only include the above list of sites</span></span>
+<span id="cb4-9"><a href="making-datasets-comparable.html#cb4-9" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="making-datasets-comparable.html#cb4-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_id =</span> <span class="fu">str_replace_all</span>(site_id, <span class="st">&quot;_&quot;</span>, <span class="st">&quot;&quot;</span>)) </span>
+<span id="cb4-11"><a href="making-datasets-comparable.html#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="making-datasets-comparable.html#cb4-12" tabindex="-1"></a>point_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(sites[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)], </span>
+<span id="cb4-13"><a href="making-datasets-comparable.html#cb4-13" tabindex="-1"></a>                   point_counts, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;site_id&quot;</span><span class="ot">=</span><span class="st">&quot;site_id&quot;</span>))</span>
+<span id="cb4-14"><a href="making-datasets-comparable.html#cb4-14" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="making-datasets-comparable.html#cb4-15" tabindex="-1"></a><span class="co"># To ensure that the datasets are comparable, we will choose a maximum of six visits to each site from the point count study (translating to an effort of 90 minutes per site)</span></span>
+<span id="cb4-16"><a href="making-datasets-comparable.html#cb4-16" tabindex="-1"></a>nSitesDays <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="making-datasets-comparable.html#cb4-17" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(site_id, date) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="making-datasets-comparable.html#cb4-18" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(site_id) <span class="sc">%&gt;%</span> <span class="fu">count</span>(site_id)</span>
+<span id="cb4-19"><a href="making-datasets-comparable.html#cb4-19" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="making-datasets-comparable.html#cb4-20" tabindex="-1"></a><span class="co"># we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above the code chunk comparable effort levels)</span></span>
+<span id="cb4-21"><a href="making-datasets-comparable.html#cb4-21" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="making-datasets-comparable.html#cb4-22" tabindex="-1"></a><span class="co"># unique date site combination to give you a sense of sampling</span></span>
+<span id="cb4-23"><a href="making-datasets-comparable.html#cb4-23" tabindex="-1"></a>uniqueSiteDate <span class="ot">&lt;-</span> point_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="making-datasets-comparable.html#cb4-24" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
+<span id="cb4-25"><a href="making-datasets-comparable.html#cb4-25" tabindex="-1"></a>  <span class="fu">distinct</span>(date)</span>
+<span id="cb4-26"><a href="making-datasets-comparable.html#cb4-26" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="making-datasets-comparable.html#cb4-27" tabindex="-1"></a><span class="co"># the below lines of code were written following a query on stackOverflow to select six non-consecutive visits to any site</span></span>
+<span id="cb4-28"><a href="making-datasets-comparable.html#cb4-28" tabindex="-1"></a><span class="co"># Link: https://stackoverflow.com/questions/67212152/select-non-consecutive-dates-for-every-grouped-element-in-r</span></span>
+<span id="cb4-29"><a href="making-datasets-comparable.html#cb4-29" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="making-datasets-comparable.html#cb4-30" tabindex="-1"></a>nonConVisits <span class="ot">&lt;-</span> uniqueSiteDate <span class="sc">%&gt;%</span> </span>
+<span id="cb4-31"><a href="making-datasets-comparable.html#cb4-31" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb4-32"><a href="making-datasets-comparable.html#cb4-32" tabindex="-1"></a>  <span class="fu">group_split</span>(site_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-33"><a href="making-datasets-comparable.html#cb4-33" tabindex="-1"></a>  <span class="fu">map_df</span>(., <span class="sc">~</span> .x <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-34"><a href="making-datasets-comparable.html#cb4-34" tabindex="-1"></a>           <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb4-35"><a href="making-datasets-comparable.html#cb4-35" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-36"><a href="making-datasets-comparable.html#cb4-36" tabindex="-1"></a>           <span class="fu">complete</span>(<span class="at">date =</span> <span class="fu">seq.Date</span>(<span class="fu">first</span>(date), <span class="fu">last</span>(date), </span>
+<span id="cb4-37"><a href="making-datasets-comparable.html#cb4-37" tabindex="-1"></a>                                    <span class="at">by =</span> <span class="st">&#39;days&#39;</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb4-38"><a href="making-datasets-comparable.html#cb4-38" tabindex="-1"></a>           <span class="fu">group_by</span>(<span class="at">n =</span> <span class="fu">cumsum</span>(<span class="fu">is.na</span>(n))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-39"><a href="making-datasets-comparable.html#cb4-39" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(site_id)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-40"><a href="making-datasets-comparable.html#cb4-40" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-41"><a href="making-datasets-comparable.html#cb4-41" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-42"><a href="making-datasets-comparable.html#cb4-42" tabindex="-1"></a>           <span class="fu">sample_n</span>(<span class="fu">min</span>(<span class="fu">n</span>(), <span class="dv">6</span>))) <span class="sc">%&gt;%</span> <span class="co"># change n here for nvisits</span></span>
+<span id="cb4-43"><a href="making-datasets-comparable.html#cb4-43" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n)</span>
+<span id="cb4-44"><a href="making-datasets-comparable.html#cb4-44" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="making-datasets-comparable.html#cb4-45" tabindex="-1"></a><span class="co"># left-join with the original dataframe to subset the data</span></span>
+<span id="cb4-46"><a href="making-datasets-comparable.html#cb4-46" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(nonConVisits, point_counts)</span>
+<span id="cb4-47"><a href="making-datasets-comparable.html#cb4-47" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="making-datasets-comparable.html#cb4-48" tabindex="-1"></a><span class="co"># subset acoustic data (similar to point count data)</span></span>
+<span id="cb4-49"><a href="making-datasets-comparable.html#cb4-49" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="making-datasets-comparable.html#cb4-50" tabindex="-1"></a><span class="co"># first we will remove OLCAP5B - a site for which only 3 visits were made in summer and not sampled as a result of logistic reasons in winter</span></span>
+<span id="cb4-51"><a href="making-datasets-comparable.html#cb4-51" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-52"><a href="making-datasets-comparable.html#cb4-52" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(site, <span class="st">&#39;OLCAP5B&#39;</span>))</span>
+<span id="cb4-53"><a href="making-datasets-comparable.html#cb4-53" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="making-datasets-comparable.html#cb4-54" tabindex="-1"></a><span class="co"># Convert date column to YMD format using lubridate::ymd()</span></span>
+<span id="cb4-55"><a href="making-datasets-comparable.html#cb4-55" tabindex="-1"></a>acoustic_data<span class="sc">$</span>date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(acoustic_data<span class="sc">$</span>date)</span>
+<span id="cb4-56"><a href="making-datasets-comparable.html#cb4-56" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="making-datasets-comparable.html#cb4-57" tabindex="-1"></a><span class="co"># exclude data from May 2020 for the acoustic dataset</span></span>
+<span id="cb4-58"><a href="making-datasets-comparable.html#cb4-58" tabindex="-1"></a>acoustic_data <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-59"><a href="making-datasets-comparable.html#cb4-59" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(date <span class="sc">&gt;=</span> <span class="st">&quot;2020-05-01&quot;</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> <span class="st">&quot;2020-05-10&quot;</span>))</span>
+<span id="cb4-60"><a href="making-datasets-comparable.html#cb4-60" tabindex="-1"></a>  </span>
+<span id="cb4-61"><a href="making-datasets-comparable.html#cb4-61" tabindex="-1"></a><span class="co"># number of visits to a particular site</span></span>
+<span id="cb4-62"><a href="making-datasets-comparable.html#cb4-62" tabindex="-1"></a><span class="co"># some sites have as many as 7 visits, but many visits have only 5 visits and only INBS04U has 4 visits </span></span>
+<span id="cb4-63"><a href="making-datasets-comparable.html#cb4-63" tabindex="-1"></a><span class="co"># for the sake of comparability with point count data, we choose 5 visits across sites translating to effort of 80 min per site</span></span>
+<span id="cb4-64"><a href="making-datasets-comparable.html#cb4-64" tabindex="-1"></a>nSitesDays <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-65"><a href="making-datasets-comparable.html#cb4-65" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(site, date)<span class="sc">%&gt;%</span></span>
+<span id="cb4-66"><a href="making-datasets-comparable.html#cb4-66" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(site) <span class="sc">%&gt;%</span> <span class="fu">count</span>(site)</span>
+<span id="cb4-67"><a href="making-datasets-comparable.html#cb4-67" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="making-datasets-comparable.html#cb4-68" tabindex="-1"></a><span class="co"># unique date site combination to give you a sense of sampling</span></span>
+<span id="cb4-69"><a href="making-datasets-comparable.html#cb4-69" tabindex="-1"></a>uniqueSiteDate <span class="ot">&lt;-</span> acoustic_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-70"><a href="making-datasets-comparable.html#cb4-70" tabindex="-1"></a>  <span class="fu">group_by</span>(site) <span class="sc">%&gt;%</span></span>
+<span id="cb4-71"><a href="making-datasets-comparable.html#cb4-71" tabindex="-1"></a>  <span class="fu">distinct</span>(date)</span>
+<span id="cb4-72"><a href="making-datasets-comparable.html#cb4-72" tabindex="-1"></a></span>
+<span id="cb4-73"><a href="making-datasets-comparable.html#cb4-73" tabindex="-1"></a><span class="co"># note: We could not choose non-consecutive days for the acoustic data due to heavy rain and we could only sample consecutive days for some sites</span></span>
+<span id="cb4-74"><a href="making-datasets-comparable.html#cb4-74" tabindex="-1"></a><span class="co"># for the acoustic data, we choose 5 random visits per site</span></span>
+<span id="cb4-75"><a href="making-datasets-comparable.html#cb4-75" tabindex="-1"></a>randVisits <span class="ot">&lt;-</span> uniqueSiteDate <span class="sc">%&gt;%</span> </span>
+<span id="cb4-76"><a href="making-datasets-comparable.html#cb4-76" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb4-77"><a href="making-datasets-comparable.html#cb4-77" tabindex="-1"></a>  <span class="fu">group_split</span>(site) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-78"><a href="making-datasets-comparable.html#cb4-78" tabindex="-1"></a>  <span class="fu">map_df</span>(., <span class="sc">~</span> .x <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-79"><a href="making-datasets-comparable.html#cb4-79" tabindex="-1"></a>           <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb4-80"><a href="making-datasets-comparable.html#cb4-80" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-81"><a href="making-datasets-comparable.html#cb4-81" tabindex="-1"></a>           <span class="fu">complete</span>(<span class="at">date =</span> <span class="fu">seq.Date</span>(<span class="fu">first</span>(date), <span class="fu">last</span>(date), </span>
+<span id="cb4-82"><a href="making-datasets-comparable.html#cb4-82" tabindex="-1"></a>                                    <span class="at">by =</span> <span class="st">&#39;days&#39;</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb4-83"><a href="making-datasets-comparable.html#cb4-83" tabindex="-1"></a>           <span class="fu">group_by</span>(<span class="at">n =</span> <span class="fu">cumsum</span>(<span class="fu">is.na</span>(n))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-84"><a href="making-datasets-comparable.html#cb4-84" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(site)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-85"><a href="making-datasets-comparable.html#cb4-85" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-86"><a href="making-datasets-comparable.html#cb4-86" tabindex="-1"></a>           <span class="fu">sample_n</span>(<span class="fu">min</span>(<span class="fu">n</span>(), <span class="dv">5</span>)) <span class="co"># change n here for number of visits</span></span>
+<span id="cb4-87"><a href="making-datasets-comparable.html#cb4-87" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-88"><a href="making-datasets-comparable.html#cb4-88" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n)</span>
+<span id="cb4-89"><a href="making-datasets-comparable.html#cb4-89" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="making-datasets-comparable.html#cb4-90" tabindex="-1"></a><span class="co"># left-join with the original dataframe to subset the data for analysis</span></span>
+<span id="cb4-91"><a href="making-datasets-comparable.html#cb4-91" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(randVisits, acoustic_data)</span></code></pre></div>
 </div>
 <div id="evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Evaluating both subsets of data before combining them into a single dataframe for further analysis<a href="making-datasets-comparable.html#evaluating-both-subsets-of-data-before-combining-them-into-a-single-dataframe-for-further-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For the point count dataset, we shall remove the extra columns. For the acoustic dataset, we will dplyr::pivot_longer() and add the same columns as point count dataset before binding rows to create a single dataframe.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="making-datasets-comparable.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove unnecessary columns from the point-count dataset</span></span>
-<span id="cb5-2"><a href="making-datasets-comparable.html#cb5-2" aria-hidden="true" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> pc_subset[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">20</span>)]</span>
-<span id="cb5-3"><a href="making-datasets-comparable.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="making-datasets-comparable.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add a time of day column to the point-count dataset for future calculations and a data_type column</span></span>
-<span id="cb5-5"><a href="making-datasets-comparable.html#cb5-5" aria-hidden="true" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> pc_subset <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="making-datasets-comparable.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_of_day =</span> </span>
-<span id="cb5-7"><a href="making-datasets-comparable.html#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(start_time <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="dv">7</span> <span class="sc">~</span> <span class="st">&quot;6AM to 7AM&quot;</span>,</span>
-<span id="cb5-8"><a href="making-datasets-comparable.html#cb5-8" aria-hidden="true" tabindex="-1"></a>                start_time <span class="sc">&gt;=</span> <span class="dv">7</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">&quot;7AM to 8AM&quot;</span>,</span>
-<span id="cb5-9"><a href="making-datasets-comparable.html#cb5-9" aria-hidden="true" tabindex="-1"></a>                start_time <span class="sc">&gt;=</span> <span class="dv">8</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="dv">9</span> <span class="sc">~</span> <span class="st">&quot;8AM to 9AM&quot;</span>,</span>
-<span id="cb5-10"><a href="making-datasets-comparable.html#cb5-10" aria-hidden="true" tabindex="-1"></a>                start_time <span class="sc">&gt;=</span> <span class="dv">9</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span><span class="st">&quot;9AM to 10AM&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>)</span>
-<span id="cb5-11"><a href="making-datasets-comparable.html#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="making-datasets-comparable.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># rename acoustic data columns</span></span>
-<span id="cb5-13"><a href="making-datasets-comparable.html#cb5-13" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">rename</span>(aru_subset, <span class="at">site_id =</span> site)</span>
-<span id="cb5-14"><a href="making-datasets-comparable.html#cb5-14" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">rename</span>(aru_subset, <span class="at">restoration_type =</span> Restoration.Type..Benchmark.Active.Passive.)</span>
-<span id="cb5-15"><a href="making-datasets-comparable.html#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="making-datasets-comparable.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot_longer the acoustic data and remove zero values</span></span>
-<span id="cb5-17"><a href="making-datasets-comparable.html#cb5-17" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> aru_subset <span class="sc">%&gt;%</span></span>
-<span id="cb5-18"><a href="making-datasets-comparable.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(site_id, date, time, restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb5-19"><a href="making-datasets-comparable.html#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>() <span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-20"><a href="making-datasets-comparable.html#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_at</span>(<span class="at">.vars =</span> <span class="fu">vars</span>(<span class="fu">c</span>(<span class="st">&quot;INPE&quot;</span><span class="sc">:</span><span class="st">&quot;TBWA&quot;</span>)),<span class="at">.funs =</span> sum) <span class="sc">%&gt;%</span></span>
-<span id="cb5-21"><a href="making-datasets-comparable.html#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span>INPE<span class="sc">:</span>TBWA, <span class="at">names_to =</span> <span class="st">&quot;eBird_codes&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;number&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-22"><a href="making-datasets-comparable.html#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(number <span class="sc">!=</span> <span class="dv">0</span>) <span class="co"># one way to remove zeros</span></span>
-<span id="cb5-23"><a href="making-datasets-comparable.html#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="making-datasets-comparable.html#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># add a start_time column based on the time the acoustic visit was started at that site-day combination</span></span>
-<span id="cb5-25"><a href="making-datasets-comparable.html#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># for example, if HP36P1B&#39;s first datapoint/visit came from 091000, then the start_time for all the 16-min would have the value 091000</span></span>
-<span id="cb5-26"><a href="making-datasets-comparable.html#cb5-26" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> aru_subset <span class="sc">%&gt;%</span></span>
-<span id="cb5-27"><a href="making-datasets-comparable.html#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id,date) <span class="sc">%&gt;%</span></span>
-<span id="cb5-28"><a href="making-datasets-comparable.html#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">start_time =</span> <span class="fu">min</span>(time)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-29"><a href="making-datasets-comparable.html#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb5-30"><a href="making-datasets-comparable.html#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="making-datasets-comparable.html#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># add time_of_day column to indicate time-windows for when the acoustic-visit was started and add a data_type column</span></span>
-<span id="cb5-32"><a href="making-datasets-comparable.html#cb5-32" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> aru_subset <span class="sc">%&gt;%</span></span>
-<span id="cb5-33"><a href="making-datasets-comparable.html#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_of_day =</span> </span>
-<span id="cb5-34"><a href="making-datasets-comparable.html#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">case_when</span>(start_time <span class="sc">&gt;=</span> <span class="st">&quot;060000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="st">&quot;070000&quot;</span> </span>
-<span id="cb5-35"><a href="making-datasets-comparable.html#cb5-35" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;6AM to 7AM&quot;</span>,</span>
-<span id="cb5-36"><a href="making-datasets-comparable.html#cb5-36" aria-hidden="true" tabindex="-1"></a>              start_time <span class="sc">&gt;=</span> <span class="st">&quot;070000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="st">&quot;080000&quot;</span> </span>
-<span id="cb5-37"><a href="making-datasets-comparable.html#cb5-37" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;7AM to 8AM&quot;</span>,</span>
-<span id="cb5-38"><a href="making-datasets-comparable.html#cb5-38" aria-hidden="true" tabindex="-1"></a>              start_time <span class="sc">&gt;=</span> <span class="st">&quot;080000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="st">&quot;090000&quot;</span> </span>
-<span id="cb5-39"><a href="making-datasets-comparable.html#cb5-39" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;8AM to 9AM&quot;</span>,</span>
-<span id="cb5-40"><a href="making-datasets-comparable.html#cb5-40" aria-hidden="true" tabindex="-1"></a>              start_time <span class="sc">&gt;=</span> <span class="st">&quot;090000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;=</span> <span class="st">&quot;100000&quot;</span> </span>
-<span id="cb5-41"><a href="making-datasets-comparable.html#cb5-41" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;9AM to 10AM&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-42"><a href="making-datasets-comparable.html#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>)</span>
-<span id="cb5-43"><a href="making-datasets-comparable.html#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="making-datasets-comparable.html#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co"># rename columns and add additional columns to ensure it is comparable to the point count dataset</span></span>
-<span id="cb5-45"><a href="making-datasets-comparable.html#cb5-45" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">rename</span>(aru_subset, <span class="at">time_segment =</span> time)</span>
-<span id="cb5-46"><a href="making-datasets-comparable.html#cb5-46" aria-hidden="true" tabindex="-1"></a>aru_subset<span class="sc">$</span>HSF <span class="ot">&lt;-</span> <span class="st">&quot;H&quot;</span></span>
-<span id="cb5-47"><a href="making-datasets-comparable.html#cb5-47" aria-hidden="true" tabindex="-1"></a>aru_subset<span class="sc">$</span>distance <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb5-48"><a href="making-datasets-comparable.html#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-49"><a href="making-datasets-comparable.html#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="co"># add species scientific_name and common_name to the aru_subset data</span></span>
-<span id="cb5-50"><a href="making-datasets-comparable.html#cb5-50" aria-hidden="true" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(aru_subset, species_codes[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)],</span>
-<span id="cb5-51"><a href="making-datasets-comparable.html#cb5-51" aria-hidden="true" tabindex="-1"></a>                   <span class="at">by =</span> <span class="st">&quot;eBird_codes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="making-datasets-comparable.html#cb5-1" tabindex="-1"></a><span class="co"># remove unnecessary columns from the point-count dataset</span></span>
+<span id="cb5-2"><a href="making-datasets-comparable.html#cb5-2" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> pc_subset[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">20</span>)]</span>
+<span id="cb5-3"><a href="making-datasets-comparable.html#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="making-datasets-comparable.html#cb5-4" tabindex="-1"></a><span class="co"># add a time of day column to the point-count dataset for future calculations and a data_type column</span></span>
+<span id="cb5-5"><a href="making-datasets-comparable.html#cb5-5" tabindex="-1"></a>pc_subset <span class="ot">&lt;-</span> pc_subset <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="making-datasets-comparable.html#cb5-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_of_day =</span> </span>
+<span id="cb5-7"><a href="making-datasets-comparable.html#cb5-7" tabindex="-1"></a>      <span class="fu">case_when</span>(start_time <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="dv">7</span> <span class="sc">~</span> <span class="st">&quot;6AM to 7AM&quot;</span>,</span>
+<span id="cb5-8"><a href="making-datasets-comparable.html#cb5-8" tabindex="-1"></a>                start_time <span class="sc">&gt;=</span> <span class="dv">7</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">&quot;7AM to 8AM&quot;</span>,</span>
+<span id="cb5-9"><a href="making-datasets-comparable.html#cb5-9" tabindex="-1"></a>                start_time <span class="sc">&gt;=</span> <span class="dv">8</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="dv">9</span> <span class="sc">~</span> <span class="st">&quot;8AM to 9AM&quot;</span>,</span>
+<span id="cb5-10"><a href="making-datasets-comparable.html#cb5-10" tabindex="-1"></a>                start_time <span class="sc">&gt;=</span> <span class="dv">9</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span><span class="st">&quot;9AM to 10AM&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>)</span>
+<span id="cb5-11"><a href="making-datasets-comparable.html#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="making-datasets-comparable.html#cb5-12" tabindex="-1"></a><span class="co"># rename acoustic data columns</span></span>
+<span id="cb5-13"><a href="making-datasets-comparable.html#cb5-13" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">rename</span>(aru_subset, <span class="at">site_id =</span> site)</span>
+<span id="cb5-14"><a href="making-datasets-comparable.html#cb5-14" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">rename</span>(aru_subset, <span class="at">restoration_type =</span> Restoration.Type..Benchmark.Active.Passive.)</span>
+<span id="cb5-15"><a href="making-datasets-comparable.html#cb5-15" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="making-datasets-comparable.html#cb5-16" tabindex="-1"></a><span class="co"># pivot_longer the acoustic data and remove zero values</span></span>
+<span id="cb5-17"><a href="making-datasets-comparable.html#cb5-17" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> aru_subset <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="making-datasets-comparable.html#cb5-18" tabindex="-1"></a><span class="fu">group_by</span>(site_id, date, time, restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="making-datasets-comparable.html#cb5-19" tabindex="-1"></a>  <span class="fu">transform</span>() <span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="making-datasets-comparable.html#cb5-20" tabindex="-1"></a>  <span class="fu">summarise_at</span>(<span class="at">.vars =</span> <span class="fu">vars</span>(<span class="fu">c</span>(<span class="st">&quot;INPE&quot;</span><span class="sc">:</span><span class="st">&quot;TBWA&quot;</span>)),<span class="at">.funs =</span> sum) <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="making-datasets-comparable.html#cb5-21" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span>INPE<span class="sc">:</span>TBWA, <span class="at">names_to =</span> <span class="st">&quot;eBird_codes&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;number&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-22"><a href="making-datasets-comparable.html#cb5-22" tabindex="-1"></a>  <span class="fu">filter</span>(number <span class="sc">!=</span> <span class="dv">0</span>) <span class="co"># one way to remove zeros</span></span>
+<span id="cb5-23"><a href="making-datasets-comparable.html#cb5-23" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="making-datasets-comparable.html#cb5-24" tabindex="-1"></a><span class="co"># add a start_time column based on the time the acoustic visit was started at that site-day combination</span></span>
+<span id="cb5-25"><a href="making-datasets-comparable.html#cb5-25" tabindex="-1"></a><span class="co"># for example, if HP36P1B&#39;s first data point/visit came from 091000, then the start_time for all the 16-min would have the value 091000</span></span>
+<span id="cb5-26"><a href="making-datasets-comparable.html#cb5-26" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> aru_subset <span class="sc">%&gt;%</span></span>
+<span id="cb5-27"><a href="making-datasets-comparable.html#cb5-27" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id,date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-28"><a href="making-datasets-comparable.html#cb5-28" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">start_time =</span> <span class="fu">min</span>(time)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-29"><a href="making-datasets-comparable.html#cb5-29" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb5-30"><a href="making-datasets-comparable.html#cb5-30" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="making-datasets-comparable.html#cb5-31" tabindex="-1"></a><span class="co"># add time_of_day column to indicate time-windows for when the acoustic-visit was started and add a data_type column</span></span>
+<span id="cb5-32"><a href="making-datasets-comparable.html#cb5-32" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> aru_subset <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="making-datasets-comparable.html#cb5-33" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_of_day =</span> </span>
+<span id="cb5-34"><a href="making-datasets-comparable.html#cb5-34" tabindex="-1"></a>    <span class="fu">case_when</span>(start_time <span class="sc">&gt;=</span> <span class="st">&quot;060000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="st">&quot;070000&quot;</span> </span>
+<span id="cb5-35"><a href="making-datasets-comparable.html#cb5-35" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;6AM to 7AM&quot;</span>,</span>
+<span id="cb5-36"><a href="making-datasets-comparable.html#cb5-36" tabindex="-1"></a>              start_time <span class="sc">&gt;=</span> <span class="st">&quot;070000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="st">&quot;080000&quot;</span> </span>
+<span id="cb5-37"><a href="making-datasets-comparable.html#cb5-37" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;7AM to 8AM&quot;</span>,</span>
+<span id="cb5-38"><a href="making-datasets-comparable.html#cb5-38" tabindex="-1"></a>              start_time <span class="sc">&gt;=</span> <span class="st">&quot;080000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;</span> <span class="st">&quot;090000&quot;</span> </span>
+<span id="cb5-39"><a href="making-datasets-comparable.html#cb5-39" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;8AM to 9AM&quot;</span>,</span>
+<span id="cb5-40"><a href="making-datasets-comparable.html#cb5-40" tabindex="-1"></a>              start_time <span class="sc">&gt;=</span> <span class="st">&quot;090000&quot;</span> <span class="sc">&amp;</span> start_time <span class="sc">&lt;=</span> <span class="st">&quot;100000&quot;</span> </span>
+<span id="cb5-41"><a href="making-datasets-comparable.html#cb5-41" tabindex="-1"></a>              <span class="sc">~</span> <span class="st">&quot;9AM to 10AM&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-42"><a href="making-datasets-comparable.html#cb5-42" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>)</span>
+<span id="cb5-43"><a href="making-datasets-comparable.html#cb5-43" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="making-datasets-comparable.html#cb5-44" tabindex="-1"></a><span class="co"># rename columns and add additional columns to ensure it is comparable to the point count dataset</span></span>
+<span id="cb5-45"><a href="making-datasets-comparable.html#cb5-45" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">rename</span>(aru_subset, <span class="at">time_segment =</span> time)</span>
+<span id="cb5-46"><a href="making-datasets-comparable.html#cb5-46" tabindex="-1"></a>aru_subset<span class="sc">$</span>HSF <span class="ot">&lt;-</span> <span class="st">&quot;H&quot;</span></span>
+<span id="cb5-47"><a href="making-datasets-comparable.html#cb5-47" tabindex="-1"></a>aru_subset<span class="sc">$</span>distance <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-48"><a href="making-datasets-comparable.html#cb5-48" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="making-datasets-comparable.html#cb5-49" tabindex="-1"></a><span class="co"># add species scientific_name and common_name to the aru_subset data</span></span>
+<span id="cb5-50"><a href="making-datasets-comparable.html#cb5-50" tabindex="-1"></a>aru_subset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(aru_subset, species_codes[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)],</span>
+<span id="cb5-51"><a href="making-datasets-comparable.html#cb5-51" tabindex="-1"></a>                   <span class="at">by =</span> <span class="st">&quot;eBird_codes&quot;</span>)</span></code></pre></div>
 </div>
 <div id="bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Bind the acoustic and point count datasets into a single dataframe<a href="making-datasets-comparable.html#bind-the-acoustic-and-point-count-datasets-into-a-single-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The subsequent dataframe from this code chunk can be used directly in the following scripts to run other analyses.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="making-datasets-comparable.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the structure and names of both subsets prior to creating a single dataframe</span></span>
-<span id="cb6-2"><a href="making-datasets-comparable.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pc_subset)</span>
-<span id="cb6-3"><a href="making-datasets-comparable.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(aru_subset)</span>
-<span id="cb6-4"><a href="making-datasets-comparable.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="making-datasets-comparable.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># change structures to match across subsets</span></span>
-<span id="cb6-6"><a href="making-datasets-comparable.html#cb6-6" aria-hidden="true" tabindex="-1"></a>pc_subset<span class="sc">$</span>start_time <span class="ot">&lt;-</span> <span class="fu">as.character</span>(pc_subset<span class="sc">$</span>start_time)</span>
-<span id="cb6-7"><a href="making-datasets-comparable.html#cb6-7" aria-hidden="true" tabindex="-1"></a>pc_subset<span class="sc">$</span>time_segment <span class="ot">&lt;-</span> <span class="fu">as.character</span>(pc_subset<span class="sc">$</span>time_segment)</span>
-<span id="cb6-8"><a href="making-datasets-comparable.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="making-datasets-comparable.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># bind_rows to create a single dataframe</span></span>
-<span id="cb6-10"><a href="making-datasets-comparable.html#cb6-10" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(pc_subset, aru_subset)</span>
-<span id="cb6-11"><a href="making-datasets-comparable.html#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="making-datasets-comparable.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># rename values within the restoration_type column to acronyms (for ease of plotting)</span></span>
-<span id="cb6-13"><a href="making-datasets-comparable.html#cb6-13" aria-hidden="true" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb6-14"><a href="making-datasets-comparable.html#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">restoration_type =</span> <span class="fu">str_replace</span>(restoration_type, <span class="st">&quot;Benchmark&quot;</span>, <span class="st">&quot;BM&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-15"><a href="making-datasets-comparable.html#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">restoration_type =</span> <span class="fu">str_replace</span>(restoration_type, <span class="st">&quot;Active&quot;</span>, <span class="st">&quot;AR&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-16"><a href="making-datasets-comparable.html#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">restoration_type =</span> <span class="fu">str_replace</span>(restoration_type, <span class="st">&quot;Passive&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
-<span id="cb6-17"><a href="making-datasets-comparable.html#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="making-datasets-comparable.html#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># write to file</span></span>
-<span id="cb6-19"><a href="making-datasets-comparable.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(datSubset, <span class="st">&quot;results/datSubset.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="making-datasets-comparable.html#cb6-1" tabindex="-1"></a><span class="co"># check the structure and names of both subsets prior to creating a single dataframe</span></span>
+<span id="cb6-2"><a href="making-datasets-comparable.html#cb6-2" tabindex="-1"></a><span class="fu">str</span>(pc_subset)</span>
+<span id="cb6-3"><a href="making-datasets-comparable.html#cb6-3" tabindex="-1"></a><span class="fu">str</span>(aru_subset)</span>
+<span id="cb6-4"><a href="making-datasets-comparable.html#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="making-datasets-comparable.html#cb6-5" tabindex="-1"></a><span class="co"># change structures to match across subsets</span></span>
+<span id="cb6-6"><a href="making-datasets-comparable.html#cb6-6" tabindex="-1"></a>pc_subset<span class="sc">$</span>start_time <span class="ot">&lt;-</span> <span class="fu">as.character</span>(pc_subset<span class="sc">$</span>start_time)</span>
+<span id="cb6-7"><a href="making-datasets-comparable.html#cb6-7" tabindex="-1"></a>pc_subset<span class="sc">$</span>time_segment <span class="ot">&lt;-</span> <span class="fu">as.character</span>(pc_subset<span class="sc">$</span>time_segment)</span>
+<span id="cb6-8"><a href="making-datasets-comparable.html#cb6-8" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="making-datasets-comparable.html#cb6-9" tabindex="-1"></a><span class="co"># bind_rows to create a single dataframe</span></span>
+<span id="cb6-10"><a href="making-datasets-comparable.html#cb6-10" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(pc_subset, aru_subset)</span>
+<span id="cb6-11"><a href="making-datasets-comparable.html#cb6-11" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="making-datasets-comparable.html#cb6-12" tabindex="-1"></a><span class="co"># rename values within the restoration_type column to acronyms (for ease of plotting)</span></span>
+<span id="cb6-13"><a href="making-datasets-comparable.html#cb6-13" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="making-datasets-comparable.html#cb6-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">restoration_type =</span> </span>
+<span id="cb6-15"><a href="making-datasets-comparable.html#cb6-15" tabindex="-1"></a>           <span class="fu">str_replace</span>(restoration_type, <span class="st">&quot;Benchmark&quot;</span>, <span class="st">&quot;BM&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="making-datasets-comparable.html#cb6-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">restoration_type =</span> </span>
+<span id="cb6-17"><a href="making-datasets-comparable.html#cb6-17" tabindex="-1"></a>           <span class="fu">str_replace</span>(restoration_type, <span class="st">&quot;Active&quot;</span>, <span class="st">&quot;AR&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-18"><a href="making-datasets-comparable.html#cb6-18" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">restoration_type =</span> </span>
+<span id="cb6-19"><a href="making-datasets-comparable.html#cb6-19" tabindex="-1"></a>           <span class="fu">str_replace</span>(restoration_type, <span class="st">&quot;Passive&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb6-20"><a href="making-datasets-comparable.html#cb6-20" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="making-datasets-comparable.html#cb6-21" tabindex="-1"></a><span class="co"># write to file</span></span>
+<span id="cb6-22"><a href="making-datasets-comparable.html#cb6-22" tabindex="-1"></a><span class="fu">write.csv</span>(datSubset, <span class="st">&quot;results/datSubset.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
 <p><strong>Metadata for the above dataframe is provided below:</strong></p>
 <p><strong>date</strong>: Date of the point count/acoustic survey (str: Date)</p>
 <p><strong>siteid</strong>: Site name and can be cross-referenced to the <em>list-of-sites.csv</em> file (str: Character)</p>
