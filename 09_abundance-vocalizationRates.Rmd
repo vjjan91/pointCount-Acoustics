@@ -1,0 +1,112 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+# Abundance vs. vocalization rates  
+
+In this script, we model correlations between abundance (as estimated via point count data) and vocalization rates (calculated from acoustic data).  
+
+## Install necessary libraries
+```{r}
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(vegan)
+library(ggplot2)
+library(scico)
+library(data.table)
+library(extrafont)
+library(ggstatsplot)
+library(ggside)
+
+# Source any custom/other internal functions necessary for analysis
+source("code/01_internal-functions.R")
+```
+
+## Load dataframe containing point count and acoustic data
+```{r}
+datSubset <- read.csv("results/datSubset.csv")
+```
+
+## Estimate abundance from point count data and calculate vocalization rates from acoustic data    
+
+Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data.  
+
+Unlike the previous script, where we used a measure of detections from the acoustic data, we will calculate a measure which we define as vocalization rates. Vocalization rate is calculated as the number of vocalizations (detections across 10-s clips) for a particular time period. Here, time period is defined as the number of total number of 10s-clips across the number of visits to that site. In other words, each site can have ~4 to 5 16-min acoustic surveys at that site.  
+
+The total number of acoustic detections for a single acoustic survey can range from 0 to 96, where 96 corresponds to the number of 10-s clips that were analyzed across the 16-min window. If there were 4 or 5 visits to a site, this number can range from 0 to (384/480) [in other words, 96x4 or 96x5].  
+
+Hence, the vocalization rate for each species at a site is defined as (x number of vocalizations)/(total number of 10-s clips analyzed). The total number of 10-s clips analyzed can vary depending on the number of visits to the site.   
+```{r}
+# point-count data
+# estimate total abundance of all species for each site
+abundance <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(abundance_pc = sum(number)) %>%
+  ungroup()
+
+# for acoustic data, we will first estimate the number of visits to a site, which will essentially translate to the number of 10-s clips that were analyzed/heard (used here as the time period for the calculation of vocalization rates)
+
+# nVisits is calculated here
+# except for INBS04U, all other sites had a total of 5 visits, while INBS04U had 4 visits
+nSitesDays <- datSubset %>%
+  filter(data_type == "acoustic_data") %>%
+  dplyr::select(site_id, date)%>%
+  distinct() %>% arrange(site_id) %>% count(site_id) %>%
+  rename(nVisits = n)
+
+# estimate total number of detections across the acoustic data
+# note: we cannot call this abundance as it refers to the total number of vocalizations across all sites
+detections <- datSubset %>%
+  filter(data_type == "acoustic_data") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(detections_aru = sum(number)) %>%
+  ungroup()
+
+# estimating vocalization rates for each species for each site
+vocRate <- detections %>%
+  left_join(., nSitesDays, by = "site_id") %>%
+  mutate(nClips = nVisits*96) %>%
+  mutate(vocRate = detections_aru/nClips)
+
+# Note that the column vocRate can vary between 0 to 1 for each species for each site (this value can vary across sites for each species, referring to how vocally active a species is)
+```
+
+## Correlations between abundance and vocalization rates
+```{r}
+# create a single dataframe
+data <- full_join(abundance, vocRate)%>%
+  replace_na(list(abundance_pc = 0, detections_aru = 0,
+                  nVisits = 0, nClips = 0, vocRate = 0))
+
+# reordering factors for plotting
+data$restoration_type <- factor(data$restoration_type, levels = c("BM", "AR", "NR"))
+
+# visualization
+fig_abund_vocRate <- grouped_ggscatterstats(
+  data = data,
+  x = vocRate,
+  y = abundance_pc,
+  grouping.var = restoration_type,
+  type = "r",
+  plotgrid.args = list(nrow = 3, ncol = 1),
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_abund_vocRate, filename = "figs/fig_abundance_vs_vocRates.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![Positive correlations were observed between abundance (estimated through point count data) and vocalization rates (estimated through acoustic data) across treatment types. Moreover, we see no differences between correlations if we kept acoustic detections as a measure or vocalization rates.](figs/fig_abundance_vs_vocRates.png)  
+
+
+
+
