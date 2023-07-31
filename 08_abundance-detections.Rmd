@@ -29,8 +29,7 @@ source("code/01_internal-functions.R")
 datSubset <- read.csv("results/datSubset.csv")
 ```
 
-## Estimate abundance for point count and detections for acoustic data  
-
+## Estimate abundance for point count data and detections for acoustic data    
 Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).  
 ```{r}
 # point-count data
@@ -43,7 +42,7 @@ abundance <- datSubset %>%
   ungroup()
 
 # estimate total number of detections across the acoustic data
-# note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
+# note: we cannot call this abundance as it refers to the total number of vocalizations across all sites
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
   group_by(site_id, restoration_type, scientific_name,
