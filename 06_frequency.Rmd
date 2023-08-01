@@ -8,7 +8,6 @@ editor_options:
 In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the median peak frequecy of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis).   
 
 To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count survey while ranging between 1 to 5 for each species for an acoustic survey. To account for the slight difference in the number of visits, we scale the data to go between 1 and 10 (arbitrarily chosen) to ensure that the visit-level estimates are comparable.  
-
 ## Load necessary libraries
 ```{r}
 library(tidyverse)
