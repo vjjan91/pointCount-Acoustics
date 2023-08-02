@@ -231,6 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1" data-path="rank-abundance-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>11.1</b> Load dataframe containing point count and acoustic data</a></li>
 <li class="chapter" data-level="11.2" data-path="rank-abundance-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>11.2</b> Estimate abundance for point count data and detections for acoustic data</a></li>
 <li class="chapter" data-level="11.3" data-path="rank-abundance-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>11.3</b> Create rank abundance curves</a></li>
+<li class="chapter" data-level="11.4" data-path="rank-abundance-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>11.4</b> Rank-abundance models</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>12</b> r value vs. species traits</a>
 <ul>
@@ -304,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb58-3"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-3" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
 <span id="cb58-4"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
 <span id="cb58-5"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-5" tabindex="-1"></a>               <span class="at">values_from =</span> abundance_pc, </span>
-<span id="cb58-6"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-6" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">abundance_pc=</span><span class="dv">0</span>))</span>
+<span id="cb58-6"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-6" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">abundance_pc=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
 <span id="cb58-7"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-7" tabindex="-1"></a></span>
 <span id="cb58-8"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-8" tabindex="-1"></a>pc_rank_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pc_rank[, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(pc_rank)])</span>
 <span id="cb58-9"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-9" tabindex="-1"></a></span>
@@ -317,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb58-16"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-16" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
 <span id="cb58-17"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-17" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
 <span id="cb58-18"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-18" tabindex="-1"></a>               <span class="at">values_from =</span> detections_aru, </span>
-<span id="cb58-19"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-19" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">detections_aru=</span><span class="dv">0</span>))</span>
+<span id="cb58-19"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-19" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">detections_aru=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
 <span id="cb58-20"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-20" tabindex="-1"></a></span>
 <span id="cb58-21"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-21" tabindex="-1"></a>aru_rank_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(aru_rank[, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(aru_rank)])</span>
 <span id="cb58-22"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-22" tabindex="-1"></a></span>
@@ -333,6 +334,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figcaption">Rank-abundance curve for acoustic data uses acoustic detections. The top ten species (based on their ranks) are indicated in this figure.</div>
 </div>
 <p>Based on the above two figures, we observe that the species that made up the top ten ranks are similar across methods, except the ranks are different.</p>
+</div>
+<div id="rank-abundance-models" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Rank-abundance models<a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#rank-abundance-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here, we fit brokenstick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models of species abundance to ask if the data on abundance (from point count data) takes on a similar model of rank-abundance as data from acoustic surveys.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-1" tabindex="-1"></a>pc_model<span class="ot">&lt;-</span> <span class="fu">radfit</span>(pc_rank_mat)</span>
+<span id="cb59-2"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-2" tabindex="-1"></a>aru_model <span class="ot">&lt;-</span> <span class="fu">radfit</span>(aru_rank_mat)</span>
+<span id="cb59-3"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-3" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-4" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_pointCount_rankModel.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb59-5"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-5" tabindex="-1"></a><span class="fu">plot</span>(pc_model)</span>
+<span id="cb59-6"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb59-7"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-7" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-8" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_acousticData_rankModel.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb59-9"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-9" tabindex="-1"></a><span class="fu">plot</span>(aru_model)</span>
+<span id="cb59-10"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb59-10" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="float">
+<img src="figs/fig_pointCount_rankModel.png" alt="Rank-abundance models across sites for point count data." />
+<div class="figcaption">Rank-abundance models across sites for point count data.</div>
+</div>
+<div class="float">
+<img src="figs/fig_acousticData_rankModel.png" alt="Rank-abundance models across sites for acoustic data." />
+<div class="figcaption">Rank-abundance models across sites for acoustic data.</div>
+</div>
+<p><em>vegan</em> has five models, each with characteristic rank-abundance curve shapes:<br />
+• Pre-emption (geometric series)<br />
+• Broken stick<br />
+• Log-normal<br />
+• Mandelbrot (also called Zipf-Mandelbrot)<br />
+• Zipf</p>
+<p>These and other rank-abundance models fall into two camps: one group is based on assumptions of niche partitioning and competition that limits species’ abundances, and the other is based on the statistical behavior of large samples.</p>
+<p>The results suggests that across sites for both point count and acoustic data, majority of the data follow a preemption model (essentially, a geometric series). For more details regarding the models, please see this useful resource: <a href="https://myweb.ttu.edu/nmcintyr/Community%20Ecology/abundance.docx" class="uri">https://myweb.ttu.edu/nmcintyr/Community%20Ecology/abundance.docx</a> (this link will take you a word document that was written by Dr. Nancy McIntyre -<a href="http://myweb.ttu.edu/nmcintyr/" class="uri">http://myweb.ttu.edu/nmcintyr/</a>).</p>
+<p>The big takeway from running these rank abundance models are that majority of the sites seem to show a similar distribution of data across the approaches.</p>
 
 </div>
 </div>

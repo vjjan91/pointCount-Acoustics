@@ -68,6 +68,7 @@ rank-abundance-curves-for-point-count-and-acoustic-data
 load-dataframe-containing-point-count-and-acoustic-data-7
 estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1
 create-rank-abundance-curves
+rank-abundance-models
 r-value-vs.-species-traits
 load-necessary-libraries-3
 load-species-trait-data-and-frequency-data-2
