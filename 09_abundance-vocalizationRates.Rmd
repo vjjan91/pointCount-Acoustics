@@ -3,11 +3,12 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Abundance vs. vocalization rates  
+# Abundance vs. vocalization rates
 
-In this script, we model correlations between abundance (as estimated via point count data) and vocalization rates (calculated from acoustic data).  
+In this script, we model correlations between abundance (as estimated via point count data) and vocalization rates (calculated from acoustic data).
 
 ## Install necessary libraries
+
 ```{r}
 library(tidyverse)
 library(dplyr)
@@ -25,19 +26,21 @@ source("code/01_internal-functions.R")
 ```
 
 ## Load dataframe containing point count and acoustic data
+
 ```{r}
 datSubset <- read.csv("results/datSubset.csv")
 ```
 
-## Estimate abundance from point count data and calculate vocalization rates from acoustic data    
+## Estimate abundance from point count data and calculate vocalization rates from acoustic data
 
-Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data.  
+Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data.
 
-Unlike the previous script, where we used a measure of detections from the acoustic data, we will calculate a measure which we define as vocalization rates. Vocalization rate is calculated as the number of vocalizations (detections across 10-s clips) for a particular time period. Here, time period is defined as the number of total number of 10s-clips across the number of visits to that site. In other words, each site can have ~4 to 5 16-min acoustic surveys at that site.  
+Unlike the previous script, where we used a measure of detections from the acoustic data, we will calculate a measure which we define as vocalization rates. Vocalization rate is calculated as the number of vocalizations (detections across 10-s clips) for a particular time period. Here, time period is defined as the number of total number of 10s-clips across the number of visits to that site. In other words, each site can have \~4 to 5 16-min acoustic surveys at that site.
 
-The total number of acoustic detections for a single acoustic survey can range from 0 to 96, where 96 corresponds to the number of 10-s clips that were analyzed across the 16-min window. If there were 4 or 5 visits to a site, this number can range from 0 to (384/480) [in other words, 96x4 or 96x5].  
+The total number of acoustic detections for a single acoustic survey can range from 0 to 96, where 96 corresponds to the number of 10-s clips that were analyzed across the 16-min window. If there were 4 or 5 visits to a site, this number can range from 0 to (384/480) [in other words, 96x4 or 96x5].
 
-Hence, the vocalization rate for each species at a site is defined as (x number of vocalizations)/(total number of 10-s clips analyzed). The total number of 10-s clips analyzed can vary depending on the number of visits to the site.   
+Hence, the vocalization rate for each species at a site is defined as (x number of vocalizations)/(total number of 10-s clips analyzed). The total number of 10-s clips analyzed can vary depending on the number of visits to the site.
+
 ```{r}
 # point-count data
 # estimate total abundance of all species for each site
@@ -77,6 +80,7 @@ vocRate <- detections %>%
 ```
 
 ## Correlations between abundance and vocalization rates
+
 ```{r}
 # create a single dataframe
 data <- full_join(abundance, vocRate)%>%
@@ -105,8 +109,4 @@ ggsave(fig_abund_vocRate, filename = "figs/fig_abundance_vs_vocRates.png", width
 dev.off() 
 ```
 
-![Positive correlations were observed between abundance (estimated through point count data) and vocalization rates (estimated through acoustic data) across treatment types. Moreover, we see no differences between correlations if we kept acoustic detections as a measure or vocalization rates.](figs/fig_abundance_vs_vocRates.png)  
-
-
-
-
+![Positive correlations were observed between abundance (estimated through point count data) and vocalization rates (estimated through acoustic data) across treatment types. Moreover, we see no differences between correlations if we kept acoustic detections as a measure or vocalization rates.](figs/fig_abundance_vs_vocRates.png)
