@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 5 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
-  <meta name="description" content="Section 5 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <title>Section 11 Rank abundance curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
+  <meta name="description" content="Section 11 Rank abundance curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 5 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta property="og:title" content="Section 11 Rank abundance curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 5 Indicator species analysis | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta name="twitter:title" content="Section 11 Rank abundance curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   
   
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="time-of-day-analyses.html"/>
-<link rel="next" href="body-mass.html"/>
+<link rel="prev" href="abundance-vs.-vocalization-rates.html"/>
+<link rel="next" href="r-value-vs.-species-traits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -256,196 +256,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="indicator-species-analysis" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Section 5</span> Indicator species analysis<a href="indicator-species-analysis.html#indicator-species-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This analysis aims to identify what species are “indicators” of groups of samples or treatment type and asks if this varies between point count estimates and acoustic surveys.</p>
-<p>If the aim is to determine which species can be used as indicators of certain site group, an approach commonly used in ecology is the Indicator Value (Dufrene and Legendre, 1997). These authors defined an Indicator Value (IndVal) index to measure the association between a species and a site group. The method of Dufrene and Legendre (1997) calculates the IndVal index between the species and each site group and then looks for the group corresponding to the highest association value. Finally, the statistical significance of this relationship is tested using a permutation test.</p>
-<p>Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as fidelity, not to be confounded with the indicator value component) between species and vegetation types is Pearson’s phi coefficient of association (Chytry et al., 2002). This coefficient is a measure of the correlation between two binary vectors. The abundance-based counterpart of the phi coefficient is called the point biserial correlation coefficient (which is defined as “r.g”).</p>
-<p>See: <a href="https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf" class="uri">https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf</a></p>
-<div id="load-necessary-libraries" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Load necessary libraries<a href="indicator-species-analysis.html#load-necessary-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="indicator-species-analysis.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb21-2"><a href="indicator-species-analysis.html#cb21-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb21-3"><a href="indicator-species-analysis.html#cb21-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb21-4"><a href="indicator-species-analysis.html#cb21-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb21-5"><a href="indicator-species-analysis.html#cb21-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb21-6"><a href="indicator-species-analysis.html#cb21-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
-<span id="cb21-7"><a href="indicator-species-analysis.html#cb21-7" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb21-8"><a href="indicator-species-analysis.html#cb21-8" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
-<span id="cb21-9"><a href="indicator-species-analysis.html#cb21-9" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb21-10"><a href="indicator-species-analysis.html#cb21-10" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb21-11"><a href="indicator-species-analysis.html#cb21-11" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
-<span id="cb21-12"><a href="indicator-species-analysis.html#cb21-12" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb21-13"><a href="indicator-species-analysis.html#cb21-13" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb21-14"><a href="indicator-species-analysis.html#cb21-14" tabindex="-1"></a><span class="fu">library</span>(indicspecies)</span>
-<span id="cb21-15"><a href="indicator-species-analysis.html#cb21-15" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="indicator-species-analysis.html#cb21-16" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
-<span id="cb21-17"><a href="indicator-species-analysis.html#cb21-17" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div id="rank-abundance-curves-for-point-count-and-acoustic-data" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Section 11</span> Rank abundance curves for point count and acoustic data<a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#rank-abundance-curves-for-point-count-and-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Rank abundance curves have been used in ecological analyses for multiple decades now. In this script, we ask if the species that are the most abundant, also the ones that have the highest number of acoustic detections.<br />
+## Install necessary libraries</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb55-2"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb55-3"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb55-4"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb55-5"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb55-6"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb55-7"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb55-8"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb55-9"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-9" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb55-10"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-10" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb55-11"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-11" tabindex="-1"></a><span class="fu">library</span>(goeveg)</span>
+<span id="cb55-12"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-12" tabindex="-1"></a></span>
+<span id="cb55-13"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-13" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb55-14"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb55-14" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div id="load-dataframe-containing-point-count-and-acoustic-data-7" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Load dataframe containing point count and acoustic data<a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb56-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="load-dataframe-containing-point-count-and-acoustic-data-2" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Load dataframe containing point count and acoustic data<a href="indicator-species-analysis.html#load-dataframe-containing-point-count-and-acoustic-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="indicator-species-analysis.html#cb22-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+<div id="estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Estimate abundance for point count data and detections for acoustic data<a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-1" tabindex="-1"></a><span class="co"># point-count data</span></span>
+<span id="cb57-2"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-2" tabindex="-1"></a><span class="co"># estimate total abundance across all species for each site</span></span>
+<span id="cb57-3"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-3" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb57-4"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-4" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-5"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-5" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, scientific_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-6"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-7"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb57-8"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-8" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-9" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
+<span id="cb57-10"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-10" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across all sites</span></span>
+<span id="cb57-11"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-11" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb57-12"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-12" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-13"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-13" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, scientific_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-14"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-14" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-15"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb57-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 </div>
-<div id="load-species-trait-data-2" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Load species trait data<a href="indicator-species-analysis.html#load-species-trait-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="indicator-species-analysis.html#cb23-1" tabindex="-1"></a>trait <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-trait-dat.csv&quot;</span>)</span>
-<span id="cb23-2"><a href="indicator-species-analysis.html#cb23-2" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="indicator-species-analysis.html#cb23-3" tabindex="-1"></a><span class="co"># add it to the subset data</span></span>
-<span id="cb23-4"><a href="indicator-species-analysis.html#cb23-4" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">left_join</span>(datSubset,trait[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">8</span>)], <span class="at">by =</span> <span class="st">&quot;scientific_name&quot;</span>)</span></code></pre></div>
-</div>
-<div id="estimate-detections-across-visits-for-point-count-data-and-acoustic-data" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Estimate detections across visits for point count data and acoustic data<a href="indicator-species-analysis.html#estimate-detections-across-visits-for-point-count-data-and-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>These detections are calculate at the site level (for a total of five/six visits for acoustic &amp; point count data, respectively). If the across_visit_detections = 5, that means that a species was detected every single time across each of the five visits to that site. This value ranges from 1 to 5 (or 1 to 6 for point count data). These detections are estimated for the indicator species analysis since the matrix required for the same cannot be a presence/absence matrix.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="indicator-species-analysis.html#cb24-1" tabindex="-1"></a><span class="do">## we will estimate abundance across point counts by site-date (essentially corresponding to visit)</span></span>
-<span id="cb24-2"><a href="indicator-species-analysis.html#cb24-2" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="indicator-species-analysis.html#cb24-3" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="indicator-species-analysis.html#cb24-4" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
-<span id="cb24-5"><a href="indicator-species-analysis.html#cb24-5" tabindex="-1"></a>           common_name, eBird_codes, habitat, foraging_habit) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="indicator-species-analysis.html#cb24-6" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb24-7"><a href="indicator-species-analysis.html#cb24-7" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="indicator-species-analysis.html#cb24-8" tabindex="-1"></a><span class="co"># estimate across visit detections for point count data</span></span>
-<span id="cb24-9"><a href="indicator-species-analysis.html#cb24-9" tabindex="-1"></a>pc_visit_detections <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
-<span id="cb24-10"><a href="indicator-species-analysis.html#cb24-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-11"><a href="indicator-species-analysis.html#cb24-11" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb24-12"><a href="indicator-species-analysis.html#cb24-12" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">across_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-13"><a href="indicator-species-analysis.html#cb24-13" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-14"><a href="indicator-species-analysis.html#cb24-14" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb24-15"><a href="indicator-species-analysis.html#cb24-15" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="indicator-species-analysis.html#cb24-16" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)</span></span>
-<span id="cb24-17"><a href="indicator-species-analysis.html#cb24-17" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
-<span id="cb24-18"><a href="indicator-species-analysis.html#cb24-18" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb24-19"><a href="indicator-species-analysis.html#cb24-19" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-20"><a href="indicator-species-analysis.html#cb24-20" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
-<span id="cb24-21"><a href="indicator-species-analysis.html#cb24-21" tabindex="-1"></a>           common_name, eBird_codes, habitat, foraging_habit) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-22"><a href="indicator-species-analysis.html#cb24-22" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb24-23"><a href="indicator-species-analysis.html#cb24-23" tabindex="-1"></a></span>
-<span id="cb24-24"><a href="indicator-species-analysis.html#cb24-24" tabindex="-1"></a><span class="co"># estimate across visit detections for acoustic data</span></span>
-<span id="cb24-25"><a href="indicator-species-analysis.html#cb24-25" tabindex="-1"></a>aru_visit_detections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
-<span id="cb24-26"><a href="indicator-species-analysis.html#cb24-26" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-27"><a href="indicator-species-analysis.html#cb24-27" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb24-28"><a href="indicator-species-analysis.html#cb24-28" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">across_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-29"><a href="indicator-species-analysis.html#cb24-29" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-30"><a href="indicator-species-analysis.html#cb24-30" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
-</div>
-<div id="indicator-species-analysis-of-the-point-count-dataset" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Indicator species analysis of the point-count dataset<a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The detections across visits is converted to a wide format for the sake of analysis.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="indicator-species-analysis.html#cb25-1" tabindex="-1"></a><span class="do">## preparing the point count data for the indicator species analysis</span></span>
-<span id="cb25-2"><a href="indicator-species-analysis.html#cb25-2" tabindex="-1"></a>pc_indicator <span class="ot">&lt;-</span>  pc_visit_detections <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="indicator-species-analysis.html#cb25-3" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id, restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="indicator-species-analysis.html#cb25-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
-<span id="cb25-5"><a href="indicator-species-analysis.html#cb25-5" tabindex="-1"></a>               <span class="at">values_from =</span> across_visit_detections, </span>
-<span id="cb25-6"><a href="indicator-species-analysis.html#cb25-6" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">across_visit_detections=</span><span class="dv">0</span>))</span>
-<span id="cb25-7"><a href="indicator-species-analysis.html#cb25-7" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="indicator-species-analysis.html#cb25-8" tabindex="-1"></a><span class="do">## indicator species analysis</span></span>
-<span id="cb25-9"><a href="indicator-species-analysis.html#cb25-9" tabindex="-1"></a>indic_pc <span class="ot">&lt;-</span> <span class="fu">multipatt</span>(pc_indicator[,<span class="dv">4</span><span class="sc">:</span><span class="fu">ncol</span>(pc_indicator)], pc_indicator<span class="sc">$</span>restoration_type, <span class="at">func =</span> <span class="st">&quot;r.g&quot;</span>, <span class="at">control =</span> <span class="fu">how</span>(<span class="at">nperm=</span><span class="dv">999</span>))</span>
-<span id="cb25-10"><a href="indicator-species-analysis.html#cb25-10" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="indicator-species-analysis.html#cb25-11" tabindex="-1"></a><span class="co"># analyze/summarize the results</span></span>
-<span id="cb25-12"><a href="indicator-species-analysis.html#cb25-12" tabindex="-1"></a><span class="fu">summary</span>(indic_pc)</span></code></pre></div>
-<p>Multilevel pattern analysis for point count data</p>
-<p>Association function: r.g<br />
-Significance level (alpha): 0.05</p>
-<p>Total number of species: 83<br />
-Selected number of species: 25<br />
-Number of species associated to 1 group: 16<br />
-Number of species associated to 2 groups: 9</p>
-<p>List of species associated to each combination:</p>
-<p>Group BM #sps. 13<br />
-stat p.value<br />
-Alcippe poioicephala 0.812 0.001 ***<br />
-Culicicapa ceylonensis 0.739 0.001 ***<br />
-Hypothymis azurea 0.665 0.001 ***<br />
-Pellorneum ruficeps 0.599 0.001 ***<br />
-Ducula badia 0.596 0.001 ***<br />
-Harpactes fasciatus 0.565 0.001 ***<br />
-Cyornis pallidipes 0.561 0.001 ***<br />
-Leptocoma minima 0.531 0.002 **<br />
-Phylloscopus magnirostris 0.505 0.004 **<br />
-Irena puella 0.457 0.005 **<br />
-Dicrurus paradiseus 0.439 0.010 **<br />
-Chalcophaps indica 0.380 0.032 *<br />
-Dicrurus aeneus 0.376 0.029 *</p>
-<p>Group NR #sps. 3<br />
-stat p.value<br />
-Cinnyris asiaticus 0.702 0.001 ***<br />
-Acrocephalus dumetorum 0.507 0.003 **<br />
-Machlolophus aplonotus 0.396 0.021 *</p>
-<p>Group AR+BM #sps. 2<br />
-stat p.value<br />
-Muscicapa muttui 0.509 0.003 **<br />
-Iole indica 0.498 0.003 **</p>
-<p>Group AR+NR #sps. 7<br />
-stat p.value<br />
-Streptopelia chinensis 0.744 0.001 ***<br />
-Pycnonotus jocosus 0.744 0.001 ***<br />
-Dicaeum concolor 0.474 0.002 **<br />
-Psittacula columboides 0.403 0.020 *<br />
-Zosterops palpebrosus 0.394 0.025 *<br />
-Orthotomus sutorius 0.389 0.026 *<br />
-Psittacula cyanocephala 0.376 0.023 *</p>
-<p>Signif. codes: 0 *** 0.001 ** 0.01 * 0.05 .</p>
-</div>
-<div id="indicator-species-analysis-for-acoustic-data" class="section level2 hasAnchor" number="5.6">
-<h2><span class="header-section-number">5.6</span> Indicator species analysis for acoustic data<a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The detections across visits is converted to a wide format for the sake of analysis.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="indicator-species-analysis.html#cb26-1" tabindex="-1"></a><span class="do">## preparing the acoustic data for the indicator species analysis</span></span>
-<span id="cb26-2"><a href="indicator-species-analysis.html#cb26-2" tabindex="-1"></a>aru_indicator <span class="ot">&lt;-</span>  aru_visit_detections <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="indicator-species-analysis.html#cb26-3" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id, restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="indicator-species-analysis.html#cb26-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
-<span id="cb26-5"><a href="indicator-species-analysis.html#cb26-5" tabindex="-1"></a>               <span class="at">values_from =</span> across_visit_detections, </span>
-<span id="cb26-6"><a href="indicator-species-analysis.html#cb26-6" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">across_visit_detections=</span><span class="dv">0</span>))</span>
-<span id="cb26-7"><a href="indicator-species-analysis.html#cb26-7" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="indicator-species-analysis.html#cb26-8" tabindex="-1"></a><span class="do">## indicator species analysis</span></span>
-<span id="cb26-9"><a href="indicator-species-analysis.html#cb26-9" tabindex="-1"></a>indic_aru <span class="ot">&lt;-</span> <span class="fu">multipatt</span>(aru_indicator[,<span class="dv">4</span><span class="sc">:</span><span class="fu">ncol</span>(aru_indicator)], aru_indicator<span class="sc">$</span>restoration_type, <span class="at">func =</span> <span class="st">&quot;r.g&quot;</span>, <span class="at">control =</span> <span class="fu">how</span>(<span class="at">nperm=</span><span class="dv">999</span>))</span>
-<span id="cb26-10"><a href="indicator-species-analysis.html#cb26-10" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="indicator-species-analysis.html#cb26-11" tabindex="-1"></a><span class="co"># analyze/summarize the results</span></span>
-<span id="cb26-12"><a href="indicator-species-analysis.html#cb26-12" tabindex="-1"></a><span class="fu">summary</span>(indic_aru)</span></code></pre></div>
-<p>Multilevel pattern analysis for the acoustic dataset</p>
-<p>Association function: r.g<br />
-Significance level (alpha): 0.05</p>
-<p>Total number of species: 113<br />
-Selected number of species: 29<br />
-Number of species associated to 1 group: 19<br />
-Number of species associated to 2 groups: 10</p>
-<p>List of species associated to each combination:</p>
-<p>Group AR #sps. 1<br />
-stat p.value<br />
-Chloropsis aurifrons 0.396 0.044 *</p>
-<p>Group BM #sps. 12<br />
-stat p.value<br />
-Alcippe poioicephala 0.666 0.001 ***<br />
-Hypothymis azurea 0.612 0.001 ***<br />
-Phylloscopus magnirostris 0.602 0.001 ***<br />
-Cyornis pallidipes 0.601 0.001 ***<br />
-Ducula badia 0.468 0.009 **<br />
-Culicicapa ceylonensis 0.460 0.005 **<br />
-Sitta frontalis 0.459 0.007 **<br />
-Harpactes fasciatus 0.454 0.012 *<br />
-Dryocopus javensis 0.430 0.007 **<br />
-Muscicapa muttui 0.412 0.009 **<br />
-Leptocoma minima 0.395 0.030 *<br />
-Picumnus innominatus 0.346 0.042 *</p>
-<p>Group NR #sps. 6<br />
-stat p.value<br />
-Streptopelia chinensis 0.554 0.002 **<br />
-Orthotomus sutorius 0.503 0.002 **<br />
-Tephrodornis sylvicola 0.467 0.002 **<br />
-Carpodacus erythrinus 0.421 0.015 *<br />
-Phylloscopus affinis 0.408 0.020 *<br />
-Lonchura kelaarti 0.367 0.021 *</p>
-<p>Group AR+NR #sps. 10<br />
-stat p.value<br />
-Pycnonotus jocosus 0.830 0.001 ***<br />
-Acrocephalus dumetorum 0.543 0.002 **<br />
-Corvus splendens 0.507 0.003 **<br />
-Psittacula cyanocephala 0.447 0.007 **<br />
-Merops leschenaulti 0.441 0.009 **<br />
-Dicrurus leucophaeus 0.438 0.014 *<br />
-Copsychus saularis 0.430 0.016 *<br />
-Pavo cristatus 0.426 0.014 *<br />
-Halcyon smyrnensis 0.403 0.015 *<br />
-Dinopium benghalense 0.386 0.028 *</p>
-<p>Signif. codes: 0 *** 0.001 ** 0.01 * 0.05 .</p>
+<div id="create-rank-abundance-curves" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Create rank abundance curves<a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-1" tabindex="-1"></a><span class="do">## preparing the point count data for the creation of rank abundance curves</span></span>
+<span id="cb58-2"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-2" tabindex="-1"></a>pc_rank <span class="ot">&lt;-</span>  abundance <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-3" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
+<span id="cb58-5"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-5" tabindex="-1"></a>               <span class="at">values_from =</span> abundance_pc, </span>
+<span id="cb58-6"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-6" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">abundance_pc=</span><span class="dv">0</span>))</span>
+<span id="cb58-7"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-7" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-8" tabindex="-1"></a>pc_rank_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pc_rank[, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(pc_rank)])</span>
+<span id="cb58-9"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-9" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-10" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_pointCount_rankCurve.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb58-11"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-11" tabindex="-1"></a>pc_rank_curve <span class="ot">&lt;-</span> <span class="fu">racurve</span>(pc_rank_mat, <span class="at">nlab =</span> <span class="dv">10</span>, <span class="at">main =</span> <span class="st">&quot;Rank-abundance curve for point count data&quot;</span>)</span>
+<span id="cb58-12"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-12" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb58-13"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-13" tabindex="-1"></a></span>
+<span id="cb58-14"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-14" tabindex="-1"></a><span class="do">## preparing the acoustic data for the creation of rank abundance curves</span></span>
+<span id="cb58-15"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-15" tabindex="-1"></a>aru_rank <span class="ot">&lt;-</span>  detections <span class="sc">%&gt;%</span></span>
+<span id="cb58-16"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-16" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
+<span id="cb58-17"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-17" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
+<span id="cb58-18"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-18" tabindex="-1"></a>               <span class="at">values_from =</span> detections_aru, </span>
+<span id="cb58-19"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-19" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">detections_aru=</span><span class="dv">0</span>))</span>
+<span id="cb58-20"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-20" tabindex="-1"></a></span>
+<span id="cb58-21"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-21" tabindex="-1"></a>aru_rank_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(aru_rank[, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(aru_rank)])</span>
+<span id="cb58-22"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-22" tabindex="-1"></a></span>
+<span id="cb58-23"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-23" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_acoustic_rankCurve.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb58-24"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-24" tabindex="-1"></a>aru_rank_curve <span class="ot">&lt;-</span> <span class="fu">racurve</span>(aru_rank_mat, <span class="at">nlab =</span> <span class="dv">10</span>, <span class="at">main =</span> <span class="st">&quot;Rank-abundance curve for acoustic data&quot;</span>)</span>
+<span id="cb58-25"><a href="rank-abundance-curves-for-point-count-and-acoustic-data.html#cb58-25" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 
 </div>
 </div>
@@ -454,8 +332,8 @@ Dinopium benghalense 0.386 0.028 *</p>
           </div>
         </div>
       </div>
-<a href="time-of-day-analyses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="body-mass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="abundance-vs.-vocalization-rates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-value-vs.-species-traits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -476,7 +354,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/04_indicator-species-analysis.Rmd",
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/10_rank-abundance-curves.Rmd",
 "text": "Edit"
 },
 "history": {
