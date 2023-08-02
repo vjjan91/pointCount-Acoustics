@@ -78,4 +78,9 @@ aru_rank_curve <- racurve(aru_rank_mat, nlab = 10, main = "Rank-abundance curve 
 dev.off()
 ```
 
+![Rank-abundance curve for point count data uses abundance data. The top ten species (based on their ranks) are indicated in this figure.](figs/fig_pointCount_rankCurve.png)    
+
+![Rank-abundance curve for acoustic data uses acoustic detections. The top ten species (based on their ranks) are indicated in this figure.](figs/fig_acoustic_rankCurve.png)    
+
+Based on the above two figures, we observe that the species that made up the top ten ranks are similar across methods, except the ranks are different. 
 
