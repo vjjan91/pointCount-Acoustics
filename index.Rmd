@@ -6,7 +6,7 @@ author:
     - Vijay Ramesh
     - Meghana P Srivathsa
     - Laurel Symes  
-date: "`r Sys.Date()`"
+date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
