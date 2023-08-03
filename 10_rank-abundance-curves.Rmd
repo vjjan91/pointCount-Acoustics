@@ -5,7 +5,7 @@ editor_options:
 
 # Rank abundance curves for point count and acoustic data
 
-Rank abundance curves have been used in ecological analyses for multiple decades now. In this script, we ask if the species that are the most abundant, also the ones that have the highest number of acoustic detections.
+Rank abundance curves have been used in ecological analyses for multiple decades now. In this script, we ask if the species that are the most abundant, also the ones that have the highest number of acoustic detections.  
 
 ## Install necessary libraries
 
