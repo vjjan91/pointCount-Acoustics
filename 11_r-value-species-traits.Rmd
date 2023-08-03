@@ -72,7 +72,7 @@ dev.off()
 ![No particular association/very weak result observed between body mass of a species and the correlation score/effect size values](figs/fig_bodyMass_rValue.png)
 ## Median peak frequency and correlation scores  
 
-Are species that vocalize at a certain peak frequency showing stronger/poorer correlations/effect size scores (between abundance and acoustic detections)?  
+Are species that vocalize at a certain peak frequency showing stronger/poorer correlations/effect size scores (between abundance and acoustic detections)?
 ```{r}
 # calculate median peak frequency
 median_pf <- freq %>%
