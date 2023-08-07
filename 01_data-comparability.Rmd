@@ -42,7 +42,7 @@ species_codes <- read.csv("data/species-annotation-codes.csv")
 
 # for the sake of comparability, some issues were fixed in the point-count dataset
 # please note that these issues were fixed using the .csv file and not through R
-# the following issues were fixed: 
+# the following issues were fixed:
 # leading spaces were removed from the common_name
 # species that start with the common_name 'Grey' were changed to 'Gray'
 
@@ -51,7 +51,7 @@ point_counts <- left_join(point_counts, species_codes, by = "common_name")
 
 # removing all mammal species and unidentified bird species
 point_counts <- point_counts %>%
-  filter(bird_mammal == "Bird") 
+  filter(bird_mammal == "Bird")
 ```
 
 ## Loading the acoustic data
@@ -66,14 +66,14 @@ summer_data <- read.csv("data/summer-dawn-annotations.csv")
 winter_data <- read.csv("data/winter-dawn-annotations.csv")
 
 # combine the datasets to a single dataframe
-acoustic_data <- bind_rows(summer_data,winter_data)
+acoustic_data <- bind_rows(summer_data, winter_data)
 names(acoustic_data)
 
 # reorder columns to ensure the species codes appear one after another
 acoustic_data <- acoustic_data %>%
-  relocate(c("BFOW","SBEO", "JUNI", "ASKO", "HSWO","TBWA"),  .after = "CORO") 
+  relocate(c("BFOW", "SBEO", "JUNI", "ASKO", "HSWO", "TBWA"), .after = "CORO")
 
-# split the filename column into 4 columns : Site, Date, Time and Splits  
+# split the filename column into 4 columns : Site, Date, Time and Splits
 acoustic_data <- separate(acoustic_data, col = Filename, into = c("site", "date", "time", "splits"), sep = "_")
 ```
 
@@ -100,15 +100,19 @@ point_counts$date <- lubridate::ymd(point_counts$date)
 
 # subset point count data to only include the above list of sites
 point_counts <- point_counts %>%
-  mutate(site_id = str_replace_all(site_id, "_", "")) 
+  mutate(site_id = str_replace_all(site_id, "_", ""))
 
-point_counts <- left_join(sites[,c(2,3,4,5)], 
-                   point_counts, by = c("site_id"="site_id"))
+point_counts <- left_join(sites[, c(2, 3, 4, 5)],
+  point_counts,
+  by = c("site_id" = "site_id")
+)
 
 # To ensure that the datasets are comparable, we will choose a maximum of six visits to each site from the point count study (translating to an effort of 90 minutes per site)
 nSitesDays <- point_counts %>%
   dplyr::select(site_id, date) %>%
-  distinct() %>% arrange(site_id) %>% count(site_id)
+  distinct() %>%
+  arrange(site_id) %>%
+  count(site_id)
 
 # we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above the code chunk comparable effort levels)
 
@@ -120,19 +124,21 @@ uniqueSiteDate <- point_counts %>%
 # the below lines of code were written following a query on stackOverflow to select six non-consecutive visits to any site
 # Link: https://stackoverflow.com/questions/67212152/select-non-consecutive-dates-for-every-grouped-element-in-r
 
-nonConVisits <- uniqueSiteDate %>% 
-  ungroup() %>% 
-  group_split(site_id) %>% 
-  map_df(., ~ .x %>% ungroup() %>%
-           arrange(date) %>%
-           mutate(n = 1) %>%
-           complete(date = seq.Date(first(date), last(date), 
-                                    by = 'days'))%>%
-           group_by(n = cumsum(is.na(n))) %>%
-           filter(!is.na(site_id)) %>%
-           filter(row_number() %% 2 == 1) %>%
-           ungroup() %>%
-           sample_n(min(n(), 6))) %>% # change n here for nvisits
+nonConVisits <- uniqueSiteDate %>%
+  ungroup() %>%
+  group_split(site_id) %>%
+  map_df(., ~ .x %>%
+    ungroup() %>%
+    arrange(date) %>%
+    mutate(n = 1) %>%
+    complete(date = seq.Date(first(date), last(date),
+      by = "days"
+    )) %>%
+    group_by(n = cumsum(is.na(n))) %>%
+    filter(!is.na(site_id)) %>%
+    filter(row_number() %% 2 == 1) %>%
+    ungroup() %>%
+    sample_n(min(n(), 6))) %>% # change n here for nvisits
   dplyr::select(-n)
 
 # left-join with the original dataframe to subset the data
@@ -142,7 +148,7 @@ pc_subset <- left_join(nonConVisits, point_counts)
 
 # first we will remove OLCAP5B - a site for which only 3 visits were made in summer and not sampled as a result of logistic reasons in winter
 acoustic_data <- acoustic_data %>%
-  filter(!str_detect(site, 'OLCAP5B'))
+  filter(!str_detect(site, "OLCAP5B"))
 
 # Convert date column to YMD format using lubridate::ymd()
 acoustic_data$date <- lubridate::ymd(acoustic_data$date)
@@ -150,13 +156,15 @@ acoustic_data$date <- lubridate::ymd(acoustic_data$date)
 # exclude data from May 2020 for the acoustic dataset
 acoustic_data <- acoustic_data %>%
   filter(!(date >= "2020-05-01" & date <= "2020-05-10"))
-  
+
 # number of visits to a particular site
-# some sites have as many as 7 visits, but many visits have only 5 visits and only INBS04U has 4 visits 
+# some sites have as many as 7 visits, but many visits have only 5 visits and only INBS04U has 4 visits
 # for the sake of comparability with point count data, we choose 5 visits across sites translating to effort of 80 min per site
 nSitesDays <- acoustic_data %>%
-  dplyr::select(site, date)%>%
-  distinct() %>% arrange(site) %>% count(site)
+  dplyr::select(site, date) %>%
+  distinct() %>%
+  arrange(site) %>%
+  count(site)
 
 # unique date site combination to give you a sense of sampling
 uniqueSiteDate <- acoustic_data %>%
@@ -165,19 +173,22 @@ uniqueSiteDate <- acoustic_data %>%
 
 # note: We could not choose non-consecutive days for the acoustic data due to heavy rain and we could only sample consecutive days for some sites
 # for the acoustic data, we choose 5 random visits per site
-randVisits <- uniqueSiteDate %>% 
-  ungroup() %>% 
-  group_split(site) %>% 
-  map_df(., ~ .x %>% ungroup() %>%
-           arrange(date) %>%
-           mutate(n = 1) %>%
-           complete(date = seq.Date(first(date), last(date), 
-                                    by = 'days'))%>%
-           group_by(n = cumsum(is.na(n))) %>%
-           filter(!is.na(site)) %>%
-           ungroup() %>%
-           sample_n(min(n(), 5)) # change n here for number of visits
-         ) %>%
+randVisits <- uniqueSiteDate %>%
+  ungroup() %>%
+  group_split(site) %>%
+  map_df(
+    ., ~ .x %>%
+      ungroup() %>%
+      arrange(date) %>%
+      mutate(n = 1) %>%
+      complete(date = seq.Date(first(date), last(date),
+        by = "days"
+      )) %>%
+      group_by(n = cumsum(is.na(n))) %>%
+      filter(!is.na(site)) %>%
+      ungroup() %>%
+      sample_n(min(n(), 5)) # change n here for number of visits
+  ) %>%
   dplyr::select(-n)
 
 # left-join with the original dataframe to subset the data for analysis
@@ -189,15 +200,20 @@ aru_subset <- left_join(randVisits, acoustic_data)
 For the point count dataset, we shall remove the extra columns. For the acoustic dataset, we will dplyr::pivot_longer() and add the same columns as point count dataset before binding rows to create a single dataframe.  
 ```{r}
 # remove unnecessary columns from the point-count dataset
-pc_subset <- pc_subset[,-c(4,5,6,9,11,15,17,19,20)]
+pc_subset <- pc_subset[, -c(4, 5, 6, 9, 11, 15, 17, 19, 20)]
 
 # add a time of day column to the point-count dataset for future calculations and a data_type column
 pc_subset <- pc_subset %>%
-  mutate(time_of_day = 
-      case_when(start_time >= 6 & start_time < 7 ~ "6AM to 7AM",
-                start_time >= 7 & start_time < 8 ~ "7AM to 8AM",
-                start_time >= 8 & start_time < 9 ~ "8AM to 9AM",
-                start_time >= 9 & start_time <= 10 ~"9AM to 10AM")) %>% mutate(data_type = "point_count")
+  mutate(
+    time_of_day =
+      case_when(
+        start_time >= 6 & start_time < 7 ~ "6AM to 7AM",
+        start_time >= 7 & start_time < 8 ~ "7AM to 8AM",
+        start_time >= 8 & start_time < 9 ~ "8AM to 9AM",
+        start_time >= 9 & start_time <= 10 ~ "9AM to 10AM"
+      )
+  ) %>%
+  mutate(data_type = "point_count")
 
 # rename acoustic data columns
 aru_subset <- rename(aru_subset, site_id = site)
@@ -205,30 +221,35 @@ aru_subset <- rename(aru_subset, restoration_type = Restoration.Type..Benchmark.
 
 # pivot_longer the acoustic data and remove zero values
 aru_subset <- aru_subset %>%
-group_by(site_id, date, time, restoration_type) %>%
-  transform() %>% replace(is.na(.), 0) %>%
-  summarise_at(.vars = vars(c("INPE":"TBWA")),.funs = sum) %>%
-  pivot_longer(cols=INPE:TBWA, names_to = "eBird_codes", values_to = "number") %>% 
+  group_by(site_id, date, time, restoration_type) %>%
+  transform() %>%
+  replace(is.na(.), 0) %>%
+  summarise_at(.vars = vars(c("INPE":"TBWA")), .funs = sum) %>%
+  pivot_longer(cols = INPE:TBWA, names_to = "eBird_codes", values_to = "number") %>%
   filter(number != 0) # one way to remove zeros
 
 # add a start_time column based on the time the acoustic visit was started at that site-day combination
 # for example, if HP36P1B's first data point/visit came from 091000, then the start_time for all the 16-min would have the value 091000
 aru_subset <- aru_subset %>%
-  group_by(site_id,date) %>%
+  group_by(site_id, date) %>%
   mutate(start_time = min(time)) %>%
   ungroup()
 
 # add time_of_day column to indicate time-windows for when the acoustic-visit was started and add a data_type column
 aru_subset <- aru_subset %>%
-  mutate(time_of_day = 
-    case_when(start_time >= "060000" & start_time < "070000" 
-              ~ "6AM to 7AM",
-              start_time >= "070000" & start_time < "080000" 
-              ~ "7AM to 8AM",
-              start_time >= "080000" & start_time < "090000" 
-              ~ "8AM to 9AM",
-              start_time >= "090000" & start_time <= "100000" 
-              ~ "9AM to 10AM")) %>%
+  mutate(
+    time_of_day =
+      case_when(
+        start_time >= "060000" & start_time < "070000"
+        ~ "6AM to 7AM",
+        start_time >= "070000" & start_time < "080000"
+        ~ "7AM to 8AM",
+        start_time >= "080000" & start_time < "090000"
+        ~ "8AM to 9AM",
+        start_time >= "090000" & start_time <= "100000"
+        ~ "9AM to 10AM"
+      )
+  ) %>%
   mutate(data_type = "acoustic_data")
 
 # rename columns and add additional columns to ensure it is comparable to the point count dataset
@@ -237,8 +258,9 @@ aru_subset$HSF <- "H"
 aru_subset$distance <- NA
 
 # add species scientific_name and common_name to the aru_subset data
-aru_subset <- left_join(aru_subset, species_codes[,c(1,2,4)],
-                   by = "eBird_codes")
+aru_subset <- left_join(aru_subset, species_codes[, c(1, 2, 4)],
+  by = "eBird_codes"
+)
 ```
 
 ## Bind the acoustic and point count datasets into a single dataframe
@@ -258,12 +280,18 @@ datSubset <- bind_rows(pc_subset, aru_subset)
 
 # rename values within the restoration_type column to acronyms (for ease of plotting)
 datSubset <- datSubset %>%
-  mutate(restoration_type = 
-           str_replace(restoration_type, "Benchmark", "BM")) %>%
-  mutate(restoration_type = 
-           str_replace(restoration_type, "Active", "AR")) %>%
-  mutate(restoration_type = 
-           str_replace(restoration_type, "Passive", "NR"))
+  mutate(
+    restoration_type =
+      str_replace(restoration_type, "Benchmark", "BM")
+  ) %>%
+  mutate(
+    restoration_type =
+      str_replace(restoration_type, "Active", "AR")
+  ) %>%
+  mutate(
+    restoration_type =
+      str_replace(restoration_type, "Passive", "NR")
+  )
 
 # write to file
 write.csv(datSubset, "results/datSubset.csv", row.names = F)
