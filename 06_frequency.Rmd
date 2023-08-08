@@ -8,6 +8,7 @@ editor_options:
 In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the median peak frequecy of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis).   
 
 To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count survey while ranging between 1 to 5 for each species for an acoustic survey. To account for the slight difference in the number of visits, we scale the data to go between 1 and 10 (arbitrarily chosen) to ensure that the visit-level estimates are comparable.  
+
 ## Load necessary libraries
 ```{r}
 library(tidyverse)
@@ -26,6 +27,7 @@ library(sjPlot)
 library(ggside)
 library(ggstatsplot)
 library(extrafont)
+library(scales)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -264,27 +266,3 @@ dev.off()
 ```
 
 ![Results are similar for the calculation of median center frequency)](figs/fig_medianCenterFreq_min10templates_detectionRatio.png)   
-
-## Visualizations that do not group treatment types
-
-Here, we would like to see/visualize the relationships between the ratio of detections of point counts to total detections (point counts + acoustic data) across visits without grouping by treatment type. We will continue to use the dataframe that excludes species with less than 10 templates for the calculation of median peak frequency.   
-```{r}
-# visualization
-fig_medFreq_overall <- ggscatterstats(
-  data = visit_detections,
-  x = median_peak_freq,
-  y = pc_to_total,
-  type = "r",
-  plotgrid.args = list(nrow = 3, ncol = 1),
-  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_medFreq_overall, filename = "figs/fig_medianPeakFreq_acrossTreatments_detectionRatio.png", width = 18, height = 10, device = png(), units = "in", dpi = 300)
-dev.off() 
-```
-
-![Similar to previous analyses where data was visualized by treatment types, the results do not differ when clubbed together. Birds that vocalize at higher frequencies are marginally detected more often in point count data compared to acoustic data across treatment types](figs/fig_medianPeakFreq_acrossTreatments_detectionRatio.png)  
