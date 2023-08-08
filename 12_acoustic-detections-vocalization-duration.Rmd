@@ -3,9 +3,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Acoustic detections vs. vocalization duration  
+# Detection ratios (point counts-acoustics) vs. vocalization duration
 
-In this script, we will explore if species with relatively high detections per have shorter vocalizations (in duration).  
+In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the median vocalization duration of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis). The goal here is to ask if species with relatively higher detections in one method or the other have shorter vocalization durations? 
+
+To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count survey while ranging between 1 to 5 for each species for an acoustic survey. To account for the slight difference in the number of visits, we scale the data to go between 1 and 10 (arbitrarily chosen) to ensure that the visit-level estimates are comparable.   
 
 ## Load necessary libraries
 ```{r}
@@ -19,13 +21,13 @@ library(psych)
 library(ecodist)
 library(RColorBrewer)
 library(ggforce)
-library(ggpubr)
 library(ggalt)
 library(patchwork)
 library(sjPlot)
 library(ggside)
 library(ggstatsplot)
 library(extrafont)
+library(scales)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -36,25 +38,55 @@ source("code/01_internal-functions.R")
 datSubset <- read.csv("results/datSubset.csv")
 ```
 
-## Load frequency data
+## Load species trait data and frequency data
 ```{r}
+trait <- read.csv("data/species-trait-dat.csv")
 freq <- read.csv("data/frequency-data.csv")
 ```
 
-## Estimate detections for acoustic data    
+## Visit-level detection estimates for each species  
 
-In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).  
+We estimate the total number of detections of each species across all visits for point count data and acoustic surveys and scale them so that they are comparable.    
 ```{r}
-# estimate total number of detections across the acoustic data
-# note: we cannot call this abundance as it refers to the total number of vocalizations across all sites
+## we will estimate abundance across point counts by site-date (essentially corresponding to visit)
+abundance <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  group_by(date, site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(totAbundance = sum(number)) %>%
+  ungroup()
+
+# estimate across visit detections for point count data
+pc_visit_detections <- abundance %>%
+  mutate(forDetections = case_when(totAbundance > 0 ~ 1)) %>%
+  group_by(scientific_name, site_id,restoration_type) %>%
+  summarise(pc_visit_detections = sum(forDetections)) %>%
+  mutate(data_type = "point_count") %>%
+  ungroup()
+
+# scale values to go between 1 and 10
+pc_visit_detections$pc_visit_scaled <- rescale(pc_visit_detections$pc_visit_detections, to = c(1,10))
+
+# estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)
+# note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
-  group_by(site_id, restoration_type, scientific_name,
+  group_by(date, site_id, restoration_type, scientific_name,
            common_name, eBird_codes) %>% 
-  summarise(detections_aru = sum(number)) %>%
+  summarise(totDetections = sum(number)) %>%
   ungroup()
-```
 
+# estimate across visit detections for acoustic data
+aru_visit_detections <- detections %>%
+  mutate(forDetections = case_when(totDetections > 0 ~ 1)) %>%
+  group_by(scientific_name, site_id,restoration_type) %>%
+  summarise(aru_visit_detections = sum(forDetections)) %>%
+  mutate(data_type = "acoustic_data") %>%
+  ungroup()
+
+# scale values to go between 1 and 10
+aru_visit_detections$aru_visit_scaled <- rescale(aru_visit_detections$aru_visit_detections, to = c(1,10))
+```
 
 ## Process frequency data  
 
@@ -82,21 +114,38 @@ median_time_10 <- freq_10 %>%
   summarise(median_delta_time =  median(delta_time_in_s))
 ```
 
-## Correlations between acoustic detections and median delta time   
+## Exploring ratios of detections in point counts & acoustic surveys to median delta time of a species  
 ```{r}
 # create a single dataframe
-data <- left_join(detections, median_time_10, by = "eBird_codes") %>%
+visit_detections <- full_join(pc_visit_detections[,-5], aru_visit_detections[,-5]) %>%
+  replace_na(list(pc_visit_detections = 0, aru_visit_detections = 0,
+                  pc_visit_scaled = 0, aru_visit_scaled = 0))
+  
+# create column of ratio of detections of point counts to total number of detections from point count and acoustic data
+# note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. 
+
+visit_detections <- visit_detections %>%
+  mutate(pc_to_total = (pc_visit_scaled)/
+           (pc_visit_scaled + aru_visit_scaled))
+
+# join the time data to species trait dat
+dat_median <- left_join(median_time_10, trait, by = "eBird_codes")
+
+# join the above dataframe to the detections dataset
+visit_detections <- left_join(dat_median[,c(1:3)],
+                              visit_detections,
+                   by = "scientific_name") %>%
   drop_na() %>%
   filter(median_delta_time < 2) # remove outliers in the above data
 
 # reordering factors for plotting
-data$restoration_type <- factor(data$restoration_type, levels = c("BM", "AR", "NR"))
-
+visit_detections$restoration_type <- factor(visit_detections$restoration_type, levels = c("BM", "AR", "NR"))
+  
 # visualization
 fig_detec_duration <- grouped_ggscatterstats(
-  data = data,
+  data = visit_detections,
   x = median_delta_time,
-  y = detections_aru,
+  y = pc_to_total,
   grouping.var = restoration_type,
   type = "r",
   plotgrid.args = list(nrow = 3, ncol = 1),
@@ -107,46 +156,8 @@ fig_detec_duration <- grouped_ggscatterstats(
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_detec_duration, filename = "figs/fig_detections_vs_duration.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+ggsave(fig_detec_duration, filename = "figs/fig_medianDeltaTime_detectionRatio.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Weak correlations were observed between detections (estimated through acoustic data) and median duration of vocalizations across treatment types.](figs/fig_detections_vs_duration.png)  
-  
-## Combine site-level data to test for correlations between detections and median delta time for each species (at the level of the treatment type)    
-
-Here, each dot in the visualization refers to a particular species and the only difference between this analysis and previous one is that the site-level variation is compressed/lost and the visualization/correlative analyses are being carried out across species and treatment types. 
-```{r}
-# grouping acoustic data at the level of the treatment type
-detections_group <- data %>%
-  group_by(restoration_type, scientific_name,
-           common_name, eBird_codes, median_delta_time) %>% 
-  summarise(detections_aru = sum(detections_aru)) %>%
-  ungroup()
-
-# reordering factors for plotting
-detections_group$restoration_type <- factor(detections_group$restoration_type, levels = c("BM", "AR", "NR"))
-
-# visualization
-fig_detec_duration_group <- grouped_ggscatterstats(
-  data = detections_group,
-  x = median_delta_time,
-  y = detections_aru,
-  grouping.var = restoration_type,
-  type = "r",
-  label.var = scientific_name, 
-  label.expression = detections_aru > 1000, 
-  point.label.args = list(alpha = 0.7, size = 4, color = "grey50"),
-  plotgrid.args = list(nrow = 3, ncol = 1),
-  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_detec_duration_group, filename = "figs/fig_detections_vs_duration_grouped.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
-dev.off() 
-```
-
-![Same result as before - weak correlations were observed between detections (estimated through acoustic data) and median duration of vocalizations across treatment types.](figs/fig_detections_vs_duration_grouped.png) 
+![Marginal associations - no real support seen.](figs/fig_medianDeltaTime_detectionRatio.png)  
