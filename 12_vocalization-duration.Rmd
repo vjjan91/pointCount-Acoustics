@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Detection ratios (point counts-acoustics) vs. vocalization duration
+# Vocalization duration
 
 In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the median vocalization duration of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis). The goal here is to ask if species with relatively higher detections in one method or the other have shorter vocalization durations? 
 
