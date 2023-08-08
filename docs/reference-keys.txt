@@ -65,6 +65,7 @@ load-dataframe-containing-point-count-and-acoustic-data-6
 estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data
 correlations-between-abundance-and-vocalization-rates
 rank-abundance-curves-for-point-count-and-acoustic-data
+install-necessary-libraries-4
 load-dataframe-containing-point-count-and-acoustic-data-7
 estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1
 create-rank-abundance-curves
@@ -74,3 +75,11 @@ load-necessary-libraries-3
 load-species-trait-data-and-frequency-data-2
 load-correlation-scores-from-previous-script
 body-mass-and-correlation-scores
+acoustic-detections-vs.-vocalization-duration
+load-necessary-libraries-4
+load-dataframe-containing-point-count-and-acoustic-data-8
+load-frequency-data
+estimate-detections-for-acoustic-data
+process-frequency-data-2
+correlations-between-acoustic-detections-and-median-delta-time
+combine-site-level-data-to-test-for-correlations-between-detections-and-median-delta-time-for-each-species-at-the-level-of-the-treatment-type
