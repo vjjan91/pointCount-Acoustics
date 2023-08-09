@@ -75,10 +75,3 @@ load-necessary-libraries-4
 load-species-trait-data-and-frequency-data-2
 load-correlation-scores-from-previous-script
 body-mass-and-correlation-scores
-vocalization-duration
-load-necessary-libraries-5
-load-dataframe-containing-point-count-and-acoustic-data-8
-load-species-trait-data-and-frequency-data-3
-visit-level-detection-estimates-for-each-species-2
-process-frequency-data-2
-exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-delta-time-of-a-species

@@ -240,15 +240,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>12.3</b> Load correlation scores from previous script</a></li>
 <li class="chapter" data-level="12.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>12.4</b> Body mass and correlation scores</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="vocalization-duration.html"><a href="vocalization-duration.html"><i class="fa fa-check"></i><b>13</b> Vocalization duration</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="vocalization-duration.html"><a href="vocalization-duration.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="13.2" data-path="vocalization-duration.html"><a href="vocalization-duration.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>13.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="13.3" data-path="vocalization-duration.html"><a href="vocalization-duration.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>13.3</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="13.4" data-path="vocalization-duration.html"><a href="vocalization-duration.html#visit-level-detection-estimates-for-each-species-2"><i class="fa fa-check"></i><b>13.4</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="13.5" data-path="vocalization-duration.html"><a href="vocalization-duration.html#process-frequency-data-2"><i class="fa fa-check"></i><b>13.5</b> Process frequency data</a></li>
-<li class="chapter" data-level="13.6" data-path="vocalization-duration.html"><a href="vocalization-duration.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-delta-time-of-a-species"><i class="fa fa-check"></i><b>13.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median delta time of a species</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -271,23 +262,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this script, we model correlations between abundance (as estimated via point count data) and vocalization rates (calculated from acoustic data).</p>
 <div id="install-necessary-libraries-3" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> Install necessary libraries<a href="abundance-vs.-vocalization-rates.html#install-necessary-libraries-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="abundance-vs.-vocalization-rates.html#cb50-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb50-2"><a href="abundance-vs.-vocalization-rates.html#cb50-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb50-3"><a href="abundance-vs.-vocalization-rates.html#cb50-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb50-4"><a href="abundance-vs.-vocalization-rates.html#cb50-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb50-5"><a href="abundance-vs.-vocalization-rates.html#cb50-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb50-6"><a href="abundance-vs.-vocalization-rates.html#cb50-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
-<span id="cb50-7"><a href="abundance-vs.-vocalization-rates.html#cb50-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb50-8"><a href="abundance-vs.-vocalization-rates.html#cb50-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb50-9"><a href="abundance-vs.-vocalization-rates.html#cb50-9" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb50-10"><a href="abundance-vs.-vocalization-rates.html#cb50-10" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
-<span id="cb50-11"><a href="abundance-vs.-vocalization-rates.html#cb50-11" tabindex="-1"></a></span>
-<span id="cb50-12"><a href="abundance-vs.-vocalization-rates.html#cb50-12" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
-<span id="cb50-13"><a href="abundance-vs.-vocalization-rates.html#cb50-13" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="abundance-vs.-vocalization-rates.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb51-2"><a href="abundance-vs.-vocalization-rates.html#cb51-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-3"><a href="abundance-vs.-vocalization-rates.html#cb51-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb51-4"><a href="abundance-vs.-vocalization-rates.html#cb51-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb51-5"><a href="abundance-vs.-vocalization-rates.html#cb51-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb51-6"><a href="abundance-vs.-vocalization-rates.html#cb51-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb51-7"><a href="abundance-vs.-vocalization-rates.html#cb51-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb51-8"><a href="abundance-vs.-vocalization-rates.html#cb51-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb51-9"><a href="abundance-vs.-vocalization-rates.html#cb51-9" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb51-10"><a href="abundance-vs.-vocalization-rates.html#cb51-10" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb51-11"><a href="abundance-vs.-vocalization-rates.html#cb51-11" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="abundance-vs.-vocalization-rates.html#cb51-12" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb51-13"><a href="abundance-vs.-vocalization-rates.html#cb51-13" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
 </div>
 <div id="load-dataframe-containing-point-count-and-acoustic-data-6" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Load dataframe containing point count and acoustic data<a href="abundance-vs.-vocalization-rates.html#load-dataframe-containing-point-count-and-acoustic-data-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="abundance-vs.-vocalization-rates.html#cb51-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="abundance-vs.-vocalization-rates.html#cb52-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Estimate abundance from point count data and calculate vocalization rates from acoustic data<a href="abundance-vs.-vocalization-rates.html#estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -295,69 +286,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Unlike the previous script, where we used a measure of detections from the acoustic data, we will calculate a measure which we define as vocalization rates. Vocalization rate is calculated as the number of vocalizations (detections across 10-s clips) for a particular time period. Here, time period is defined as the number of total number of 10s-clips across the number of visits to that site. In other words, each site can have ~4 to 5 16-min acoustic surveys at that site.</p>
 <p>The total number of acoustic detections for a single acoustic survey can range from 0 to 96, where 96 corresponds to the number of 10-s clips that were analyzed across the 16-min window. If there were 4 or 5 visits to a site, this number can range from 0 to (384/480) [in other words, 96x4 or 96x5].</p>
 <p>Hence, the vocalization rate for each species at a site is defined as (x number of vocalizations)/(total number of 10-s clips analyzed). The total number of 10-s clips analyzed can vary depending on the number of visits to the site.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="abundance-vs.-vocalization-rates.html#cb52-1" tabindex="-1"></a><span class="co"># point-count data</span></span>
-<span id="cb52-2"><a href="abundance-vs.-vocalization-rates.html#cb52-2" tabindex="-1"></a><span class="co"># estimate total abundance of all species for each site</span></span>
-<span id="cb52-3"><a href="abundance-vs.-vocalization-rates.html#cb52-3" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a href="abundance-vs.-vocalization-rates.html#cb52-4" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="abundance-vs.-vocalization-rates.html#cb52-5" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
-<span id="cb52-6"><a href="abundance-vs.-vocalization-rates.html#cb52-6" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb52-7"><a href="abundance-vs.-vocalization-rates.html#cb52-7" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb52-8"><a href="abundance-vs.-vocalization-rates.html#cb52-8" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb52-9"><a href="abundance-vs.-vocalization-rates.html#cb52-9" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="abundance-vs.-vocalization-rates.html#cb52-10" tabindex="-1"></a><span class="co"># for acoustic data, we will first estimate the number of visits to a site, which will essentially translate to the number of 10-s clips that were analyzed/heard (used here as the time period for the calculation of vocalization rates)</span></span>
-<span id="cb52-11"><a href="abundance-vs.-vocalization-rates.html#cb52-11" tabindex="-1"></a></span>
-<span id="cb52-12"><a href="abundance-vs.-vocalization-rates.html#cb52-12" tabindex="-1"></a><span class="co"># nVisits is calculated here</span></span>
-<span id="cb52-13"><a href="abundance-vs.-vocalization-rates.html#cb52-13" tabindex="-1"></a><span class="co"># except for INBS04U, all other sites had a total of 5 visits, while INBS04U had 4 visits</span></span>
-<span id="cb52-14"><a href="abundance-vs.-vocalization-rates.html#cb52-14" tabindex="-1"></a>nSitesDays <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb52-15"><a href="abundance-vs.-vocalization-rates.html#cb52-15" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-16"><a href="abundance-vs.-vocalization-rates.html#cb52-16" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(site_id, date)<span class="sc">%&gt;%</span></span>
-<span id="cb52-17"><a href="abundance-vs.-vocalization-rates.html#cb52-17" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(site_id) <span class="sc">%&gt;%</span> <span class="fu">count</span>(site_id) <span class="sc">%&gt;%</span></span>
-<span id="cb52-18"><a href="abundance-vs.-vocalization-rates.html#cb52-18" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">nVisits =</span> n)</span>
-<span id="cb52-19"><a href="abundance-vs.-vocalization-rates.html#cb52-19" tabindex="-1"></a></span>
-<span id="cb52-20"><a href="abundance-vs.-vocalization-rates.html#cb52-20" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
-<span id="cb52-21"><a href="abundance-vs.-vocalization-rates.html#cb52-21" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across all sites</span></span>
-<span id="cb52-22"><a href="abundance-vs.-vocalization-rates.html#cb52-22" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb52-23"><a href="abundance-vs.-vocalization-rates.html#cb52-23" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-24"><a href="abundance-vs.-vocalization-rates.html#cb52-24" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
-<span id="cb52-25"><a href="abundance-vs.-vocalization-rates.html#cb52-25" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb52-26"><a href="abundance-vs.-vocalization-rates.html#cb52-26" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb52-27"><a href="abundance-vs.-vocalization-rates.html#cb52-27" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb52-28"><a href="abundance-vs.-vocalization-rates.html#cb52-28" tabindex="-1"></a></span>
-<span id="cb52-29"><a href="abundance-vs.-vocalization-rates.html#cb52-29" tabindex="-1"></a><span class="co"># estimating vocalization rates for each species for each site</span></span>
-<span id="cb52-30"><a href="abundance-vs.-vocalization-rates.html#cb52-30" tabindex="-1"></a>vocRate <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
-<span id="cb52-31"><a href="abundance-vs.-vocalization-rates.html#cb52-31" tabindex="-1"></a>  <span class="fu">left_join</span>(., nSitesDays, <span class="at">by =</span> <span class="st">&quot;site_id&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-32"><a href="abundance-vs.-vocalization-rates.html#cb52-32" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nClips =</span> nVisits<span class="sc">*</span><span class="dv">96</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-33"><a href="abundance-vs.-vocalization-rates.html#cb52-33" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vocRate =</span> detections_aru<span class="sc">/</span>nClips)</span>
-<span id="cb52-34"><a href="abundance-vs.-vocalization-rates.html#cb52-34" tabindex="-1"></a></span>
-<span id="cb52-35"><a href="abundance-vs.-vocalization-rates.html#cb52-35" tabindex="-1"></a><span class="co"># Note that the column vocRate can vary between 0 to 1 for each species for each site (this value can vary across sites for each species, referring to how vocally active a species is)</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="abundance-vs.-vocalization-rates.html#cb53-1" tabindex="-1"></a><span class="co"># point-count data</span></span>
+<span id="cb53-2"><a href="abundance-vs.-vocalization-rates.html#cb53-2" tabindex="-1"></a><span class="co"># estimate total abundance of all species for each site</span></span>
+<span id="cb53-3"><a href="abundance-vs.-vocalization-rates.html#cb53-3" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb53-4"><a href="abundance-vs.-vocalization-rates.html#cb53-4" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-5"><a href="abundance-vs.-vocalization-rates.html#cb53-5" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
+<span id="cb53-6"><a href="abundance-vs.-vocalization-rates.html#cb53-6" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-7"><a href="abundance-vs.-vocalization-rates.html#cb53-7" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb53-8"><a href="abundance-vs.-vocalization-rates.html#cb53-8" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb53-9"><a href="abundance-vs.-vocalization-rates.html#cb53-9" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="abundance-vs.-vocalization-rates.html#cb53-10" tabindex="-1"></a><span class="co"># for acoustic data, we will first estimate the number of visits to a site, which will essentially translate to the number of 10-s clips that were analyzed/heard (used here as the time period for the calculation of vocalization rates)</span></span>
+<span id="cb53-11"><a href="abundance-vs.-vocalization-rates.html#cb53-11" tabindex="-1"></a></span>
+<span id="cb53-12"><a href="abundance-vs.-vocalization-rates.html#cb53-12" tabindex="-1"></a><span class="co"># nVisits is calculated here</span></span>
+<span id="cb53-13"><a href="abundance-vs.-vocalization-rates.html#cb53-13" tabindex="-1"></a><span class="co"># except for INBS04U, all other sites had a total of 5 visits, while INBS04U had 4 visits</span></span>
+<span id="cb53-14"><a href="abundance-vs.-vocalization-rates.html#cb53-14" tabindex="-1"></a>nSitesDays <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb53-15"><a href="abundance-vs.-vocalization-rates.html#cb53-15" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-16"><a href="abundance-vs.-vocalization-rates.html#cb53-16" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(site_id, date)<span class="sc">%&gt;%</span></span>
+<span id="cb53-17"><a href="abundance-vs.-vocalization-rates.html#cb53-17" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(site_id) <span class="sc">%&gt;%</span> <span class="fu">count</span>(site_id) <span class="sc">%&gt;%</span></span>
+<span id="cb53-18"><a href="abundance-vs.-vocalization-rates.html#cb53-18" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">nVisits =</span> n)</span>
+<span id="cb53-19"><a href="abundance-vs.-vocalization-rates.html#cb53-19" tabindex="-1"></a></span>
+<span id="cb53-20"><a href="abundance-vs.-vocalization-rates.html#cb53-20" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
+<span id="cb53-21"><a href="abundance-vs.-vocalization-rates.html#cb53-21" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across all sites</span></span>
+<span id="cb53-22"><a href="abundance-vs.-vocalization-rates.html#cb53-22" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb53-23"><a href="abundance-vs.-vocalization-rates.html#cb53-23" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-24"><a href="abundance-vs.-vocalization-rates.html#cb53-24" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
+<span id="cb53-25"><a href="abundance-vs.-vocalization-rates.html#cb53-25" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-26"><a href="abundance-vs.-vocalization-rates.html#cb53-26" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb53-27"><a href="abundance-vs.-vocalization-rates.html#cb53-27" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb53-28"><a href="abundance-vs.-vocalization-rates.html#cb53-28" tabindex="-1"></a></span>
+<span id="cb53-29"><a href="abundance-vs.-vocalization-rates.html#cb53-29" tabindex="-1"></a><span class="co"># estimating vocalization rates for each species for each site</span></span>
+<span id="cb53-30"><a href="abundance-vs.-vocalization-rates.html#cb53-30" tabindex="-1"></a>vocRate <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
+<span id="cb53-31"><a href="abundance-vs.-vocalization-rates.html#cb53-31" tabindex="-1"></a>  <span class="fu">left_join</span>(., nSitesDays, <span class="at">by =</span> <span class="st">&quot;site_id&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-32"><a href="abundance-vs.-vocalization-rates.html#cb53-32" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nClips =</span> nVisits<span class="sc">*</span><span class="dv">96</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-33"><a href="abundance-vs.-vocalization-rates.html#cb53-33" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vocRate =</span> detections_aru<span class="sc">/</span>nClips)</span>
+<span id="cb53-34"><a href="abundance-vs.-vocalization-rates.html#cb53-34" tabindex="-1"></a></span>
+<span id="cb53-35"><a href="abundance-vs.-vocalization-rates.html#cb53-35" tabindex="-1"></a><span class="co"># Note that the column vocRate can vary between 0 to 1 for each species for each site (this value can vary across sites for each species, referring to how vocally active a species is)</span></span></code></pre></div>
 </div>
 <div id="correlations-between-abundance-and-vocalization-rates" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Correlations between abundance and vocalization rates<a href="abundance-vs.-vocalization-rates.html#correlations-between-abundance-and-vocalization-rates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="abundance-vs.-vocalization-rates.html#cb53-1" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
-<span id="cb53-2"><a href="abundance-vs.-vocalization-rates.html#cb53-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance, vocRate)<span class="sc">%&gt;%</span></span>
-<span id="cb53-3"><a href="abundance-vs.-vocalization-rates.html#cb53-3" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">abundance_pc =</span> <span class="dv">0</span>, <span class="at">detections_aru =</span> <span class="dv">0</span>,</span>
-<span id="cb53-4"><a href="abundance-vs.-vocalization-rates.html#cb53-4" tabindex="-1"></a>                  <span class="at">nVisits =</span> <span class="dv">0</span>, <span class="at">nClips =</span> <span class="dv">0</span>, <span class="at">vocRate =</span> <span class="dv">0</span>))</span>
-<span id="cb53-5"><a href="abundance-vs.-vocalization-rates.html#cb53-5" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="abundance-vs.-vocalization-rates.html#cb53-6" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
-<span id="cb53-7"><a href="abundance-vs.-vocalization-rates.html#cb53-7" tabindex="-1"></a>data<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
-<span id="cb53-8"><a href="abundance-vs.-vocalization-rates.html#cb53-8" tabindex="-1"></a></span>
-<span id="cb53-9"><a href="abundance-vs.-vocalization-rates.html#cb53-9" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb53-10"><a href="abundance-vs.-vocalization-rates.html#cb53-10" tabindex="-1"></a>fig_abund_vocRate <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
-<span id="cb53-11"><a href="abundance-vs.-vocalization-rates.html#cb53-11" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
-<span id="cb53-12"><a href="abundance-vs.-vocalization-rates.html#cb53-12" tabindex="-1"></a>  <span class="at">x =</span> vocRate,</span>
-<span id="cb53-13"><a href="abundance-vs.-vocalization-rates.html#cb53-13" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
-<span id="cb53-14"><a href="abundance-vs.-vocalization-rates.html#cb53-14" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
-<span id="cb53-15"><a href="abundance-vs.-vocalization-rates.html#cb53-15" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb53-16"><a href="abundance-vs.-vocalization-rates.html#cb53-16" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb53-17"><a href="abundance-vs.-vocalization-rates.html#cb53-17" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb53-18"><a href="abundance-vs.-vocalization-rates.html#cb53-18" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb53-19"><a href="abundance-vs.-vocalization-rates.html#cb53-19" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb53-20"><a href="abundance-vs.-vocalization-rates.html#cb53-20" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb53-21"><a href="abundance-vs.-vocalization-rates.html#cb53-21" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb53-22"><a href="abundance-vs.-vocalization-rates.html#cb53-22" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb53-23"><a href="abundance-vs.-vocalization-rates.html#cb53-23" tabindex="-1"></a></span>
-<span id="cb53-24"><a href="abundance-vs.-vocalization-rates.html#cb53-24" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_vocRate, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_vocRates.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb53-25"><a href="abundance-vs.-vocalization-rates.html#cb53-25" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="abundance-vs.-vocalization-rates.html#cb54-1" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb54-2"><a href="abundance-vs.-vocalization-rates.html#cb54-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance, vocRate)<span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="abundance-vs.-vocalization-rates.html#cb54-3" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">abundance_pc =</span> <span class="dv">0</span>, <span class="at">detections_aru =</span> <span class="dv">0</span>,</span>
+<span id="cb54-4"><a href="abundance-vs.-vocalization-rates.html#cb54-4" tabindex="-1"></a>                  <span class="at">nVisits =</span> <span class="dv">0</span>, <span class="at">nClips =</span> <span class="dv">0</span>, <span class="at">vocRate =</span> <span class="dv">0</span>))</span>
+<span id="cb54-5"><a href="abundance-vs.-vocalization-rates.html#cb54-5" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="abundance-vs.-vocalization-rates.html#cb54-6" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
+<span id="cb54-7"><a href="abundance-vs.-vocalization-rates.html#cb54-7" tabindex="-1"></a>data<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb54-8"><a href="abundance-vs.-vocalization-rates.html#cb54-8" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="abundance-vs.-vocalization-rates.html#cb54-9" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb54-10"><a href="abundance-vs.-vocalization-rates.html#cb54-10" tabindex="-1"></a>fig_abund_vocRate <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
+<span id="cb54-11"><a href="abundance-vs.-vocalization-rates.html#cb54-11" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb54-12"><a href="abundance-vs.-vocalization-rates.html#cb54-12" tabindex="-1"></a>  <span class="at">x =</span> vocRate,</span>
+<span id="cb54-13"><a href="abundance-vs.-vocalization-rates.html#cb54-13" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
+<span id="cb54-14"><a href="abundance-vs.-vocalization-rates.html#cb54-14" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
+<span id="cb54-15"><a href="abundance-vs.-vocalization-rates.html#cb54-15" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb54-16"><a href="abundance-vs.-vocalization-rates.html#cb54-16" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb54-17"><a href="abundance-vs.-vocalization-rates.html#cb54-17" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb54-18"><a href="abundance-vs.-vocalization-rates.html#cb54-18" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb54-19"><a href="abundance-vs.-vocalization-rates.html#cb54-19" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb54-20"><a href="abundance-vs.-vocalization-rates.html#cb54-20" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb54-21"><a href="abundance-vs.-vocalization-rates.html#cb54-21" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb54-22"><a href="abundance-vs.-vocalization-rates.html#cb54-22" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb54-23"><a href="abundance-vs.-vocalization-rates.html#cb54-23" tabindex="-1"></a></span>
+<span id="cb54-24"><a href="abundance-vs.-vocalization-rates.html#cb54-24" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_vocRate, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_vocRates.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb54-25"><a href="abundance-vs.-vocalization-rates.html#cb54-25" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="float">
 <img src="figs/fig_abundance_vs_vocRates.png" alt="Positive correlations were observed between abundance (estimated through point count data) and vocalization rates (estimated through acoustic data) across treatment types. Moreover, we see no differences between correlations if we kept acoustic detections as a measure or vocalization rates." />
 <div class="figcaption">Positive correlations were observed between abundance (estimated through point count data) and vocalization rates (estimated through acoustic data) across treatment types. Moreover, we see no differences between correlations if we kept acoustic detections as a measure or vocalization rates.</div>
