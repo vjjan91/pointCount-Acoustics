@@ -34,7 +34,7 @@ datSubset <- read.csv("results/datSubset.csv")
 
 ## Estimate abundance for point count data and detections for acoustic data
 
-Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across \~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).
+Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).
 
 ```{r}
 # point-count data
@@ -55,7 +55,6 @@ detections <- datSubset %>%
 ```
 
 ## Create rank abundance curves
-
 ```{r}
 ## preparing the point count data for the creation of rank abundance curves
 pc_rank <-  abundance %>%
@@ -68,7 +67,7 @@ pc_rank <-  abundance %>%
 pc_rank_mat <- as.matrix(pc_rank[, 2:ncol(pc_rank)])
 
 png(filename = "figs/fig_pointCount_rankCurve.png", width = 12, height = 10, units = "in", res = 300)
-pc_rank_curve <- racurve(pc_rank_mat, nlab = 10, main = "Rank-abundance curve for point count data")
+pc_rank_curve <- racurve(pc_rank_mat, nlab = 10, main = "Rank-abundance curve for point count data", ylim = c(0,0.12))
 dev.off()
 
 ## preparing the acoustic data for the creation of rank abundance curves
@@ -82,7 +81,7 @@ aru_rank <-  detections %>%
 aru_rank_mat <- as.matrix(aru_rank[, 2:ncol(aru_rank)])
 
 png(filename = "figs/fig_acoustic_rankCurve.png", width = 12, height = 10, units = "in", res = 300)
-aru_rank_curve <- racurve(aru_rank_mat, nlab = 10, main = "Rank-abundance curve for acoustic data")
+aru_rank_curve <- racurve(aru_rank_mat, nlab = 10, main = "Rank-abundance curve for acoustic data", ylim = c(0,0.12))
 dev.off()
 ```
 
