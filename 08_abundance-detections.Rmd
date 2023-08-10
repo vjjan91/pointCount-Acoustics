@@ -297,9 +297,12 @@ fig_abund_detec_reg <- ggplot(dat_subset, aes(y = detections_aru,
   labs(y="\nDetections (from acoustic data)", 
        x="Abundance (from point count data)\n") + 
   theme_bw() +
-  annotate("text", x=13, y=400, label= "Slope:", col = "grey30", size = 12) + 
-  annotate("text", x=16, y=400, label= "+", col = "#D95F02", size = 12) + 
-  annotate("text", x = 18, y=400, label = "-", col = "#1B9E77", size = 12)+
+  annotate("text", x=13, y=400, 
+           label= "Slope:", col = "grey30", size = 12) + 
+  annotate("text", x=16, y=400, 
+           label= "+", col = "#D95F02", size = 12) + 
+  annotate("text", x = 18, y=400, 
+           label = "-", col = "#1B9E77", size = 12)+
   theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
       plot.subtitle = element_text(family = "Century Gothic", 
@@ -308,19 +311,18 @@ fig_abund_detec_reg <- ggplot(dat_subset, aes(y = detections_aru,
       size = 18, face = "bold"),
       legend.position = "none")
 
-ggsave(fig_abund_detec_reg, filename = "figs/fig_abundance_vs_detections_regressions.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+ggsave(fig_abund_detec_reg, filename = "figs/fig_abundance_vs_detections_regressions_allSpecies.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
 
 # extract the slope, t_value, pearson correlation and the adjusted r square
 lm_output <- dat_subset %>%
-  dplyr::select(scientific_name, t_value, slope, pearson, slope_dir,
-                r_sq) %>% distinct()
+  dplyr::select(scientific_name, t_value, slope, pearson, slope_dir,r_sq) %>% distinct()
 
 # write the values to file
 write.csv(lm_output, "results/abundance-detections-regressions.csv",
           row.names = F)
 ```
-![Of the 48 species for which acoustic detections were regressed with abundance (from point count data), 39 species showed a positive slope.](figs/fig_abundance_vs_detections_regressions.png)
+![Of the 48 species for which acoustic detections were regressed with abundance (from point count data), 39 species showed a positive slope.](figs/fig_abundance_vs_detections_regressions_allspecies.png)
 
 ## Plotting species-specific regression plots  
 
@@ -366,3 +368,52 @@ plots
 dev.off() 
 ```
 
+## Community-level regressions  
+
+In this visualization, we essentially plot overall data of acoustic detections against abundance (from point count data)  
+
+```{r}
+comm_reg <- lm(detections_aru ~ abundance_pc, data=dat_subset)
+summary(comm_reg)
+
+# Call:
+# lm(formula = detections_aru ~ abundance_pc, data = dat_subset)
+
+# Residuals:
+#    Min      1Q  Median      3Q     Max 
+# -165.86  -29.50   -9.58   14.47  338.76 
+
+# Coefficients:
+#              Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)   10.5842     1.9015   5.566 3.03e-08 ***
+# abundance_pc  13.9575     0.4883  28.582  < 2e-16 ***
+
+# Residual standard error: 56.87 on 1670 degrees of freedom
+# Multiple R-squared:  0.3285,	Adjusted R-squared:  0.3281 
+# F-statistic: 816.9 on 1 and 1670 DF,  p-value: < 2.2e-16
+
+# visualization
+fig_abund_detec_comm_reg <- ggplot(dat_subset, aes(y = detections_aru,x = abundance_pc)) +
+  geom_point(color = "#9CC3D5",size = 1.2) +
+  geom_smooth(aes(color = "#D95F02"),
+    method = 'lm', se = TRUE, 
+              linewidth = 0.7) +
+    labs(title = paste0("r_sq = 0.32", "  ", paste0("estimate = 13.95")),
+      y="\nDetections (from acoustic data)", 
+       x="Abundance (from point count data)\n") +
+    theme_bw() +
+  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      legend.position = "none") 
+
+ggsave(fig_abund_detec_comm_reg, filename = "figs/fig_abundance_vs_detections_regressions_communityLevel.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+![Community-level regressions of acoustic detections and abundance (from point count data)](figs/fig_abundance_vs_detections_regressions_communityLevel.png)
+  
+
+  
