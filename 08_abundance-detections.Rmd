@@ -5,7 +5,7 @@ editor_options:
 
 # Abundance vs. detections  
 
-In this script, we test for correlations between abundance (as estimated from point count data) and detections (as estimated from acoustic data).  
+In this script, we run correlations and regressions between abundance (as estimated from point count data) and detections (as estimated from acoustic data).    
 
 ## Install necessary libraries
 ```{r}
@@ -19,8 +19,13 @@ library(data.table)
 library(extrafont)
 library(ggstatsplot)
 library(ggside)
-library(lme4)
-library(report)
+library(MASS)
+library(scales)
+library(rr2)
+library(ggnewscale)
+library(ggpubr)
+library(gridtext)
+library(broom)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -31,7 +36,8 @@ source("code/01_internal-functions.R")
 datSubset <- read.csv("results/datSubset.csv")
 ```
 
-## Estimate abundance for point count data and detections for acoustic data    
+## Estimate abundance for point count data and detections for acoustic data  
+
 Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).  
 ```{r}
 # point-count data
@@ -77,11 +83,11 @@ fig_abund_detec <- grouped_ggscatterstats(
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_abund_detec, filename = "figs/fig_abundance_vs_detections.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+ggsave(fig_abund_detec, filename = "figs/fig_abundance_vs_detections_correlations.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types](figs/fig_abundance_vs_detections.png)  
+![Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types](figs/fig_abundance_vs_detections_correlations.png)  
 
 ## Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)  
 
@@ -127,11 +133,11 @@ fig_abund_detec_group <- grouped_ggscatterstats(
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_abund_detec_group, filename = "figs/fig_abundance_vs_detections_treatmentLevel.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+ggsave(fig_abund_detec_group, filename = "figs/fig_abundance_vs_detections_treatmentLevel_correlations.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the level of the treatment](figs/fig_abundance_vs_detections_treatmentLevel.png)   
+![Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the level of the treatment](figs/fig_abundance_vs_detections_treatmentLevel_correlations.png)   
 ## Rerun analysis at the level of each species (across all sites and treatments combined)  
 
 Essentially a single graph that plots all the data.  
@@ -172,13 +178,14 @@ fig_abund_detec_community <- ggscatterstats(
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_abund_detec_community, filename = "figs/fig_abundance_vs_detections_communityLevel.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+ggsave(fig_abund_detec_community, filename = "figs/fig_abundance_vs_detections_communityLevel_correlations.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the community level](figs/fig_abundance_vs_detections_communityLevel.png) 
+![Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the community level](figs/fig_abundance_vs_detections_communityLevel_correlations.png) 
 
-## Species-specific plots of correlations between abundance and detections  
+## Species-specific plots of correlations between abundance and detections     
+
 For this analysis, we will not be grouping data by treatment types for plot as we have insufficient data if we divided it up. In addition, we will remove species that were detected in only or the other method (point count or acoustic surveys). Further, we only keep species that had a minimum abundance of 10 and a minimum number of acoustic detections of 10.     
 ```{r}
 # identifying species that need to be kept
@@ -229,7 +236,7 @@ for(i in 1:length(unique(dat_subset$scientific_name))){
 
 # plot and save as a single pdf
 cairo_pdf(
-  filename = "figs/abundance-detections-by-species.pdf",
+  filename = "figs/abundance-detections-by-species-correlations.pdf",
   width = 13, height = 12,
   onefile = TRUE
 )
@@ -242,10 +249,120 @@ write.csv(metadata[,-14], # removing the expression column
           row.names = F)
 ```
 
-Rerunning the abundance-detection analysis essentially suggests that at the community level/when species are pooled across sites - there seems to be a high Pearson’s correlation value between abundance and detections (when site-level variation is include, this ranges between 0.51 to 0.55, but when site-level variation is compressed/lost/pooled across treatments, this value ranges between 0.85 to 0.87).  
+Running the abundance-detections correlations analysis essentially suggests that at the community level/when species are pooled across sites - there seems to be a high Pearson’s correlation value between abundance and detections (when site-level variation is include, this ranges between 0.51 to 0.55, but when site-level variation is compressed/lost/pooled across treatments, this value ranges between 0.85 to 0.87).  
 
 However, when we break this result down and examine it for each species by species, we notice that the above result varies by species. At the species level, we considered a total of 48 species for this exercise. The list of 48 species only includes those that had a minimum abundance value of 10 and a minimum number of acoustic detections of 10.   
 
 We observed that ~15 species showed a positive r of >0.4, ~20 species showed a positive r of >0.3.Nine species showed a very small positive r value between 0 and 0.2. The species that showed the highest positive r values include Pycnonotus jocosus (0.85), Hypsipetes ganeesa (0.67) and Leptocoma minima (0.66).     
 
-Five species had a negative r value between 0 and -0.2. Seven species had a negative r value that ranged between -0.2 and -0.51. The three species showing a very high negative r value are Dicrurus aeneus (-0.51), Muscicapa muttui(-0.46), and Ficedula ruficauda (-0.45).  
+Five species had a negative r value between 0 and -0.2. Seven species had a negative r value that ranged between -0.2 and -0.51. The three species showing a very high negative r value are Dicrurus aeneus (-0.51), Muscicapa muttui(-0.46), and Ficedula ruficauda (-0.45).     
+
+## Regressions between abundance and detections   
+
+While it is relevant to examine correlations between abundance (as estimated from point count data) and detections (as estimated from acoustic data), we will run robust regressions to ask one predicts the other.  
+```{r}
+## We use the dat_subset dataframe moving forward, as it contains the subset of species with a minimum of 10 abundance values and 10 acoustic detections across sites and visits
+## I am borrowing code from Mikula et al. 2020 below
+## The data and scripts from their manuscript can be found here:
+## https://osf.io/fa9ky/
+
+dat_subset <- setDT(dat_subset)
+
+# extract t-value
+dat_subset[,  t_value := summary(lm(detections_aru ~ abundance_pc))$coefficients[6], by = scientific_name] 
+
+# extract slope
+dat_subset[,  slope := lm(detections_aru ~ abundance_pc)%>% coef()%>% nth(2), by = scientific_name] 
+
+# extract pearson's correlation
+dat_subset[,  pearson := cor(detections_aru, abundance_pc), by = scientific_name] 
+
+# extract adjusted r squared
+dat_subset[,  r_sq := summary(lm(detections_aru ~ abundance_pc))$adj.r.squared, by = scientific_name] 
+
+# create a column with the direction of the slope (whether it is positive or negative), which can be referred to later while plotting    
+dat_subset[, slope_dir := ifelse(slope >0, '+', '-')]
+paste("Positive regressions:",length(unique(dat_subset$scientific_name[dat_subset$slope_dir %in% c('+')])))
+# 39 species had a positive regression/slope value
+
+## visualization
+fig_abund_detec_reg <- ggplot(dat_subset, aes(y = detections_aru,
+                                              x = abundance_pc)) +
+  geom_point(color = "#9CC3D5",size = 1.2) +
+  geom_smooth(data = dat_subset, aes(group = scientific_name,
+                                     color = slope_dir), 
+              method = 'lm', se = FALSE, 
+              linewidth = 0.7) +
+  scale_color_manual(values=c("#1B9E77", "#D95F02")) +
+  labs(y="\nDetections (from acoustic data)", 
+       x="Abundance (from point count data)\n") + 
+  theme_bw() +
+  annotate("text", x=13, y=400, label= "Slope:", col = "grey30", size = 12) + 
+  annotate("text", x=16, y=400, label= "+", col = "#D95F02", size = 12) + 
+  annotate("text", x = 18, y=400, label = "-", col = "#1B9E77", size = 12)+
+  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      legend.position = "none")
+
+ggsave(fig_abund_detec_reg, filename = "figs/fig_abundance_vs_detections_regressions.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+
+# extract the slope, t_value, pearson correlation and the adjusted r square
+lm_output <- dat_subset %>%
+  dplyr::select(scientific_name, t_value, slope, pearson, slope_dir,
+                r_sq) %>% distinct()
+
+# write the values to file
+write.csv(lm_output, "results/abundance-detections-regressions.csv",
+          row.names = F)
+```
+![Of the 48 species for which acoustic detections were regressed with abundance (from point count data), 39 species showed a positive slope.](figs/fig_abundance_vs_detections_regressions.png)
+
+## Plotting species-specific regression plots  
+
+```{r}
+# visualization
+plots <- list()
+
+for(i in 1:length(unique(dat_subset$scientific_name))){
+  
+  # extract species scientific name
+  a <- unique(dat_subset$scientific_name)[i]
+  
+  # subset data for plotting
+  for_plot <- dat_subset[dat_subset$scientific_name==a,]
+  
+  # create plots
+  plots[[i]] <- ggplot(for_plot, aes(y = detections_aru,
+                                    x = abundance_pc)) +
+  geom_point(color = "#9CC3D5",size = 1.2) +
+  geom_smooth(aes(color = "#D95F02"),
+    method = 'lm', se = TRUE, 
+              linewidth = 0.7) +
+    labs(title = paste0(a,"  ","r_sq = ", signif(for_plot$r_sq, digits = 2), "  ", paste0("slope = ",signif(for_plot$slope, digits = 4))),
+      y="\nDetections (from acoustic data)", 
+       x="Abundance (from point count data)\n") +
+    theme_bw() +
+  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      legend.position = "none")
+}
+
+# plot and save as a single pdf
+cairo_pdf(
+  filename = "figs/abundance-detections-by-species-regressions.pdf",
+  width = 13, height = 12,
+  onefile = TRUE
+)
+plots
+dev.off() 
+```
+
