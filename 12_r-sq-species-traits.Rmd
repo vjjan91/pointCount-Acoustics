@@ -73,4 +73,3 @@ dev.off()
 ```
 
 ![Weak fit - in other words, larger-bodied birds do not necessarily have a stronger fit between acoustic detections and abundance (from point count data)](figs/fig_bodyMass_adjustedrSq.png)  
-
