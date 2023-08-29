@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
-  <meta name="description" content="Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <title>Section 11 Rank abundance and species accumulation curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
+  <meta name="description" content="Section 11 Rank abundance and species accumulation curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta property="og:title" content="Section 11 Rank abundance and species accumulation curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta name="twitter:title" content="Section 11 Rank abundance and species accumulation curves for point count and acoustic data | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   
   
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="abundance-vs.-vocalization-rates.html"/>
+<link rel="next" href="r-value-vs.-species-traits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -269,19 +269,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Section 11</span> Rank abundance and species accumulation curves for point count and acoustic data<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Rank abundance curves and species accumulation curves have been used in ecological analyses for multiple decades now. In this script, we ask if the species that are the most abundant, also the ones that have the highest number of acoustic detections. In addition, we run analyses to assess species accumulation using abundance data from point counts and acoustic detections.</p>
+<div id="install-necessary-libraries-4" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Install necessary libraries<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb57-2"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb57-3"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb57-4"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb57-5"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb57-6"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb57-7"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb57-8"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb57-9"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-9" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb57-10"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-10" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb57-11"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-11" tabindex="-1"></a><span class="fu">library</span>(goeveg)</span>
+<span id="cb57-12"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-12" tabindex="-1"></a></span>
+<span id="cb57-13"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-13" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb57-14"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb57-14" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+</div>
+<div id="load-dataframe-containing-point-count-and-acoustic-data-7" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Load dataframe containing point count and acoustic data<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb58-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Estimate abundance for point count data and detections for acoustic data<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-1" tabindex="-1"></a><span class="co"># point-count data</span></span>
+<span id="cb59-2"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-2" tabindex="-1"></a><span class="co"># estimate total abundance across all species for each site</span></span>
+<span id="cb59-3"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-3" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-4" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-5"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-5" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, scientific_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-6"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-7"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb59-8"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-8" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-9" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
+<span id="cb59-10"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-10" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across all sites</span></span>
+<span id="cb59-11"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-11" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb59-12"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-12" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-13"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-13" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, scientific_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-14"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-14" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-15"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb59-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+</div>
+<div id="create-rank-abundance-curves" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Create rank abundance curves<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-1" tabindex="-1"></a><span class="do">## preparing the point count data for the creation of rank abundance curves</span></span>
+<span id="cb60-2"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-2" tabindex="-1"></a>pc_rank <span class="ot">&lt;-</span>  abundance <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-3" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
+<span id="cb60-4"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
+<span id="cb60-5"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-5" tabindex="-1"></a>               <span class="at">values_from =</span> abundance_pc, </span>
+<span id="cb60-6"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-6" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">abundance_pc=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-7"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb60-8"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-8" tabindex="-1"></a></span>
+<span id="cb60-9"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-9" tabindex="-1"></a>pc_rank_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pc_rank[, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(pc_rank)])</span>
+<span id="cb60-10"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-10" tabindex="-1"></a></span>
+<span id="cb60-11"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-11" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_pointCount_rankCurve.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb60-12"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-12" tabindex="-1"></a>pc_rank_curve <span class="ot">&lt;-</span> <span class="fu">racurve</span>(pc_rank_mat, <span class="at">nlab =</span> <span class="dv">10</span>, <span class="at">main =</span> <span class="st">&quot;Rank-abundance curve for point count data&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.12</span>))</span>
+<span id="cb60-13"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-13" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb60-14"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-14" tabindex="-1"></a></span>
+<span id="cb60-15"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-15" tabindex="-1"></a><span class="do">## preparing the acoustic data for the creation of rank abundance curves</span></span>
+<span id="cb60-16"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-16" tabindex="-1"></a>aru_rank <span class="ot">&lt;-</span>  detections <span class="sc">%&gt;%</span></span>
+<span id="cb60-17"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-17" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id) <span class="sc">%&gt;%</span></span>
+<span id="cb60-18"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-18" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> scientific_name, </span>
+<span id="cb60-19"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-19" tabindex="-1"></a>               <span class="at">values_from =</span> detections_aru, </span>
+<span id="cb60-20"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-20" tabindex="-1"></a>               <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">detections_aru=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
+<span id="cb60-21"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-21" tabindex="-1"></a></span>
+<span id="cb60-22"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-22" tabindex="-1"></a>aru_rank_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(aru_rank[, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(aru_rank)])</span>
+<span id="cb60-23"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-23" tabindex="-1"></a></span>
+<span id="cb60-24"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-24" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_acoustic_rankCurve.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb60-25"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-25" tabindex="-1"></a>aru_rank_curve <span class="ot">&lt;-</span> <span class="fu">racurve</span>(aru_rank_mat, <span class="at">nlab =</span> <span class="dv">10</span>, <span class="at">main =</span> <span class="st">&quot;Rank-abundance curve for acoustic data&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.12</span>))</span>
+<span id="cb60-26"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb60-26" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="float">
+<img src="figs/fig_pointCount_rankCurve.png" alt="Rank-abundance curve for point count data uses abundance data. The top ten species (based on their ranks) are indicated in this figure." />
+<div class="figcaption">Rank-abundance curve for point count data uses abundance data. The top ten species (based on their ranks) are indicated in this figure.</div>
+</div>
+<div class="float">
+<img src="figs/fig_acoustic_rankCurve.png" alt="Rank-abundance curve for acoustic data uses acoustic detections. The top ten species (based on their ranks) are indicated in this figure." />
+<div class="figcaption">Rank-abundance curve for acoustic data uses acoustic detections. The top ten species (based on their ranks) are indicated in this figure.</div>
+</div>
+<p>Based on the above two figures, we observe that the species that made up the top ten ranks are similar across methods, except the ranks are different.</p>
+</div>
+<div id="rank-abundance-models" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Rank-abundance models<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here, we fit brokenstick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models of species abundance to ask if the data on abundance (from point count data) takes on a similar model of rank-abundance as data from acoustic surveys.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-1" tabindex="-1"></a>pc_model<span class="ot">&lt;-</span> <span class="fu">radfit</span>(pc_rank_mat)</span>
+<span id="cb61-2"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-2" tabindex="-1"></a>aru_model <span class="ot">&lt;-</span> <span class="fu">radfit</span>(aru_rank_mat)</span>
+<span id="cb61-3"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-3" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-4" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_pointCount_rankModel.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb61-5"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-5" tabindex="-1"></a><span class="fu">plot</span>(pc_model)</span>
+<span id="cb61-6"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb61-7"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-7" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-8" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_acousticData_rankModel.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb61-9"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-9" tabindex="-1"></a><span class="fu">plot</span>(aru_model)</span>
+<span id="cb61-10"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb61-10" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="float">
+<img src="figs/fig_pointCount_rankModel.png" alt="Rank-abundance models across sites for point count data." />
+<div class="figcaption">Rank-abundance models across sites for point count data.</div>
+</div>
+<div class="float">
+<img src="figs/fig_acousticData_rankModel.png" alt="Rank-abundance models across sites for acoustic data." />
+<div class="figcaption">Rank-abundance models across sites for acoustic data.</div>
+</div>
+<p><em>vegan</em> has five models, each with characteristic rank-abundance curve shapes:<br />
+• Pre-emption (geometric series)<br />
+• Broken stick<br />
+• Log-normal<br />
+• Mandelbrot (also called Zipf-Mandelbrot)<br />
+• Zipf</p>
+<p>These and other rank-abundance models fall into two camps: one group is based on assumptions of niche partitioning and competition that limits species’ abundances, and the other is based on the statistical behavior of large samples.</p>
+<p>The results suggests that across sites for both point count and acoustic data, majority of the data follow a preemption model (essentially, a geometric series). For more details regarding the models, please see this useful resource: <a href="https://myweb.ttu.edu/nmcintyr/Community%20Ecology/abundance.docx" class="uri">https://myweb.ttu.edu/nmcintyr/Community%20Ecology/abundance.docx</a> (this link will take you a word document that was written by Dr. Nancy McIntyre -<a href="http://myweb.ttu.edu/nmcintyr/" class="uri">http://myweb.ttu.edu/nmcintyr/</a>).</p>
+<p>The big takeway from running these rank abundance models are that majority of the sites seem to show a similar distribution of data across the approaches.</p>
+</div>
+<div id="species-accumulation-curves" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Species accumulation curves<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-1" tabindex="-1"></a>pc_accum <span class="ot">&lt;-</span> <span class="fu">specaccum</span>(pc_rank_mat)</span>
+<span id="cb62-2"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-2" tabindex="-1"></a>aru_accum <span class="ot">&lt;-</span> <span class="fu">specaccum</span>(aru_rank_mat)</span>
+<span id="cb62-3"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-3" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-4" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">&quot;figs/fig_specAccumCurves.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb62-5"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-5" tabindex="-1"></a><span class="fu">plot</span>(aru_accum, <span class="at">ci.type =</span> <span class="st">&quot;poly&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ci.lty=</span><span class="dv">0</span>, <span class="at">ci.col=</span><span class="st">&quot;lightgreen&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">120</span>), <span class="at">ylab =</span> <span class="st">&quot;Exact method of species accumulation&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Number of sites&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Species accummulation curves for acoustic data (green) and point count data (blue)&quot;</span>)</span>
+<span id="cb62-6"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-6" tabindex="-1"></a><span class="fu">plot</span>(pc_accum, <span class="at">ci.type=</span><span class="st">&quot;poly&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ci.lty=</span><span class="dv">0</span>, <span class="at">ci.col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="at">add=</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-7"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#cb62-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="float">
+<img src="figs/fig_specAccumCurves.png" alt="Species accumulation curves for acoustic data and point count data" />
+<div class="figcaption">Species accumulation curves for acoustic data and point count data</div>
+</div>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="abundance-vs.-vocalization-rates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-value-vs.-species-traits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -302,7 +424,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/%s",
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/10_rank-abundance-curves.Rmd",
 "text": "Edit"
 },
 "history": {

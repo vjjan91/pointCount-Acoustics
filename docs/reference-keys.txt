@@ -66,12 +66,13 @@ install-necessary-libraries-3
 load-dataframe-containing-point-count-and-acoustic-data-6
 estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data
 correlations-between-abundance-and-vocalization-rates
-rank-abundance-curves-for-point-count-and-acoustic-data
+rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data
 install-necessary-libraries-4
 load-dataframe-containing-point-count-and-acoustic-data-7
 estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1
 create-rank-abundance-curves
 rank-abundance-models
+species-accumulation-curves
 r-value-vs.-species-traits
 load-necessary-libraries-4
 load-species-trait-data-and-frequency-data-2
@@ -82,3 +83,5 @@ load-necessary-libraries-5
 load-species-trait-data-and-frequency-data-3
 load-adjusted-r-squared-values-from-previous-script
 body-mass-and-r-squared-values
+calling-rate-total-acoustic-detections-abundance-and-r-squared-values
+visualization
