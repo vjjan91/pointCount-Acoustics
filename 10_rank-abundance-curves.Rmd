@@ -3,9 +3,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Rank abundance curves for point count and acoustic data
+# Rank abundance and species accumulation curves for point count and acoustic data
 
-Rank abundance curves have been used in ecological analyses for multiple decades now. In this script, we ask if the species that are the most abundant, also the ones that have the highest number of acoustic detections.  
+Rank abundance curves and species accumulation curves have been used in ecological analyses for multiple decades now. In this script, we ask if the species that are the most abundant, also the ones that have the highest number of acoustic detections. In addition, we run analyses to assess species accumulation using abundance data from point counts and acoustic detections.    
 
 ## Install necessary libraries
 
@@ -75,8 +75,7 @@ aru_rank <-  detections %>%
   group_by(site_id) %>%
   pivot_wider(names_from = scientific_name, 
                values_from = detections_aru, 
-               values_fill = list(detections_aru=0)) %>%
-  ungroup()
+               values_fill = list(detections_aru=0)) %>% ungroup()
 
 aru_rank_mat <- as.matrix(aru_rank[, 2:ncol(aru_rank)])
 
@@ -123,4 +122,19 @@ These and other rank-abundance models fall into two camps: one group is based on
 
 The results suggests that across sites for both point count and acoustic data, majority of the data follow a preemption model (essentially, a geometric series). For more details regarding the models, please see this useful resource: <https://myweb.ttu.edu/nmcintyr/Community%20Ecology/abundance.docx> (this link will take you a word document that was written by Dr. Nancy McIntyre -<http://myweb.ttu.edu/nmcintyr/>).
 
-The big takeway from running these rank abundance models are that majority of the sites seem to show a similar distribution of data across the approaches.
+The big takeway from running these rank abundance models are that majority of the sites seem to show a similar distribution of data across the approaches.   
+
+## Species accumulation curves  
+
+```{r}
+pc_accum <- specaccum(pc_rank_mat)
+aru_accum <- specaccum(aru_rank_mat)
+
+png(filename = "figs/fig_specAccumCurves.png", width = 12, height = 10, units = "in", res = 300)
+plot(aru_accum, ci.type = "poly", col = "darkgreen", lwd=2, ci.lty=0, ci.col="lightgreen", ylim = c(0,120), ylab = "Exact method of species accumulation", xlab = "Number of sites", main = "Species accummulation curves for acoustic data (green) and point count data (blue)")
+plot(pc_accum, ci.type="poly", col="blue", lwd=2, ci.lty=0, ci.col="lightblue", add= TRUE)
+dev.off()
+```
+
+![Species accumulation curves for acoustic data and point count data](figs/fig_specAccumCurves.png)
+
