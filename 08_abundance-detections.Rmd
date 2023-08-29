@@ -138,6 +138,7 @@ dev.off()
 ```
 
 ![Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the level of the treatment](figs/fig_abundance_vs_detections_treatmentLevel_correlations.png)   
+
 ## Rerun analysis at the level of each species (across all sites and treatments combined)  
 
 Essentially a single graph that plots all the data.  
