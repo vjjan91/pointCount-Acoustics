@@ -3,9 +3,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Frequency  
+# Frequency and amplitude  
 
-In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the median peak frequecy of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis).   
+In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the median peak frequency (& median center frequency & median peak amplitude) of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis).   
 
 To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count survey while ranging between 1 to 5 for each species for an acoustic survey. To account for the slight difference in the number of visits, we scale the data to go between 1 and 10 (arbitrarily chosen) to ensure that the visit-level estimates are comparable.  
 
@@ -162,6 +162,8 @@ dev.off()
 ![Marginal associations - no real support seen.](figs/fig_medianPeakFreq_detectionRatio_correlations.png)  
   
 ## Exploring center frequency instead of peak frequency  
+
+
 ```{r}
 # calculate median center frequency with the list of species that have a minimum of 10 templates
 median_cf <- freq_10 %>%
@@ -212,3 +214,97 @@ dev.off()
 ```
 
 ![Results are similar for the calculation of median peak frequency](figs/fig_medianCenterFreq_detectionRatio_correlations.png)   
+
+## Amplitude
+
+Here, we extract peak amplitude data and explore similar analyses as before.  
+```{r}
+# calculate median peak amplitude with the list of species that have a minimum of 10 templates
+peak_amp <- freq_10 %>%
+  group_by(eBird_codes) %>%
+  summarise(peak_amp =  median(peak_amp))  
+
+# create a single dataframe for visit_detections
+visit_detections <- full_join(pc_visit_detections[,-5], aru_visit_detections[,-5]) %>%
+  replace_na(list(pc_visit_detections = 0, aru_visit_detections = 0,
+                  pc_visit_scaled = 0, aru_visit_scaled = 0))
+
+visit_detections <- visit_detections %>%
+  mutate(pc_to_total = (pc_visit_scaled)/
+           (pc_visit_scaled + aru_visit_scaled))
+
+# join this dataframe to species trait dat
+dat_peak_amp <- left_join(peak_amp, trait, by = "eBird_codes")
+
+# join the above dataframe to the detections dataset
+visit_detections <- left_join(dat_peak_amp[,c(1:3)],
+                              visit_detections,
+                   by = "scientific_name") 
+
+# reordering factors for plotting
+visit_detections$restoration_type <- factor(visit_detections$restoration_type, levels = c("BM", "AR", "NR"))
+  
+# removing outliers prior to visualization
+visit_detections <- visit_detections %>%
+  filter(eBird_codes != "PBFL") # Pale-billed flowerpecker
+
+# visualization
+fig_peakAmp <- grouped_ggscatterstats(
+  data = visit_detections,
+  x = peak_amp,
+  y = pc_to_total,
+  grouping.var = restoration_type,
+  type = "r",
+  plotgrid.args = list(nrow = 3, ncol = 1),
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_peakAmp, filename = "figs/fig_medianPeakAmplitude_detectionRatio_correlations.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![Results are similar for the calculation of median peak frequency](figs/fig_medianPeakAmplitude_detectionRatio_correlations.png)
+## Visualization of correlations between median peak frequency and median peak amplitude  
+```{r}
+# join the peak frequency and peak amplitude data
+freq_amp <- left_join(median_pf, peak_amp, by = "eBird_codes")
+
+# removing outlier - Pale-billed flowerpecker
+freq_amp <- freq_amp %>%
+  filter(eBird_codes != "PBFL") # Pale-billed flowerpecker
+
+# visualization
+fig_medFreq_peakAmp <- ggscatterstats(
+  data = freq_amp,
+  x = peak_amp,
+  y = median_peak_freq,
+  type = "r",
+  ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 15, face = "bold"))))
+
+ggsave(fig_medFreq_peakAmp, filename = "figs/fig_medianPeakFreq_medianPeakAmplitude_correlations.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![No significant correlation was seen between median peak frequency and median peak amplitude.](figs/fig_medianPeakFreq_medianPeakAmplitude_correlations.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
