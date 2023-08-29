@@ -163,7 +163,6 @@ dev.off()
   
 ## Exploring center frequency instead of peak frequency  
 
-
 ```{r}
 # calculate median center frequency with the list of species that have a minimum of 10 templates
 median_cf <- freq_10 %>%
@@ -295,16 +294,4 @@ dev.off()
 ```
 
 ![No significant correlation was seen between median peak frequency and median peak amplitude.](figs/fig_medianPeakFreq_medianPeakAmplitude_correlations.png)  
-
-
-
-
-
-
-
-
-
-
-
-
 
