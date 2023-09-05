@@ -124,9 +124,11 @@ dev.off()
 
 ```{r}
 # calculate median peak amplitude
+# we extract only the median of the 95th percentile of values
 median_amp <- freq_10 %>%
   group_by(eBird_codes) %>%
-  summarise(median_peak_amp =  median(peak_amp))
+  filter(peak_amp >= quantile(peak_amp, 0.95, na.rm = T)) %>%
+  summarise(median_peak_amp = median(peak_amp))
 
 # add scientific_name to median_amp
 median_amp <- left_join(median_amp, trait[,c(1,4)], by = "eBird_codes")
