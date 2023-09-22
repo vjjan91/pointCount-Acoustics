@@ -46,6 +46,11 @@ abundance <- datSubset %>%
            common_name, eBird_codes, habitat, foraging_habit) %>% summarise(totAbundance = sum(number)) %>%
   ungroup()
 
+# total abundance by species
+pc_totAbundance <- abundance %>%
+  group_by(scientific_name, common_name, habitat, foraging_habit) %>%
+  summarise(totAbundance = sum(totAbundance))
+
 # estimate richness for point count data
 pc_richness <- abundance %>%
   mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
@@ -62,6 +67,11 @@ detections <- datSubset %>%
            common_name, eBird_codes, habitat, foraging_habit) %>% summarise(totDetections = sum(number)) %>%
   ungroup()
 
+# total number of detections by species
+aru_totDetections <- detections %>%
+  group_by(scientific_name, common_name, habitat, foraging_habit) %>%
+  summarise(totDetections = sum(totDetections))
+  
 # estimate richness for acoustic data
 aru_richness <- detections %>%
   mutate(forRichness = case_when(totDetections > 0 ~ 1)) %>%
@@ -69,6 +79,16 @@ aru_richness <- detections %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "acoustic_data") %>%
   ungroup()
+
+# how many species were detected in a point count but not acoustic data?
+# four species were detected that were not observed in acoustic surveys
+pc_not_aru <- anti_join(pc_totAbundance, aru_totDetections)
+write.csv(pc_not_aru, "results/species-in-pointCount-not-acoustics.csv", row.names = F)
+
+# how many species were detected in acoustic data but not point counts?
+# 34 species were detected in acoustic data, but not in point counts
+aru_not_pc <- anti_join(aru_totDetections, pc_totAbundance)
+write.csv(aru_not_pc, "results/species-in-acoustics-not-pointCounts.csv", row.names = F)
 ```
 
 ## Visualize differences in richness between point count data and acoustic data
