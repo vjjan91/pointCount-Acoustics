@@ -68,6 +68,8 @@ install-necessary-libraries-3
 load-dataframe-containing-point-count-and-acoustic-data-6
 estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data
 correlations-between-abundance-and-vocalization-rates
+regressions-between-abundance-and-vocalization-rates
+community-level-regressions-1
 rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data
 install-necessary-libraries-4
 load-dataframe-containing-point-count-and-acoustic-data-7

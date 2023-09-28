@@ -228,6 +228,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
 <li class="chapter" data-level="10.3" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance from point count data and calculate vocalization rates from acoustic data</a></li>
 <li class="chapter" data-level="10.4" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#correlations-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.4</b> Correlations between abundance and vocalization rates</a></li>
+<li class="chapter" data-level="10.5" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#regressions-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.5</b> Regressions between abundance and vocalization rates</a></li>
+<li class="chapter" data-level="10.6" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#community-level-regressions-1"><i class="fa fa-check"></i><b>10.6</b> Community-level regressions</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>11</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
 <ul>
@@ -320,29 +322,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-6"><a href="richness-estimates.html#cb10-6" tabindex="-1"></a>           common_name, eBird_codes, habitat, foraging_habit) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-7"><a href="richness-estimates.html#cb10-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
 <span id="cb10-8"><a href="richness-estimates.html#cb10-8" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="richness-estimates.html#cb10-9" tabindex="-1"></a><span class="co"># estimate richness for point count data</span></span>
-<span id="cb10-10"><a href="richness-estimates.html#cb10-10" tabindex="-1"></a>pc_richness <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
-<span id="cb10-11"><a href="richness-estimates.html#cb10-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forRichness =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-12"><a href="richness-estimates.html#cb10-12" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb10-13"><a href="richness-estimates.html#cb10-13" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">richness =</span> <span class="fu">sum</span>(forRichness)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-14"><a href="richness-estimates.html#cb10-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-15"><a href="richness-estimates.html#cb10-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb10-16"><a href="richness-estimates.html#cb10-16" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="richness-estimates.html#cb10-17" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
-<span id="cb10-18"><a href="richness-estimates.html#cb10-18" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
-<span id="cb10-19"><a href="richness-estimates.html#cb10-19" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb10-20"><a href="richness-estimates.html#cb10-20" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-21"><a href="richness-estimates.html#cb10-21" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
-<span id="cb10-22"><a href="richness-estimates.html#cb10-22" tabindex="-1"></a>           common_name, eBird_codes, habitat, foraging_habit) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-23"><a href="richness-estimates.html#cb10-23" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb10-24"><a href="richness-estimates.html#cb10-24" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="richness-estimates.html#cb10-25" tabindex="-1"></a><span class="co"># estimate richness for acoustic data</span></span>
-<span id="cb10-26"><a href="richness-estimates.html#cb10-26" tabindex="-1"></a>aru_richness <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
-<span id="cb10-27"><a href="richness-estimates.html#cb10-27" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forRichness =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-28"><a href="richness-estimates.html#cb10-28" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb10-29"><a href="richness-estimates.html#cb10-29" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">richness =</span> <span class="fu">sum</span>(forRichness)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-30"><a href="richness-estimates.html#cb10-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-31"><a href="richness-estimates.html#cb10-31" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<span id="cb10-9"><a href="richness-estimates.html#cb10-9" tabindex="-1"></a><span class="co"># total abundance by species</span></span>
+<span id="cb10-10"><a href="richness-estimates.html#cb10-10" tabindex="-1"></a>pc_totAbundance <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="richness-estimates.html#cb10-11" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, common_name, habitat, foraging_habit) <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="richness-estimates.html#cb10-12" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(totAbundance))</span>
+<span id="cb10-13"><a href="richness-estimates.html#cb10-13" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="richness-estimates.html#cb10-14" tabindex="-1"></a><span class="co"># estimate richness for point count data</span></span>
+<span id="cb10-15"><a href="richness-estimates.html#cb10-15" tabindex="-1"></a>pc_richness <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
+<span id="cb10-16"><a href="richness-estimates.html#cb10-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forRichness =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-17"><a href="richness-estimates.html#cb10-17" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb10-18"><a href="richness-estimates.html#cb10-18" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">richness =</span> <span class="fu">sum</span>(forRichness)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-19"><a href="richness-estimates.html#cb10-19" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-20"><a href="richness-estimates.html#cb10-20" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb10-21"><a href="richness-estimates.html#cb10-21" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="richness-estimates.html#cb10-22" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
+<span id="cb10-23"><a href="richness-estimates.html#cb10-23" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
+<span id="cb10-24"><a href="richness-estimates.html#cb10-24" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb10-25"><a href="richness-estimates.html#cb10-25" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-26"><a href="richness-estimates.html#cb10-26" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
+<span id="cb10-27"><a href="richness-estimates.html#cb10-27" tabindex="-1"></a>           common_name, eBird_codes, habitat, foraging_habit) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-28"><a href="richness-estimates.html#cb10-28" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb10-29"><a href="richness-estimates.html#cb10-29" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="richness-estimates.html#cb10-30" tabindex="-1"></a><span class="co"># total number of detections by species</span></span>
+<span id="cb10-31"><a href="richness-estimates.html#cb10-31" tabindex="-1"></a>aru_totDetections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
+<span id="cb10-32"><a href="richness-estimates.html#cb10-32" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, common_name, habitat, foraging_habit) <span class="sc">%&gt;%</span></span>
+<span id="cb10-33"><a href="richness-estimates.html#cb10-33" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(totDetections))</span>
+<span id="cb10-34"><a href="richness-estimates.html#cb10-34" tabindex="-1"></a>  </span>
+<span id="cb10-35"><a href="richness-estimates.html#cb10-35" tabindex="-1"></a><span class="co"># estimate richness for acoustic data</span></span>
+<span id="cb10-36"><a href="richness-estimates.html#cb10-36" tabindex="-1"></a>aru_richness <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
+<span id="cb10-37"><a href="richness-estimates.html#cb10-37" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forRichness =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-38"><a href="richness-estimates.html#cb10-38" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb10-39"><a href="richness-estimates.html#cb10-39" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">richness =</span> <span class="fu">sum</span>(forRichness)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-40"><a href="richness-estimates.html#cb10-40" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-41"><a href="richness-estimates.html#cb10-41" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb10-42"><a href="richness-estimates.html#cb10-42" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="richness-estimates.html#cb10-43" tabindex="-1"></a><span class="co"># how many species were detected in a point count but not acoustic data?</span></span>
+<span id="cb10-44"><a href="richness-estimates.html#cb10-44" tabindex="-1"></a><span class="co"># four species were detected that were not observed in acoustic surveys</span></span>
+<span id="cb10-45"><a href="richness-estimates.html#cb10-45" tabindex="-1"></a>pc_not_aru <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(pc_totAbundance, aru_totDetections)</span>
+<span id="cb10-46"><a href="richness-estimates.html#cb10-46" tabindex="-1"></a><span class="fu">write.csv</span>(pc_not_aru, <span class="st">&quot;results/species-in-pointCount-not-acoustics.csv&quot;</span>, <span class="at">row.names =</span> F)</span>
+<span id="cb10-47"><a href="richness-estimates.html#cb10-47" tabindex="-1"></a></span>
+<span id="cb10-48"><a href="richness-estimates.html#cb10-48" tabindex="-1"></a><span class="co"># how many species were detected in acoustic data but not point counts?</span></span>
+<span id="cb10-49"><a href="richness-estimates.html#cb10-49" tabindex="-1"></a><span class="co"># 34 species were detected in acoustic data, but not in point counts</span></span>
+<span id="cb10-50"><a href="richness-estimates.html#cb10-50" tabindex="-1"></a>aru_not_pc <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(aru_totDetections, pc_totAbundance)</span>
+<span id="cb10-51"><a href="richness-estimates.html#cb10-51" tabindex="-1"></a><span class="fu">write.csv</span>(aru_not_pc, <span class="st">&quot;results/species-in-acoustics-not-pointCounts.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
 </div>
 <div id="visualize-differences-in-richness-between-point-count-data-and-acoustic-data" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Visualize differences in richness between point count data and acoustic data<a href="richness-estimates.html#visualize-differences-in-richness-between-point-count-data-and-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
