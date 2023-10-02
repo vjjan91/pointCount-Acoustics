@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# r sq vs. species traits  
+# r sq vs. species traits and calling rates  
 
 In this script, we will plot the adjusted r squared values (derived from the abundance vs. detections script) against species-specific traits.  
 
@@ -26,6 +26,7 @@ library(sjPlot)
 library(ggside)
 library(ggstatsplot)
 library(extrafont)
+library(ggrepel)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -35,6 +36,11 @@ source("code/01_internal-functions.R")
 ```{r}
 trait <- read.csv("data/species-trait-dat.csv")
 freq <- read.csv("data/frequency-data.csv")
+```
+
+## Load dataframe containing point count and acoustic data
+```{r}
+datSubset <- read.csv("results/datSubset.csv")
 ```
 
 ## Load adjusted r squared values from previous script  
@@ -199,5 +205,179 @@ amp_scale   -0.00583    0.03057   -0.19     0.85
 Residual standard error: 0.201 on 42 degrees of freedom  
   (2 observations deleted due to missingness)  
 Multiple R-squared:  0.0581,	Adjusted R-squared:  -0.0092     
-F-statistic: 0.863 on 3 and 42 DF,  p-value: 0.468  
+F-statistic: 0.863 on 3 and 42 DF,  p-value: 0.468    
 
+## Calling rate and R squared values  
+
+How does the coefficient of determination (tightness of fit between acoustic detections and abundance from point count data) compare to the calling rate? Here, calling rate for each species is defined as the total acoustic detections divided by the total number of individuals (from point counts). We aim to ask if species that have higher calling rate per individual have a stronger relationship between acoustics and point count data.
+
+```{r}
+# point-count data
+# estimate total abundance across all species for each site
+abundance <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(abundance_pc = sum(number)) %>%
+  ungroup()
+
+# estimate total number of detections across the acoustic data
+# note: we cannot call this abundance as it refers to the total number of vocalizations across all sites
+detections <- datSubset %>%
+  filter(data_type == "acoustic_data") %>%
+  group_by(site_id, restoration_type, scientific_name,
+           common_name, eBird_codes) %>% 
+  summarise(detections_aru = sum(number)) %>%
+  ungroup()
+
+# create a single dataframe
+data <- full_join(abundance, detections)%>%
+  replace_na(list(abundance_pc = 0, detections_aru = 0)) 
+
+# identifying species that need to be kept
+# only those species that have a minimum abundance value of 10 and minimum detection value of 10
+spp_subset <-  data %>%
+  group_by(scientific_name) %>%
+  summarise(abundance_pc = sum(abundance_pc), detections_aru = sum(detections_aru)) %>%
+  ungroup() %>%
+  filter(abundance_pc >=10 & detections_aru >= 10)
+
+# subset data
+dat_subset <- data %>%
+  filter(scientific_name %in% spp_subset$scientific_name) 
+
+# summarizing data (to join with the dataframe on R sq values)
+dat_subset <- dat_subset %>%
+  group_by(scientific_name, common_name, eBird_codes) %>%
+  summarise(abundance_pc = sum(abundance_pc), detections_aru = sum(detections_aru)) %>%
+  ungroup()
+
+# join with r squared dataframe
+r_sq_callingRate <- left_join(r_sq, dat_subset, by = "scientific_name")
+
+# extract calling rate
+r_sq_callingRate$calling_rate <- r_sq_callingRate$detections_aru/r_sq_callingRate$abundance_pc
+
+## visualization
+fig_calling_rate_rSq <- ggplot(r_sq_callingRate, aes(x=calling_rate,y=r_sq)) +  geom_point(shape = 21, colour = "black", fill = "white", size = 2, stroke = 1)+ 
+  geom_smooth(method="lm", se=TRUE, fullrange=FALSE, level=0.95,linetype="solid") +  
+  theme_bw() +
+  stat_regline_equation(label.y = 0.55, aes(label = ..eq.label..),
+                        size = 6, family = "Century Gothic") +
+  stat_regline_equation(label.y = 0.65, aes(label = ..rr.label..),
+                        size = 6, family = "Century Gothic") +
+  labs(y="\nAdjusted R-Squared value between acoustic detections and abundance (point-counts)", 
+       x="Calling rate\n") +
+  geom_text_repel(aes(label = scientific_name),family = "Century Gothic", fontface = "italic")+
+  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"))
+
+ggsave(fig_calling_rate_rSq, filename = "figs/fig_callingRate_adjustedrSq.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![No clear association between adjusted RSq values and calling rate](figs/fig_callingRate_adjustedrSq.png) 
+
+## Average abundance and average detections and R sq  
+
+Here, we ask if the coefficient of determination between acoustic detections and abundance (from point count data) varies as a function of proportion of visits across which a species was detected in point count data and proportion of visits across which a species was detected in acoustic surveys.  
+
+```{r}
+# point-count data
+nSitesDays_pc <- datSubset %>%
+  filter(data_type == "point_count") %>%
+  dplyr::select(site_id, date) %>%
+  distinct() %>%
+  arrange(site_id) %>%
+  count(site_id) %>%
+  rename(., "nVisits" = n)
+
+avgAbundance <- left_join(abundance, nSitesDays_pc, by = "site_id") %>%
+  mutate(avgAbundance = abundance_pc/nVisits)
+
+# acoustic data
+nSitesDays_aru <- datSubset %>%
+  filter(data_type == "acoustic_data") %>%
+  dplyr::select(site_id, date) %>%
+  distinct() %>%
+  arrange(site_id) %>%
+  count(site_id) %>%
+  rename(., "nVisits" = n)
+
+avgDetections <- left_join(detections, nSitesDays_aru, 
+                           by = "site_id") %>%
+  mutate(avgDetections = detections_aru/nVisits)
+
+# create a single dataframe
+data <- full_join(avgAbundance[,-7], avgDetections[,-7])%>%
+  replace_na(list(avgAbundance = 0, avgDetections = 0,
+                  abundance_pc = 0, detections_aru = 0)) 
+
+# identifying species that need to be kept
+# only those species that have a minimum abundance value of 10 and minimum detection value of 10
+spp_subset <-  data %>%
+  group_by(scientific_name) %>%
+  summarise(abundance_pc = sum(abundance_pc), detections_aru = sum(detections_aru)) %>%
+  ungroup() %>%
+  filter(abundance_pc >=10 & detections_aru >= 10)
+
+# subset data
+dat_subset <- data %>%
+  filter(scientific_name %in% spp_subset$scientific_name) 
+
+# summarizing data (to join with the dataframe on R sq values)
+dat_subset <- dat_subset %>%
+  group_by(scientific_name, common_name, eBird_codes) %>%
+  summarise(avgAbundance = sum(avgAbundance), avgDetections = sum(avgDetections)) %>%
+  ungroup()
+
+# join with r squared dataframe
+r_sq_avgData <- left_join(r_sq, dat_subset, by = "scientific_name")
+
+## visualization
+fig_avgAbundance_rSq <- ggplot(r_sq_avgData, aes(x=avgAbundance,y=r_sq)) +  geom_point(shape = 21, colour = "black", fill = "white", size = 2, stroke = 1)+ 
+  geom_smooth(method="lm", se=TRUE, fullrange=FALSE, level=0.95,linetype="solid") +  
+  theme_bw() +
+  stat_regline_equation(label.y = 0.55, aes(label = ..eq.label..),
+                        size = 6, family = "Century Gothic") +
+  stat_regline_equation(label.y = 0.65, aes(label = ..rr.label..),
+                        size = 6, family = "Century Gothic") +
+  labs(y="\nAdjusted R-Squared value between acoustic detections and abundance (point-counts)", 
+       x="Average abundance\n") +
+  geom_text_repel(aes(label = scientific_name),family = "Century Gothic", fontface = "italic")+
+  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"))
+
+ggsave(fig_avgAbundance_rSq, filename = "figs/fig_abundancePerVisit_adjustedrSq.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+
+# visualization
+fig_avgDetections_rSq <- ggplot(r_sq_avgData, aes(x=avgDetections,y=r_sq)) +  geom_point(shape = 21, colour = "black", fill = "white", size = 2, stroke = 1)+ 
+  geom_smooth(method="lm", se=TRUE, fullrange=FALSE, level=0.95,linetype="solid") +  
+  theme_bw() +
+  stat_regline_equation(label.y = 0.55, aes(label = ..eq.label..),
+                        size = 6, family = "Century Gothic") +
+  stat_regline_equation(label.y = 0.65, aes(label = ..rr.label..),
+                        size = 6, family = "Century Gothic") +
+  labs(y="\nAdjusted R-Squared value between acoustic detections and abundance (point-counts)", 
+       x="Average detections\n") +
+  geom_text_repel(aes(label = scientific_name),family = "Century Gothic", fontface = "italic")+
+  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",size = 18, face = "bold"),
+      plot.subtitle = element_text(family = "Century Gothic", 
+      size = 15, face = "bold",color="#1b2838"),
+      axis.title = element_text(family = "Century Gothic",
+      size = 18, face = "bold"))
+
+ggsave(fig_avgDetections_rSq, filename = "figs/fig_detectionsPerVisit_adjustedrSq.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
+dev.off() 
+```
+
+![No clear association between adjusted RSq values and average abundance](figs/fig_abundancePerVisit_adjustedrSq.png) 
+
+![No clear association between adjusted RSq values and average detections](figs/fig_detectionsPerVisit_adjustedrSq.png) 
