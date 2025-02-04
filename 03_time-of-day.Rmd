@@ -43,12 +43,16 @@ Here we get a sense of what times of day have been visited/sampled most across s
 nSitesTime_pc <- datSubset%>% 
   filter(data_type == "point_count") %>%
   dplyr::select(site_id, time_of_day)%>%
-  distinct() %>% arrange(time_of_day) %>% count(time_of_day)
+  distinct() %>% arrange(time_of_day) %>% 
+  count(time_of_day) %>%
+  mutate(data_type = "point_count")
 
 nSitesTime_aru <- datSubset%>% 
   filter(data_type == "acoustic_data") %>%
   dplyr::select(site_id, time_of_day)%>%
-  distinct() %>% arrange(time_of_day) %>% count(time_of_day)
+  distinct() %>% arrange(time_of_day) %>% 
+  count(time_of_day) %>%
+  mutate(data_type = "acoustic_data")
 
 # This comparison lets us know that number of visits for the time_of_day - 9AM to 10AM is significantly different between acoustic data and point counts and we shall ignore this time segment when we carry out further analyses.  
 ```
