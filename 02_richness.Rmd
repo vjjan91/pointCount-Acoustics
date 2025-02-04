@@ -42,7 +42,7 @@ datSubset <- left_join(datSubset,trait[,c(1,7,8)], by = "scientific_name")
 # estimate total abundance across all species for each site
 abundance <- datSubset %>%
   filter(data_type == "point_count") %>%
-  group_by(site_id, restoration_type, scientific_name,
+  group_by(site_id, scientific_name,
            common_name, eBird_codes, habitat, foraging_habit) %>% summarise(totAbundance = sum(number)) %>%
   ungroup()
 
@@ -51,10 +51,12 @@ pc_totAbundance <- abundance %>%
   group_by(scientific_name, common_name, habitat, foraging_habit) %>%
   summarise(totAbundance = sum(totAbundance))
 
-# estimate richness for point count data
+# species most abundant in a point count include the Nilgiri flowerpecker, Greenish Warbler, White-cheeked Barbet, Yellow-browed Bulbul, Vernal-hanging Parrot
+
+# estimate richness for point count data (calculated for each site)
 pc_richness <- abundance %>%
   mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type) %>%
+  group_by(site_id) %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "point_count") %>%
   ungroup()
@@ -63,7 +65,7 @@ pc_richness <- abundance %>%
 # note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
-  group_by(site_id, restoration_type, scientific_name,
+  group_by(site_id, scientific_name,
            common_name, eBird_codes, habitat, foraging_habit) %>% summarise(totDetections = sum(number)) %>%
   ungroup()
 
@@ -71,11 +73,13 @@ detections <- datSubset %>%
 aru_totDetections <- detections %>%
   group_by(scientific_name, common_name, habitat, foraging_habit) %>%
   summarise(totDetections = sum(totDetections))
+
+# species with the highest numbers of acoustic detections across sites are the White-cheeked Barbet, Nilgiri Flowerpecker, Crimson-backed Sunbird, Red-whiskered Bulbul and Indian White-eye
   
 # estimate richness for acoustic data
 aru_richness <- detections %>%
   mutate(forRichness = case_when(totDetections > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type) %>%
+  group_by(site_id) %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "acoustic_data") %>%
   ungroup()
@@ -95,15 +99,11 @@ write.csv(aru_not_pc, "results/species-in-acoustics-not-pointCounts.csv", row.na
 ```{r}
 richness <- bind_rows(pc_richness, aru_richness)
 
-# reordering factors for plotting
-richness$restoration_type <- factor(richness$restoration_type, levels = c("BM", "AR", "NR"))
-
 # Here, we use functions from the package ggstatsplot (more information can be found here:https://indrajeetpatil.github.io/ggstatsplot/index.html)
 
 fig_richness <- richness %>%
-  grouped_ggbetweenstats(x = data_type,
+  ggbetweenstats(x = data_type,
                          y = richness,
-                         grouping.var = restoration_type,
                          xlab = "Data type",
                          ylab = "Richness", 
                          pairwise.display = "significant",
@@ -121,23 +121,23 @@ ggsave(fig_richness, filename = "figs/fig_richness.png", width = 13, height = 14
 dev.off() 
 ```
 
-![Significant differences in richness between acoustic data and point count data across treatment types](figs/fig_richness.png)
+![Significant differences in richness between acoustic data and point count data.](figs/fig_richness.png)
 
 ## Visualize differences in richness as a function of species habitat affiliation  
-
-Here, we examine if there are differences in species richness across treatment types (between point counts and acoustic surveys) as a function of habitat affiliation - whether a species is a rainforest specialist or an open-country generalists.  
+Here, we examine if there are differences in species richness between point counts and acoustic surveys as a function of habitat affiliation - whether a species is a rainforest specialist or an open-country generalists.  
 ```{r}
 # estimate richness by trait for point count data
 trait_pc_richness <- abundance %>%
   mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type, habitat) %>% summarise(richness = sum(forRichness)) %>%
+  group_by(site_id, habitat) %>% 
+  summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "point_count") %>%
   ungroup()
 
 # estimate richness by trait for acoustic data
 trait_aru_richness <- detections %>%
   mutate(forRichness = case_when(totDetections > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type, habitat) %>%
+  group_by(site_id, habitat) %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "acoustic_data") %>%
   ungroup()
@@ -145,21 +145,16 @@ trait_aru_richness <- detections %>%
 # bind rows prior to visualization
 trait_richness <- bind_rows(trait_pc_richness, trait_aru_richness)
 
-# reordering factors for plotting
-trait_richness$restoration_type <- factor(trait_richness$restoration_type, levels = c("BM", "AR", "NR"))
-
-# visualization for rainforest birds
-fig_rf_richness <- trait_richness %>%
-  filter(habitat == "RF") %>%
+# visualization
+fig_trait_richness <- trait_richness %>%
   grouped_ggbetweenstats(x = data_type,
                          y = richness,
-                         grouping.var = restoration_type,
+                         grouping.var = habitat,
                          xlab = "Data type",
                          ylab = "Richness", 
                          pairwise.display = "significant",
                          package = "ggsci",
                          palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
 ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
       plot.subtitle = element_text(family = "Century Gothic", 
@@ -167,53 +162,30 @@ ggplot.component = list(theme(text = element_text(family = "Century Gothic", siz
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_rf_richness, filename = "figs/fig_rainforestBirds_richness.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
-dev.off() 
-
-# visualization for open-country birds
-fig_oc_richness <- trait_richness %>%
-  filter(habitat == "OC") %>%
-  grouped_ggbetweenstats(x = data_type,
-                         y = richness,
-                         grouping.var = restoration_type,
-                         xlab = "Data type",
-                         ylab = "Richness", 
-                         pairwise.display = "significant",
-                         package = "ggsci",
-                         palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
-ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_oc_richness, filename = "figs/fig_openCountryBirds_richness.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
+ggsave(fig_trait_richness, filename = "figs/fig_richness_by_trait.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Differences in richness of rainforest birds between acoustic data and point count data across treatment types](figs/fig_rainforestBirds_richness.png)  
+![Significant differences in richness of birds between acoustic data and point count data as a function of species trait](figs/fig_richness_by_trait.png)  
 
-![Differences in richness of open-country birds between acoustic data and point count data across treatment types](figs/fig_openCountryBirds_richness.png)      
-  
 ## Visualize differences in species richness as a function of species foraging guilds  
 
-Here, we examine if there are differences in species richness across treatment types (between point counts and acoustic surveys) as a function of foraging guilds - whether a species forages on the ground, understorey, mid-storey, or canopy.   
+Here, we examine if there are differences in species richness between point counts and acoustic surveys as a function of foraging guilds - whether a species forages on the ground, understorey, mid-storey, or canopy.   
 ```{r}
 # estimate richness by foraging habit for point count data
 foraging_pc_richness <- abundance %>%
   mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type, foraging_habit) %>% summarise(richness = sum(forRichness)) %>%
+  group_by(site_id,foraging_habit) %>% 
+  summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "point_count") %>%
   filter(foraging_habit != "AER") %>%
   filter(foraging_habit != "AQU") %>%
   ungroup()
 
-# estimate richness by trait for acoustic data
+# estimate richness by foraging habit for acoustic data
 foraging_aru_richness <- detections %>%
   mutate(forRichness = case_when(totDetections > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type, foraging_habit) %>%
+  group_by(site_id, foraging_habit) %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "acoustic_data") %>%
   filter(foraging_habit != "AER") %>%
@@ -223,21 +195,16 @@ foraging_aru_richness <- detections %>%
 # bind rows prior to visualization
 foraging_richness <- bind_rows(foraging_pc_richness, foraging_aru_richness)
 
-# reordering factors for plotting
-foraging_richness$restoration_type <- factor(foraging_richness$restoration_type, levels = c("BM", "AR", "NR"))
-
-# canopy birds visualization
-fig_can_richness <- foraging_richness %>%
-  filter(foraging_habit == "CAN") %>%
+# visualization
+fig_foraging_richness <- foraging_richness %>%
   grouped_ggbetweenstats(x = data_type,
                          y = richness,
-                         grouping.var = restoration_type,
+                         grouping.var = foraging_habit,
                          xlab = "Data type",
                          ylab = "Richness", 
                          pairwise.display = "significant",
                          package = "ggsci",
                          palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
 ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
       plot.subtitle = element_text(family = "Century Gothic", 
@@ -245,98 +212,23 @@ ggplot.component = list(theme(text = element_text(family = "Century Gothic", siz
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_can_richness, filename = "figs/fig_canopyBirds_richness.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
-dev.off() 
-
-# midstorey birds visualization
-fig_mid_richness <- foraging_richness %>%
-  filter(foraging_habit == "MID") %>%
-  grouped_ggbetweenstats(x = data_type,
-                         y = richness,
-                         grouping.var = restoration_type,
-                         xlab = "Data type",
-                         ylab = "Richness", 
-                         pairwise.display = "significant",
-                         package = "ggsci",
-                         palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
-ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_mid_richness, filename = "figs/fig_midstoreyBirds_richness.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
-dev.off() 
-
-# understorey birds visualization
-fig_und_richness <- foraging_richness %>%
-  filter(foraging_habit == "UND") %>%
-  grouped_ggbetweenstats(x = data_type,
-                         y = richness,
-                         grouping.var = restoration_type,
-                         xlab = "Data type",
-                         ylab = "Richness", 
-                         pairwise.display = "significant",
-                         package = "ggsci",
-                         palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
-ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_und_richness, filename = "figs/fig_understoreyBirds_richness.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
-dev.off() 
-
-# ground foraging birds visualization
-fig_grd_richness <- foraging_richness %>%
-  filter(foraging_habit == "GRD") %>%
-  grouped_ggbetweenstats(x = data_type,
-                         y = richness,
-                         grouping.var = restoration_type,
-                         xlab = "Data type",
-                         ylab = "Richness", 
-                         pairwise.display = "significant",
-                         package = "ggsci",
-                         palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
-ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_grd_richness, filename = "figs/fig_groundBirds_richness.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
+ggsave(fig_foraging_richness, filename = "figs/fig_richness_by_foragingGuild.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Differences in richness of canopy birds between acoustic data and point count data across treatment types](figs/fig_canopyBirds_richness.png)
+![Significant differences in richness between acoustic data and point count data as a function of foraging guild](figs/fig_richness_by_foragingGuild.png)
 
-![Differences in richness of midstorey birds between acoustic data and point count data across treatment types. Note, benchmark sites show no difference in richness.](figs/fig_midstoreyBirds_richness.png) 
-
-![Differences in richness of understorey birds between acoustic data and point count data across treatment types. Note: Actively restored sites show no difference in richness.](figs/fig_understoreyBirds_richness.png)
-
-![Differences in richness of ground foraging birds between acoustic data and point count data across treatment types](figs/fig_groundBirds_richness.png)    
-  
 ## Stacked barplots for richness across foraging guilds  
 
 ```{r}
 # reordering factors for plotting
-foraging_richness$restoration_type <- factor(foraging_richness$restoration_type, levels = c("BM", "AR", "NR"))
-
 foraging_richness$foraging_habit <- factor(foraging_richness$foraging_habit, levels = c("GRD","UND","MID","CAN"))
 
-fig_stacked_forHabit <- grouped_ggbarstats(
+fig_stacked_forHabit <- ggbarstats(
   data = foraging_richness,
   x = foraging_habit,
   y = data_type,
   counts = richness,
-  grouping.var = restoration_type,
   perc.k = 1,
   package = "ggsci",
   palette = "category10_d3",
@@ -348,8 +240,8 @@ fig_stacked_forHabit <- grouped_ggbarstats(
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_stacked_forHabit, filename = "figs/fig_foragingHabit_stackedRichness.png", width = 13, height = 16, device = png(), units = "in", dpi = 300)
+ggsave(fig_stacked_forHabit, filename = "figs/fig_foragingHabit_stackedRichness.png", width = 13, height = 12, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Stacked bar plots of richness by foraging guilds across treatment types for point count data and acoustic data](figs/fig_foragingHabit_stackedRichness.png) 
+![Stacked bar plots of richness by foraging guilds between point count data and acoustic data](figs/fig_foragingHabit_stackedRichness.png) 
