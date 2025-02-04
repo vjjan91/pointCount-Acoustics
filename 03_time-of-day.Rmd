@@ -61,7 +61,7 @@ Here we will estimate species richness for different 1-hour segments with the ex
 # estimate total abundance across all species for each site
 abundance <- datSubset %>%
   filter(data_type == "point_count") %>%
-  group_by(site_id, restoration_type, scientific_name,
+  group_by(site_id, scientific_name,
            common_name, eBird_codes, time_of_day) %>% summarise(totAbundance = sum(number)) %>%
   filter(time_of_day != "9AM to 10AM") %>%
   ungroup()
@@ -69,7 +69,7 @@ abundance <- datSubset %>%
 # estimate richness for point count data
 pc_richness_time <- abundance %>%
   mutate(forRichness = case_when(totAbundance > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type, time_of_day) %>%
+  group_by(site_id, time_of_day) %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "point_count") %>%
   ungroup()
@@ -78,7 +78,7 @@ pc_richness_time <- abundance %>%
 # note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
-  group_by(site_id, restoration_type, scientific_name,
+  group_by(site_id, scientific_name,
            common_name, eBird_codes, time_of_day) %>% summarise(totDetections = sum(number)) %>%
   filter(time_of_day != "9AM to 10AM") %>%
   ungroup()
@@ -86,7 +86,7 @@ detections <- datSubset %>%
 # estimate richness for acoustic data
 aru_richness_time <- detections %>%
   mutate(forRichness = case_when(totDetections > 0 ~ 1)) %>%
-  group_by(site_id,restoration_type, time_of_day) %>%
+  group_by(site_id, time_of_day) %>%
   summarise(richness = sum(forRichness)) %>%
   mutate(data_type = "acoustic_data") %>%
   ungroup()
@@ -96,22 +96,16 @@ aru_richness_time <- detections %>%
 ```{r}
 richness_time <- bind_rows(pc_richness_time, aru_richness_time)
 
-# reordering factors for plotting
-richness_time$restoration_type <- factor(richness_time$restoration_type, levels = c("BM", "AR", "NR"))
-
 # visualization for different times of day
-# 6am to 7am
-fig_6am_to_7am <- richness_time %>%
-  filter(time_of_day == "6AM to 7AM") %>%
+fig_richness_by_time <- richness_time %>%
   grouped_ggbetweenstats(x = data_type,
                          y = richness,
-                         grouping.var = restoration_type,
+                         grouping.var = time_of_day,
                          xlab = "Data type",
                          ylab = "Richness", 
                          pairwise.display = "significant",
                          package = "ggsci",
                          palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
 ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
       plot.subtitle = element_text(family = "Century Gothic", 
@@ -119,56 +113,8 @@ ggplot.component = list(theme(text = element_text(family = "Century Gothic", siz
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_6am_to_7am, filename = "figs/fig_richness_6am_to_7am.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
-dev.off() 
-
-# 7am to 8am
-fig_7am_to_8am <- richness_time %>%
-  filter(time_of_day == "7AM to 8AM") %>%
-  grouped_ggbetweenstats(x = data_type,
-                         y = richness,
-                         grouping.var = restoration_type,
-                         xlab = "Data type",
-                         ylab = "Richness", 
-                         pairwise.display = "significant",
-                         package = "ggsci",
-                         palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
-ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_7am_to_8am, filename = "figs/fig_richness_7am_to_8am.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
-dev.off() 
-
-# 8am to 9am
-fig_8am_to_9am <- richness_time %>%
-  filter(time_of_day == "8AM to 9AM") %>%
-  grouped_ggbetweenstats(x = data_type,
-                         y = richness,
-                         grouping.var = restoration_type,
-                         xlab = "Data type",
-                         ylab = "Richness", 
-                         pairwise.display = "significant",
-                         package = "ggsci",
-                         palette = "default_jco",
-    plotgrid.args = list(nrow = 3),
-ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 15, face = "bold"))))
-
-ggsave(fig_8am_to_9am, filename = "figs/fig_richness_8am_to_9am.png", width = 13, height = 14, device = png(), units = "in", dpi = 300)
+ggsave(fig_richness_by_time, filename = "figs/fig_richness_by_time.png", width = 13, height = 10, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![No significant differences in richness for 6am to 7am between acoustic data and point count data across treatment types](figs/fig_richness_6am_to_7am.png)
-
-![No significant differences in richness for 7am to 8am between acoustic data and point count data across treatment types](figs/fig_richness_7am_to_8am.png)
-
-![Significant differences in richness for 8am to 9am between acoustic data and point count data across actively restored and benchmark sites, but naturally regenerating sites showed no difference.](figs/fig_richness_8am_to_9am.png)
+![Significant differences in richness for 6am to 7am and 8am to 9am, but no differences in richness for 7am to 8am between acoustic data and point count data](figs/fig_richness_by_time.png)
