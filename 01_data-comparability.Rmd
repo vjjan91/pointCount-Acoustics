@@ -5,7 +5,7 @@ editor_options:
 
 # Making datasets comparable
 
-In this script, we will ensure that the point count data and the acoustic data are comparable to one another.
+In this script, we will ensure that the point count data and the acoustic data are comparable to one another. We apply a series of filters to ensure that we account for broader differences in sampling methodologies to ensure that they are comparable to one another. 
 
 ## Install required libraries  
 
@@ -70,6 +70,7 @@ acoustic_data <- bind_rows(summer_data, winter_data)
 names(acoustic_data)
 
 # reorder columns to ensure the species codes appear one after another
+# also include species that are present in point count data to later combine both dataframes together
 acoustic_data <- acoustic_data %>%
   relocate(c("BFOW", "SBEO", "JUNI", "ASKO", "HSWO", "TBWA"), .after = "CORO")
 
@@ -87,11 +88,13 @@ b)  Ensure that the dates of visits (for both point count data and acoustic data
 
 It is important to clarify that while the point count data and acoustic data were collected across similar months (to match seasons), majority of the point count data were collected between November 2019 and March 2020, while the majority of the acoustic data were collected in March 2020, a few days in May 2020 (covid-19 related delays) and between December 2020 and January 2021.
 
-To ensure that the point count data and acoustic data are comparable, we exclude data in May 2020 (from the acoustic dataset) as bird communities are often depauperate (majority of the migratory bird species have departed to their breeding grounds).
+To ensure that the point count data and acoustic data are comparable, we exclude data from May 2020 (for the acoustic dataset) and because bird communities are often depauperate at this time (majority of the migratory bird species have departed to their breeding grounds).
 
 c)  Similar levels of effort across sites (for point count data and acoustic data). Here, we define effort as the total number of minutes a site was surveyed. The duration of each point count at a site was 15 minutes long while the duration of each acoustic survey at a site was 16 minutes in duration. For the sake of comparability, we can include upto 6 point counts to each site, while including 5 acoustic 'visits' to each site. This results in a total of 90 minutes of effort at each site for point count data, while resulting in a total of 80 minutes of effort at each site for the acoustic data.  
+
 ```{r}
 # a subset of sites that were included in the Hariharan and Raman (2021) study were included in the Ramesh et al. (2023) study due to logistical constraints of placing audio recorders
+# we exclude OLCAP5B from the audio data as very few acoustic visits were carried out at this site
 sites <- read.csv("data/list-of-sites.csv") %>%
   filter(site_id != "OLCAP5B")
 
@@ -114,7 +117,7 @@ nSitesDays <- point_counts %>%
   arrange(site_id) %>%
   count(site_id)
 
-# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above the code chunk comparable effort levels)
+# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above)
 
 # unique date site combination to give you a sense of sampling
 uniqueSiteDate <- point_counts %>%
@@ -225,7 +228,8 @@ aru_subset <- aru_subset %>%
   transform() %>%
   replace(is.na(.), 0) %>%
   summarise_at(.vars = vars(c("INPE":"TBWA")), .funs = sum) %>%
-  pivot_longer(cols = INPE:TBWA, names_to = "eBird_codes", values_to = "number") %>%
+  pivot_longer(cols = INPE:TBWA, names_to = "eBird_codes", 
+               values_to = "number") %>%
   filter(number != 0) # one way to remove zeros
 
 # add a start_time column based on the time the acoustic visit was started at that site-day combination
