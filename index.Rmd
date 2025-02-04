@@ -2,10 +2,9 @@
 knit: "bookdown::render_book"
 title: "Source code and supporting information for _Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats_"
 author:
-    - Priyanka Hari Haran
     - Vijay Ramesh
-    - Meghana P Srivathsa
-    - Laurel Symes  
+    - Priyanka Hari Haran
+    - Laurel B Symes  
 date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 output: 
