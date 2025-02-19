@@ -1,4 +1,4 @@
-book_filename: "pointCount_Acoustics_main_text"
+book_filename: "pointCount_Acoustics"
 output: 
   html_document: 
     fig_caption: yes
