@@ -1,0 +1,148 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+# Density estimation  
+
+In this script, we estimate species-specific densities from point count data. This density estimate will be used in future scripts to assess associations with acoustic detections/vocal activity. For more details regarding distance analysis, please visit: https://distancesampling.org/  
+
+## Install necessary libraries
+```{r}
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(vegan)
+library(ggplot2)
+library(Distance)
+library(scico)
+library(data.table)
+library(extrafont)
+library(ggstatsplot)
+
+# Source any custom/other internal functions necessary for analysis
+source("code/01_internal-functions.R")
+```
+
+## Load dataframe containing point count and acoustic data
+```{r}
+datSubset <- read.csv("results/datSubset.csv")
+```
+
+## Creating a distance object from point count data
+
+To create a distance object, we need to specify the following columns within a dataframe so that they can be used to calculate abundances/densities using `ds` function.  
+
+The `ds` function requires that we specify: 
+
+- Region.Label = This column asks if the data is coming from the same region/treatment/habitat type. In our case, we are not differentiating between an actively restored, naturally regenerating or benchmark. We are assuming that our analysis accounts for data across sites for the entire region, irrespective of treatment.  
+- Area = This column corresponds to the size of the study area and is often a placeholder, because we don't have data on the area of each point count location.  
+- Sample.Label = This column would basically be the unique siteIDs (total of 43 locations).  
+- Effort = This column represents the total number of times you visited a site to carry out a point count (in other words, we use date as a proxy for visit). 
+- size = This column corresponds to the idea that numbers of individuals of a species at a location are clustered/are of the same group. If we specify size = number (which is our column for number of individuals), then the analysis of densities/abundance will be based on a clustered analysis.  
+- distance = The radial distance in metres to each detection. In our dataset, Hariharan and Raman (2022) used distances of 0, 5, 10, 15, 20, 30 and 50. The last distance is usually a cutoff point (50) or in other words, the distance specified suggests that the species was very far away and we cannot effectively rely on this estimate to be accurate. During the analysis, we will remove these species.  
+```{r}
+# filter only point counts
+point_count <- datSubset %>%
+  filter(data_type == "point_count")
+
+# note that we add distances of 2.5 metres for any distance < 20, 5 metres for distances == 20 and 10 metres for distances == 30. The reason for doing this is to provide the centre of a particular distance band. For instance, 2.5 would be the centre for the band: 0-5 and so on and so forth. This is done for the sake of plotting and segregating data into different bins for analysis.
+
+# create a distance object by specifying names for the columns required for the analysis
+
+# create a Region.Label first
+point_count$Region.Label <- "valparai"
+
+dist_object <- point_count %>%
+  dplyr::select(site_id, date, Region.Label,
+                Sample.Label = site_id, common_name,
+                distance, size = number) %>%
+  mutate(distance = case_when(distance < 20 ~ distance + 2.5,
+                                distance == 20 ~ distance + 5,
+                                distance == 30 ~ distance + 10,
+                                distance == 50 ~ distance))
+# calculate effort (n=6 visits to each site)
+effort <- point_count %>%
+  group_by(site_id) %>%
+  summarise(Effort = n_distinct(date)) %>%
+  rename(Sample.Label = site_id)
+
+# add effort back to the previous distance object
+dist_object <- dist_object %>% 
+  left_join(effort, by = "Sample.Label")
+
+# get some summary statistics on distances of observations
+# mean distance ~ 20 meters
+dist_summary <- dist_object %>%
+  group_by(distance) %>%
+  summarise(n())
+
+# specify the conversion of distances in meters to hectares
+# note that in point counts, the only distances associated are size of study area and radial distance
+# we convert meters to hectares to standardize our calculation of bird densities to densities/ha
+conversion.factor <- convert_units("metre", NULL, "hectare")
+
+# provide the cutpoints or the ends of each distance bin
+my_cuts <- c(0,5,10,15,20,30,50)  
+```
+
+## Run distance analysis  
+
+While initially running distance analysis, I could not access the distance estimates for each site/station and asked Dr. Eric Rexstad for help and his suggestions are mentioned in this email thread: 
+```{r}
+# unique site-date combination to account for effort
+site_date <- point_count %>%
+  select(site_id, date) %>%
+  distinct() %>%
+  rename(Sample.Label = site_id)
+
+# keep only those species have a minimum abundance of 20 in point counts
+spp_subset <-  point_count %>%
+  group_by(common_name) %>%
+  summarise(abundance_pc = sum(number)) %>%
+  filter(abundance_pc >=20)
+
+# subset data
+dist_object <- dist_object %>%
+  filter(common_name %in% spp_subset$common_name)
+
+## data frame to store density estimates
+density <- data.frame()
+
+for(i in 1:length(unique(dist_object$common_name))){
+  
+  # extract species common name
+  # choosing a random species
+  a <- unique(dist_object$common_name)[i]
+  
+  # subset data
+  for_analysis <- dist_object[dist_object$common_name==a,] 
+
+  # include effort across sites where no detections were made
+  for_analysis <- full_join(for_analysis, site_date, 
+                   by = c("Sample.Label","date")) %>%
+    replace_na(list(Region.Label = "valparai",
+                  common_name = a,
+                  size = 0,
+                  Area = 1,
+                  Effort = 6))
+
+  # distance model
+  model <- ds(for_analysis, key = "hr",
+            transect = "point", convert_units = conversion.factor,
+            cutpoints = my_cuts, truncation = 50)
+
+  # extract densities
+  d <- model$dht$individuals$bysample
+  extract_data <- data.frame(d$Sample, a, d$Dhat)
+  names(extract_data) <- c("site_id","common_name","density")
+
+  density <- bind_rows(density, extract_data)
+}
+
+# write results out
+write.csv(density, "results/density-estimates.csv", row.names = F)
+
+# please note that the filtering of data to include only species with a total of atleast 20 detections across visits resulting in a total of 45 species.
+```
+

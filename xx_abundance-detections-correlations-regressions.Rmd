@@ -165,11 +165,11 @@ data_group <- full_join(abundance_group, detections_group) %>%
 # visualization
 fig_abund_detec_community <- ggscatterstats(
   data = data_group,
-  x = detections_aru,
-  y = abundance_pc,
+  x = abundance_pc,
+  y = detections_aru,
   type = "r",
-  label.var = scientific_name, 
-  label.expression = detections_aru > 500, 
+  label.var = common_name, 
+  label.expression = detections_aru > 4000, 
   point.label.args = list(alpha = 0.7, size = 4, color = "grey50"),
   plotgrid.args = list(nrow = 3, ncol = 1),
   ggplot.component = list(theme(text = element_text(family = "Century Gothic", size = 15, face = "bold"),plot.title = element_text(family = "Century Gothic",
@@ -331,16 +331,18 @@ write.csv(lm_output, "results/abundance-detections-regressions.csv",
 # visualization
 plots <- list()
 
-for(i in 1:length(unique(dat_subset$scientific_name))){
+for(i in 1:length(unique(dat_subset$common_name))){
   
   # extract species scientific name
-  a <- unique(dat_subset$scientific_name)[i]
+  a <- unique(dat_subset$common_name)[37]
   
   # subset data for plotting
-  for_plot <- dat_subset[dat_subset$scientific_name==a,]
+  for_plot <- dat_subset[dat_subset$common_name==a,]
   
   # create plots
-  plots[[i]] <- ggplot(for_plot, aes(y = detections_aru,
+  plots[[i]] 
+  
+  plot <- ggplot(for_plot, aes(y = detections_aru,
                                     x = abundance_pc)) +
   geom_point(color = "#9CC3D5",size = 1.2) +
   geom_smooth(aes(color = "#D95F02"),
@@ -358,6 +360,10 @@ for(i in 1:length(unique(dat_subset$scientific_name))){
       size = 18, face = "bold"),
       legend.position = "none")
 }
+
+ggsave(plot, filename = "figs/fig_lbcr.svg", width = 9, height = 9, device = svg(), units = "in", dpi = 300)
+dev.off()
+
 
 # plot and save as a single pdf
 cairo_pdf(
