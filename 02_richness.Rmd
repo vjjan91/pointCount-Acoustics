@@ -62,7 +62,7 @@ pc_richness <- abundance %>%
   ungroup()
 
 # estimate total number of detections across the acoustic data
-# note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites
+# note: we cannot call this abundance as it refers to the total number of vocalizations across a 15-min period across all sites
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
   group_by(site_id, scientific_name,
@@ -74,7 +74,7 @@ aru_totDetections <- detections %>%
   group_by(scientific_name, common_name, habitat, foraging_habit) %>%
   summarise(totDetections = sum(totDetections))
 
-# species with the highest numbers of acoustic detections across sites are the White-cheeked Barbet, Nilgiri Flowerpecker, Crimson-backed Sunbird, Red-whiskered Bulbul and Indian White-eye
+# species with the highest numbers of acoustic detections across sites are the White-cheeked Barbet, Crimson-backed Sunbird, Nilgiri Flowerpecker, Red-whiskered Bulbul and Greenish Warbler
   
 # estimate richness for acoustic data
 aru_richness <- detections %>%
@@ -90,7 +90,7 @@ pc_not_aru <- anti_join(pc_totAbundance, aru_totDetections)
 write.csv(pc_not_aru, "results/species-in-pointCount-not-acoustics.csv", row.names = F)
 
 # how many species were detected in acoustic data but not point counts?
-# 34 species were detected in acoustic data, but not in point counts
+# 31 species were detected in acoustic data, but not in point counts
 aru_not_pc <- anti_join(aru_totDetections, pc_totAbundance)
 write.csv(aru_not_pc, "results/species-in-acoustics-not-pointCounts.csv", row.names = F)
 ```
@@ -124,6 +124,7 @@ dev.off()
 ![Significant differences in richness between acoustic data and point count data.](figs/fig_richness.png)
 
 ## Visualize differences in richness as a function of species habitat affiliation  
+
 Here, we examine if there are differences in species richness between point counts and acoustic surveys as a function of habitat affiliation - whether a species is a rainforest specialist or an open-country generalists.  
 ```{r}
 # estimate richness by trait for point count data
