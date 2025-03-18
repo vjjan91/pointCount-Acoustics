@@ -34,7 +34,7 @@ datSubset <- read.csv("results/datSubset.csv")
 
 ## Estimate abundance for point count data and detections for acoustic data
 
-Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).
+Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~10-s clips).
 
 ```{r}
 # point-count data
@@ -127,6 +127,11 @@ The big takeway from running these rank abundance models are that majority of th
 ## Species accumulation curves  
 
 ```{r}
+sites <- 43
+time_points <- 6
+survey_data <- matrix(sample(0:1, sites * time_points, replace = TRUE), nrow = sites, ncol = time_points)
+colnames(survey_data) <- paste("Minutes", seq(10, 50, by = 10), sep = "_")
+rownames(survey_data) <- paste("Site", 1:sites, sep = "_")
 pc_accum <- specaccum(pc_rank_mat)
 aru_accum <- specaccum(aru_rank_mat)
 
