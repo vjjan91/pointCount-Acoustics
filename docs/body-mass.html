@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
-  <meta name="description" content="Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <title>Section 13 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
+  <meta name="description" content="Section 13 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta property="og:title" content="Section 13 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 7 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta name="twitter:title" content="Section 13 Body mass | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   
   
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="body-mass---frequency-correlations.html"/>
-<link rel="next" href="frequency-and-amplitude.html"/>
+<link rel="next" href="density-estimation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -182,91 +182,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset"><i class="fa fa-check"></i><b>5.5</b> Indicator species analysis of the point-count dataset</a></li>
 <li class="chapter" data-level="5.6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data"><i class="fa fa-check"></i><b>5.6</b> Indicator species analysis for acoustic data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html"><i class="fa fa-check"></i><b>6</b> Body mass - Frequency correlations</a>
+<li class="chapter" data-level="6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>6</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>6.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="6.2" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>6.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="6.3" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#process-frequency-data"><i class="fa fa-check"></i><b>6.3</b> Process frequency data</a></li>
-<li class="chapter" data-level="6.4" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#visualization-of-correlations-between-body-mass-and-frequency"><i class="fa fa-check"></i><b>6.4</b> Visualization of correlations between body mass and frequency</a></li>
+<li class="chapter" data-level="6.1" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>6.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>6.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="6.3" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>6.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="6.4" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>6.4</b> Create rank abundance curves</a></li>
+<li class="chapter" data-level="6.5" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>6.5</b> Rank-abundance models</a></li>
+<li class="chapter" data-level="6.6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves"><i class="fa fa-check"></i><b>6.6</b> Species accumulation curves</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>7</b> Body mass</a>
+<li class="chapter" data-level="7" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html"><i class="fa fa-check"></i><b>7</b> Abundance vs. acoustic detection rates</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>7.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="7.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>7.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="7.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>7.3</b> Load species trait data</a></li>
-<li class="chapter" data-level="7.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>7.4</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="7.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>7.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
+<li class="chapter" data-level="7.1" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#install-necessary-libraries-3"><i class="fa fa-check"></i><b>7.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#load-existing-data"><i class="fa fa-check"></i><b>7.2</b> Load existing data</a></li>
+<li class="chapter" data-level="7.3" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#estimate-abundance-from-point-count-data-and-calculate-acoustic-detection-rates-from-acoustic-data"><i class="fa fa-check"></i><b>7.3</b> Estimate abundance from point count data and calculate acoustic detection rates from acoustic data</a></li>
+<li class="chapter" data-level="7.4" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#correlations-between-acoustic-detection-rates-and-abundance-from-point-count-data"><i class="fa fa-check"></i><b>7.4</b> Correlations between acoustic detection rates and abundance from point count data</a></li>
+<li class="chapter" data-level="7.5" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#regressions-between-abundance-and-acoustic-detection-rates"><i class="fa fa-check"></i><b>7.5</b> Regressions between abundance and acoustic detection rates</a></li>
+<li class="chapter" data-level="7.6" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#plotting-species-specific-regression-plots-of-abundance-and-acoustic-detection-rate"><i class="fa fa-check"></i><b>7.6</b> Plotting species-specific regression plots of abundance and acoustic detection rate</a></li>
+<li class="chapter" data-level="7.7" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#association-between-abundance-and-acoustic-detection-rates-across-species"><i class="fa fa-check"></i><b>7.7</b> Association between abundance and acoustic detection rates across species</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html"><i class="fa fa-check"></i><b>8</b> Frequency and amplitude</a>
+<li class="chapter" data-level="8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html"><i class="fa fa-check"></i><b>8</b> r sq vs. species traits and calling rates</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-necessary-libraries-3"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="8.2" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>8.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="8.3" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-species-trait-data-and-frequency-data-1"><i class="fa fa-check"></i><b>8.3</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="8.4" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#process-frequency-data-1"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
-<li class="chapter" data-level="8.5" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="8.6" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
-<li class="chapter" data-level="8.7" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>8.7</b> Exploring center frequency instead of peak frequency</a></li>
-<li class="chapter" data-level="8.8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#amplitude"><i class="fa fa-check"></i><b>8.8</b> Amplitude</a></li>
+<li class="chapter" data-level="8.1" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="8.2" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>8.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="8.3" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>8.3</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="8.4" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-adjusted-r-squared-values-from-previous-script"><i class="fa fa-check"></i><b>8.4</b> Load adjusted r squared values from previous script</a></li>
+<li class="chapter" data-level="8.5" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#body-mass-and-r-squared-values"><i class="fa fa-check"></i><b>8.5</b> Body mass and R squared values</a></li>
+<li class="chapter" data-level="8.6" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-frequency-and-r-squared-values"><i class="fa fa-check"></i><b>8.6</b> Median peak frequency and R squared values</a></li>
+<li class="chapter" data-level="8.7" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-amplitude-and-r-squared-values"><i class="fa fa-check"></i><b>8.7</b> Median peak amplitude and R squared values</a></li>
+<li class="chapter" data-level="8.8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#calling-rate-and-r-squared-values"><i class="fa fa-check"></i><b>8.8</b> Calling rate and R squared values</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>9</b> Abundance vs. detections</a>
+<li class="chapter" data-level="9" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>9</b> r value vs. species traits</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>9.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="9.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>9.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="9.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>9.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="9.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.4</b> Correlations between abundance and detections</a></li>
-<li class="chapter" data-level="9.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>9.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
-<li class="chapter" data-level="9.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined"><i class="fa fa-check"></i><b>9.6</b> Rerun analysis at the level of each species (across all sites and treatments combined)</a></li>
-<li class="chapter" data-level="9.7" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.7</b> Species-specific plots of correlations between abundance and detections</a></li>
-<li class="chapter" data-level="9.8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.8</b> Regressions between abundance and detections</a></li>
-<li class="chapter" data-level="9.9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots"><i class="fa fa-check"></i><b>9.9</b> Plotting species-specific regression plots</a></li>
-<li class="chapter" data-level="9.10" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#community-level-regressions"><i class="fa fa-check"></i><b>9.10</b> Community-level regressions</a></li>
+<li class="chapter" data-level="9.1" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>9.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-species-trait-data-and-frequency-data-1"><i class="fa fa-check"></i><b>9.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="9.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>9.3</b> Load correlation scores from previous script</a></li>
+<li class="chapter" data-level="9.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>9.4</b> Body mass and correlation scores</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html"><i class="fa fa-check"></i><b>10</b> Abundance vs. vocalization rates</a>
+<li class="chapter" data-level="10" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html"><i class="fa fa-check"></i><b>10</b> Abundance and detections repeatability analyses</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#install-necessary-libraries-3"><i class="fa fa-check"></i><b>10.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="10.2" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="10.3" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance from point count data and calculate vocalization rates from acoustic data</a></li>
-<li class="chapter" data-level="10.4" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#correlations-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.4</b> Correlations between abundance and vocalization rates</a></li>
-<li class="chapter" data-level="10.5" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#regressions-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.5</b> Regressions between abundance and vocalization rates</a></li>
-<li class="chapter" data-level="10.6" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#community-level-regressions-1"><i class="fa fa-check"></i><b>10.6</b> Community-level regressions</a></li>
+<li class="chapter" data-level="10.1" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#install-necessary-libraries-4"><i class="fa fa-check"></i><b>10.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="10.2" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="10.3" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="10.4" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-point-count-data"><i class="fa fa-check"></i><b>10.4</b> Run analysis at the level of each species (across all sites and treatments combined) for point count data</a></li>
+<li class="chapter" data-level="10.5" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-acoustic-data"><i class="fa fa-check"></i><b>10.5</b> Run analysis at the level of each species (across all sites and treatments combined) for acoustic data</a></li>
+<li class="chapter" data-level="10.6" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#mix-and-match-acoustic-data-and-point-count-surveys"><i class="fa fa-check"></i><b>10.6</b> Mix and match acoustic data and point count surveys</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>11</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
+<li class="chapter" data-level="11" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>11</b> Abundance vs. detections</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-4"><i class="fa fa-check"></i><b>11.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="11.2" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>11.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="11.3" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>11.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="11.4" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>11.4</b> Create rank abundance curves</a></li>
-<li class="chapter" data-level="11.5" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>11.5</b> Rank-abundance models</a></li>
-<li class="chapter" data-level="11.6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves"><i class="fa fa-check"></i><b>11.6</b> Species accumulation curves</a></li>
+<li class="chapter" data-level="11.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-5"><i class="fa fa-check"></i><b>11.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="11.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>11.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="11.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2"><i class="fa fa-check"></i><b>11.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="11.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.4</b> Correlations between abundance and detections</a></li>
+<li class="chapter" data-level="11.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>11.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
+<li class="chapter" data-level="11.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined"><i class="fa fa-check"></i><b>11.6</b> Rerun analysis at the level of each species (across all sites and treatments combined)</a></li>
+<li class="chapter" data-level="11.7" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.7</b> Species-specific plots of correlations between abundance and detections</a></li>
+<li class="chapter" data-level="11.8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.8</b> Regressions between abundance and detections</a></li>
+<li class="chapter" data-level="11.9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots"><i class="fa fa-check"></i><b>11.9</b> Plotting species-specific regression plots</a></li>
+<li class="chapter" data-level="11.10" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#community-level-regressions"><i class="fa fa-check"></i><b>11.10</b> Community-level regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>12</b> r value vs. species traits</a>
+<li class="chapter" data-level="12" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html"><i class="fa fa-check"></i><b>12</b> Body mass - Frequency correlations</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-necessary-libraries-4"><i class="fa fa-check"></i><b>12.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="12.2" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-species-trait-data-and-frequency-data-2"><i class="fa fa-check"></i><b>12.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="12.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>12.3</b> Load correlation scores from previous script</a></li>
-<li class="chapter" data-level="12.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>12.4</b> Body mass and correlation scores</a></li>
+<li class="chapter" data-level="12.1" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-necessary-libraries-3"><i class="fa fa-check"></i><b>12.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="12.2" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-species-trait-data-and-frequency-data-2"><i class="fa fa-check"></i><b>12.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="12.3" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#process-frequency-data"><i class="fa fa-check"></i><b>12.3</b> Process frequency data</a></li>
+<li class="chapter" data-level="12.4" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#visualization-of-correlations-between-body-mass-and-frequency"><i class="fa fa-check"></i><b>12.4</b> Visualization of correlations between body mass and frequency</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html"><i class="fa fa-check"></i><b>13</b> r sq vs. species traits and calling rates</a>
+<li class="chapter" data-level="13" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>13</b> Body mass</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="13.2" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>13.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="13.3" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>13.3</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="13.4" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-adjusted-r-squared-values-from-previous-script"><i class="fa fa-check"></i><b>13.4</b> Load adjusted r squared values from previous script</a></li>
-<li class="chapter" data-level="13.5" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#body-mass-and-r-squared-values"><i class="fa fa-check"></i><b>13.5</b> Body mass and R squared values</a></li>
-<li class="chapter" data-level="13.6" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-frequency-and-r-squared-values"><i class="fa fa-check"></i><b>13.6</b> Median peak frequency and R squared values</a></li>
-<li class="chapter" data-level="13.7" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-amplitude-and-r-squared-values"><i class="fa fa-check"></i><b>13.7</b> Median peak amplitude and R squared values</a></li>
-<li class="chapter" data-level="13.8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#multiple-regressions-between-adjusted-r-squared-values-and-species-traits"><i class="fa fa-check"></i><b>13.8</b> Multiple regressions between adjusted R Squared values and species traits</a></li>
-<li class="chapter" data-level="13.9" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#calling-rate-and-r-squared-values"><i class="fa fa-check"></i><b>13.9</b> Calling rate and R squared values</a></li>
-<li class="chapter" data-level="13.10" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#average-abundance-and-average-detections-and-r-sq"><i class="fa fa-check"></i><b>13.10</b> Average abundance and average detections and R sq</a></li>
+<li class="chapter" data-level="13.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-4"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="13.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>13.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="13.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>13.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="13.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>13.4</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="13.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>13.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html"><i class="fa fa-check"></i><b>14</b> Abundance and detections repeatability analyses</a>
+<li class="chapter" data-level="14" data-path="density-estimation.html"><a href="density-estimation.html"><i class="fa fa-check"></i><b>14</b> Density estimation</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#install-necessary-libraries-5"><i class="fa fa-check"></i><b>14.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="14.2" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-9"><i class="fa fa-check"></i><b>14.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="14.3" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2"><i class="fa fa-check"></i><b>14.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="14.4" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-point-count-data"><i class="fa fa-check"></i><b>14.4</b> Run analysis at the level of each species (across all sites and treatments combined) for point count data</a></li>
-<li class="chapter" data-level="14.5" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-acoustic-data"><i class="fa fa-check"></i><b>14.5</b> Run analysis at the level of each species (across all sites and treatments combined) for acoustic data</a></li>
-<li class="chapter" data-level="14.6" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#mix-and-match-acoustic-data-and-point-count-surveys"><i class="fa fa-check"></i><b>14.6</b> Mix and match acoustic data and point count surveys</a></li>
+<li class="chapter" data-level="14.1" data-path="density-estimation.html"><a href="density-estimation.html#install-necessary-libraries-6"><i class="fa fa-check"></i><b>14.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="14.2" data-path="density-estimation.html"><a href="density-estimation.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>14.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="14.3" data-path="density-estimation.html"><a href="density-estimation.html#creating-a-distance-object-from-point-count-data"><i class="fa fa-check"></i><b>14.3</b> Creating a distance object from point count data</a></li>
+<li class="chapter" data-level="14.4" data-path="density-estimation.html"><a href="density-estimation.html#run-distance-analysis"><i class="fa fa-check"></i><b>14.4</b> Run distance analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html"><i class="fa fa-check"></i><b>15</b> Frequency and amplitude</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>15.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="15.2" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-dataframe-containing-point-count-and-acoustic-data-9"><i class="fa fa-check"></i><b>15.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="15.3" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>15.3</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="15.4" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#process-frequency-data-1"><i class="fa fa-check"></i><b>15.4</b> Process frequency data</a></li>
+<li class="chapter" data-level="15.5" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>15.5</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="15.6" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>15.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+<li class="chapter" data-level="15.7" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>15.7</b> Exploring center frequency instead of peak frequency</a></li>
+<li class="chapter" data-level="15.8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#amplitude"><i class="fa fa-check"></i><b>15.8</b> Amplitude</a></li>
 </ul></li>
 </ul>
 
@@ -285,124 +291,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="body-mass" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Section 7</span> Body mass<a href="body-mass.html#body-mass" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="body-mass" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Section 13</span> Body mass<a href="body-mass.html#body-mass" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this script, we will explore relationships between the ratio of bird detections in a point count and acoustic survey and the body mass of a species. To do this, we will continue to rely on detections estimated at the site-level (similar to what was required for the indicator species analysis).</p>
 <p>To get at this measure, we estimate detections at the site level (for a total of six visits). If the across_visit_detections = 6, that means that a species was detected every single time across each of the six visits to that site. This value ranges from 1 to 6 for each species for a point count and acoustic survey.</p>
-<div id="load-necessary-libraries-2" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Load necessary libraries<a href="body-mass.html#load-necessary-libraries-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="body-mass.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb31-2"><a href="body-mass.html#cb31-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb31-3"><a href="body-mass.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb31-4"><a href="body-mass.html#cb31-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb31-5"><a href="body-mass.html#cb31-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb31-6"><a href="body-mass.html#cb31-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
-<span id="cb31-7"><a href="body-mass.html#cb31-7" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb31-8"><a href="body-mass.html#cb31-8" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
-<span id="cb31-9"><a href="body-mass.html#cb31-9" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb31-10"><a href="body-mass.html#cb31-10" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb31-11"><a href="body-mass.html#cb31-11" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
-<span id="cb31-12"><a href="body-mass.html#cb31-12" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb31-13"><a href="body-mass.html#cb31-13" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb31-14"><a href="body-mass.html#cb31-14" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
-<span id="cb31-15"><a href="body-mass.html#cb31-15" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb31-16"><a href="body-mass.html#cb31-16" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb31-17"><a href="body-mass.html#cb31-17" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb31-18"><a href="body-mass.html#cb31-18" tabindex="-1"></a></span>
-<span id="cb31-19"><a href="body-mass.html#cb31-19" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
-<span id="cb31-20"><a href="body-mass.html#cb31-20" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div id="load-necessary-libraries-4" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Load necessary libraries<a href="body-mass.html#load-necessary-libraries-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="body-mass.html#cb73-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb73-2"><a href="body-mass.html#cb73-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb73-3"><a href="body-mass.html#cb73-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb73-4"><a href="body-mass.html#cb73-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb73-5"><a href="body-mass.html#cb73-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb73-6"><a href="body-mass.html#cb73-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb73-7"><a href="body-mass.html#cb73-7" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb73-8"><a href="body-mass.html#cb73-8" tabindex="-1"></a><span class="fu">library</span>(ecodist)</span>
+<span id="cb73-9"><a href="body-mass.html#cb73-9" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb73-10"><a href="body-mass.html#cb73-10" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb73-11"><a href="body-mass.html#cb73-11" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
+<span id="cb73-12"><a href="body-mass.html#cb73-12" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb73-13"><a href="body-mass.html#cb73-13" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb73-14"><a href="body-mass.html#cb73-14" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb73-15"><a href="body-mass.html#cb73-15" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb73-16"><a href="body-mass.html#cb73-16" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb73-17"><a href="body-mass.html#cb73-17" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb73-18"><a href="body-mass.html#cb73-18" tabindex="-1"></a></span>
+<span id="cb73-19"><a href="body-mass.html#cb73-19" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb73-20"><a href="body-mass.html#cb73-20" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
 </div>
-<div id="load-dataframe-containing-point-count-and-acoustic-data-3" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Load dataframe containing point count and acoustic data<a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="body-mass.html#cb32-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+<div id="load-dataframe-containing-point-count-and-acoustic-data-7" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Load dataframe containing point count and acoustic data<a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="body-mass.html#cb74-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="load-species-trait-data-3" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Load species trait data<a href="body-mass.html#load-species-trait-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="body-mass.html#cb33-1" tabindex="-1"></a>trait <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-trait-dat.csv&quot;</span>)</span></code></pre></div>
+<div id="load-species-trait-data-3" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Load species trait data<a href="body-mass.html#load-species-trait-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="body-mass.html#cb75-1" tabindex="-1"></a>trait <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/species-trait-dat.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="visit-level-detection-estimates-for-each-species" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Visit-level detection estimates for each species<a href="body-mass.html#visit-level-detection-estimates-for-each-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="visit-level-detection-estimates-for-each-species" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Visit-level detection estimates for each species<a href="body-mass.html#visit-level-detection-estimates-for-each-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We estimate the total number of detections of each species across all visits. This can vary between 1 and 6 for point counts (since a total of six visits were made to each site), while this number can vary between 1 to 5 for acoustic surveys. To account for the slight difference in the number of visits, we scale the data to go between 1 and 10 (arbitrarily chosen) to ensure that the visit-level estimates are comparable.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="body-mass.html#cb34-1" tabindex="-1"></a><span class="do">## we will estimate abundance across point counts by site-date (essentially corresponding to visit)</span></span>
-<span id="cb34-2"><a href="body-mass.html#cb34-2" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="body-mass.html#cb34-3" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-4"><a href="body-mass.html#cb34-4" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
-<span id="cb34-5"><a href="body-mass.html#cb34-5" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-6"><a href="body-mass.html#cb34-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-7"><a href="body-mass.html#cb34-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb34-8"><a href="body-mass.html#cb34-8" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="body-mass.html#cb34-9" tabindex="-1"></a><span class="co"># estimate across visit detections for point count data</span></span>
-<span id="cb34-10"><a href="body-mass.html#cb34-10" tabindex="-1"></a>pc_visit_detections <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
-<span id="cb34-11"><a href="body-mass.html#cb34-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-12"><a href="body-mass.html#cb34-12" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb34-13"><a href="body-mass.html#cb34-13" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">pc_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-14"><a href="body-mass.html#cb34-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-15"><a href="body-mass.html#cb34-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb34-16"><a href="body-mass.html#cb34-16" tabindex="-1"></a></span>
-<span id="cb34-17"><a href="body-mass.html#cb34-17" tabindex="-1"></a><span class="co"># scale values to go between 1 and 10</span></span>
-<span id="cb34-18"><a href="body-mass.html#cb34-18" tabindex="-1"></a>pc_visit_detections<span class="sc">$</span>pc_visit_scaled <span class="ot">&lt;-</span> <span class="fu">rescale</span>(pc_visit_detections<span class="sc">$</span>pc_visit_detections, <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
-<span id="cb34-19"><a href="body-mass.html#cb34-19" tabindex="-1"></a></span>
-<span id="cb34-20"><a href="body-mass.html#cb34-20" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)</span></span>
-<span id="cb34-21"><a href="body-mass.html#cb34-21" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
-<span id="cb34-22"><a href="body-mass.html#cb34-22" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb34-23"><a href="body-mass.html#cb34-23" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-24"><a href="body-mass.html#cb34-24" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
-<span id="cb34-25"><a href="body-mass.html#cb34-25" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-26"><a href="body-mass.html#cb34-26" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-27"><a href="body-mass.html#cb34-27" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb34-28"><a href="body-mass.html#cb34-28" tabindex="-1"></a></span>
-<span id="cb34-29"><a href="body-mass.html#cb34-29" tabindex="-1"></a><span class="co"># estimate across visit detections for acoustic data</span></span>
-<span id="cb34-30"><a href="body-mass.html#cb34-30" tabindex="-1"></a>aru_visit_detections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
-<span id="cb34-31"><a href="body-mass.html#cb34-31" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-32"><a href="body-mass.html#cb34-32" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
-<span id="cb34-33"><a href="body-mass.html#cb34-33" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">aru_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-34"><a href="body-mass.html#cb34-34" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-35"><a href="body-mass.html#cb34-35" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb34-36"><a href="body-mass.html#cb34-36" tabindex="-1"></a></span>
-<span id="cb34-37"><a href="body-mass.html#cb34-37" tabindex="-1"></a><span class="co"># scale values to go between 1 and 10</span></span>
-<span id="cb34-38"><a href="body-mass.html#cb34-38" tabindex="-1"></a>aru_visit_detections<span class="sc">$</span>aru_visit_scaled <span class="ot">&lt;-</span> <span class="fu">rescale</span>(aru_visit_detections<span class="sc">$</span>aru_visit_detections, <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="body-mass.html#cb76-1" tabindex="-1"></a><span class="do">## we will estimate abundance across point counts by site-date (essentially corresponding to visit)</span></span>
+<span id="cb76-2"><a href="body-mass.html#cb76-2" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="body-mass.html#cb76-3" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb76-4"><a href="body-mass.html#cb76-4" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
+<span id="cb76-5"><a href="body-mass.html#cb76-5" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-6"><a href="body-mass.html#cb76-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totAbundance =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-7"><a href="body-mass.html#cb76-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb76-8"><a href="body-mass.html#cb76-8" tabindex="-1"></a></span>
+<span id="cb76-9"><a href="body-mass.html#cb76-9" tabindex="-1"></a><span class="co"># estimate across visit detections for point count data</span></span>
+<span id="cb76-10"><a href="body-mass.html#cb76-10" tabindex="-1"></a>pc_visit_detections <span class="ot">&lt;-</span> abundance <span class="sc">%&gt;%</span></span>
+<span id="cb76-11"><a href="body-mass.html#cb76-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totAbundance <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-12"><a href="body-mass.html#cb76-12" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb76-13"><a href="body-mass.html#cb76-13" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">pc_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-14"><a href="body-mass.html#cb76-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb76-15"><a href="body-mass.html#cb76-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb76-16"><a href="body-mass.html#cb76-16" tabindex="-1"></a></span>
+<span id="cb76-17"><a href="body-mass.html#cb76-17" tabindex="-1"></a><span class="co"># scale values to go between 1 and 10</span></span>
+<span id="cb76-18"><a href="body-mass.html#cb76-18" tabindex="-1"></a>pc_visit_detections<span class="sc">$</span>pc_visit_scaled <span class="ot">&lt;-</span> <span class="fu">rescale</span>(pc_visit_detections<span class="sc">$</span>pc_visit_detections, <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb76-19"><a href="body-mass.html#cb76-19" tabindex="-1"></a></span>
+<span id="cb76-20"><a href="body-mass.html#cb76-20" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data by site-date (essentially corresponds to a visit)</span></span>
+<span id="cb76-21"><a href="body-mass.html#cb76-21" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across a 16-min period across all sites</span></span>
+<span id="cb76-22"><a href="body-mass.html#cb76-22" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb76-23"><a href="body-mass.html#cb76-23" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb76-24"><a href="body-mass.html#cb76-24" tabindex="-1"></a>  <span class="fu">group_by</span>(date, site_id, restoration_type, scientific_name,</span>
+<span id="cb76-25"><a href="body-mass.html#cb76-25" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-26"><a href="body-mass.html#cb76-26" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">totDetections =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-27"><a href="body-mass.html#cb76-27" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb76-28"><a href="body-mass.html#cb76-28" tabindex="-1"></a></span>
+<span id="cb76-29"><a href="body-mass.html#cb76-29" tabindex="-1"></a><span class="co"># estimate across visit detections for acoustic data</span></span>
+<span id="cb76-30"><a href="body-mass.html#cb76-30" tabindex="-1"></a>aru_visit_detections <span class="ot">&lt;-</span> detections <span class="sc">%&gt;%</span></span>
+<span id="cb76-31"><a href="body-mass.html#cb76-31" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">forDetections =</span> <span class="fu">case_when</span>(totDetections <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-32"><a href="body-mass.html#cb76-32" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name, site_id,restoration_type) <span class="sc">%&gt;%</span></span>
+<span id="cb76-33"><a href="body-mass.html#cb76-33" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">aru_visit_detections =</span> <span class="fu">sum</span>(forDetections)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-34"><a href="body-mass.html#cb76-34" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data_type =</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb76-35"><a href="body-mass.html#cb76-35" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb76-36"><a href="body-mass.html#cb76-36" tabindex="-1"></a></span>
+<span id="cb76-37"><a href="body-mass.html#cb76-37" tabindex="-1"></a><span class="co"># scale values to go between 1 and 10</span></span>
+<span id="cb76-38"><a href="body-mass.html#cb76-38" tabindex="-1"></a>aru_visit_detections<span class="sc">$</span>aru_visit_scaled <span class="ot">&lt;-</span> <span class="fu">rescale</span>(aru_visit_detections<span class="sc">$</span>aru_visit_detections, <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span></code></pre></div>
 </div>
-<div id="exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species<a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="body-mass.html#cb35-1" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
-<span id="cb35-2"><a href="body-mass.html#cb35-2" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">full_join</span>(pc_visit_detections[,<span class="sc">-</span><span class="dv">5</span>], aru_visit_detections[,<span class="sc">-</span><span class="dv">5</span>]) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="body-mass.html#cb35-3" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">pc_visit_detections =</span> <span class="dv">0</span>, <span class="at">aru_visit_detections =</span> <span class="dv">0</span>,</span>
-<span id="cb35-4"><a href="body-mass.html#cb35-4" tabindex="-1"></a>                  <span class="at">pc_visit_scaled =</span> <span class="dv">0</span>, <span class="at">aru_visit_scaled =</span> <span class="dv">0</span>))</span>
-<span id="cb35-5"><a href="body-mass.html#cb35-5" tabindex="-1"></a>  </span>
-<span id="cb35-6"><a href="body-mass.html#cb35-6" tabindex="-1"></a><span class="co"># create column of ratio of detections of point counts to total number of detections from point count and acoustic data</span></span>
-<span id="cb35-7"><a href="body-mass.html#cb35-7" tabindex="-1"></a><span class="co"># note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. </span></span>
-<span id="cb35-8"><a href="body-mass.html#cb35-8" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="body-mass.html#cb35-9" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> visit_detections <span class="sc">%&gt;%</span></span>
-<span id="cb35-10"><a href="body-mass.html#cb35-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc_to_total =</span> (pc_visit_scaled)<span class="sc">/</span></span>
-<span id="cb35-11"><a href="body-mass.html#cb35-11" tabindex="-1"></a>           (pc_visit_scaled <span class="sc">+</span> aru_visit_scaled))</span>
-<span id="cb35-12"><a href="body-mass.html#cb35-12" tabindex="-1"></a></span>
-<span id="cb35-13"><a href="body-mass.html#cb35-13" tabindex="-1"></a><span class="co"># add species trait data i.e. body mass to the above dataframe</span></span>
-<span id="cb35-14"><a href="body-mass.html#cb35-14" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">left_join</span>(visit_detections, </span>
-<span id="cb35-15"><a href="body-mass.html#cb35-15" tabindex="-1"></a>                   trait[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">26</span>)], <span class="at">by =</span> <span class="st">&quot;scientific_name&quot;</span>)  </span>
-<span id="cb35-16"><a href="body-mass.html#cb35-16" tabindex="-1"></a></span>
-<span id="cb35-17"><a href="body-mass.html#cb35-17" tabindex="-1"></a><span class="co"># log-transform body mass</span></span>
-<span id="cb35-18"><a href="body-mass.html#cb35-18" tabindex="-1"></a>visit_detections<span class="sc">$</span>log_mass <span class="ot">&lt;-</span> <span class="fu">log10</span>(visit_detections<span class="sc">$</span>mass)</span>
-<span id="cb35-19"><a href="body-mass.html#cb35-19" tabindex="-1"></a></span>
-<span id="cb35-20"><a href="body-mass.html#cb35-20" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
-<span id="cb35-21"><a href="body-mass.html#cb35-21" tabindex="-1"></a>visit_detections<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(visit_detections<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
-<span id="cb35-22"><a href="body-mass.html#cb35-22" tabindex="-1"></a>  </span>
-<span id="cb35-23"><a href="body-mass.html#cb35-23" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb35-24"><a href="body-mass.html#cb35-24" tabindex="-1"></a>fig_bodyMass <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
-<span id="cb35-25"><a href="body-mass.html#cb35-25" tabindex="-1"></a>  <span class="at">data =</span> visit_detections,</span>
-<span id="cb35-26"><a href="body-mass.html#cb35-26" tabindex="-1"></a>  <span class="at">x =</span> log_mass,</span>
-<span id="cb35-27"><a href="body-mass.html#cb35-27" tabindex="-1"></a>  <span class="at">y =</span> pc_to_total,</span>
-<span id="cb35-28"><a href="body-mass.html#cb35-28" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
-<span id="cb35-29"><a href="body-mass.html#cb35-29" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb35-30"><a href="body-mass.html#cb35-30" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb35-31"><a href="body-mass.html#cb35-31" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb35-32"><a href="body-mass.html#cb35-32" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb35-33"><a href="body-mass.html#cb35-33" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb35-34"><a href="body-mass.html#cb35-34" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb35-35"><a href="body-mass.html#cb35-35" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb35-36"><a href="body-mass.html#cb35-36" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb35-37"><a href="body-mass.html#cb35-37" tabindex="-1"></a>  </span>
-<span id="cb35-38"><a href="body-mass.html#cb35-38" tabindex="-1"></a><span class="fu">ggsave</span>(fig_bodyMass, <span class="at">filename =</span> <span class="st">&quot;figs/fig_bodyMass_detectionRatio_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb35-39"><a href="body-mass.html#cb35-39" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div id="exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species<a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="body-mass.html#cb77-1" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb77-2"><a href="body-mass.html#cb77-2" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">full_join</span>(pc_visit_detections[,<span class="sc">-</span><span class="dv">5</span>], aru_visit_detections[,<span class="sc">-</span><span class="dv">5</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb77-3"><a href="body-mass.html#cb77-3" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">pc_visit_detections =</span> <span class="dv">0</span>, <span class="at">aru_visit_detections =</span> <span class="dv">0</span>,</span>
+<span id="cb77-4"><a href="body-mass.html#cb77-4" tabindex="-1"></a>                  <span class="at">pc_visit_scaled =</span> <span class="dv">0</span>, <span class="at">aru_visit_scaled =</span> <span class="dv">0</span>))</span>
+<span id="cb77-5"><a href="body-mass.html#cb77-5" tabindex="-1"></a>  </span>
+<span id="cb77-6"><a href="body-mass.html#cb77-6" tabindex="-1"></a><span class="co"># create column of ratio of detections of point counts to total number of detections from point count and acoustic data</span></span>
+<span id="cb77-7"><a href="body-mass.html#cb77-7" tabindex="-1"></a><span class="co"># note: if there are no detections through the acoustic survey, the ratio will be 1; if there are equal number of detections in the acoustic survey and point count data, the ratio will be 0.5; if there no detections/lesser detections in a point count compared to acoustic survey, the ratio will be between 0 and 0.5; and lastly, if there are more detections in a point count compared to an acoustic survey, the ratio will be between 0.5 and 1. </span></span>
+<span id="cb77-8"><a href="body-mass.html#cb77-8" tabindex="-1"></a></span>
+<span id="cb77-9"><a href="body-mass.html#cb77-9" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> visit_detections <span class="sc">%&gt;%</span></span>
+<span id="cb77-10"><a href="body-mass.html#cb77-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc_to_total =</span> (pc_visit_scaled)<span class="sc">/</span></span>
+<span id="cb77-11"><a href="body-mass.html#cb77-11" tabindex="-1"></a>           (pc_visit_scaled <span class="sc">+</span> aru_visit_scaled))</span>
+<span id="cb77-12"><a href="body-mass.html#cb77-12" tabindex="-1"></a></span>
+<span id="cb77-13"><a href="body-mass.html#cb77-13" tabindex="-1"></a><span class="co"># add species trait data i.e. body mass to the above dataframe</span></span>
+<span id="cb77-14"><a href="body-mass.html#cb77-14" tabindex="-1"></a>visit_detections <span class="ot">&lt;-</span> <span class="fu">left_join</span>(visit_detections, </span>
+<span id="cb77-15"><a href="body-mass.html#cb77-15" tabindex="-1"></a>                   trait[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">26</span>)], <span class="at">by =</span> <span class="st">&quot;scientific_name&quot;</span>)  </span>
+<span id="cb77-16"><a href="body-mass.html#cb77-16" tabindex="-1"></a></span>
+<span id="cb77-17"><a href="body-mass.html#cb77-17" tabindex="-1"></a><span class="co"># log-transform body mass</span></span>
+<span id="cb77-18"><a href="body-mass.html#cb77-18" tabindex="-1"></a>visit_detections<span class="sc">$</span>log_mass <span class="ot">&lt;-</span> <span class="fu">log10</span>(visit_detections<span class="sc">$</span>mass)</span>
+<span id="cb77-19"><a href="body-mass.html#cb77-19" tabindex="-1"></a></span>
+<span id="cb77-20"><a href="body-mass.html#cb77-20" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
+<span id="cb77-21"><a href="body-mass.html#cb77-21" tabindex="-1"></a>visit_detections<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(visit_detections<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb77-22"><a href="body-mass.html#cb77-22" tabindex="-1"></a>  </span>
+<span id="cb77-23"><a href="body-mass.html#cb77-23" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb77-24"><a href="body-mass.html#cb77-24" tabindex="-1"></a>fig_bodyMass <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
+<span id="cb77-25"><a href="body-mass.html#cb77-25" tabindex="-1"></a>  <span class="at">data =</span> visit_detections,</span>
+<span id="cb77-26"><a href="body-mass.html#cb77-26" tabindex="-1"></a>  <span class="at">x =</span> log_mass,</span>
+<span id="cb77-27"><a href="body-mass.html#cb77-27" tabindex="-1"></a>  <span class="at">y =</span> pc_to_total,</span>
+<span id="cb77-28"><a href="body-mass.html#cb77-28" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
+<span id="cb77-29"><a href="body-mass.html#cb77-29" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb77-30"><a href="body-mass.html#cb77-30" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb77-31"><a href="body-mass.html#cb77-31" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb77-32"><a href="body-mass.html#cb77-32" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb77-33"><a href="body-mass.html#cb77-33" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb77-34"><a href="body-mass.html#cb77-34" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb77-35"><a href="body-mass.html#cb77-35" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb77-36"><a href="body-mass.html#cb77-36" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb77-37"><a href="body-mass.html#cb77-37" tabindex="-1"></a>  </span>
+<span id="cb77-38"><a href="body-mass.html#cb77-38" tabindex="-1"></a><span class="fu">ggsave</span>(fig_bodyMass, <span class="at">filename =</span> <span class="st">&quot;figs/fig_bodyMass_detectionRatio_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb77-39"><a href="body-mass.html#cb77-39" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="float">
 <img src="figs/fig_bodyMass_detectionRatio_correlations.png" alt="No particular association/very weak result observed." />
 <div class="figcaption">No particular association/very weak result observed.</div>
@@ -416,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="body-mass---frequency-correlations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="frequency-and-amplitude.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="density-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -437,7 +443,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/06_body-mass-visit-level-detections.Rmd",
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/xx_body-mass-visit-level-detections.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="time-of-day-analyses.html"/>
-<link rel="next" href="body-mass---frequency-correlations.html"/>
+<link rel="next" href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -182,91 +182,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset"><i class="fa fa-check"></i><b>5.5</b> Indicator species analysis of the point-count dataset</a></li>
 <li class="chapter" data-level="5.6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data"><i class="fa fa-check"></i><b>5.6</b> Indicator species analysis for acoustic data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html"><i class="fa fa-check"></i><b>6</b> Body mass - Frequency correlations</a>
+<li class="chapter" data-level="6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>6</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>6.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="6.2" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>6.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="6.3" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#process-frequency-data"><i class="fa fa-check"></i><b>6.3</b> Process frequency data</a></li>
-<li class="chapter" data-level="6.4" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#visualization-of-correlations-between-body-mass-and-frequency"><i class="fa fa-check"></i><b>6.4</b> Visualization of correlations between body mass and frequency</a></li>
+<li class="chapter" data-level="6.1" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>6.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>6.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="6.3" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>6.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="6.4" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>6.4</b> Create rank abundance curves</a></li>
+<li class="chapter" data-level="6.5" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>6.5</b> Rank-abundance models</a></li>
+<li class="chapter" data-level="6.6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves"><i class="fa fa-check"></i><b>6.6</b> Species accumulation curves</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>7</b> Body mass</a>
+<li class="chapter" data-level="7" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html"><i class="fa fa-check"></i><b>7</b> Abundance vs. acoustic detection rates</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>7.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="7.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>7.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="7.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>7.3</b> Load species trait data</a></li>
-<li class="chapter" data-level="7.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>7.4</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="7.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>7.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
+<li class="chapter" data-level="7.1" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#install-necessary-libraries-3"><i class="fa fa-check"></i><b>7.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#load-existing-data"><i class="fa fa-check"></i><b>7.2</b> Load existing data</a></li>
+<li class="chapter" data-level="7.3" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#estimate-abundance-from-point-count-data-and-calculate-acoustic-detection-rates-from-acoustic-data"><i class="fa fa-check"></i><b>7.3</b> Estimate abundance from point count data and calculate acoustic detection rates from acoustic data</a></li>
+<li class="chapter" data-level="7.4" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#correlations-between-acoustic-detection-rates-and-abundance-from-point-count-data"><i class="fa fa-check"></i><b>7.4</b> Correlations between acoustic detection rates and abundance from point count data</a></li>
+<li class="chapter" data-level="7.5" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#regressions-between-abundance-and-acoustic-detection-rates"><i class="fa fa-check"></i><b>7.5</b> Regressions between abundance and acoustic detection rates</a></li>
+<li class="chapter" data-level="7.6" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#plotting-species-specific-regression-plots-of-abundance-and-acoustic-detection-rate"><i class="fa fa-check"></i><b>7.6</b> Plotting species-specific regression plots of abundance and acoustic detection rate</a></li>
+<li class="chapter" data-level="7.7" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#association-between-abundance-and-acoustic-detection-rates-across-species"><i class="fa fa-check"></i><b>7.7</b> Association between abundance and acoustic detection rates across species</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html"><i class="fa fa-check"></i><b>8</b> Frequency and amplitude</a>
+<li class="chapter" data-level="8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html"><i class="fa fa-check"></i><b>8</b> r sq vs. species traits and calling rates</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-necessary-libraries-3"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="8.2" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>8.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="8.3" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-species-trait-data-and-frequency-data-1"><i class="fa fa-check"></i><b>8.3</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="8.4" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#process-frequency-data-1"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
-<li class="chapter" data-level="8.5" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="8.6" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
-<li class="chapter" data-level="8.7" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>8.7</b> Exploring center frequency instead of peak frequency</a></li>
-<li class="chapter" data-level="8.8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#amplitude"><i class="fa fa-check"></i><b>8.8</b> Amplitude</a></li>
+<li class="chapter" data-level="8.1" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="8.2" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>8.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="8.3" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>8.3</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="8.4" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-adjusted-r-squared-values-from-previous-script"><i class="fa fa-check"></i><b>8.4</b> Load adjusted r squared values from previous script</a></li>
+<li class="chapter" data-level="8.5" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#body-mass-and-r-squared-values"><i class="fa fa-check"></i><b>8.5</b> Body mass and R squared values</a></li>
+<li class="chapter" data-level="8.6" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-frequency-and-r-squared-values"><i class="fa fa-check"></i><b>8.6</b> Median peak frequency and R squared values</a></li>
+<li class="chapter" data-level="8.7" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-amplitude-and-r-squared-values"><i class="fa fa-check"></i><b>8.7</b> Median peak amplitude and R squared values</a></li>
+<li class="chapter" data-level="8.8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#calling-rate-and-r-squared-values"><i class="fa fa-check"></i><b>8.8</b> Calling rate and R squared values</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>9</b> Abundance vs. detections</a>
+<li class="chapter" data-level="9" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>9</b> r value vs. species traits</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>9.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="9.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>9.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="9.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>9.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="9.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.4</b> Correlations between abundance and detections</a></li>
-<li class="chapter" data-level="9.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>9.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
-<li class="chapter" data-level="9.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined"><i class="fa fa-check"></i><b>9.6</b> Rerun analysis at the level of each species (across all sites and treatments combined)</a></li>
-<li class="chapter" data-level="9.7" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.7</b> Species-specific plots of correlations between abundance and detections</a></li>
-<li class="chapter" data-level="9.8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.8</b> Regressions between abundance and detections</a></li>
-<li class="chapter" data-level="9.9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots"><i class="fa fa-check"></i><b>9.9</b> Plotting species-specific regression plots</a></li>
-<li class="chapter" data-level="9.10" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#community-level-regressions"><i class="fa fa-check"></i><b>9.10</b> Community-level regressions</a></li>
+<li class="chapter" data-level="9.1" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>9.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-species-trait-data-and-frequency-data-1"><i class="fa fa-check"></i><b>9.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="9.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>9.3</b> Load correlation scores from previous script</a></li>
+<li class="chapter" data-level="9.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>9.4</b> Body mass and correlation scores</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html"><i class="fa fa-check"></i><b>10</b> Abundance vs. vocalization rates</a>
+<li class="chapter" data-level="10" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html"><i class="fa fa-check"></i><b>10</b> Abundance and detections repeatability analyses</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#install-necessary-libraries-3"><i class="fa fa-check"></i><b>10.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="10.2" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="10.3" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance from point count data and calculate vocalization rates from acoustic data</a></li>
-<li class="chapter" data-level="10.4" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#correlations-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.4</b> Correlations between abundance and vocalization rates</a></li>
-<li class="chapter" data-level="10.5" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#regressions-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.5</b> Regressions between abundance and vocalization rates</a></li>
-<li class="chapter" data-level="10.6" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#community-level-regressions-1"><i class="fa fa-check"></i><b>10.6</b> Community-level regressions</a></li>
+<li class="chapter" data-level="10.1" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#install-necessary-libraries-4"><i class="fa fa-check"></i><b>10.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="10.2" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="10.3" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="10.4" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-point-count-data"><i class="fa fa-check"></i><b>10.4</b> Run analysis at the level of each species (across all sites and treatments combined) for point count data</a></li>
+<li class="chapter" data-level="10.5" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-acoustic-data"><i class="fa fa-check"></i><b>10.5</b> Run analysis at the level of each species (across all sites and treatments combined) for acoustic data</a></li>
+<li class="chapter" data-level="10.6" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#mix-and-match-acoustic-data-and-point-count-surveys"><i class="fa fa-check"></i><b>10.6</b> Mix and match acoustic data and point count surveys</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>11</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
+<li class="chapter" data-level="11" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>11</b> Abundance vs. detections</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-4"><i class="fa fa-check"></i><b>11.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="11.2" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>11.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="11.3" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>11.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="11.4" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>11.4</b> Create rank abundance curves</a></li>
-<li class="chapter" data-level="11.5" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>11.5</b> Rank-abundance models</a></li>
-<li class="chapter" data-level="11.6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves"><i class="fa fa-check"></i><b>11.6</b> Species accumulation curves</a></li>
+<li class="chapter" data-level="11.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-5"><i class="fa fa-check"></i><b>11.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="11.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>11.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="11.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2"><i class="fa fa-check"></i><b>11.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="11.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.4</b> Correlations between abundance and detections</a></li>
+<li class="chapter" data-level="11.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>11.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
+<li class="chapter" data-level="11.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined"><i class="fa fa-check"></i><b>11.6</b> Rerun analysis at the level of each species (across all sites and treatments combined)</a></li>
+<li class="chapter" data-level="11.7" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.7</b> Species-specific plots of correlations between abundance and detections</a></li>
+<li class="chapter" data-level="11.8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.8</b> Regressions between abundance and detections</a></li>
+<li class="chapter" data-level="11.9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots"><i class="fa fa-check"></i><b>11.9</b> Plotting species-specific regression plots</a></li>
+<li class="chapter" data-level="11.10" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#community-level-regressions"><i class="fa fa-check"></i><b>11.10</b> Community-level regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>12</b> r value vs. species traits</a>
+<li class="chapter" data-level="12" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html"><i class="fa fa-check"></i><b>12</b> Body mass - Frequency correlations</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-necessary-libraries-4"><i class="fa fa-check"></i><b>12.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="12.2" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-species-trait-data-and-frequency-data-2"><i class="fa fa-check"></i><b>12.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="12.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>12.3</b> Load correlation scores from previous script</a></li>
-<li class="chapter" data-level="12.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>12.4</b> Body mass and correlation scores</a></li>
+<li class="chapter" data-level="12.1" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-necessary-libraries-3"><i class="fa fa-check"></i><b>12.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="12.2" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-species-trait-data-and-frequency-data-2"><i class="fa fa-check"></i><b>12.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="12.3" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#process-frequency-data"><i class="fa fa-check"></i><b>12.3</b> Process frequency data</a></li>
+<li class="chapter" data-level="12.4" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#visualization-of-correlations-between-body-mass-and-frequency"><i class="fa fa-check"></i><b>12.4</b> Visualization of correlations between body mass and frequency</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html"><i class="fa fa-check"></i><b>13</b> r sq vs. species traits and calling rates</a>
+<li class="chapter" data-level="13" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>13</b> Body mass</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="13.2" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>13.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="13.3" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>13.3</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="13.4" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-adjusted-r-squared-values-from-previous-script"><i class="fa fa-check"></i><b>13.4</b> Load adjusted r squared values from previous script</a></li>
-<li class="chapter" data-level="13.5" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#body-mass-and-r-squared-values"><i class="fa fa-check"></i><b>13.5</b> Body mass and R squared values</a></li>
-<li class="chapter" data-level="13.6" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-frequency-and-r-squared-values"><i class="fa fa-check"></i><b>13.6</b> Median peak frequency and R squared values</a></li>
-<li class="chapter" data-level="13.7" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-amplitude-and-r-squared-values"><i class="fa fa-check"></i><b>13.7</b> Median peak amplitude and R squared values</a></li>
-<li class="chapter" data-level="13.8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#multiple-regressions-between-adjusted-r-squared-values-and-species-traits"><i class="fa fa-check"></i><b>13.8</b> Multiple regressions between adjusted R Squared values and species traits</a></li>
-<li class="chapter" data-level="13.9" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#calling-rate-and-r-squared-values"><i class="fa fa-check"></i><b>13.9</b> Calling rate and R squared values</a></li>
-<li class="chapter" data-level="13.10" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#average-abundance-and-average-detections-and-r-sq"><i class="fa fa-check"></i><b>13.10</b> Average abundance and average detections and R sq</a></li>
+<li class="chapter" data-level="13.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-4"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="13.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>13.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="13.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>13.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="13.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>13.4</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="13.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>13.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html"><i class="fa fa-check"></i><b>14</b> Abundance and detections repeatability analyses</a>
+<li class="chapter" data-level="14" data-path="density-estimation.html"><a href="density-estimation.html"><i class="fa fa-check"></i><b>14</b> Density estimation</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#install-necessary-libraries-5"><i class="fa fa-check"></i><b>14.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="14.2" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-9"><i class="fa fa-check"></i><b>14.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="14.3" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2"><i class="fa fa-check"></i><b>14.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="14.4" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-point-count-data"><i class="fa fa-check"></i><b>14.4</b> Run analysis at the level of each species (across all sites and treatments combined) for point count data</a></li>
-<li class="chapter" data-level="14.5" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-acoustic-data"><i class="fa fa-check"></i><b>14.5</b> Run analysis at the level of each species (across all sites and treatments combined) for acoustic data</a></li>
-<li class="chapter" data-level="14.6" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#mix-and-match-acoustic-data-and-point-count-surveys"><i class="fa fa-check"></i><b>14.6</b> Mix and match acoustic data and point count surveys</a></li>
+<li class="chapter" data-level="14.1" data-path="density-estimation.html"><a href="density-estimation.html#install-necessary-libraries-6"><i class="fa fa-check"></i><b>14.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="14.2" data-path="density-estimation.html"><a href="density-estimation.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>14.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="14.3" data-path="density-estimation.html"><a href="density-estimation.html#creating-a-distance-object-from-point-count-data"><i class="fa fa-check"></i><b>14.3</b> Creating a distance object from point count data</a></li>
+<li class="chapter" data-level="14.4" data-path="density-estimation.html"><a href="density-estimation.html#run-distance-analysis"><i class="fa fa-check"></i><b>14.4</b> Run distance analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html"><i class="fa fa-check"></i><b>15</b> Frequency and amplitude</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>15.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="15.2" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-dataframe-containing-point-count-and-acoustic-data-9"><i class="fa fa-check"></i><b>15.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="15.3" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>15.3</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="15.4" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#process-frequency-data-1"><i class="fa fa-check"></i><b>15.4</b> Process frequency data</a></li>
+<li class="chapter" data-level="15.5" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>15.5</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="15.6" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>15.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+<li class="chapter" data-level="15.7" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>15.7</b> Exploring center frequency instead of peak frequency</a></li>
+<li class="chapter" data-level="15.8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#amplitude"><i class="fa fa-check"></i><b>15.8</b> Amplitude</a></li>
 </ul></li>
 </ul>
 
@@ -371,48 +377,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb25-10"><a href="indicator-species-analysis.html#cb25-10" tabindex="-1"></a></span>
 <span id="cb25-11"><a href="indicator-species-analysis.html#cb25-11" tabindex="-1"></a><span class="co"># analyze/summarize the results</span></span>
 <span id="cb25-12"><a href="indicator-species-analysis.html#cb25-12" tabindex="-1"></a><span class="fu">summary</span>(indic_pc)</span></code></pre></div>
-<p>Multilevel pattern analysis for point count data</p>
-<p>Association function: r.g<br />
+<p>Multilevel pattern analysis</p>
+<p>Association function: r.g
 Significance level (alpha): 0.05</p>
-<p>Total number of species: 83<br />
-Selected number of species: 25<br />
-Number of species associated to 1 group: 16<br />
-Number of species associated to 2 groups: 9</p>
+<p>Total number of species: 85
+Selected number of species: 28
+Number of species associated to 1 group: 21
+Number of species associated to 2 groups: 7</p>
 <p>List of species associated to each combination:</p>
-<p>Group BM #sps. 13<br />
+<p>Group AR #sps. 3
 stat p.value<br />
-Alcippe poioicephala 0.812 0.001 ***<br />
-Culicicapa ceylonensis 0.739 0.001 ***<br />
-Hypothymis azurea 0.665 0.001 ***<br />
-Pellorneum ruficeps 0.599 0.001 ***<br />
-Ducula badia 0.596 0.001 ***<br />
-Harpactes fasciatus 0.565 0.001 ***<br />
-Cyornis pallidipes 0.561 0.001 ***<br />
-Leptocoma minima 0.531 0.002 **<br />
-Phylloscopus magnirostris 0.505 0.004 **<br />
-Irena puella 0.457 0.005 **<br />
-Dicrurus paradiseus 0.439 0.010 **<br />
-Chalcophaps indica 0.380 0.032 *<br />
-Dicrurus aeneus 0.376 0.029 *</p>
-<p>Group NR #sps. 3<br />
+Psittacula columboides 0.398 0.030 <em>
+Zosterops palpebrosus 0.387 0.023 </em>
+Corvus macrorhynchos 0.383 0.037 *</p>
+<p>Group BM #sps. 14
 stat p.value<br />
-Cinnyris asiaticus 0.702 0.001 ***<br />
-Acrocephalus dumetorum 0.507 0.003 **<br />
-Machlolophus aplonotus 0.396 0.021 *</p>
-<p>Group AR+BM #sps. 2<br />
+Alcippe poioicephala 0.799 0.001 <strong><em>
+Culicicapa ceylonensis 0.781 0.001 </em></strong>
+Harpactes fasciatus 0.617 0.001 <strong><em>
+Hypothymis azurea 0.580 0.001 </em></strong>
+Pellorneum ruficeps 0.553 0.002 **
+Cyornis pallidipes 0.535 0.001 <em><strong>
+Phylloscopus magnirostris 0.526 0.003 </strong>
+Ducula badia 0.498 0.002 <strong>
+Leptocoma minima 0.469 0.008 </strong>
+Irena puella 0.452 0.006 <strong>
+Dicrurus paradiseus 0.451 0.012 *<br />
+Dicrurus aeneus 0.441 0.008 </strong>
+Chalcophaps indica 0.412 0.029 </em><br />
+Chrysocolaptes guttacristatus 0.385 0.036 *</p>
+<p>Group NR #sps. 4
 stat p.value<br />
-Muscicapa muttui 0.509 0.003 **<br />
-Iole indica 0.498 0.003 **</p>
-<p>Group AR+NR #sps. 7<br />
+Cinnyris asiaticus 0.660 0.001 <em><strong>
+Acrocephalus dumetorum 0.547 0.002 </strong>
+Argya subrufa 0.423 0.016 </em><br />
+Copsychus saularis 0.386 0.029 *</p>
+<p>Group AR+BM #sps. 2
 stat p.value<br />
-Streptopelia chinensis 0.744 0.001 ***<br />
-Pycnonotus jocosus 0.744 0.001 ***<br />
-Dicaeum concolor 0.474 0.002 **<br />
-Psittacula columboides 0.403 0.020 *<br />
-Zosterops palpebrosus 0.394 0.025 *<br />
-Orthotomus sutorius 0.389 0.026 *<br />
-Psittacula cyanocephala 0.376 0.023 *</p>
-<p>Signif. codes: 0 *** 0.001 ** 0.01 * 0.05 .</p>
+Iole indica 0.546 0.001 *<strong>
+Muscicapa muttui 0.479 0.005 </strong></p>
+<p>Group AR+NR #sps. 5
+stat p.value<br />
+Streptopelia chinensis 0.766 0.001 <strong><em>
+Pycnonotus jocosus 0.757 0.001 </em></strong>
+Dicaeum concolor 0.455 0.009 **
+Psittacula cyanocephala 0.411 0.019 *<br />
+Orthotomus sutorius 0.392 0.023 *</p>
+<p>Signif. codes: 0 ’*** 0.001 ** 0.01 ’*’ 0.05 ‘.’ 0.1 ‘ ’ 1</p>
 </div>
 <div id="indicator-species-analysis-for-acoustic-data" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> Indicator species analysis for acoustic data<a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -429,52 +440,52 @@ Psittacula cyanocephala 0.376 0.023 *</p>
 <span id="cb26-10"><a href="indicator-species-analysis.html#cb26-10" tabindex="-1"></a></span>
 <span id="cb26-11"><a href="indicator-species-analysis.html#cb26-11" tabindex="-1"></a><span class="co"># analyze/summarize the results</span></span>
 <span id="cb26-12"><a href="indicator-species-analysis.html#cb26-12" tabindex="-1"></a><span class="fu">summary</span>(indic_aru)</span></code></pre></div>
-<p>Multilevel pattern analysis for the acoustic dataset</p>
-<p>Association function: r.g<br />
+<p>Multilevel pattern analysis</p>
+<p>Association function: r.g
 Significance level (alpha): 0.05</p>
-<p>Total number of species: 113<br />
-Selected number of species: 29<br />
-Number of species associated to 1 group: 19<br />
-Number of species associated to 2 groups: 10</p>
+<p>Total number of species: 112
+Selected number of species: 30
+Number of species associated to 1 group: 22
+Number of species associated to 2 groups: 8</p>
 <p>List of species associated to each combination:</p>
-<p>Group AR #sps. 1<br />
+<p>Group AR #sps. 1
 stat p.value<br />
-Chloropsis aurifrons 0.396 0.044 *</p>
-<p>Group BM #sps. 12<br />
+Chloropsis aurifrons 0.396 0.04 *</p>
+<p>Group BM #sps. 14
 stat p.value<br />
-Alcippe poioicephala 0.666 0.001 ***<br />
-Hypothymis azurea 0.612 0.001 ***<br />
-Phylloscopus magnirostris 0.602 0.001 ***<br />
-Cyornis pallidipes 0.601 0.001 ***<br />
-Ducula badia 0.468 0.009 **<br />
-Culicicapa ceylonensis 0.460 0.005 **<br />
-Sitta frontalis 0.459 0.007 **<br />
-Harpactes fasciatus 0.454 0.012 *<br />
-Dryocopus javensis 0.430 0.007 **<br />
-Muscicapa muttui 0.412 0.009 **<br />
-Leptocoma minima 0.395 0.030 *<br />
-Picumnus innominatus 0.346 0.042 *</p>
-<p>Group NR #sps. 6<br />
+Alcippe poioicephala 0.693 0.001 <strong><em>
+Phylloscopus magnirostris 0.637 0.001 </em></strong>
+Hypothymis azurea 0.624 0.001 <strong><em>
+Cyornis pallidipes 0.619 0.001 </em></strong>
+Sitta frontalis 0.558 0.001 <strong><em>
+Culicicapa ceylonensis 0.553 0.001 </em></strong>
+Ducula badia 0.506 0.004 **
+Leptocoma minima 0.488 0.004 **
+Dicrurus paradiseus 0.473 0.003 **
+Irena puella 0.449 0.008 **
+Harpactes fasciatus 0.443 0.009 **
+Muscicapa muttui 0.430 0.015 *<br />
+Iole indica 0.396 0.019 *<br />
+Dryocopus javensis 0.386 0.017 *</p>
+<p>Group NR #sps. 7
 stat p.value<br />
-Streptopelia chinensis 0.554 0.002 **<br />
-Orthotomus sutorius 0.503 0.002 **<br />
-Tephrodornis sylvicola 0.467 0.002 **<br />
-Carpodacus erythrinus 0.421 0.015 *<br />
-Phylloscopus affinis 0.408 0.020 *<br />
-Lonchura kelaarti 0.367 0.021 *</p>
-<p>Group AR+NR #sps. 10<br />
+Streptopelia chinensis 0.511 0.001 <em><strong>
+Orthotomus sutorius 0.467 0.006 </strong>
+Carpodacus erythrinus 0.421 0.017 </em><br />
+Phylloscopus affinis 0.408 0.025 *<br />
+Tephrodornis sylvicola 0.365 0.035 *<br />
+Lonchura kelaarti 0.361 0.043 *<br />
+Dumetia atriceps 0.351 0.043 *</p>
+<p>Group AR+NR #sps. 8
 stat p.value<br />
-Pycnonotus jocosus 0.830 0.001 ***<br />
-Acrocephalus dumetorum 0.543 0.002 **<br />
-Corvus splendens 0.507 0.003 **<br />
-Psittacula cyanocephala 0.447 0.007 **<br />
-Merops leschenaulti 0.441 0.009 **<br />
-Dicrurus leucophaeus 0.438 0.014 *<br />
-Copsychus saularis 0.430 0.016 *<br />
-Pavo cristatus 0.426 0.014 *<br />
-Halcyon smyrnensis 0.403 0.015 *<br />
-Dinopium benghalense 0.386 0.028 *</p>
-<p>Signif. codes: 0 *** 0.001 ** 0.01 * 0.05 .</p>
+Pycnonotus jocosus 0.824 0.001 <em><strong>
+Acrocephalus dumetorum 0.534 0.004 </strong>
+Corvus splendens 0.507 0.001 </em><strong>
+Psittacula cyanocephala 0.462 0.007 </strong>
+Copsychus saularis 0.453 0.010 **
+Pavo cristatus 0.450 0.003 **
+Merops leschenaulti 0.404 0.026 *<br />
+Dicrurus leucophaeus 0.388 0.027 *</p>
 
 </div>
 </div>
@@ -484,7 +495,7 @@ Dinopium benghalense 0.386 0.028 *</p>
         </div>
       </div>
 <a href="time-of-day-analyses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="body-mass---frequency-correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

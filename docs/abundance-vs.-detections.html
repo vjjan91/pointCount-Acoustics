@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 9 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
-  <meta name="description" content="Section 9 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <title>Section 11 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats</title>
+  <meta name="description" content="Section 11 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 9 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta property="og:title" content="Section 11 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="vjjan91/pointCount-Acoustics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 9 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
+  <meta name="twitter:title" content="Section 11 Abundance vs. detections | Source code and supporting information for Comparing point count surveys to acoustic data across a gradient of forest regeneration in the Western Ghats" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="frequency-and-amplitude.html"/>
-<link rel="next" href="abundance-vs.-vocalization-rates.html"/>
+<link rel="prev" href="abundance-and-detections-repeatability-analyses.html"/>
+<link rel="next" href="body-mass---frequency-correlations.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -182,91 +182,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-of-the-point-count-dataset"><i class="fa fa-check"></i><b>5.5</b> Indicator species analysis of the point-count dataset</a></li>
 <li class="chapter" data-level="5.6" data-path="indicator-species-analysis.html"><a href="indicator-species-analysis.html#indicator-species-analysis-for-acoustic-data"><i class="fa fa-check"></i><b>5.6</b> Indicator species analysis for acoustic data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html"><i class="fa fa-check"></i><b>6</b> Body mass - Frequency correlations</a>
+<li class="chapter" data-level="6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>6</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>6.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="6.2" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>6.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="6.3" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#process-frequency-data"><i class="fa fa-check"></i><b>6.3</b> Process frequency data</a></li>
-<li class="chapter" data-level="6.4" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#visualization-of-correlations-between-body-mass-and-frequency"><i class="fa fa-check"></i><b>6.4</b> Visualization of correlations between body mass and frequency</a></li>
+<li class="chapter" data-level="6.1" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>6.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>6.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="6.3" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>6.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="6.4" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>6.4</b> Create rank abundance curves</a></li>
+<li class="chapter" data-level="6.5" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>6.5</b> Rank-abundance models</a></li>
+<li class="chapter" data-level="6.6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves"><i class="fa fa-check"></i><b>6.6</b> Species accumulation curves</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>7</b> Body mass</a>
+<li class="chapter" data-level="7" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html"><i class="fa fa-check"></i><b>7</b> Abundance vs. acoustic detection rates</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>7.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="7.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-3"><i class="fa fa-check"></i><b>7.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="7.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>7.3</b> Load species trait data</a></li>
-<li class="chapter" data-level="7.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>7.4</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="7.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>7.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
+<li class="chapter" data-level="7.1" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#install-necessary-libraries-3"><i class="fa fa-check"></i><b>7.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#load-existing-data"><i class="fa fa-check"></i><b>7.2</b> Load existing data</a></li>
+<li class="chapter" data-level="7.3" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#estimate-abundance-from-point-count-data-and-calculate-acoustic-detection-rates-from-acoustic-data"><i class="fa fa-check"></i><b>7.3</b> Estimate abundance from point count data and calculate acoustic detection rates from acoustic data</a></li>
+<li class="chapter" data-level="7.4" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#correlations-between-acoustic-detection-rates-and-abundance-from-point-count-data"><i class="fa fa-check"></i><b>7.4</b> Correlations between acoustic detection rates and abundance from point count data</a></li>
+<li class="chapter" data-level="7.5" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#regressions-between-abundance-and-acoustic-detection-rates"><i class="fa fa-check"></i><b>7.5</b> Regressions between abundance and acoustic detection rates</a></li>
+<li class="chapter" data-level="7.6" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#plotting-species-specific-regression-plots-of-abundance-and-acoustic-detection-rate"><i class="fa fa-check"></i><b>7.6</b> Plotting species-specific regression plots of abundance and acoustic detection rate</a></li>
+<li class="chapter" data-level="7.7" data-path="abundance-vs.-acoustic-detection-rates.html"><a href="abundance-vs.-acoustic-detection-rates.html#association-between-abundance-and-acoustic-detection-rates-across-species"><i class="fa fa-check"></i><b>7.7</b> Association between abundance and acoustic detection rates across species</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html"><i class="fa fa-check"></i><b>8</b> Frequency and amplitude</a>
+<li class="chapter" data-level="8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html"><i class="fa fa-check"></i><b>8</b> r sq vs. species traits and calling rates</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-necessary-libraries-3"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="8.2" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>8.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="8.3" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-species-trait-data-and-frequency-data-1"><i class="fa fa-check"></i><b>8.3</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="8.4" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#process-frequency-data-1"><i class="fa fa-check"></i><b>8.4</b> Process frequency data</a></li>
-<li class="chapter" data-level="8.5" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>8.5</b> Visit-level detection estimates for each species</a></li>
-<li class="chapter" data-level="8.6" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>8.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
-<li class="chapter" data-level="8.7" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>8.7</b> Exploring center frequency instead of peak frequency</a></li>
-<li class="chapter" data-level="8.8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#amplitude"><i class="fa fa-check"></i><b>8.8</b> Amplitude</a></li>
+<li class="chapter" data-level="8.1" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-necessary-libraries-1"><i class="fa fa-check"></i><b>8.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="8.2" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-species-trait-data-and-frequency-data"><i class="fa fa-check"></i><b>8.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="8.3" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-dataframe-containing-point-count-and-acoustic-data-4"><i class="fa fa-check"></i><b>8.3</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="8.4" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-adjusted-r-squared-values-from-previous-script"><i class="fa fa-check"></i><b>8.4</b> Load adjusted r squared values from previous script</a></li>
+<li class="chapter" data-level="8.5" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#body-mass-and-r-squared-values"><i class="fa fa-check"></i><b>8.5</b> Body mass and R squared values</a></li>
+<li class="chapter" data-level="8.6" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-frequency-and-r-squared-values"><i class="fa fa-check"></i><b>8.6</b> Median peak frequency and R squared values</a></li>
+<li class="chapter" data-level="8.7" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-amplitude-and-r-squared-values"><i class="fa fa-check"></i><b>8.7</b> Median peak amplitude and R squared values</a></li>
+<li class="chapter" data-level="8.8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#calling-rate-and-r-squared-values"><i class="fa fa-check"></i><b>8.8</b> Calling rate and R squared values</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>9</b> Abundance vs. detections</a>
+<li class="chapter" data-level="9" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>9</b> r value vs. species traits</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-2"><i class="fa fa-check"></i><b>9.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="9.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>9.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="9.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data"><i class="fa fa-check"></i><b>9.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="9.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.4</b> Correlations between abundance and detections</a></li>
-<li class="chapter" data-level="9.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>9.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
-<li class="chapter" data-level="9.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined"><i class="fa fa-check"></i><b>9.6</b> Rerun analysis at the level of each species (across all sites and treatments combined)</a></li>
-<li class="chapter" data-level="9.7" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.7</b> Species-specific plots of correlations between abundance and detections</a></li>
-<li class="chapter" data-level="9.8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections"><i class="fa fa-check"></i><b>9.8</b> Regressions between abundance and detections</a></li>
-<li class="chapter" data-level="9.9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots"><i class="fa fa-check"></i><b>9.9</b> Plotting species-specific regression plots</a></li>
-<li class="chapter" data-level="9.10" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#community-level-regressions"><i class="fa fa-check"></i><b>9.10</b> Community-level regressions</a></li>
+<li class="chapter" data-level="9.1" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-necessary-libraries-2"><i class="fa fa-check"></i><b>9.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-species-trait-data-and-frequency-data-1"><i class="fa fa-check"></i><b>9.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="9.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>9.3</b> Load correlation scores from previous script</a></li>
+<li class="chapter" data-level="9.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>9.4</b> Body mass and correlation scores</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html"><i class="fa fa-check"></i><b>10</b> Abundance vs. vocalization rates</a>
+<li class="chapter" data-level="10" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html"><i class="fa fa-check"></i><b>10</b> Abundance and detections repeatability analyses</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#install-necessary-libraries-3"><i class="fa fa-check"></i><b>10.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="10.2" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="10.3" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#estimate-abundance-from-point-count-data-and-calculate-vocalization-rates-from-acoustic-data"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance from point count data and calculate vocalization rates from acoustic data</a></li>
-<li class="chapter" data-level="10.4" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#correlations-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.4</b> Correlations between abundance and vocalization rates</a></li>
-<li class="chapter" data-level="10.5" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#regressions-between-abundance-and-vocalization-rates"><i class="fa fa-check"></i><b>10.5</b> Regressions between abundance and vocalization rates</a></li>
-<li class="chapter" data-level="10.6" data-path="abundance-vs.-vocalization-rates.html"><a href="abundance-vs.-vocalization-rates.html#community-level-regressions-1"><i class="fa fa-check"></i><b>10.6</b> Community-level regressions</a></li>
+<li class="chapter" data-level="10.1" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#install-necessary-libraries-4"><i class="fa fa-check"></i><b>10.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="10.2" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-5"><i class="fa fa-check"></i><b>10.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="10.3" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>10.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="10.4" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-point-count-data"><i class="fa fa-check"></i><b>10.4</b> Run analysis at the level of each species (across all sites and treatments combined) for point count data</a></li>
+<li class="chapter" data-level="10.5" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-acoustic-data"><i class="fa fa-check"></i><b>10.5</b> Run analysis at the level of each species (across all sites and treatments combined) for acoustic data</a></li>
+<li class="chapter" data-level="10.6" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#mix-and-match-acoustic-data-and-point-count-surveys"><i class="fa fa-check"></i><b>10.6</b> Mix and match acoustic data and point count surveys</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><i class="fa fa-check"></i><b>11</b> Rank abundance and species accumulation curves for point count and acoustic data</a>
+<li class="chapter" data-level="11" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html"><i class="fa fa-check"></i><b>11</b> Abundance vs. detections</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#install-necessary-libraries-4"><i class="fa fa-check"></i><b>11.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="11.2" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>11.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="11.3" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-1"><i class="fa fa-check"></i><b>11.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="11.4" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#create-rank-abundance-curves"><i class="fa fa-check"></i><b>11.4</b> Create rank abundance curves</a></li>
-<li class="chapter" data-level="11.5" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#rank-abundance-models"><i class="fa fa-check"></i><b>11.5</b> Rank-abundance models</a></li>
-<li class="chapter" data-level="11.6" data-path="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html"><a href="rank-abundance-and-species-accumulation-curves-for-point-count-and-acoustic-data.html#species-accumulation-curves"><i class="fa fa-check"></i><b>11.6</b> Species accumulation curves</a></li>
+<li class="chapter" data-level="11.1" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#install-necessary-libraries-5"><i class="fa fa-check"></i><b>11.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="11.2" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-6"><i class="fa fa-check"></i><b>11.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="11.3" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2"><i class="fa fa-check"></i><b>11.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
+<li class="chapter" data-level="11.4" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.4</b> Correlations between abundance and detections</a></li>
+<li class="chapter" data-level="11.5" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type"><i class="fa fa-check"></i><b>11.5</b> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)</a></li>
+<li class="chapter" data-level="11.6" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined"><i class="fa fa-check"></i><b>11.6</b> Rerun analysis at the level of each species (across all sites and treatments combined)</a></li>
+<li class="chapter" data-level="11.7" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.7</b> Species-specific plots of correlations between abundance and detections</a></li>
+<li class="chapter" data-level="11.8" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections"><i class="fa fa-check"></i><b>11.8</b> Regressions between abundance and detections</a></li>
+<li class="chapter" data-level="11.9" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots"><i class="fa fa-check"></i><b>11.9</b> Plotting species-specific regression plots</a></li>
+<li class="chapter" data-level="11.10" data-path="abundance-vs.-detections.html"><a href="abundance-vs.-detections.html#community-level-regressions"><i class="fa fa-check"></i><b>11.10</b> Community-level regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html"><i class="fa fa-check"></i><b>12</b> r value vs. species traits</a>
+<li class="chapter" data-level="12" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html"><i class="fa fa-check"></i><b>12</b> Body mass - Frequency correlations</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-necessary-libraries-4"><i class="fa fa-check"></i><b>12.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="12.2" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-species-trait-data-and-frequency-data-2"><i class="fa fa-check"></i><b>12.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="12.3" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#load-correlation-scores-from-previous-script"><i class="fa fa-check"></i><b>12.3</b> Load correlation scores from previous script</a></li>
-<li class="chapter" data-level="12.4" data-path="r-value-vs.-species-traits.html"><a href="r-value-vs.-species-traits.html#body-mass-and-correlation-scores"><i class="fa fa-check"></i><b>12.4</b> Body mass and correlation scores</a></li>
+<li class="chapter" data-level="12.1" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-necessary-libraries-3"><i class="fa fa-check"></i><b>12.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="12.2" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#load-species-trait-data-and-frequency-data-2"><i class="fa fa-check"></i><b>12.2</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="12.3" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#process-frequency-data"><i class="fa fa-check"></i><b>12.3</b> Process frequency data</a></li>
+<li class="chapter" data-level="12.4" data-path="body-mass---frequency-correlations.html"><a href="body-mass---frequency-correlations.html#visualization-of-correlations-between-body-mass-and-frequency"><i class="fa fa-check"></i><b>12.4</b> Visualization of correlations between body mass and frequency</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html"><i class="fa fa-check"></i><b>13</b> r sq vs. species traits and calling rates</a>
+<li class="chapter" data-level="13" data-path="body-mass.html"><a href="body-mass.html"><i class="fa fa-check"></i><b>13</b> Body mass</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
-<li class="chapter" data-level="13.2" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>13.2</b> Load species trait data and frequency data</a></li>
-<li class="chapter" data-level="13.3" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>13.3</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="13.4" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#load-adjusted-r-squared-values-from-previous-script"><i class="fa fa-check"></i><b>13.4</b> Load adjusted r squared values from previous script</a></li>
-<li class="chapter" data-level="13.5" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#body-mass-and-r-squared-values"><i class="fa fa-check"></i><b>13.5</b> Body mass and R squared values</a></li>
-<li class="chapter" data-level="13.6" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-frequency-and-r-squared-values"><i class="fa fa-check"></i><b>13.6</b> Median peak frequency and R squared values</a></li>
-<li class="chapter" data-level="13.7" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#median-peak-amplitude-and-r-squared-values"><i class="fa fa-check"></i><b>13.7</b> Median peak amplitude and R squared values</a></li>
-<li class="chapter" data-level="13.8" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#multiple-regressions-between-adjusted-r-squared-values-and-species-traits"><i class="fa fa-check"></i><b>13.8</b> Multiple regressions between adjusted R Squared values and species traits</a></li>
-<li class="chapter" data-level="13.9" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#calling-rate-and-r-squared-values"><i class="fa fa-check"></i><b>13.9</b> Calling rate and R squared values</a></li>
-<li class="chapter" data-level="13.10" data-path="r-sq-vs.-species-traits-and-calling-rates.html"><a href="r-sq-vs.-species-traits-and-calling-rates.html#average-abundance-and-average-detections-and-r-sq"><i class="fa fa-check"></i><b>13.10</b> Average abundance and average detections and R sq</a></li>
+<li class="chapter" data-level="13.1" data-path="body-mass.html"><a href="body-mass.html#load-necessary-libraries-4"><i class="fa fa-check"></i><b>13.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="13.2" data-path="body-mass.html"><a href="body-mass.html#load-dataframe-containing-point-count-and-acoustic-data-7"><i class="fa fa-check"></i><b>13.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="13.3" data-path="body-mass.html"><a href="body-mass.html#load-species-trait-data-3"><i class="fa fa-check"></i><b>13.3</b> Load species trait data</a></li>
+<li class="chapter" data-level="13.4" data-path="body-mass.html"><a href="body-mass.html#visit-level-detection-estimates-for-each-species"><i class="fa fa-check"></i><b>13.4</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="13.5" data-path="body-mass.html"><a href="body-mass.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-body-mass-of-a-species"><i class="fa fa-check"></i><b>13.5</b> Exploring ratios of detections in point counts &amp; acoustic surveys to body mass of a species</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html"><i class="fa fa-check"></i><b>14</b> Abundance and detections repeatability analyses</a>
+<li class="chapter" data-level="14" data-path="density-estimation.html"><a href="density-estimation.html"><i class="fa fa-check"></i><b>14</b> Density estimation</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#install-necessary-libraries-5"><i class="fa fa-check"></i><b>14.1</b> Install necessary libraries</a></li>
-<li class="chapter" data-level="14.2" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#load-dataframe-containing-point-count-and-acoustic-data-9"><i class="fa fa-check"></i><b>14.2</b> Load dataframe containing point count and acoustic data</a></li>
-<li class="chapter" data-level="14.3" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2"><i class="fa fa-check"></i><b>14.3</b> Estimate abundance for point count data and detections for acoustic data</a></li>
-<li class="chapter" data-level="14.4" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-point-count-data"><i class="fa fa-check"></i><b>14.4</b> Run analysis at the level of each species (across all sites and treatments combined) for point count data</a></li>
-<li class="chapter" data-level="14.5" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#run-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined-for-acoustic-data"><i class="fa fa-check"></i><b>14.5</b> Run analysis at the level of each species (across all sites and treatments combined) for acoustic data</a></li>
-<li class="chapter" data-level="14.6" data-path="abundance-and-detections-repeatability-analyses.html"><a href="abundance-and-detections-repeatability-analyses.html#mix-and-match-acoustic-data-and-point-count-surveys"><i class="fa fa-check"></i><b>14.6</b> Mix and match acoustic data and point count surveys</a></li>
+<li class="chapter" data-level="14.1" data-path="density-estimation.html"><a href="density-estimation.html#install-necessary-libraries-6"><i class="fa fa-check"></i><b>14.1</b> Install necessary libraries</a></li>
+<li class="chapter" data-level="14.2" data-path="density-estimation.html"><a href="density-estimation.html#load-dataframe-containing-point-count-and-acoustic-data-8"><i class="fa fa-check"></i><b>14.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="14.3" data-path="density-estimation.html"><a href="density-estimation.html#creating-a-distance-object-from-point-count-data"><i class="fa fa-check"></i><b>14.3</b> Creating a distance object from point count data</a></li>
+<li class="chapter" data-level="14.4" data-path="density-estimation.html"><a href="density-estimation.html#run-distance-analysis"><i class="fa fa-check"></i><b>14.4</b> Run distance analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html"><i class="fa fa-check"></i><b>15</b> Frequency and amplitude</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-necessary-libraries-5"><i class="fa fa-check"></i><b>15.1</b> Load necessary libraries</a></li>
+<li class="chapter" data-level="15.2" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-dataframe-containing-point-count-and-acoustic-data-9"><i class="fa fa-check"></i><b>15.2</b> Load dataframe containing point count and acoustic data</a></li>
+<li class="chapter" data-level="15.3" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#load-species-trait-data-and-frequency-data-3"><i class="fa fa-check"></i><b>15.3</b> Load species trait data and frequency data</a></li>
+<li class="chapter" data-level="15.4" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#process-frequency-data-1"><i class="fa fa-check"></i><b>15.4</b> Process frequency data</a></li>
+<li class="chapter" data-level="15.5" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#visit-level-detection-estimates-for-each-species-1"><i class="fa fa-check"></i><b>15.5</b> Visit-level detection estimates for each species</a></li>
+<li class="chapter" data-level="15.6" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-ratios-of-detections-in-point-counts-acoustic-surveys-to-median-peak-frequency-of-a-species"><i class="fa fa-check"></i><b>15.6</b> Exploring ratios of detections in point counts &amp; acoustic surveys to median peak frequency of a species</a></li>
+<li class="chapter" data-level="15.7" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#exploring-center-frequency-instead-of-peak-frequency"><i class="fa fa-check"></i><b>15.7</b> Exploring center frequency instead of peak frequency</a></li>
+<li class="chapter" data-level="15.8" data-path="frequency-and-amplitude.html"><a href="frequency-and-amplitude.html#amplitude"><i class="fa fa-check"></i><b>15.8</b> Amplitude</a></li>
 </ul></li>
 </ul>
 
@@ -285,403 +291,409 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="abundance-vs.-detections" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Section 9</span> Abundance vs. detections<a href="abundance-vs.-detections.html#abundance-vs.-detections" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="abundance-vs.-detections" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Section 11</span> Abundance vs. detections<a href="abundance-vs.-detections.html#abundance-vs.-detections" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this script, we run correlations and regressions between abundance (as estimated from point count data) and detections (as estimated from acoustic data).</p>
-<div id="install-necessary-libraries-2" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Install necessary libraries<a href="abundance-vs.-detections.html#install-necessary-libraries-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="abundance-vs.-detections.html#cb44-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb44-2"><a href="abundance-vs.-detections.html#cb44-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb44-3"><a href="abundance-vs.-detections.html#cb44-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb44-4"><a href="abundance-vs.-detections.html#cb44-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb44-5"><a href="abundance-vs.-detections.html#cb44-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb44-6"><a href="abundance-vs.-detections.html#cb44-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
-<span id="cb44-7"><a href="abundance-vs.-detections.html#cb44-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb44-8"><a href="abundance-vs.-detections.html#cb44-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb44-9"><a href="abundance-vs.-detections.html#cb44-9" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb44-10"><a href="abundance-vs.-detections.html#cb44-10" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
-<span id="cb44-11"><a href="abundance-vs.-detections.html#cb44-11" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb44-12"><a href="abundance-vs.-detections.html#cb44-12" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb44-13"><a href="abundance-vs.-detections.html#cb44-13" tabindex="-1"></a><span class="fu">library</span>(rr2)</span>
-<span id="cb44-14"><a href="abundance-vs.-detections.html#cb44-14" tabindex="-1"></a><span class="fu">library</span>(ggnewscale)</span>
-<span id="cb44-15"><a href="abundance-vs.-detections.html#cb44-15" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb44-16"><a href="abundance-vs.-detections.html#cb44-16" tabindex="-1"></a><span class="fu">library</span>(gridtext)</span>
-<span id="cb44-17"><a href="abundance-vs.-detections.html#cb44-17" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb44-18"><a href="abundance-vs.-detections.html#cb44-18" tabindex="-1"></a></span>
-<span id="cb44-19"><a href="abundance-vs.-detections.html#cb44-19" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
-<span id="cb44-20"><a href="abundance-vs.-detections.html#cb44-20" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
+<div id="install-necessary-libraries-5" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Install necessary libraries<a href="abundance-vs.-detections.html#install-necessary-libraries-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="abundance-vs.-detections.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb59-2"><a href="abundance-vs.-detections.html#cb59-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb59-3"><a href="abundance-vs.-detections.html#cb59-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb59-4"><a href="abundance-vs.-detections.html#cb59-4" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb59-5"><a href="abundance-vs.-detections.html#cb59-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb59-6"><a href="abundance-vs.-detections.html#cb59-6" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
+<span id="cb59-7"><a href="abundance-vs.-detections.html#cb59-7" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb59-8"><a href="abundance-vs.-detections.html#cb59-8" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb59-9"><a href="abundance-vs.-detections.html#cb59-9" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb59-10"><a href="abundance-vs.-detections.html#cb59-10" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb59-11"><a href="abundance-vs.-detections.html#cb59-11" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb59-12"><a href="abundance-vs.-detections.html#cb59-12" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb59-13"><a href="abundance-vs.-detections.html#cb59-13" tabindex="-1"></a><span class="fu">library</span>(rr2)</span>
+<span id="cb59-14"><a href="abundance-vs.-detections.html#cb59-14" tabindex="-1"></a><span class="fu">library</span>(ggnewscale)</span>
+<span id="cb59-15"><a href="abundance-vs.-detections.html#cb59-15" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb59-16"><a href="abundance-vs.-detections.html#cb59-16" tabindex="-1"></a><span class="fu">library</span>(gridtext)</span>
+<span id="cb59-17"><a href="abundance-vs.-detections.html#cb59-17" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb59-18"><a href="abundance-vs.-detections.html#cb59-18" tabindex="-1"></a></span>
+<span id="cb59-19"><a href="abundance-vs.-detections.html#cb59-19" tabindex="-1"></a><span class="co"># Source any custom/other internal functions necessary for analysis</span></span>
+<span id="cb59-20"><a href="abundance-vs.-detections.html#cb59-20" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;code/01_internal-functions.R&quot;</span>)</span></code></pre></div>
 </div>
-<div id="load-dataframe-containing-point-count-and-acoustic-data-5" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Load dataframe containing point count and acoustic data<a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="abundance-vs.-detections.html#cb45-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
+<div id="load-dataframe-containing-point-count-and-acoustic-data-6" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Load dataframe containing point count and acoustic data<a href="abundance-vs.-detections.html#load-dataframe-containing-point-count-and-acoustic-data-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="abundance-vs.-detections.html#cb60-1" tabindex="-1"></a>datSubset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;results/datSubset.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="estimate-abundance-for-point-count-data-and-detections-for-acoustic-data" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Estimate abundance for point count data and detections for acoustic data<a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Estimate abundance for point count data and detections for acoustic data<a href="abundance-vs.-detections.html#estimate-abundance-for-point-count-data-and-detections-for-acoustic-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, we make a distinction before running correlative analyses that abundance corresponds to the total number of individuals of a species detected across visits to a site and can only be calculated for point count data. In the acoustic dataset, individuals are not seen and a measure of detections (estimated as the total number of times as species was heard across ~576 10-s clips). Here 576 clips correspond to the total amount of acoustic data - 96 min (576 10-s clips) of data = 16-min of data for every visit).</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="abundance-vs.-detections.html#cb46-1" tabindex="-1"></a><span class="co"># point-count data</span></span>
-<span id="cb46-2"><a href="abundance-vs.-detections.html#cb46-2" tabindex="-1"></a><span class="co"># estimate total abundance across all species for each site</span></span>
-<span id="cb46-3"><a href="abundance-vs.-detections.html#cb46-3" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb46-4"><a href="abundance-vs.-detections.html#cb46-4" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb46-5"><a href="abundance-vs.-detections.html#cb46-5" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
-<span id="cb46-6"><a href="abundance-vs.-detections.html#cb46-6" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-7"><a href="abundance-vs.-detections.html#cb46-7" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-8"><a href="abundance-vs.-detections.html#cb46-8" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb46-9"><a href="abundance-vs.-detections.html#cb46-9" tabindex="-1"></a></span>
-<span id="cb46-10"><a href="abundance-vs.-detections.html#cb46-10" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
-<span id="cb46-11"><a href="abundance-vs.-detections.html#cb46-11" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across all sites</span></span>
-<span id="cb46-12"><a href="abundance-vs.-detections.html#cb46-12" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
-<span id="cb46-13"><a href="abundance-vs.-detections.html#cb46-13" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb46-14"><a href="abundance-vs.-detections.html#cb46-14" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
-<span id="cb46-15"><a href="abundance-vs.-detections.html#cb46-15" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-16"><a href="abundance-vs.-detections.html#cb46-16" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-17"><a href="abundance-vs.-detections.html#cb46-17" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="abundance-vs.-detections.html#cb61-1" tabindex="-1"></a><span class="co"># point-count data</span></span>
+<span id="cb61-2"><a href="abundance-vs.-detections.html#cb61-2" tabindex="-1"></a><span class="co"># estimate total abundance across all species for each site</span></span>
+<span id="cb61-3"><a href="abundance-vs.-detections.html#cb61-3" tabindex="-1"></a>abundance <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="abundance-vs.-detections.html#cb61-4" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;point_count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-5"><a href="abundance-vs.-detections.html#cb61-5" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
+<span id="cb61-6"><a href="abundance-vs.-detections.html#cb61-6" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-7"><a href="abundance-vs.-detections.html#cb61-7" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-8"><a href="abundance-vs.-detections.html#cb61-8" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb61-9"><a href="abundance-vs.-detections.html#cb61-9" tabindex="-1"></a></span>
+<span id="cb61-10"><a href="abundance-vs.-detections.html#cb61-10" tabindex="-1"></a><span class="co"># estimate total number of detections across the acoustic data</span></span>
+<span id="cb61-11"><a href="abundance-vs.-detections.html#cb61-11" tabindex="-1"></a><span class="co"># note: we cannot call this abundance as it refers to the total number of vocalizations across all sites</span></span>
+<span id="cb61-12"><a href="abundance-vs.-detections.html#cb61-12" tabindex="-1"></a>detections <span class="ot">&lt;-</span> datSubset <span class="sc">%&gt;%</span></span>
+<span id="cb61-13"><a href="abundance-vs.-detections.html#cb61-13" tabindex="-1"></a>  <span class="fu">filter</span>(data_type <span class="sc">==</span> <span class="st">&quot;acoustic_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-14"><a href="abundance-vs.-detections.html#cb61-14" tabindex="-1"></a>  <span class="fu">group_by</span>(site_id, restoration_type, scientific_name,</span>
+<span id="cb61-15"><a href="abundance-vs.-detections.html#cb61-15" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-16"><a href="abundance-vs.-detections.html#cb61-16" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(number)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-17"><a href="abundance-vs.-detections.html#cb61-17" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 </div>
-<div id="correlations-between-abundance-and-detections" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Correlations between abundance and detections<a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="abundance-vs.-detections.html#cb47-1" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
-<span id="cb47-2"><a href="abundance-vs.-detections.html#cb47-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance, detections)<span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="abundance-vs.-detections.html#cb47-3" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">abundance_pc =</span> <span class="dv">0</span>, <span class="at">detections_aru =</span> <span class="dv">0</span>)) </span>
-<span id="cb47-4"><a href="abundance-vs.-detections.html#cb47-4" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="abundance-vs.-detections.html#cb47-5" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
-<span id="cb47-6"><a href="abundance-vs.-detections.html#cb47-6" tabindex="-1"></a>data<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
-<span id="cb47-7"><a href="abundance-vs.-detections.html#cb47-7" tabindex="-1"></a></span>
-<span id="cb47-8"><a href="abundance-vs.-detections.html#cb47-8" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb47-9"><a href="abundance-vs.-detections.html#cb47-9" tabindex="-1"></a>fig_abund_detec <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
-<span id="cb47-10"><a href="abundance-vs.-detections.html#cb47-10" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
-<span id="cb47-11"><a href="abundance-vs.-detections.html#cb47-11" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
-<span id="cb47-12"><a href="abundance-vs.-detections.html#cb47-12" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
-<span id="cb47-13"><a href="abundance-vs.-detections.html#cb47-13" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
-<span id="cb47-14"><a href="abundance-vs.-detections.html#cb47-14" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb47-15"><a href="abundance-vs.-detections.html#cb47-15" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb47-16"><a href="abundance-vs.-detections.html#cb47-16" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb47-17"><a href="abundance-vs.-detections.html#cb47-17" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb47-18"><a href="abundance-vs.-detections.html#cb47-18" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb47-19"><a href="abundance-vs.-detections.html#cb47-19" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb47-20"><a href="abundance-vs.-detections.html#cb47-20" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb47-21"><a href="abundance-vs.-detections.html#cb47-21" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb47-22"><a href="abundance-vs.-detections.html#cb47-22" tabindex="-1"></a></span>
-<span id="cb47-23"><a href="abundance-vs.-detections.html#cb47-23" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb47-24"><a href="abundance-vs.-detections.html#cb47-24" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div id="correlations-between-abundance-and-detections" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Correlations between abundance and detections<a href="abundance-vs.-detections.html#correlations-between-abundance-and-detections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="abundance-vs.-detections.html#cb62-1" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb62-2"><a href="abundance-vs.-detections.html#cb62-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance, detections)<span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="abundance-vs.-detections.html#cb62-3" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">abundance_pc =</span> <span class="dv">0</span>, <span class="at">detections_aru =</span> <span class="dv">0</span>)) </span>
+<span id="cb62-4"><a href="abundance-vs.-detections.html#cb62-4" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="abundance-vs.-detections.html#cb62-5" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
+<span id="cb62-6"><a href="abundance-vs.-detections.html#cb62-6" tabindex="-1"></a>data<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb62-7"><a href="abundance-vs.-detections.html#cb62-7" tabindex="-1"></a></span>
+<span id="cb62-8"><a href="abundance-vs.-detections.html#cb62-8" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb62-9"><a href="abundance-vs.-detections.html#cb62-9" tabindex="-1"></a>fig_abund_detec <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
+<span id="cb62-10"><a href="abundance-vs.-detections.html#cb62-10" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb62-11"><a href="abundance-vs.-detections.html#cb62-11" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
+<span id="cb62-12"><a href="abundance-vs.-detections.html#cb62-12" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
+<span id="cb62-13"><a href="abundance-vs.-detections.html#cb62-13" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
+<span id="cb62-14"><a href="abundance-vs.-detections.html#cb62-14" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb62-15"><a href="abundance-vs.-detections.html#cb62-15" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb62-16"><a href="abundance-vs.-detections.html#cb62-16" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb62-17"><a href="abundance-vs.-detections.html#cb62-17" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb62-18"><a href="abundance-vs.-detections.html#cb62-18" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb62-19"><a href="abundance-vs.-detections.html#cb62-19" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb62-20"><a href="abundance-vs.-detections.html#cb62-20" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb62-21"><a href="abundance-vs.-detections.html#cb62-21" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb62-22"><a href="abundance-vs.-detections.html#cb62-22" tabindex="-1"></a></span>
+<span id="cb62-23"><a href="abundance-vs.-detections.html#cb62-23" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb62-24"><a href="abundance-vs.-detections.html#cb62-24" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="float">
 <img src="figs/fig_abundance_vs_detections_correlations.png" alt="Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types" />
 <div class="figcaption">Positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data) across treatment types</div>
 </div>
 </div>
-<div id="combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type" class="section level2 hasAnchor" number="9.5">
-<h2><span class="header-section-number">9.5</span> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)<a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Combine site-level data to test for correlations between abundance and detections for each species (at the level of the treatment type)<a href="abundance-vs.-detections.html#combine-site-level-data-to-test-for-correlations-between-abundance-and-detections-for-each-species-at-the-level-of-the-treatment-type" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, each dot in the visualization refers to a particular species and the only difference between this analysis and previous one is that the site-level variation is compressed/lost and the visualization/correlative analyses are being carried out across species and treatment types.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="abundance-vs.-detections.html#cb48-1" tabindex="-1"></a><span class="co"># grouping point count data at the level of the treatment type</span></span>
-<span id="cb48-2"><a href="abundance-vs.-detections.html#cb48-2" tabindex="-1"></a>abundance_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb48-3"><a href="abundance-vs.-detections.html#cb48-3" tabindex="-1"></a>  <span class="fu">group_by</span>(restoration_type, scientific_name,</span>
-<span id="cb48-4"><a href="abundance-vs.-detections.html#cb48-4" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-5"><a href="abundance-vs.-detections.html#cb48-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(abundance_pc)) <span class="sc">%&gt;%</span></span>
-<span id="cb48-6"><a href="abundance-vs.-detections.html#cb48-6" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb48-7"><a href="abundance-vs.-detections.html#cb48-7" tabindex="-1"></a></span>
-<span id="cb48-8"><a href="abundance-vs.-detections.html#cb48-8" tabindex="-1"></a><span class="co"># grouping acoustic data at the level of the treatment type</span></span>
-<span id="cb48-9"><a href="abundance-vs.-detections.html#cb48-9" tabindex="-1"></a>detections_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb48-10"><a href="abundance-vs.-detections.html#cb48-10" tabindex="-1"></a>  <span class="fu">group_by</span>(restoration_type, scientific_name,</span>
-<span id="cb48-11"><a href="abundance-vs.-detections.html#cb48-11" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-12"><a href="abundance-vs.-detections.html#cb48-12" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(detections_aru)) <span class="sc">%&gt;%</span></span>
-<span id="cb48-13"><a href="abundance-vs.-detections.html#cb48-13" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb48-14"><a href="abundance-vs.-detections.html#cb48-14" tabindex="-1"></a></span>
-<span id="cb48-15"><a href="abundance-vs.-detections.html#cb48-15" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
-<span id="cb48-16"><a href="abundance-vs.-detections.html#cb48-16" tabindex="-1"></a><span class="co"># subset data to get a minimum abundance of ten and a minimum number of acoustic detections of ten</span></span>
-<span id="cb48-17"><a href="abundance-vs.-detections.html#cb48-17" tabindex="-1"></a>data_group <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance_group, detections_group) <span class="sc">%&gt;%</span></span>
-<span id="cb48-18"><a href="abundance-vs.-detections.html#cb48-18" tabindex="-1"></a>  <span class="fu">filter</span>(abundance_pc <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> detections_aru <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb48-19"><a href="abundance-vs.-detections.html#cb48-19" tabindex="-1"></a></span>
-<span id="cb48-20"><a href="abundance-vs.-detections.html#cb48-20" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
-<span id="cb48-21"><a href="abundance-vs.-detections.html#cb48-21" tabindex="-1"></a>data_group<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_group<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
-<span id="cb48-22"><a href="abundance-vs.-detections.html#cb48-22" tabindex="-1"></a></span>
-<span id="cb48-23"><a href="abundance-vs.-detections.html#cb48-23" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb48-24"><a href="abundance-vs.-detections.html#cb48-24" tabindex="-1"></a>fig_abund_detec_group <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
-<span id="cb48-25"><a href="abundance-vs.-detections.html#cb48-25" tabindex="-1"></a>  <span class="at">data =</span> data_group,</span>
-<span id="cb48-26"><a href="abundance-vs.-detections.html#cb48-26" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
-<span id="cb48-27"><a href="abundance-vs.-detections.html#cb48-27" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
-<span id="cb48-28"><a href="abundance-vs.-detections.html#cb48-28" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
-<span id="cb48-29"><a href="abundance-vs.-detections.html#cb48-29" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb48-30"><a href="abundance-vs.-detections.html#cb48-30" tabindex="-1"></a>  <span class="at">label.var =</span> scientific_name, </span>
-<span id="cb48-31"><a href="abundance-vs.-detections.html#cb48-31" tabindex="-1"></a>  <span class="at">label.expression =</span> detections_aru <span class="sc">&gt;</span> <span class="dv">500</span>, </span>
-<span id="cb48-32"><a href="abundance-vs.-detections.html#cb48-32" tabindex="-1"></a>  <span class="at">point.label.args =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>),</span>
-<span id="cb48-33"><a href="abundance-vs.-detections.html#cb48-33" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb48-34"><a href="abundance-vs.-detections.html#cb48-34" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb48-35"><a href="abundance-vs.-detections.html#cb48-35" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb48-36"><a href="abundance-vs.-detections.html#cb48-36" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb48-37"><a href="abundance-vs.-detections.html#cb48-37" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb48-38"><a href="abundance-vs.-detections.html#cb48-38" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb48-39"><a href="abundance-vs.-detections.html#cb48-39" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb48-40"><a href="abundance-vs.-detections.html#cb48-40" tabindex="-1"></a></span>
-<span id="cb48-41"><a href="abundance-vs.-detections.html#cb48-41" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_group, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_treatmentLevel_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb48-42"><a href="abundance-vs.-detections.html#cb48-42" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="abundance-vs.-detections.html#cb63-1" tabindex="-1"></a><span class="co"># grouping point count data at the level of the treatment type</span></span>
+<span id="cb63-2"><a href="abundance-vs.-detections.html#cb63-2" tabindex="-1"></a>abundance_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="abundance-vs.-detections.html#cb63-3" tabindex="-1"></a>  <span class="fu">group_by</span>(restoration_type, scientific_name,</span>
+<span id="cb63-4"><a href="abundance-vs.-detections.html#cb63-4" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-5"><a href="abundance-vs.-detections.html#cb63-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(abundance_pc)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-6"><a href="abundance-vs.-detections.html#cb63-6" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb63-7"><a href="abundance-vs.-detections.html#cb63-7" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="abundance-vs.-detections.html#cb63-8" tabindex="-1"></a><span class="co"># grouping acoustic data at the level of the treatment type</span></span>
+<span id="cb63-9"><a href="abundance-vs.-detections.html#cb63-9" tabindex="-1"></a>detections_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb63-10"><a href="abundance-vs.-detections.html#cb63-10" tabindex="-1"></a>  <span class="fu">group_by</span>(restoration_type, scientific_name,</span>
+<span id="cb63-11"><a href="abundance-vs.-detections.html#cb63-11" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-12"><a href="abundance-vs.-detections.html#cb63-12" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(detections_aru)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-13"><a href="abundance-vs.-detections.html#cb63-13" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb63-14"><a href="abundance-vs.-detections.html#cb63-14" tabindex="-1"></a></span>
+<span id="cb63-15"><a href="abundance-vs.-detections.html#cb63-15" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb63-16"><a href="abundance-vs.-detections.html#cb63-16" tabindex="-1"></a><span class="co"># subset data to get a minimum abundance of ten and a minimum number of acoustic detections of ten</span></span>
+<span id="cb63-17"><a href="abundance-vs.-detections.html#cb63-17" tabindex="-1"></a>data_group <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance_group, detections_group) <span class="sc">%&gt;%</span></span>
+<span id="cb63-18"><a href="abundance-vs.-detections.html#cb63-18" tabindex="-1"></a>  <span class="fu">filter</span>(abundance_pc <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> detections_aru <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb63-19"><a href="abundance-vs.-detections.html#cb63-19" tabindex="-1"></a></span>
+<span id="cb63-20"><a href="abundance-vs.-detections.html#cb63-20" tabindex="-1"></a><span class="co"># reordering factors for plotting</span></span>
+<span id="cb63-21"><a href="abundance-vs.-detections.html#cb63-21" tabindex="-1"></a>data_group<span class="sc">$</span>restoration_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_group<span class="sc">$</span>restoration_type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;BM&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;NR&quot;</span>))</span>
+<span id="cb63-22"><a href="abundance-vs.-detections.html#cb63-22" tabindex="-1"></a></span>
+<span id="cb63-23"><a href="abundance-vs.-detections.html#cb63-23" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb63-24"><a href="abundance-vs.-detections.html#cb63-24" tabindex="-1"></a>fig_abund_detec_group <span class="ot">&lt;-</span> <span class="fu">grouped_ggscatterstats</span>(</span>
+<span id="cb63-25"><a href="abundance-vs.-detections.html#cb63-25" tabindex="-1"></a>  <span class="at">data =</span> data_group,</span>
+<span id="cb63-26"><a href="abundance-vs.-detections.html#cb63-26" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
+<span id="cb63-27"><a href="abundance-vs.-detections.html#cb63-27" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
+<span id="cb63-28"><a href="abundance-vs.-detections.html#cb63-28" tabindex="-1"></a>  <span class="at">grouping.var =</span> restoration_type,</span>
+<span id="cb63-29"><a href="abundance-vs.-detections.html#cb63-29" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb63-30"><a href="abundance-vs.-detections.html#cb63-30" tabindex="-1"></a>  <span class="at">label.var =</span> scientific_name, </span>
+<span id="cb63-31"><a href="abundance-vs.-detections.html#cb63-31" tabindex="-1"></a>  <span class="at">label.expression =</span> detections_aru <span class="sc">&gt;</span> <span class="dv">500</span>, </span>
+<span id="cb63-32"><a href="abundance-vs.-detections.html#cb63-32" tabindex="-1"></a>  <span class="at">point.label.args =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>),</span>
+<span id="cb63-33"><a href="abundance-vs.-detections.html#cb63-33" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb63-34"><a href="abundance-vs.-detections.html#cb63-34" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb63-35"><a href="abundance-vs.-detections.html#cb63-35" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb63-36"><a href="abundance-vs.-detections.html#cb63-36" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb63-37"><a href="abundance-vs.-detections.html#cb63-37" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb63-38"><a href="abundance-vs.-detections.html#cb63-38" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb63-39"><a href="abundance-vs.-detections.html#cb63-39" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb63-40"><a href="abundance-vs.-detections.html#cb63-40" tabindex="-1"></a></span>
+<span id="cb63-41"><a href="abundance-vs.-detections.html#cb63-41" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_group, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_treatmentLevel_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb63-42"><a href="abundance-vs.-detections.html#cb63-42" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="float">
 <img src="figs/fig_abundance_vs_detections_treatmentLevel_correlations.png" alt="Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the level of the treatment" />
 <div class="figcaption">Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the level of the treatment</div>
 </div>
 </div>
-<div id="rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined" class="section level2 hasAnchor" number="9.6">
-<h2><span class="header-section-number">9.6</span> Rerun analysis at the level of each species (across all sites and treatments combined)<a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Rerun analysis at the level of each species (across all sites and treatments combined)<a href="abundance-vs.-detections.html#rerun-analysis-at-the-level-of-each-species-across-all-sites-and-treatments-combined" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Essentially a single graph that plots all the data.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="abundance-vs.-detections.html#cb49-1" tabindex="-1"></a><span class="co"># grouping point count data</span></span>
-<span id="cb49-2"><a href="abundance-vs.-detections.html#cb49-2" tabindex="-1"></a>abundance_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb49-3"><a href="abundance-vs.-detections.html#cb49-3" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name,</span>
-<span id="cb49-4"><a href="abundance-vs.-detections.html#cb49-4" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-5"><a href="abundance-vs.-detections.html#cb49-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(abundance_pc)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-6"><a href="abundance-vs.-detections.html#cb49-6" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb49-7"><a href="abundance-vs.-detections.html#cb49-7" tabindex="-1"></a></span>
-<span id="cb49-8"><a href="abundance-vs.-detections.html#cb49-8" tabindex="-1"></a><span class="co"># grouping acoustic data at the level of the treatment type</span></span>
-<span id="cb49-9"><a href="abundance-vs.-detections.html#cb49-9" tabindex="-1"></a>detections_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb49-10"><a href="abundance-vs.-detections.html#cb49-10" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name,</span>
-<span id="cb49-11"><a href="abundance-vs.-detections.html#cb49-11" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-12"><a href="abundance-vs.-detections.html#cb49-12" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(detections_aru)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-13"><a href="abundance-vs.-detections.html#cb49-13" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb49-14"><a href="abundance-vs.-detections.html#cb49-14" tabindex="-1"></a></span>
-<span id="cb49-15"><a href="abundance-vs.-detections.html#cb49-15" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
-<span id="cb49-16"><a href="abundance-vs.-detections.html#cb49-16" tabindex="-1"></a><span class="co"># subset data to get a minimum abundance of ten and a minimum number of acoustic detections of ten</span></span>
-<span id="cb49-17"><a href="abundance-vs.-detections.html#cb49-17" tabindex="-1"></a>data_group <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance_group, detections_group) <span class="sc">%&gt;%</span></span>
-<span id="cb49-18"><a href="abundance-vs.-detections.html#cb49-18" tabindex="-1"></a>  <span class="fu">filter</span>(abundance_pc <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> detections_aru <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb49-19"><a href="abundance-vs.-detections.html#cb49-19" tabindex="-1"></a></span>
-<span id="cb49-20"><a href="abundance-vs.-detections.html#cb49-20" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb49-21"><a href="abundance-vs.-detections.html#cb49-21" tabindex="-1"></a>fig_abund_detec_community <span class="ot">&lt;-</span> <span class="fu">ggscatterstats</span>(</span>
-<span id="cb49-22"><a href="abundance-vs.-detections.html#cb49-22" tabindex="-1"></a>  <span class="at">data =</span> data_group,</span>
-<span id="cb49-23"><a href="abundance-vs.-detections.html#cb49-23" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
-<span id="cb49-24"><a href="abundance-vs.-detections.html#cb49-24" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
-<span id="cb49-25"><a href="abundance-vs.-detections.html#cb49-25" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb49-26"><a href="abundance-vs.-detections.html#cb49-26" tabindex="-1"></a>  <span class="at">label.var =</span> scientific_name, </span>
-<span id="cb49-27"><a href="abundance-vs.-detections.html#cb49-27" tabindex="-1"></a>  <span class="at">label.expression =</span> detections_aru <span class="sc">&gt;</span> <span class="dv">500</span>, </span>
-<span id="cb49-28"><a href="abundance-vs.-detections.html#cb49-28" tabindex="-1"></a>  <span class="at">point.label.args =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>),</span>
-<span id="cb49-29"><a href="abundance-vs.-detections.html#cb49-29" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb49-30"><a href="abundance-vs.-detections.html#cb49-30" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb49-31"><a href="abundance-vs.-detections.html#cb49-31" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb49-32"><a href="abundance-vs.-detections.html#cb49-32" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb49-33"><a href="abundance-vs.-detections.html#cb49-33" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb49-34"><a href="abundance-vs.-detections.html#cb49-34" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb49-35"><a href="abundance-vs.-detections.html#cb49-35" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb49-36"><a href="abundance-vs.-detections.html#cb49-36" tabindex="-1"></a></span>
-<span id="cb49-37"><a href="abundance-vs.-detections.html#cb49-37" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_community, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_communityLevel_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb49-38"><a href="abundance-vs.-detections.html#cb49-38" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="abundance-vs.-detections.html#cb64-1" tabindex="-1"></a><span class="co"># grouping point count data</span></span>
+<span id="cb64-2"><a href="abundance-vs.-detections.html#cb64-2" tabindex="-1"></a>abundance_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="abundance-vs.-detections.html#cb64-3" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name,</span>
+<span id="cb64-4"><a href="abundance-vs.-detections.html#cb64-4" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-5"><a href="abundance-vs.-detections.html#cb64-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(abundance_pc)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-6"><a href="abundance-vs.-detections.html#cb64-6" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb64-7"><a href="abundance-vs.-detections.html#cb64-7" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="abundance-vs.-detections.html#cb64-8" tabindex="-1"></a><span class="co"># grouping acoustic data at the level of the treatment type</span></span>
+<span id="cb64-9"><a href="abundance-vs.-detections.html#cb64-9" tabindex="-1"></a>detections_group <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb64-10"><a href="abundance-vs.-detections.html#cb64-10" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name,</span>
+<span id="cb64-11"><a href="abundance-vs.-detections.html#cb64-11" tabindex="-1"></a>           common_name, eBird_codes) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-12"><a href="abundance-vs.-detections.html#cb64-12" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">detections_aru =</span> <span class="fu">sum</span>(detections_aru)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-13"><a href="abundance-vs.-detections.html#cb64-13" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb64-14"><a href="abundance-vs.-detections.html#cb64-14" tabindex="-1"></a></span>
+<span id="cb64-15"><a href="abundance-vs.-detections.html#cb64-15" tabindex="-1"></a><span class="co"># create a single dataframe</span></span>
+<span id="cb64-16"><a href="abundance-vs.-detections.html#cb64-16" tabindex="-1"></a><span class="co"># subset data to get a minimum abundance of ten and a minimum number of acoustic detections of ten</span></span>
+<span id="cb64-17"><a href="abundance-vs.-detections.html#cb64-17" tabindex="-1"></a>data_group <span class="ot">&lt;-</span> <span class="fu">full_join</span>(abundance_group, detections_group) <span class="sc">%&gt;%</span></span>
+<span id="cb64-18"><a href="abundance-vs.-detections.html#cb64-18" tabindex="-1"></a>  <span class="fu">filter</span>(abundance_pc <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> detections_aru <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb64-19"><a href="abundance-vs.-detections.html#cb64-19" tabindex="-1"></a></span>
+<span id="cb64-20"><a href="abundance-vs.-detections.html#cb64-20" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb64-21"><a href="abundance-vs.-detections.html#cb64-21" tabindex="-1"></a>fig_abund_detec_community <span class="ot">&lt;-</span> <span class="fu">ggscatterstats</span>(</span>
+<span id="cb64-22"><a href="abundance-vs.-detections.html#cb64-22" tabindex="-1"></a>  <span class="at">data =</span> data_group,</span>
+<span id="cb64-23"><a href="abundance-vs.-detections.html#cb64-23" tabindex="-1"></a>  <span class="at">x =</span> abundance_pc,</span>
+<span id="cb64-24"><a href="abundance-vs.-detections.html#cb64-24" tabindex="-1"></a>  <span class="at">y =</span> detections_aru,</span>
+<span id="cb64-25"><a href="abundance-vs.-detections.html#cb64-25" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb64-26"><a href="abundance-vs.-detections.html#cb64-26" tabindex="-1"></a>  <span class="at">label.var =</span> common_name, </span>
+<span id="cb64-27"><a href="abundance-vs.-detections.html#cb64-27" tabindex="-1"></a>  <span class="at">label.expression =</span> detections_aru <span class="sc">&gt;</span> <span class="dv">4000</span>, </span>
+<span id="cb64-28"><a href="abundance-vs.-detections.html#cb64-28" tabindex="-1"></a>  <span class="at">point.label.args =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;grey50&quot;</span>),</span>
+<span id="cb64-29"><a href="abundance-vs.-detections.html#cb64-29" tabindex="-1"></a>  <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb64-30"><a href="abundance-vs.-detections.html#cb64-30" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb64-31"><a href="abundance-vs.-detections.html#cb64-31" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb64-32"><a href="abundance-vs.-detections.html#cb64-32" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb64-33"><a href="abundance-vs.-detections.html#cb64-33" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb64-34"><a href="abundance-vs.-detections.html#cb64-34" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb64-35"><a href="abundance-vs.-detections.html#cb64-35" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb64-36"><a href="abundance-vs.-detections.html#cb64-36" tabindex="-1"></a></span>
+<span id="cb64-37"><a href="abundance-vs.-detections.html#cb64-37" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_community, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_communityLevel_correlations.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb64-38"><a href="abundance-vs.-detections.html#cb64-38" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="float">
 <img src="figs/fig_abundance_vs_detections_communityLevel_correlations.png" alt="Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the community level" />
 <div class="figcaption">Highly significant positive correlations were observed between abundance (estimated through point count data) and detections (estimated through acoustic data), when data was grouped at the community level</div>
 </div>
 </div>
-<div id="species-specific-plots-of-correlations-between-abundance-and-detections" class="section level2 hasAnchor" number="9.7">
-<h2><span class="header-section-number">9.7</span> Species-specific plots of correlations between abundance and detections<a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="species-specific-plots-of-correlations-between-abundance-and-detections" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Species-specific plots of correlations between abundance and detections<a href="abundance-vs.-detections.html#species-specific-plots-of-correlations-between-abundance-and-detections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this analysis, we will not be grouping data by treatment types for plot as we have insufficient data if we divided it up. In addition, we will remove species that were detected in only or the other method (point count or acoustic surveys). Further, we only keep species that had a minimum abundance of 10 and a minimum number of acoustic detections of 10.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="abundance-vs.-detections.html#cb50-1" tabindex="-1"></a><span class="co"># identifying species that need to be kept</span></span>
-<span id="cb50-2"><a href="abundance-vs.-detections.html#cb50-2" tabindex="-1"></a><span class="co"># only those species that have a minimum abundance value of 10 and minimum detection value of 10</span></span>
-<span id="cb50-3"><a href="abundance-vs.-detections.html#cb50-3" tabindex="-1"></a>spp_subset <span class="ot">&lt;-</span>  data <span class="sc">%&gt;%</span></span>
-<span id="cb50-4"><a href="abundance-vs.-detections.html#cb50-4" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name) <span class="sc">%&gt;%</span></span>
-<span id="cb50-5"><a href="abundance-vs.-detections.html#cb50-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(abundance_pc), <span class="at">detections_aru =</span> <span class="fu">sum</span>(detections_aru)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-6"><a href="abundance-vs.-detections.html#cb50-6" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb50-7"><a href="abundance-vs.-detections.html#cb50-7" tabindex="-1"></a>  <span class="fu">filter</span>(abundance_pc <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> detections_aru <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb50-8"><a href="abundance-vs.-detections.html#cb50-8" tabindex="-1"></a></span>
-<span id="cb50-9"><a href="abundance-vs.-detections.html#cb50-9" tabindex="-1"></a><span class="co"># subset data</span></span>
-<span id="cb50-10"><a href="abundance-vs.-detections.html#cb50-10" tabindex="-1"></a>dat_subset <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb50-11"><a href="abundance-vs.-detections.html#cb50-11" tabindex="-1"></a>  <span class="fu">filter</span>(scientific_name <span class="sc">%in%</span> spp_subset<span class="sc">$</span>scientific_name)</span>
-<span id="cb50-12"><a href="abundance-vs.-detections.html#cb50-12" tabindex="-1"></a></span>
-<span id="cb50-13"><a href="abundance-vs.-detections.html#cb50-13" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb50-14"><a href="abundance-vs.-detections.html#cb50-14" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb50-15"><a href="abundance-vs.-detections.html#cb50-15" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb50-16"><a href="abundance-vs.-detections.html#cb50-16" tabindex="-1"></a></span>
-<span id="cb50-17"><a href="abundance-vs.-detections.html#cb50-17" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name))){</span>
-<span id="cb50-18"><a href="abundance-vs.-detections.html#cb50-18" tabindex="-1"></a>  </span>
-<span id="cb50-19"><a href="abundance-vs.-detections.html#cb50-19" tabindex="-1"></a>  <span class="co"># extract species scientific name</span></span>
-<span id="cb50-20"><a href="abundance-vs.-detections.html#cb50-20" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name)[i]</span>
-<span id="cb50-21"><a href="abundance-vs.-detections.html#cb50-21" tabindex="-1"></a>  </span>
-<span id="cb50-22"><a href="abundance-vs.-detections.html#cb50-22" tabindex="-1"></a>  <span class="co"># subset data for plotting</span></span>
-<span id="cb50-23"><a href="abundance-vs.-detections.html#cb50-23" tabindex="-1"></a>  for_plot <span class="ot">&lt;-</span> dat_subset[dat_subset<span class="sc">$</span>scientific_name<span class="sc">==</span>a,]</span>
-<span id="cb50-24"><a href="abundance-vs.-detections.html#cb50-24" tabindex="-1"></a>  </span>
-<span id="cb50-25"><a href="abundance-vs.-detections.html#cb50-25" tabindex="-1"></a>  <span class="co"># create plots</span></span>
-<span id="cb50-26"><a href="abundance-vs.-detections.html#cb50-26" tabindex="-1"></a>  plots[[i]] <span class="ot">&lt;-</span> <span class="fu">ggscatterstats</span>(</span>
-<span id="cb50-27"><a href="abundance-vs.-detections.html#cb50-27" tabindex="-1"></a>  <span class="at">data =</span> for_plot,</span>
-<span id="cb50-28"><a href="abundance-vs.-detections.html#cb50-28" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
-<span id="cb50-29"><a href="abundance-vs.-detections.html#cb50-29" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
-<span id="cb50-30"><a href="abundance-vs.-detections.html#cb50-30" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
-<span id="cb50-31"><a href="abundance-vs.-detections.html#cb50-31" tabindex="-1"></a>  <span class="at">title =</span> a,</span>
-<span id="cb50-32"><a href="abundance-vs.-detections.html#cb50-32" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb50-33"><a href="abundance-vs.-detections.html#cb50-33" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb50-34"><a href="abundance-vs.-detections.html#cb50-34" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb50-35"><a href="abundance-vs.-detections.html#cb50-35" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb50-36"><a href="abundance-vs.-detections.html#cb50-36" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
-<span id="cb50-37"><a href="abundance-vs.-detections.html#cb50-37" tabindex="-1"></a>  </span>
-<span id="cb50-38"><a href="abundance-vs.-detections.html#cb50-38" tabindex="-1"></a>  <span class="co"># write the metadata to a dataframe for later analysis</span></span>
-<span id="cb50-39"><a href="abundance-vs.-detections.html#cb50-39" tabindex="-1"></a>  <span class="co"># extracting information using a pre-existing function</span></span>
-<span id="cb50-40"><a href="abundance-vs.-detections.html#cb50-40" tabindex="-1"></a>  stat <span class="ot">&lt;-</span> <span class="fu">extract_stats</span>(plots[[i]])<span class="sc">$</span>subtitle_data</span>
-<span id="cb50-41"><a href="abundance-vs.-detections.html#cb50-41" tabindex="-1"></a>  stat<span class="sc">$</span>scientific_name <span class="ot">&lt;-</span> a</span>
-<span id="cb50-42"><a href="abundance-vs.-detections.html#cb50-42" tabindex="-1"></a>  </span>
-<span id="cb50-43"><a href="abundance-vs.-detections.html#cb50-43" tabindex="-1"></a>  <span class="co"># add it to the above empty metadata dataframe</span></span>
-<span id="cb50-44"><a href="abundance-vs.-detections.html#cb50-44" tabindex="-1"></a>  metadata <span class="ot">&lt;-</span> <span class="fu">rbind</span>(metadata, stat)</span>
-<span id="cb50-45"><a href="abundance-vs.-detections.html#cb50-45" tabindex="-1"></a>}</span>
-<span id="cb50-46"><a href="abundance-vs.-detections.html#cb50-46" tabindex="-1"></a></span>
-<span id="cb50-47"><a href="abundance-vs.-detections.html#cb50-47" tabindex="-1"></a><span class="co"># plot and save as a single pdf</span></span>
-<span id="cb50-48"><a href="abundance-vs.-detections.html#cb50-48" tabindex="-1"></a><span class="fu">cairo_pdf</span>(</span>
-<span id="cb50-49"><a href="abundance-vs.-detections.html#cb50-49" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">&quot;figs/abundance-detections-by-species-correlations.pdf&quot;</span>,</span>
-<span id="cb50-50"><a href="abundance-vs.-detections.html#cb50-50" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">13</span>, <span class="at">height =</span> <span class="dv">12</span>,</span>
-<span id="cb50-51"><a href="abundance-vs.-detections.html#cb50-51" tabindex="-1"></a>  <span class="at">onefile =</span> <span class="cn">TRUE</span></span>
-<span id="cb50-52"><a href="abundance-vs.-detections.html#cb50-52" tabindex="-1"></a>)</span>
-<span id="cb50-53"><a href="abundance-vs.-detections.html#cb50-53" tabindex="-1"></a>plots</span>
-<span id="cb50-54"><a href="abundance-vs.-detections.html#cb50-54" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
-<span id="cb50-55"><a href="abundance-vs.-detections.html#cb50-55" tabindex="-1"></a></span>
-<span id="cb50-56"><a href="abundance-vs.-detections.html#cb50-56" tabindex="-1"></a><span class="co"># write the metadata to a .csv</span></span>
-<span id="cb50-57"><a href="abundance-vs.-detections.html#cb50-57" tabindex="-1"></a><span class="fu">write.csv</span>(metadata[,<span class="sc">-</span><span class="dv">14</span>], <span class="co"># removing the expression column</span></span>
-<span id="cb50-58"><a href="abundance-vs.-detections.html#cb50-58" tabindex="-1"></a>          <span class="st">&quot;results/correlationScores-abundance-detections.csv&quot;</span>,</span>
-<span id="cb50-59"><a href="abundance-vs.-detections.html#cb50-59" tabindex="-1"></a>          <span class="at">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="abundance-vs.-detections.html#cb65-1" tabindex="-1"></a><span class="co"># identifying species that need to be kept</span></span>
+<span id="cb65-2"><a href="abundance-vs.-detections.html#cb65-2" tabindex="-1"></a><span class="co"># only those species that have a minimum abundance value of 10 and minimum detection value of 10</span></span>
+<span id="cb65-3"><a href="abundance-vs.-detections.html#cb65-3" tabindex="-1"></a>spp_subset <span class="ot">&lt;-</span>  data <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="abundance-vs.-detections.html#cb65-4" tabindex="-1"></a>  <span class="fu">group_by</span>(scientific_name) <span class="sc">%&gt;%</span></span>
+<span id="cb65-5"><a href="abundance-vs.-detections.html#cb65-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">abundance_pc =</span> <span class="fu">sum</span>(abundance_pc), <span class="at">detections_aru =</span> <span class="fu">sum</span>(detections_aru)) <span class="sc">%&gt;%</span></span>
+<span id="cb65-6"><a href="abundance-vs.-detections.html#cb65-6" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb65-7"><a href="abundance-vs.-detections.html#cb65-7" tabindex="-1"></a>  <span class="fu">filter</span>(abundance_pc <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> detections_aru <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb65-8"><a href="abundance-vs.-detections.html#cb65-8" tabindex="-1"></a></span>
+<span id="cb65-9"><a href="abundance-vs.-detections.html#cb65-9" tabindex="-1"></a><span class="co"># subset data</span></span>
+<span id="cb65-10"><a href="abundance-vs.-detections.html#cb65-10" tabindex="-1"></a>dat_subset <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb65-11"><a href="abundance-vs.-detections.html#cb65-11" tabindex="-1"></a>  <span class="fu">filter</span>(scientific_name <span class="sc">%in%</span> spp_subset<span class="sc">$</span>scientific_name)</span>
+<span id="cb65-12"><a href="abundance-vs.-detections.html#cb65-12" tabindex="-1"></a></span>
+<span id="cb65-13"><a href="abundance-vs.-detections.html#cb65-13" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb65-14"><a href="abundance-vs.-detections.html#cb65-14" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb65-15"><a href="abundance-vs.-detections.html#cb65-15" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb65-16"><a href="abundance-vs.-detections.html#cb65-16" tabindex="-1"></a></span>
+<span id="cb65-17"><a href="abundance-vs.-detections.html#cb65-17" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name))){</span>
+<span id="cb65-18"><a href="abundance-vs.-detections.html#cb65-18" tabindex="-1"></a>  </span>
+<span id="cb65-19"><a href="abundance-vs.-detections.html#cb65-19" tabindex="-1"></a>  <span class="co"># extract species scientific name</span></span>
+<span id="cb65-20"><a href="abundance-vs.-detections.html#cb65-20" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name)[i]</span>
+<span id="cb65-21"><a href="abundance-vs.-detections.html#cb65-21" tabindex="-1"></a>  </span>
+<span id="cb65-22"><a href="abundance-vs.-detections.html#cb65-22" tabindex="-1"></a>  <span class="co"># subset data for plotting</span></span>
+<span id="cb65-23"><a href="abundance-vs.-detections.html#cb65-23" tabindex="-1"></a>  for_plot <span class="ot">&lt;-</span> dat_subset[dat_subset<span class="sc">$</span>scientific_name<span class="sc">==</span>a,]</span>
+<span id="cb65-24"><a href="abundance-vs.-detections.html#cb65-24" tabindex="-1"></a>  </span>
+<span id="cb65-25"><a href="abundance-vs.-detections.html#cb65-25" tabindex="-1"></a>  <span class="co"># create plots</span></span>
+<span id="cb65-26"><a href="abundance-vs.-detections.html#cb65-26" tabindex="-1"></a>  plots[[i]] <span class="ot">&lt;-</span> <span class="fu">ggscatterstats</span>(</span>
+<span id="cb65-27"><a href="abundance-vs.-detections.html#cb65-27" tabindex="-1"></a>  <span class="at">data =</span> for_plot,</span>
+<span id="cb65-28"><a href="abundance-vs.-detections.html#cb65-28" tabindex="-1"></a>  <span class="at">x =</span> detections_aru,</span>
+<span id="cb65-29"><a href="abundance-vs.-detections.html#cb65-29" tabindex="-1"></a>  <span class="at">y =</span> abundance_pc,</span>
+<span id="cb65-30"><a href="abundance-vs.-detections.html#cb65-30" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb65-31"><a href="abundance-vs.-detections.html#cb65-31" tabindex="-1"></a>  <span class="at">title =</span> a,</span>
+<span id="cb65-32"><a href="abundance-vs.-detections.html#cb65-32" tabindex="-1"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb65-33"><a href="abundance-vs.-detections.html#cb65-33" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb65-34"><a href="abundance-vs.-detections.html#cb65-34" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb65-35"><a href="abundance-vs.-detections.html#cb65-35" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb65-36"><a href="abundance-vs.-detections.html#cb65-36" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))))</span>
+<span id="cb65-37"><a href="abundance-vs.-detections.html#cb65-37" tabindex="-1"></a>  </span>
+<span id="cb65-38"><a href="abundance-vs.-detections.html#cb65-38" tabindex="-1"></a>  <span class="co"># write the metadata to a dataframe for later analysis</span></span>
+<span id="cb65-39"><a href="abundance-vs.-detections.html#cb65-39" tabindex="-1"></a>  <span class="co"># extracting information using a pre-existing function</span></span>
+<span id="cb65-40"><a href="abundance-vs.-detections.html#cb65-40" tabindex="-1"></a>  stat <span class="ot">&lt;-</span> <span class="fu">extract_stats</span>(plots[[i]])<span class="sc">$</span>subtitle_data</span>
+<span id="cb65-41"><a href="abundance-vs.-detections.html#cb65-41" tabindex="-1"></a>  stat<span class="sc">$</span>scientific_name <span class="ot">&lt;-</span> a</span>
+<span id="cb65-42"><a href="abundance-vs.-detections.html#cb65-42" tabindex="-1"></a>  </span>
+<span id="cb65-43"><a href="abundance-vs.-detections.html#cb65-43" tabindex="-1"></a>  <span class="co"># add it to the above empty metadata dataframe</span></span>
+<span id="cb65-44"><a href="abundance-vs.-detections.html#cb65-44" tabindex="-1"></a>  metadata <span class="ot">&lt;-</span> <span class="fu">rbind</span>(metadata, stat)</span>
+<span id="cb65-45"><a href="abundance-vs.-detections.html#cb65-45" tabindex="-1"></a>}</span>
+<span id="cb65-46"><a href="abundance-vs.-detections.html#cb65-46" tabindex="-1"></a></span>
+<span id="cb65-47"><a href="abundance-vs.-detections.html#cb65-47" tabindex="-1"></a><span class="co"># plot and save as a single pdf</span></span>
+<span id="cb65-48"><a href="abundance-vs.-detections.html#cb65-48" tabindex="-1"></a><span class="fu">cairo_pdf</span>(</span>
+<span id="cb65-49"><a href="abundance-vs.-detections.html#cb65-49" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">&quot;figs/abundance-detections-by-species-correlations.pdf&quot;</span>,</span>
+<span id="cb65-50"><a href="abundance-vs.-detections.html#cb65-50" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">13</span>, <span class="at">height =</span> <span class="dv">12</span>,</span>
+<span id="cb65-51"><a href="abundance-vs.-detections.html#cb65-51" tabindex="-1"></a>  <span class="at">onefile =</span> <span class="cn">TRUE</span></span>
+<span id="cb65-52"><a href="abundance-vs.-detections.html#cb65-52" tabindex="-1"></a>)</span>
+<span id="cb65-53"><a href="abundance-vs.-detections.html#cb65-53" tabindex="-1"></a>plots</span>
+<span id="cb65-54"><a href="abundance-vs.-detections.html#cb65-54" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb65-55"><a href="abundance-vs.-detections.html#cb65-55" tabindex="-1"></a></span>
+<span id="cb65-56"><a href="abundance-vs.-detections.html#cb65-56" tabindex="-1"></a><span class="co"># write the metadata to a .csv</span></span>
+<span id="cb65-57"><a href="abundance-vs.-detections.html#cb65-57" tabindex="-1"></a><span class="fu">write.csv</span>(metadata[,<span class="sc">-</span><span class="dv">14</span>], <span class="co"># removing the expression column</span></span>
+<span id="cb65-58"><a href="abundance-vs.-detections.html#cb65-58" tabindex="-1"></a>          <span class="st">&quot;results/correlationScores-abundance-detections.csv&quot;</span>,</span>
+<span id="cb65-59"><a href="abundance-vs.-detections.html#cb65-59" tabindex="-1"></a>          <span class="at">row.names =</span> F)</span></code></pre></div>
 <p>Running the abundance-detections correlations analysis essentially suggests that at the community level/when species are pooled across sites - there seems to be a high Pearson’s correlation value between abundance and detections (when site-level variation is include, this ranges between 0.51 to 0.55, but when site-level variation is compressed/lost/pooled across treatments, this value ranges between 0.85 to 0.87).</p>
 <p>However, when we break this result down and examine it for each species by species, we notice that the above result varies by species. At the species level, we considered a total of 48 species for this exercise. The list of 48 species only includes those that had a minimum abundance value of 10 and a minimum number of acoustic detections of 10.</p>
 <p>We observed that ~15 species showed a positive r of &gt;0.4, ~20 species showed a positive r of &gt;0.3.Nine species showed a very small positive r value between 0 and 0.2. The species that showed the highest positive r values include Pycnonotus jocosus (0.85), Hypsipetes ganeesa (0.67) and Leptocoma minima (0.66).</p>
 <p>Five species had a negative r value between 0 and -0.2. Seven species had a negative r value that ranged between -0.2 and -0.51. The three species showing a very high negative r value are Dicrurus aeneus (-0.51), Muscicapa muttui(-0.46), and Ficedula ruficauda (-0.45).</p>
 </div>
-<div id="regressions-between-abundance-and-detections" class="section level2 hasAnchor" number="9.8">
-<h2><span class="header-section-number">9.8</span> Regressions between abundance and detections<a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="regressions-between-abundance-and-detections" class="section level2 hasAnchor" number="11.8">
+<h2><span class="header-section-number">11.8</span> Regressions between abundance and detections<a href="abundance-vs.-detections.html#regressions-between-abundance-and-detections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While it is relevant to examine correlations between abundance (as estimated from point count data) and detections (as estimated from acoustic data), we will run robust regressions to ask one predicts the other.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="abundance-vs.-detections.html#cb51-1" tabindex="-1"></a><span class="do">## We use the dat_subset dataframe moving forward, as it contains the subset of species with a minimum of 10 abundance values and 10 acoustic detections across sites and visits</span></span>
-<span id="cb51-2"><a href="abundance-vs.-detections.html#cb51-2" tabindex="-1"></a><span class="do">## I am borrowing code from Mikula et al. 2020 below</span></span>
-<span id="cb51-3"><a href="abundance-vs.-detections.html#cb51-3" tabindex="-1"></a><span class="do">## The data and scripts from their manuscript can be found here:</span></span>
-<span id="cb51-4"><a href="abundance-vs.-detections.html#cb51-4" tabindex="-1"></a><span class="do">## https://osf.io/fa9ky/</span></span>
-<span id="cb51-5"><a href="abundance-vs.-detections.html#cb51-5" tabindex="-1"></a></span>
-<span id="cb51-6"><a href="abundance-vs.-detections.html#cb51-6" tabindex="-1"></a>dat_subset <span class="ot">&lt;-</span> <span class="fu">setDT</span>(dat_subset)</span>
-<span id="cb51-7"><a href="abundance-vs.-detections.html#cb51-7" tabindex="-1"></a></span>
-<span id="cb51-8"><a href="abundance-vs.-detections.html#cb51-8" tabindex="-1"></a><span class="co"># extract t-value</span></span>
-<span id="cb51-9"><a href="abundance-vs.-detections.html#cb51-9" tabindex="-1"></a>dat_subset[,  t_value <span class="sc">:=</span> <span class="fu">summary</span>(<span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc))<span class="sc">$</span>coefficients[<span class="dv">6</span>], by <span class="ot">=</span> scientific_name] </span>
-<span id="cb51-10"><a href="abundance-vs.-detections.html#cb51-10" tabindex="-1"></a></span>
-<span id="cb51-11"><a href="abundance-vs.-detections.html#cb51-11" tabindex="-1"></a><span class="co"># extract slope</span></span>
-<span id="cb51-12"><a href="abundance-vs.-detections.html#cb51-12" tabindex="-1"></a>dat_subset[,  slope <span class="sc">:=</span> <span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc)<span class="sc">%&gt;%</span> <span class="fu">coef</span>()<span class="sc">%&gt;%</span> <span class="fu">nth</span>(<span class="dv">2</span>), by <span class="ot">=</span> scientific_name] </span>
-<span id="cb51-13"><a href="abundance-vs.-detections.html#cb51-13" tabindex="-1"></a></span>
-<span id="cb51-14"><a href="abundance-vs.-detections.html#cb51-14" tabindex="-1"></a><span class="co"># extract pearson&#39;s correlation</span></span>
-<span id="cb51-15"><a href="abundance-vs.-detections.html#cb51-15" tabindex="-1"></a>dat_subset[,  pearson <span class="sc">:=</span> <span class="fu">cor</span>(detections_aru, abundance_pc), by <span class="ot">=</span> scientific_name] </span>
-<span id="cb51-16"><a href="abundance-vs.-detections.html#cb51-16" tabindex="-1"></a></span>
-<span id="cb51-17"><a href="abundance-vs.-detections.html#cb51-17" tabindex="-1"></a><span class="co"># extract adjusted r squared</span></span>
-<span id="cb51-18"><a href="abundance-vs.-detections.html#cb51-18" tabindex="-1"></a>dat_subset[,  r_sq <span class="sc">:=</span> <span class="fu">summary</span>(<span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc))<span class="sc">$</span>adj.r.squared, by <span class="ot">=</span> scientific_name] </span>
-<span id="cb51-19"><a href="abundance-vs.-detections.html#cb51-19" tabindex="-1"></a></span>
-<span id="cb51-20"><a href="abundance-vs.-detections.html#cb51-20" tabindex="-1"></a><span class="co"># create a column with the direction of the slope (whether it is positive or negative), which can be referred to later while plotting    </span></span>
-<span id="cb51-21"><a href="abundance-vs.-detections.html#cb51-21" tabindex="-1"></a>dat_subset[, slope_dir <span class="sc">:=</span> <span class="fu">ifelse</span>(slope <span class="sc">&gt;</span><span class="dv">0</span>, <span class="st">&#39;+&#39;</span>, <span class="st">&#39;-&#39;</span>)]</span>
-<span id="cb51-22"><a href="abundance-vs.-detections.html#cb51-22" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Positive regressions:&quot;</span>,<span class="fu">length</span>(<span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name[dat_subset<span class="sc">$</span>slope_dir <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;+&#39;</span>)])))</span>
-<span id="cb51-23"><a href="abundance-vs.-detections.html#cb51-23" tabindex="-1"></a><span class="co"># 39 species had a positive regression/slope value</span></span>
-<span id="cb51-24"><a href="abundance-vs.-detections.html#cb51-24" tabindex="-1"></a></span>
-<span id="cb51-25"><a href="abundance-vs.-detections.html#cb51-25" tabindex="-1"></a><span class="do">## visualization</span></span>
-<span id="cb51-26"><a href="abundance-vs.-detections.html#cb51-26" tabindex="-1"></a>fig_abund_detec_reg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_subset, <span class="fu">aes</span>(<span class="at">y =</span> detections_aru,</span>
-<span id="cb51-27"><a href="abundance-vs.-detections.html#cb51-27" tabindex="-1"></a>                                              <span class="at">x =</span> abundance_pc)) <span class="sc">+</span></span>
-<span id="cb51-28"><a href="abundance-vs.-detections.html#cb51-28" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#9CC3D5&quot;</span>,<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb51-29"><a href="abundance-vs.-detections.html#cb51-29" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> dat_subset, <span class="fu">aes</span>(<span class="at">group =</span> scientific_name,</span>
-<span id="cb51-30"><a href="abundance-vs.-detections.html#cb51-30" tabindex="-1"></a>                                     <span class="at">color =</span> slope_dir), </span>
-<span id="cb51-31"><a href="abundance-vs.-detections.html#cb51-31" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb51-32"><a href="abundance-vs.-detections.html#cb51-32" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb51-33"><a href="abundance-vs.-detections.html#cb51-33" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;#1B9E77&quot;</span>, <span class="st">&quot;#D95F02&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb51-34"><a href="abundance-vs.-detections.html#cb51-34" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Detections (from acoustic data)&quot;</span>, </span>
-<span id="cb51-35"><a href="abundance-vs.-detections.html#cb51-35" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Abundance (from point count data)</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb51-36"><a href="abundance-vs.-detections.html#cb51-36" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb51-37"><a href="abundance-vs.-detections.html#cb51-37" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">13</span>, <span class="at">y=</span><span class="dv">400</span>, </span>
-<span id="cb51-38"><a href="abundance-vs.-detections.html#cb51-38" tabindex="-1"></a>           <span class="at">label=</span> <span class="st">&quot;Slope:&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb51-39"><a href="abundance-vs.-detections.html#cb51-39" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">16</span>, <span class="at">y=</span><span class="dv">400</span>, </span>
-<span id="cb51-40"><a href="abundance-vs.-detections.html#cb51-40" tabindex="-1"></a>           <span class="at">label=</span> <span class="st">&quot;+&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D95F02&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb51-41"><a href="abundance-vs.-detections.html#cb51-41" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">18</span>, <span class="at">y=</span><span class="dv">400</span>, </span>
-<span id="cb51-42"><a href="abundance-vs.-detections.html#cb51-42" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">&quot;-&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#1B9E77&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>)<span class="sc">+</span></span>
-<span id="cb51-43"><a href="abundance-vs.-detections.html#cb51-43" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb51-44"><a href="abundance-vs.-detections.html#cb51-44" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb51-45"><a href="abundance-vs.-detections.html#cb51-45" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb51-46"><a href="abundance-vs.-detections.html#cb51-46" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb51-47"><a href="abundance-vs.-detections.html#cb51-47" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb51-48"><a href="abundance-vs.-detections.html#cb51-48" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb51-49"><a href="abundance-vs.-detections.html#cb51-49" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb51-50"><a href="abundance-vs.-detections.html#cb51-50" tabindex="-1"></a></span>
-<span id="cb51-51"><a href="abundance-vs.-detections.html#cb51-51" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_reg, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_regressions_allSpecies.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb51-52"><a href="abundance-vs.-detections.html#cb51-52" tabindex="-1"></a><span class="fu">dev.off</span>() </span>
-<span id="cb51-53"><a href="abundance-vs.-detections.html#cb51-53" tabindex="-1"></a></span>
-<span id="cb51-54"><a href="abundance-vs.-detections.html#cb51-54" tabindex="-1"></a><span class="co"># extract the slope, t_value, pearson correlation and the adjusted r square</span></span>
-<span id="cb51-55"><a href="abundance-vs.-detections.html#cb51-55" tabindex="-1"></a>lm_output <span class="ot">&lt;-</span> dat_subset <span class="sc">%&gt;%</span></span>
-<span id="cb51-56"><a href="abundance-vs.-detections.html#cb51-56" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(scientific_name, t_value, slope, pearson, slope_dir,r_sq) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
-<span id="cb51-57"><a href="abundance-vs.-detections.html#cb51-57" tabindex="-1"></a></span>
-<span id="cb51-58"><a href="abundance-vs.-detections.html#cb51-58" tabindex="-1"></a><span class="co"># write the values to file</span></span>
-<span id="cb51-59"><a href="abundance-vs.-detections.html#cb51-59" tabindex="-1"></a><span class="fu">write.csv</span>(lm_output, <span class="st">&quot;results/abundance-detections-regressions.csv&quot;</span>,</span>
-<span id="cb51-60"><a href="abundance-vs.-detections.html#cb51-60" tabindex="-1"></a>          <span class="at">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="abundance-vs.-detections.html#cb66-1" tabindex="-1"></a><span class="do">## We use the dat_subset dataframe moving forward, as it contains the subset of species with a minimum of 10 abundance values and 10 acoustic detections across sites and visits</span></span>
+<span id="cb66-2"><a href="abundance-vs.-detections.html#cb66-2" tabindex="-1"></a><span class="do">## I am borrowing code from Mikula et al. 2020 below</span></span>
+<span id="cb66-3"><a href="abundance-vs.-detections.html#cb66-3" tabindex="-1"></a><span class="do">## The data and scripts from their manuscript can be found here:</span></span>
+<span id="cb66-4"><a href="abundance-vs.-detections.html#cb66-4" tabindex="-1"></a><span class="do">## https://osf.io/fa9ky/</span></span>
+<span id="cb66-5"><a href="abundance-vs.-detections.html#cb66-5" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="abundance-vs.-detections.html#cb66-6" tabindex="-1"></a>dat_subset <span class="ot">&lt;-</span> <span class="fu">setDT</span>(dat_subset)</span>
+<span id="cb66-7"><a href="abundance-vs.-detections.html#cb66-7" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="abundance-vs.-detections.html#cb66-8" tabindex="-1"></a><span class="co"># extract t-value</span></span>
+<span id="cb66-9"><a href="abundance-vs.-detections.html#cb66-9" tabindex="-1"></a>dat_subset[,  t_value <span class="sc">:=</span> <span class="fu">summary</span>(<span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc))<span class="sc">$</span>coefficients[<span class="dv">6</span>], by <span class="ot">=</span> scientific_name] </span>
+<span id="cb66-10"><a href="abundance-vs.-detections.html#cb66-10" tabindex="-1"></a></span>
+<span id="cb66-11"><a href="abundance-vs.-detections.html#cb66-11" tabindex="-1"></a><span class="co"># extract slope</span></span>
+<span id="cb66-12"><a href="abundance-vs.-detections.html#cb66-12" tabindex="-1"></a>dat_subset[,  slope <span class="sc">:=</span> <span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc)<span class="sc">%&gt;%</span> <span class="fu">coef</span>()<span class="sc">%&gt;%</span> <span class="fu">nth</span>(<span class="dv">2</span>), by <span class="ot">=</span> scientific_name] </span>
+<span id="cb66-13"><a href="abundance-vs.-detections.html#cb66-13" tabindex="-1"></a></span>
+<span id="cb66-14"><a href="abundance-vs.-detections.html#cb66-14" tabindex="-1"></a><span class="co"># extract pearson&#39;s correlation</span></span>
+<span id="cb66-15"><a href="abundance-vs.-detections.html#cb66-15" tabindex="-1"></a>dat_subset[,  pearson <span class="sc">:=</span> <span class="fu">cor</span>(detections_aru, abundance_pc), by <span class="ot">=</span> scientific_name] </span>
+<span id="cb66-16"><a href="abundance-vs.-detections.html#cb66-16" tabindex="-1"></a></span>
+<span id="cb66-17"><a href="abundance-vs.-detections.html#cb66-17" tabindex="-1"></a><span class="co"># extract adjusted r squared</span></span>
+<span id="cb66-18"><a href="abundance-vs.-detections.html#cb66-18" tabindex="-1"></a>dat_subset[,  r_sq <span class="sc">:=</span> <span class="fu">summary</span>(<span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc))<span class="sc">$</span>adj.r.squared, by <span class="ot">=</span> scientific_name] </span>
+<span id="cb66-19"><a href="abundance-vs.-detections.html#cb66-19" tabindex="-1"></a></span>
+<span id="cb66-20"><a href="abundance-vs.-detections.html#cb66-20" tabindex="-1"></a><span class="co"># create a column with the direction of the slope (whether it is positive or negative), which can be referred to later while plotting    </span></span>
+<span id="cb66-21"><a href="abundance-vs.-detections.html#cb66-21" tabindex="-1"></a>dat_subset[, slope_dir <span class="sc">:=</span> <span class="fu">ifelse</span>(slope <span class="sc">&gt;</span><span class="dv">0</span>, <span class="st">&#39;+&#39;</span>, <span class="st">&#39;-&#39;</span>)]</span>
+<span id="cb66-22"><a href="abundance-vs.-detections.html#cb66-22" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Positive regressions:&quot;</span>,<span class="fu">length</span>(<span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name[dat_subset<span class="sc">$</span>slope_dir <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;+&#39;</span>)])))</span>
+<span id="cb66-23"><a href="abundance-vs.-detections.html#cb66-23" tabindex="-1"></a><span class="co"># 39 species had a positive regression/slope value</span></span>
+<span id="cb66-24"><a href="abundance-vs.-detections.html#cb66-24" tabindex="-1"></a></span>
+<span id="cb66-25"><a href="abundance-vs.-detections.html#cb66-25" tabindex="-1"></a><span class="do">## visualization</span></span>
+<span id="cb66-26"><a href="abundance-vs.-detections.html#cb66-26" tabindex="-1"></a>fig_abund_detec_reg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_subset, <span class="fu">aes</span>(<span class="at">y =</span> detections_aru,</span>
+<span id="cb66-27"><a href="abundance-vs.-detections.html#cb66-27" tabindex="-1"></a>                                              <span class="at">x =</span> abundance_pc)) <span class="sc">+</span></span>
+<span id="cb66-28"><a href="abundance-vs.-detections.html#cb66-28" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#9CC3D5&quot;</span>,<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb66-29"><a href="abundance-vs.-detections.html#cb66-29" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> dat_subset, <span class="fu">aes</span>(<span class="at">group =</span> scientific_name,</span>
+<span id="cb66-30"><a href="abundance-vs.-detections.html#cb66-30" tabindex="-1"></a>                                     <span class="at">color =</span> slope_dir), </span>
+<span id="cb66-31"><a href="abundance-vs.-detections.html#cb66-31" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb66-32"><a href="abundance-vs.-detections.html#cb66-32" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb66-33"><a href="abundance-vs.-detections.html#cb66-33" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;#1B9E77&quot;</span>, <span class="st">&quot;#D95F02&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb66-34"><a href="abundance-vs.-detections.html#cb66-34" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Detections (from acoustic data)&quot;</span>, </span>
+<span id="cb66-35"><a href="abundance-vs.-detections.html#cb66-35" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Abundance (from point count data)</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb66-36"><a href="abundance-vs.-detections.html#cb66-36" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb66-37"><a href="abundance-vs.-detections.html#cb66-37" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">13</span>, <span class="at">y=</span><span class="dv">400</span>, </span>
+<span id="cb66-38"><a href="abundance-vs.-detections.html#cb66-38" tabindex="-1"></a>           <span class="at">label=</span> <span class="st">&quot;Slope:&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb66-39"><a href="abundance-vs.-detections.html#cb66-39" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">16</span>, <span class="at">y=</span><span class="dv">400</span>, </span>
+<span id="cb66-40"><a href="abundance-vs.-detections.html#cb66-40" tabindex="-1"></a>           <span class="at">label=</span> <span class="st">&quot;+&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#D95F02&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb66-41"><a href="abundance-vs.-detections.html#cb66-41" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">18</span>, <span class="at">y=</span><span class="dv">400</span>, </span>
+<span id="cb66-42"><a href="abundance-vs.-detections.html#cb66-42" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">&quot;-&quot;</span>, <span class="at">col =</span> <span class="st">&quot;#1B9E77&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>)<span class="sc">+</span></span>
+<span id="cb66-43"><a href="abundance-vs.-detections.html#cb66-43" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb66-44"><a href="abundance-vs.-detections.html#cb66-44" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb66-45"><a href="abundance-vs.-detections.html#cb66-45" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb66-46"><a href="abundance-vs.-detections.html#cb66-46" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb66-47"><a href="abundance-vs.-detections.html#cb66-47" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb66-48"><a href="abundance-vs.-detections.html#cb66-48" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb66-49"><a href="abundance-vs.-detections.html#cb66-49" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb66-50"><a href="abundance-vs.-detections.html#cb66-50" tabindex="-1"></a></span>
+<span id="cb66-51"><a href="abundance-vs.-detections.html#cb66-51" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_reg, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_regressions_allSpecies.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb66-52"><a href="abundance-vs.-detections.html#cb66-52" tabindex="-1"></a><span class="fu">dev.off</span>() </span>
+<span id="cb66-53"><a href="abundance-vs.-detections.html#cb66-53" tabindex="-1"></a></span>
+<span id="cb66-54"><a href="abundance-vs.-detections.html#cb66-54" tabindex="-1"></a><span class="co"># extract the slope, t_value, pearson correlation and the adjusted r square</span></span>
+<span id="cb66-55"><a href="abundance-vs.-detections.html#cb66-55" tabindex="-1"></a>lm_output <span class="ot">&lt;-</span> dat_subset <span class="sc">%&gt;%</span></span>
+<span id="cb66-56"><a href="abundance-vs.-detections.html#cb66-56" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(scientific_name, t_value, slope, pearson, slope_dir,r_sq) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
+<span id="cb66-57"><a href="abundance-vs.-detections.html#cb66-57" tabindex="-1"></a></span>
+<span id="cb66-58"><a href="abundance-vs.-detections.html#cb66-58" tabindex="-1"></a><span class="co"># write the values to file</span></span>
+<span id="cb66-59"><a href="abundance-vs.-detections.html#cb66-59" tabindex="-1"></a><span class="fu">write.csv</span>(lm_output, <span class="st">&quot;results/abundance-detections-regressions.csv&quot;</span>,</span>
+<span id="cb66-60"><a href="abundance-vs.-detections.html#cb66-60" tabindex="-1"></a>          <span class="at">row.names =</span> F)</span></code></pre></div>
 <div class="float">
 <img src="figs/fig_abundance_vs_detections_regressions_allspecies.png" alt="Of the 48 species for which acoustic detections were regressed with abundance (from point count data), 39 species showed a positive slope." />
 <div class="figcaption">Of the 48 species for which acoustic detections were regressed with abundance (from point count data), 39 species showed a positive slope.</div>
 </div>
 </div>
-<div id="plotting-species-specific-regression-plots" class="section level2 hasAnchor" number="9.9">
-<h2><span class="header-section-number">9.9</span> Plotting species-specific regression plots<a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="abundance-vs.-detections.html#cb52-1" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb52-2"><a href="abundance-vs.-detections.html#cb52-2" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb52-3"><a href="abundance-vs.-detections.html#cb52-3" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="abundance-vs.-detections.html#cb52-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name))){</span>
-<span id="cb52-5"><a href="abundance-vs.-detections.html#cb52-5" tabindex="-1"></a>  </span>
-<span id="cb52-6"><a href="abundance-vs.-detections.html#cb52-6" tabindex="-1"></a>  <span class="co"># extract species scientific name</span></span>
-<span id="cb52-7"><a href="abundance-vs.-detections.html#cb52-7" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat_subset<span class="sc">$</span>scientific_name)[i]</span>
-<span id="cb52-8"><a href="abundance-vs.-detections.html#cb52-8" tabindex="-1"></a>  </span>
-<span id="cb52-9"><a href="abundance-vs.-detections.html#cb52-9" tabindex="-1"></a>  <span class="co"># subset data for plotting</span></span>
-<span id="cb52-10"><a href="abundance-vs.-detections.html#cb52-10" tabindex="-1"></a>  for_plot <span class="ot">&lt;-</span> dat_subset[dat_subset<span class="sc">$</span>scientific_name<span class="sc">==</span>a,]</span>
-<span id="cb52-11"><a href="abundance-vs.-detections.html#cb52-11" tabindex="-1"></a>  </span>
-<span id="cb52-12"><a href="abundance-vs.-detections.html#cb52-12" tabindex="-1"></a>  <span class="co"># create plots</span></span>
-<span id="cb52-13"><a href="abundance-vs.-detections.html#cb52-13" tabindex="-1"></a>  plots[[i]] <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(for_plot, <span class="fu">aes</span>(<span class="at">y =</span> detections_aru,</span>
-<span id="cb52-14"><a href="abundance-vs.-detections.html#cb52-14" tabindex="-1"></a>                                    <span class="at">x =</span> abundance_pc)) <span class="sc">+</span></span>
-<span id="cb52-15"><a href="abundance-vs.-detections.html#cb52-15" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#9CC3D5&quot;</span>,<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb52-16"><a href="abundance-vs.-detections.html#cb52-16" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;#D95F02&quot;</span>),</span>
-<span id="cb52-17"><a href="abundance-vs.-detections.html#cb52-17" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb52-18"><a href="abundance-vs.-detections.html#cb52-18" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb52-19"><a href="abundance-vs.-detections.html#cb52-19" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(a,<span class="st">&quot;  &quot;</span>,<span class="st">&quot;r_sq = &quot;</span>, <span class="fu">signif</span>(for_plot<span class="sc">$</span>r_sq, <span class="at">digits =</span> <span class="dv">2</span>), <span class="st">&quot;  &quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;slope = &quot;</span>,<span class="fu">signif</span>(for_plot<span class="sc">$</span>slope, <span class="at">digits =</span> <span class="dv">4</span>))),</span>
-<span id="cb52-20"><a href="abundance-vs.-detections.html#cb52-20" tabindex="-1"></a>      <span class="at">y=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Detections (from acoustic data)&quot;</span>, </span>
-<span id="cb52-21"><a href="abundance-vs.-detections.html#cb52-21" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Abundance (from point count data)</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span></span>
-<span id="cb52-22"><a href="abundance-vs.-detections.html#cb52-22" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb52-23"><a href="abundance-vs.-detections.html#cb52-23" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb52-24"><a href="abundance-vs.-detections.html#cb52-24" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb52-25"><a href="abundance-vs.-detections.html#cb52-25" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb52-26"><a href="abundance-vs.-detections.html#cb52-26" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb52-27"><a href="abundance-vs.-detections.html#cb52-27" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb52-28"><a href="abundance-vs.-detections.html#cb52-28" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb52-29"><a href="abundance-vs.-detections.html#cb52-29" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb52-30"><a href="abundance-vs.-detections.html#cb52-30" tabindex="-1"></a>}</span>
-<span id="cb52-31"><a href="abundance-vs.-detections.html#cb52-31" tabindex="-1"></a></span>
-<span id="cb52-32"><a href="abundance-vs.-detections.html#cb52-32" tabindex="-1"></a><span class="co"># plot and save as a single pdf</span></span>
-<span id="cb52-33"><a href="abundance-vs.-detections.html#cb52-33" tabindex="-1"></a><span class="fu">cairo_pdf</span>(</span>
-<span id="cb52-34"><a href="abundance-vs.-detections.html#cb52-34" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">&quot;figs/abundance-detections-by-species-regressions.pdf&quot;</span>,</span>
-<span id="cb52-35"><a href="abundance-vs.-detections.html#cb52-35" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">13</span>, <span class="at">height =</span> <span class="dv">12</span>,</span>
-<span id="cb52-36"><a href="abundance-vs.-detections.html#cb52-36" tabindex="-1"></a>  <span class="at">onefile =</span> <span class="cn">TRUE</span></span>
-<span id="cb52-37"><a href="abundance-vs.-detections.html#cb52-37" tabindex="-1"></a>)</span>
-<span id="cb52-38"><a href="abundance-vs.-detections.html#cb52-38" tabindex="-1"></a>plots</span>
-<span id="cb52-39"><a href="abundance-vs.-detections.html#cb52-39" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div id="plotting-species-specific-regression-plots" class="section level2 hasAnchor" number="11.9">
+<h2><span class="header-section-number">11.9</span> Plotting species-specific regression plots<a href="abundance-vs.-detections.html#plotting-species-specific-regression-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="abundance-vs.-detections.html#cb67-1" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb67-2"><a href="abundance-vs.-detections.html#cb67-2" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb67-3"><a href="abundance-vs.-detections.html#cb67-3" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="abundance-vs.-detections.html#cb67-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(dat_subset<span class="sc">$</span>common_name))){</span>
+<span id="cb67-5"><a href="abundance-vs.-detections.html#cb67-5" tabindex="-1"></a>  </span>
+<span id="cb67-6"><a href="abundance-vs.-detections.html#cb67-6" tabindex="-1"></a>  <span class="co"># extract species scientific name</span></span>
+<span id="cb67-7"><a href="abundance-vs.-detections.html#cb67-7" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat_subset<span class="sc">$</span>common_name)[<span class="dv">37</span>]</span>
+<span id="cb67-8"><a href="abundance-vs.-detections.html#cb67-8" tabindex="-1"></a>  </span>
+<span id="cb67-9"><a href="abundance-vs.-detections.html#cb67-9" tabindex="-1"></a>  <span class="co"># subset data for plotting</span></span>
+<span id="cb67-10"><a href="abundance-vs.-detections.html#cb67-10" tabindex="-1"></a>  for_plot <span class="ot">&lt;-</span> dat_subset[dat_subset<span class="sc">$</span>common_name<span class="sc">==</span>a,]</span>
+<span id="cb67-11"><a href="abundance-vs.-detections.html#cb67-11" tabindex="-1"></a>  </span>
+<span id="cb67-12"><a href="abundance-vs.-detections.html#cb67-12" tabindex="-1"></a>  <span class="co"># create plots</span></span>
+<span id="cb67-13"><a href="abundance-vs.-detections.html#cb67-13" tabindex="-1"></a>  plots[[i]] </span>
+<span id="cb67-14"><a href="abundance-vs.-detections.html#cb67-14" tabindex="-1"></a>  </span>
+<span id="cb67-15"><a href="abundance-vs.-detections.html#cb67-15" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(for_plot, <span class="fu">aes</span>(<span class="at">y =</span> detections_aru,</span>
+<span id="cb67-16"><a href="abundance-vs.-detections.html#cb67-16" tabindex="-1"></a>                                    <span class="at">x =</span> abundance_pc)) <span class="sc">+</span></span>
+<span id="cb67-17"><a href="abundance-vs.-detections.html#cb67-17" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#9CC3D5&quot;</span>,<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb67-18"><a href="abundance-vs.-detections.html#cb67-18" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;#D95F02&quot;</span>),</span>
+<span id="cb67-19"><a href="abundance-vs.-detections.html#cb67-19" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb67-20"><a href="abundance-vs.-detections.html#cb67-20" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb67-21"><a href="abundance-vs.-detections.html#cb67-21" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(a,<span class="st">&quot;  &quot;</span>,<span class="st">&quot;r_sq = &quot;</span>, <span class="fu">signif</span>(for_plot<span class="sc">$</span>r_sq, <span class="at">digits =</span> <span class="dv">2</span>), <span class="st">&quot;  &quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;slope = &quot;</span>,<span class="fu">signif</span>(for_plot<span class="sc">$</span>slope, <span class="at">digits =</span> <span class="dv">4</span>))),</span>
+<span id="cb67-22"><a href="abundance-vs.-detections.html#cb67-22" tabindex="-1"></a>      <span class="at">y=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Detections (from acoustic data)&quot;</span>, </span>
+<span id="cb67-23"><a href="abundance-vs.-detections.html#cb67-23" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Abundance (from point count data)</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span></span>
+<span id="cb67-24"><a href="abundance-vs.-detections.html#cb67-24" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb67-25"><a href="abundance-vs.-detections.html#cb67-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb67-26"><a href="abundance-vs.-detections.html#cb67-26" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb67-27"><a href="abundance-vs.-detections.html#cb67-27" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb67-28"><a href="abundance-vs.-detections.html#cb67-28" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb67-29"><a href="abundance-vs.-detections.html#cb67-29" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb67-30"><a href="abundance-vs.-detections.html#cb67-30" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb67-31"><a href="abundance-vs.-detections.html#cb67-31" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb67-32"><a href="abundance-vs.-detections.html#cb67-32" tabindex="-1"></a>}</span>
+<span id="cb67-33"><a href="abundance-vs.-detections.html#cb67-33" tabindex="-1"></a></span>
+<span id="cb67-34"><a href="abundance-vs.-detections.html#cb67-34" tabindex="-1"></a><span class="fu">ggsave</span>(plot, <span class="at">filename =</span> <span class="st">&quot;figs/fig_lbcr.svg&quot;</span>, <span class="at">width =</span> <span class="dv">9</span>, <span class="at">height =</span> <span class="dv">9</span>, <span class="at">device =</span> <span class="fu">svg</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb67-35"><a href="abundance-vs.-detections.html#cb67-35" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb67-36"><a href="abundance-vs.-detections.html#cb67-36" tabindex="-1"></a></span>
+<span id="cb67-37"><a href="abundance-vs.-detections.html#cb67-37" tabindex="-1"></a></span>
+<span id="cb67-38"><a href="abundance-vs.-detections.html#cb67-38" tabindex="-1"></a><span class="co"># plot and save as a single pdf</span></span>
+<span id="cb67-39"><a href="abundance-vs.-detections.html#cb67-39" tabindex="-1"></a><span class="fu">cairo_pdf</span>(</span>
+<span id="cb67-40"><a href="abundance-vs.-detections.html#cb67-40" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">&quot;figs/abundance-detections-by-species-regressions.pdf&quot;</span>,</span>
+<span id="cb67-41"><a href="abundance-vs.-detections.html#cb67-41" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">13</span>, <span class="at">height =</span> <span class="dv">12</span>,</span>
+<span id="cb67-42"><a href="abundance-vs.-detections.html#cb67-42" tabindex="-1"></a>  <span class="at">onefile =</span> <span class="cn">TRUE</span></span>
+<span id="cb67-43"><a href="abundance-vs.-detections.html#cb67-43" tabindex="-1"></a>)</span>
+<span id="cb67-44"><a href="abundance-vs.-detections.html#cb67-44" tabindex="-1"></a>plots</span>
+<span id="cb67-45"><a href="abundance-vs.-detections.html#cb67-45" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 </div>
-<div id="community-level-regressions" class="section level2 hasAnchor" number="9.10">
-<h2><span class="header-section-number">9.10</span> Community-level regressions<a href="abundance-vs.-detections.html#community-level-regressions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="community-level-regressions" class="section level2 hasAnchor" number="11.10">
+<h2><span class="header-section-number">11.10</span> Community-level regressions<a href="abundance-vs.-detections.html#community-level-regressions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this visualization, we essentially plot overall data of acoustic detections against abundance (from point count data)</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="abundance-vs.-detections.html#cb53-1" tabindex="-1"></a>comm_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc, <span class="at">data=</span>dat_subset)</span>
-<span id="cb53-2"><a href="abundance-vs.-detections.html#cb53-2" tabindex="-1"></a><span class="fu">summary</span>(comm_reg)</span>
-<span id="cb53-3"><a href="abundance-vs.-detections.html#cb53-3" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="abundance-vs.-detections.html#cb53-4" tabindex="-1"></a><span class="co"># Call:</span></span>
-<span id="cb53-5"><a href="abundance-vs.-detections.html#cb53-5" tabindex="-1"></a><span class="co"># lm(formula = detections_aru ~ abundance_pc, data = dat_subset)</span></span>
-<span id="cb53-6"><a href="abundance-vs.-detections.html#cb53-6" tabindex="-1"></a></span>
-<span id="cb53-7"><a href="abundance-vs.-detections.html#cb53-7" tabindex="-1"></a><span class="co"># Residuals:</span></span>
-<span id="cb53-8"><a href="abundance-vs.-detections.html#cb53-8" tabindex="-1"></a><span class="co">#    Min      1Q  Median      3Q     Max </span></span>
-<span id="cb53-9"><a href="abundance-vs.-detections.html#cb53-9" tabindex="-1"></a><span class="co"># -165.86  -29.50   -9.58   14.47  338.76 </span></span>
-<span id="cb53-10"><a href="abundance-vs.-detections.html#cb53-10" tabindex="-1"></a></span>
-<span id="cb53-11"><a href="abundance-vs.-detections.html#cb53-11" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
-<span id="cb53-12"><a href="abundance-vs.-detections.html#cb53-12" tabindex="-1"></a><span class="co">#              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb53-13"><a href="abundance-vs.-detections.html#cb53-13" tabindex="-1"></a><span class="co"># (Intercept)   10.5842     1.9015   5.566 3.03e-08 ***</span></span>
-<span id="cb53-14"><a href="abundance-vs.-detections.html#cb53-14" tabindex="-1"></a><span class="co"># abundance_pc  13.9575     0.4883  28.582  &lt; 2e-16 ***</span></span>
-<span id="cb53-15"><a href="abundance-vs.-detections.html#cb53-15" tabindex="-1"></a></span>
-<span id="cb53-16"><a href="abundance-vs.-detections.html#cb53-16" tabindex="-1"></a><span class="co"># Residual standard error: 56.87 on 1670 degrees of freedom</span></span>
-<span id="cb53-17"><a href="abundance-vs.-detections.html#cb53-17" tabindex="-1"></a><span class="co"># Multiple R-squared:  0.3285,  Adjusted R-squared:  0.3281 </span></span>
-<span id="cb53-18"><a href="abundance-vs.-detections.html#cb53-18" tabindex="-1"></a><span class="co"># F-statistic: 816.9 on 1 and 1670 DF,  p-value: &lt; 2.2e-16</span></span>
-<span id="cb53-19"><a href="abundance-vs.-detections.html#cb53-19" tabindex="-1"></a></span>
-<span id="cb53-20"><a href="abundance-vs.-detections.html#cb53-20" tabindex="-1"></a><span class="co"># visualization</span></span>
-<span id="cb53-21"><a href="abundance-vs.-detections.html#cb53-21" tabindex="-1"></a>fig_abund_detec_comm_reg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_subset, <span class="fu">aes</span>(<span class="at">y =</span> detections_aru,<span class="at">x =</span> abundance_pc)) <span class="sc">+</span></span>
-<span id="cb53-22"><a href="abundance-vs.-detections.html#cb53-22" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#9CC3D5&quot;</span>,<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb53-23"><a href="abundance-vs.-detections.html#cb53-23" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;#D95F02&quot;</span>),</span>
-<span id="cb53-24"><a href="abundance-vs.-detections.html#cb53-24" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb53-25"><a href="abundance-vs.-detections.html#cb53-25" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb53-26"><a href="abundance-vs.-detections.html#cb53-26" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;r_sq = 0.32&quot;</span>, <span class="st">&quot;  &quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;estimate = 13.95&quot;</span>)),</span>
-<span id="cb53-27"><a href="abundance-vs.-detections.html#cb53-27" tabindex="-1"></a>      <span class="at">y=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Detections (from acoustic data)&quot;</span>, </span>
-<span id="cb53-28"><a href="abundance-vs.-detections.html#cb53-28" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Abundance (from point count data)</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span></span>
-<span id="cb53-29"><a href="abundance-vs.-detections.html#cb53-29" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb53-30"><a href="abundance-vs.-detections.html#cb53-30" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb53-31"><a href="abundance-vs.-detections.html#cb53-31" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb53-32"><a href="abundance-vs.-detections.html#cb53-32" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
-<span id="cb53-33"><a href="abundance-vs.-detections.html#cb53-33" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
-<span id="cb53-34"><a href="abundance-vs.-detections.html#cb53-34" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
-<span id="cb53-35"><a href="abundance-vs.-detections.html#cb53-35" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb53-36"><a href="abundance-vs.-detections.html#cb53-36" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span>
-<span id="cb53-37"><a href="abundance-vs.-detections.html#cb53-37" tabindex="-1"></a></span>
-<span id="cb53-38"><a href="abundance-vs.-detections.html#cb53-38" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_comm_reg, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_regressions_communityLevel.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
-<span id="cb53-39"><a href="abundance-vs.-detections.html#cb53-39" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="abundance-vs.-detections.html#cb68-1" tabindex="-1"></a>comm_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(detections_aru <span class="sc">~</span> abundance_pc, <span class="at">data=</span>dat_subset)</span>
+<span id="cb68-2"><a href="abundance-vs.-detections.html#cb68-2" tabindex="-1"></a><span class="fu">summary</span>(comm_reg)</span>
+<span id="cb68-3"><a href="abundance-vs.-detections.html#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="abundance-vs.-detections.html#cb68-4" tabindex="-1"></a><span class="co"># Call:</span></span>
+<span id="cb68-5"><a href="abundance-vs.-detections.html#cb68-5" tabindex="-1"></a><span class="co"># lm(formula = detections_aru ~ abundance_pc, data = dat_subset)</span></span>
+<span id="cb68-6"><a href="abundance-vs.-detections.html#cb68-6" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="abundance-vs.-detections.html#cb68-7" tabindex="-1"></a><span class="co"># Residuals:</span></span>
+<span id="cb68-8"><a href="abundance-vs.-detections.html#cb68-8" tabindex="-1"></a><span class="co">#    Min      1Q  Median      3Q     Max </span></span>
+<span id="cb68-9"><a href="abundance-vs.-detections.html#cb68-9" tabindex="-1"></a><span class="co"># -165.86  -29.50   -9.58   14.47  338.76 </span></span>
+<span id="cb68-10"><a href="abundance-vs.-detections.html#cb68-10" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="abundance-vs.-detections.html#cb68-11" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
+<span id="cb68-12"><a href="abundance-vs.-detections.html#cb68-12" tabindex="-1"></a><span class="co">#              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb68-13"><a href="abundance-vs.-detections.html#cb68-13" tabindex="-1"></a><span class="co"># (Intercept)   10.5842     1.9015   5.566 3.03e-08 ***</span></span>
+<span id="cb68-14"><a href="abundance-vs.-detections.html#cb68-14" tabindex="-1"></a><span class="co"># abundance_pc  13.9575     0.4883  28.582  &lt; 2e-16 ***</span></span>
+<span id="cb68-15"><a href="abundance-vs.-detections.html#cb68-15" tabindex="-1"></a></span>
+<span id="cb68-16"><a href="abundance-vs.-detections.html#cb68-16" tabindex="-1"></a><span class="co"># Residual standard error: 56.87 on 1670 degrees of freedom</span></span>
+<span id="cb68-17"><a href="abundance-vs.-detections.html#cb68-17" tabindex="-1"></a><span class="co"># Multiple R-squared:  0.3285,  Adjusted R-squared:  0.3281 </span></span>
+<span id="cb68-18"><a href="abundance-vs.-detections.html#cb68-18" tabindex="-1"></a><span class="co"># F-statistic: 816.9 on 1 and 1670 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb68-19"><a href="abundance-vs.-detections.html#cb68-19" tabindex="-1"></a></span>
+<span id="cb68-20"><a href="abundance-vs.-detections.html#cb68-20" tabindex="-1"></a><span class="co"># visualization</span></span>
+<span id="cb68-21"><a href="abundance-vs.-detections.html#cb68-21" tabindex="-1"></a>fig_abund_detec_comm_reg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_subset, <span class="fu">aes</span>(<span class="at">y =</span> detections_aru,<span class="at">x =</span> abundance_pc)) <span class="sc">+</span></span>
+<span id="cb68-22"><a href="abundance-vs.-detections.html#cb68-22" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#9CC3D5&quot;</span>,<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb68-23"><a href="abundance-vs.-detections.html#cb68-23" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;#D95F02&quot;</span>),</span>
+<span id="cb68-24"><a href="abundance-vs.-detections.html#cb68-24" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb68-25"><a href="abundance-vs.-detections.html#cb68-25" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb68-26"><a href="abundance-vs.-detections.html#cb68-26" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;r_sq = 0.32&quot;</span>, <span class="st">&quot;  &quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;estimate = 13.95&quot;</span>)),</span>
+<span id="cb68-27"><a href="abundance-vs.-detections.html#cb68-27" tabindex="-1"></a>      <span class="at">y=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Detections (from acoustic data)&quot;</span>, </span>
+<span id="cb68-28"><a href="abundance-vs.-detections.html#cb68-28" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Abundance (from point count data)</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span></span>
+<span id="cb68-29"><a href="abundance-vs.-detections.html#cb68-29" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb68-30"><a href="abundance-vs.-detections.html#cb68-30" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb68-31"><a href="abundance-vs.-detections.html#cb68-31" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb68-32"><a href="abundance-vs.-detections.html#cb68-32" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>, </span>
+<span id="cb68-33"><a href="abundance-vs.-detections.html#cb68-33" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">color=</span><span class="st">&quot;#1b2838&quot;</span>),</span>
+<span id="cb68-34"><a href="abundance-vs.-detections.html#cb68-34" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Century Gothic&quot;</span>,</span>
+<span id="cb68-35"><a href="abundance-vs.-detections.html#cb68-35" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb68-36"><a href="abundance-vs.-detections.html#cb68-36" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span>
+<span id="cb68-37"><a href="abundance-vs.-detections.html#cb68-37" tabindex="-1"></a></span>
+<span id="cb68-38"><a href="abundance-vs.-detections.html#cb68-38" tabindex="-1"></a><span class="fu">ggsave</span>(fig_abund_detec_comm_reg, <span class="at">filename =</span> <span class="st">&quot;figs/fig_abundance_vs_detections_regressions_communityLevel.png&quot;</span>, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">16</span>, <span class="at">device =</span> <span class="fu">png</span>(), <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb68-39"><a href="abundance-vs.-detections.html#cb68-39" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <div class="float">
 <img src="figs/fig_abundance_vs_detections_regressions_communityLevel.png" alt="Community-level regressions of acoustic detections and abundance (from point count data)" />
 <div class="figcaption">Community-level regressions of acoustic detections and abundance (from point count data)</div>
@@ -694,8 +706,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="frequency-and-amplitude.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="abundance-vs.-vocalization-rates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="abundance-and-detections-repeatability-analyses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="body-mass---frequency-correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -716,7 +728,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/08_abundance-detections-correlations-regressions.Rmd",
+"link": "https://github.com/vjjan91/pointCount-Acoustics/edit/master/xx_abundance-detections-correlations-regressions.Rmd",
 "text": "Edit"
 },
 "history": {
