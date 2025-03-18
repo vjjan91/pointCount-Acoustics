@@ -54,7 +54,7 @@ nSitesTime_aru <- datSubset%>%
   count(time_of_day) %>%
   mutate(data_type = "acoustic_data")
 
-# This comparison lets us know that number of visits for the time_of_day - 9AM to 10AM is significantly different between acoustic data and point counts and we shall ignore this time segment when we carry out further analyses.  
+# This comparison lets us know that number of visits for the time_of_day - 9AM to 10AM is significantly different between acoustic data and point counts.  
 ```
 
 ## Estimate richness by time of day  
@@ -67,7 +67,7 @@ abundance <- datSubset %>%
   filter(data_type == "point_count") %>%
   group_by(site_id, scientific_name,
            common_name, eBird_codes, time_of_day) %>% summarise(totAbundance = sum(number)) %>%
-  filter(time_of_day != "9AM to 10AM") %>%
+  #filter(time_of_day != "9AM to 10AM") %>%
   ungroup()
 
 # estimate richness for point count data
@@ -84,7 +84,7 @@ detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
   group_by(site_id, scientific_name,
            common_name, eBird_codes, time_of_day) %>% summarise(totDetections = sum(number)) %>%
-  filter(time_of_day != "9AM to 10AM") %>%
+  #filter(time_of_day != "9AM to 10AM") %>%
   ungroup()
 
 # estimate richness for acoustic data
@@ -117,8 +117,8 @@ ggplot.component = list(theme(text = element_text(family = "Century Gothic", siz
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-ggsave(fig_richness_by_time, filename = "figs/fig_richness_by_time.png", width = 13, height = 10, device = png(), units = "in", dpi = 300)
+ggsave(fig_richness_by_time, filename = "figs/fig_richness_by_time.png", width = 15, height = 10, device = png(), units = "in", dpi = 300)
 dev.off() 
 ```
 
-![Significant differences in richness for 6am to 7am and 8am to 9am, but no differences in richness for 7am to 8am between acoustic data and point count data](figs/fig_richness_by_time.png)
+![Significant differences in richness for 6am to 7am, 8am to 9am, and 9am to 10am (which can be ignored as a function of more visits in acoustic data at that time) but no differences in richness for 7am to 8am between acoustic data and point count data](figs/fig_richness_by_time.png)
