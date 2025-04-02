@@ -90,39 +90,6 @@ dev.off()
 
 Based on the above two figures, we observe that the species that made up the top ten ranks are similar across methods, except the ranks are different.
 
-## Rank-abundance models
-
-Here, we fit brokenstick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models of species abundance to ask if the data on abundance (from point count data) takes on a similar model of rank-abundance as data from acoustic surveys.
-
-```{r}
-pc_model<- radfit(pc_rank_mat)
-aru_model <- radfit(aru_rank_mat)
-
-png(filename = "figs/fig_pointCount_rankModel.png", width = 12, height = 10, units = "in", res = 300)
-plot(pc_model)
-dev.off()
-
-png(filename = "figs/fig_acousticData_rankModel.png", width = 12, height = 10, units = "in", res = 300)
-plot(aru_model)
-dev.off()
-```
-
-![Rank-abundance models across sites for point count data.](figs/fig_pointCount_rankModel.png)
-
-![Rank-abundance models across sites for acoustic data.](figs/fig_acousticData_rankModel.png)
-
-*vegan* has five models, each with characteristic rank-abundance curve shapes:\
-• Pre-emption (geometric series)\
-• Broken stick\
-• Log-normal\
-• Mandelbrot (also called Zipf-Mandelbrot)\
-• Zipf
-
-These and other rank-abundance models fall into two camps: one group is based on assumptions of niche partitioning and competition that limits species' abundances, and the other is based on the statistical behavior of large samples.
-
-The results suggests that across sites for both point count and acoustic data, majority of the data follow a preemption model (essentially, a geometric series). For more details regarding the models, please see this useful resource: <https://myweb.ttu.edu/nmcintyr/Community%20Ecology/abundance.docx> (this link will take you a word document that was written by Dr. Nancy McIntyre -<http://myweb.ttu.edu/nmcintyr/>).
-
-The big takeway from running these rank abundance models are that majority of the sites seem to show a similar distribution of data across the approaches.   
 
 ## Species accumulation curves  
 
