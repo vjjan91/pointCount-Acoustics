@@ -84,11 +84,9 @@ To ensure that the datasets are comparable, we carry out the following:
 
 a)  Subset only data from those sites for which both point count data and acoustic data was collected.
 
-b)  Ensure that the dates of visits (for both point count data and acoustic data) are coming from the same season/months.
+b)  Ensure that the dates of visits (for both point count data and acoustic data) are coming from the similar seasons, if not the same months.
 
 It is important to clarify that while the point count data and acoustic data were collected across similar months (to match seasons), majority of the point count data were collected between November 2019 and March 2020, while the majority of the acoustic data were collected in March 2020, a few days in May 2020 (covid-19 related delays) and between December 2020 and January 2021.
-
-To ensure that the point count data and acoustic data are comparable, we exclude data from May 2020 (for the acoustic dataset) and because bird communities are often depauperate at this time (majority of the migratory bird species have departed to their breeding grounds).
 
 c)  Similar levels of effort across sites (for point count data and acoustic data). Here, we define effort as the total number of minutes a site was surveyed. The duration of each point count at a site was 15 minutes long while the duration of each acoustic survey at a site was 16 minutes in duration. For the sake of comparability, we will compare 15-minutes of point count data to 15-minutes of acoustic data (by removing 1-min from each of acoustic 'visits'). This will result in a total of 90 minutes of effort at each site across point count and acoustic data.   
 
@@ -117,7 +115,7 @@ nSitesDays <- point_counts %>%
   arrange(site_id) %>%
   count(site_id)
 
-# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above)
+# we observed that some sites had as many as 7 visits. We will subset these to choose only six/five visits (see reasoning above)
 
 # unique date site combination to give you a sense of sampling
 uniqueSiteDate <- point_counts %>%
@@ -156,9 +154,9 @@ acoustic_data <- acoustic_data %>%
 # Convert date column to YMD format using lubridate::ymd()
 acoustic_data$date <- lubridate::ymd(acoustic_data$date)
 
-# exclude data from May 2020 for the acoustic dataset
-acoustic_data <- acoustic_data %>%
-  filter(!(date >= "2020-05-01" & date <= "2020-05-10"))
+# We do not exclude data from May 2020 for the acoustic dataset any longer as this will result in a reduction in sample size
+# acoustic_data <- acoustic_data %>%
+#  filter(!(date >= "2020-05-01" & date <= "2020-05-10"))
 
 # number of visits to a particular site
 # some sites have as many as 7 visits, but many visits have only 5 visits and only INBS04U has 4 visits
