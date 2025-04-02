@@ -5,13 +5,13 @@ editor_options:
 
 # Abundance vs. acoustic detection rates
 
-In this script, we model correlations and regressions between raw abundance (as estimated via point count data) and acoustic detection rates (calculated from acoustic data).
+In this script, we run correlations and regressions between abundance and acoustic detection rates. In addition, we run a generalized linear mixed-effects model examining associations between abundance (as estimated from point count data) and acoustic detection rates (calculated from acoustic data). 
 
 Here, abundance corresponds to the total number of individuals of a species detected across visits and sites and can only be calculated for point count data.
 
-Here, we will calculate a measure which we define as acoustic detection rate. Acoustic detection rate is calculated as the number of vocalizations/detections in each 10-s audio file over the total number of 10-s audio files analyzed across visits and sites. An example for the same is provided below:
+We will calculate a measure which we define as acoustic detection rate. Acoustic detection rate is calculated as the number of vocalizations/detections in each 10-s audio file over the total number of 10-s audio files analyzed across visits and sites. An example for the same is provided below:
 
-Each site can have around 4 to 6 15-min acoustic surveys. This would mean that the total number of 10-s clips for a site would range from 360 to 540 (15-minutes = 900s = a total of 90 10-s audio files. Across 4 or 6 visits, this number would be 90x4 or 90x6).
+Each site can have around 5 to 6 15-min acoustic surveys. This would mean that the total number of 10-s clips for a site would range from 450 to 540 (15-minutes = 900s = a total of 90 10-s audio files. Across 5 or 6 visits, this number would be 90x5 or 90x6).
 
 Hence, the acoustic detection rate for each species at a site is defined as (x number of vocalizations or acoustic detections)/(total number of 10-s clips analyzed).  
 
@@ -27,12 +27,17 @@ library(data.table)
 library(extrafont)
 library(ggstatsplot)
 library(ggside)
-library(sjPlot)
-library(emmeans)
-library(scales)
-library(glmmTMB)
 library(ggeffects)
-library(performance)
+library(ggRandomForests)
+library(ranger)
+library(pdp)
+library(glmmTMB)
+library(sjPlot)
+library(dotwhisker)
+library(broom.mixed)
+library(merTools)  
+library(viridis)   
+library(ggrepel)  
 
 # function to z-transform data
 scale_z <- function(x){
@@ -48,6 +53,7 @@ source("code/01_internal-functions.R")
 datSubset <- read.csv("results/datSubset.csv")
 ```
 
+
 ## Estimate abundance from point count data and calculate acoustic detection rates from acoustic data
 ```{r}
 # point-count data
@@ -62,7 +68,7 @@ abundance <- datSubset %>%
 # for acoustic data, we will first estimate the number of visits to a site, which will essentially translate to the number of 10-s clips that were analyzed/heard (used here as the time period for the calculation of vocalization rates)
 
 # nVisits is calculated here
-# except for INBS04U, msot sites had a total of 5 or 6 visits, while INBS04U had 4 visits
+# except for INBS04U, all sites had a total of 6 visits, while INBS04U had 5 visits
 nSitesDays <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
   dplyr::select(site_id, date)%>%
@@ -104,7 +110,7 @@ spp_subset <-  data %>%
   filter(abundance_pc >=20 & detections_aru >= 20)
 
 # subset data
-# we have 45 species in total
+# we have 44 species in total
 data <- data %>%
   filter(common_name %in% spp_subset$common_name)
 
@@ -129,7 +135,7 @@ fig_abund_aruRate_cor <- ggscatterstats(
       axis.title = element_text(family = "Century Gothic",
       size = 15, face = "bold"))))
 
-# Statistically significant and positive correlations were observed between acoustic detection rates and abundance from point counts when data for all 45 species across sites and visits were pooled
+# Statistically significant and positive correlations were observed between acoustic detection rates and abundance from point counts when data for all 44 species across sites and visits were pooled
 
 ggsave(fig_abund_aruRate_cor, filename = "figs/fig_aruRate_vs_abundance_correlations.png", width = 14, height = 10, device = png(), units = "in", dpi = 300)
 dev.off() 
@@ -140,7 +146,7 @@ species_group <- data %>%
   group_by(scientific_name,
            common_name, eBird_codes) %>% 
   summarise(abundance_pc = sum(abundance_pc),
-            aruRate = sum(aruRate)) %>%
+            aruRate = mean(aruRate)) %>%
   ungroup()
 
 # visualization
@@ -163,36 +169,41 @@ fig_abund_aruRate_species <- ggscatterstats(
 
 ggsave(fig_abund_aruRate_species, filename = "figs/fig_aruRate_vs_abundance_correlations_speciesLevel.png", width = 14, height = 10, device = png(), units = "in", dpi = 300)
 dev.off() 
-
 ```
 
 ![](figs/fig_aruRate_vs_abundance_correlations.png)
 ![](figs/fig_aruRate_vs_abundance_correlations_speciesLevel.png)
 
-## Regressions between abundance and acoustic detection rates  
+## Regressions between abundance and acoustic detection rates   
 
+While it is relevant to examine correlations between abundance (as estimated from point count data) and acoustic detection rate (as estimated from acoustic data), we will run robust regressions to ask one predicts the other.  
 ```{r}
+## We use the dat_subset dataframe moving forward, as it contains the subset of species with a minimum of 10 abundance values and 10 acoustic detections across sites and visits
+## I am borrowing code from Mikula et al. 2020 below
+## The data and scripts from their manuscript can be found here:
+## https://osf.io/fa9ky/
+
 data <- setDT(data)
 
 # extract t-value
-data[,  t_value := summary(lm(abundance_pc ~ aruRate))$coefficients[6], by = common_name] 
+data[,  t_value := summary(lm(abundance_pc~aruRate))$coefficients[6], by = common_name] 
 
 # extract slope
-data[,  slope := lm(abundance_pc ~aruRate)%>% coef()%>% nth(2), by = common_name] 
+data[,  slope := lm(abundance_pc~aruRate)%>% coef()%>% nth(2), by = common_name] 
 
 # extract pearson's correlation
 data[,  pearson := cor(abundance_pc, aruRate), by = common_name] 
 
 # extract adjusted r squared
-data[,  r_sq := summary(lm(abundance_pc ~ aruRate))$adj.r.squared, by = common_name] 
+data[,  r_sq := summary(lm(abundance_pc~aruRate))$adj.r.squared, by = common_name] 
 
 # create a column with the direction of the slope (whether it is positive or negative), which can be referred to later while plotting    
 data[, slope_dir := ifelse(slope >0, '+', '-')]
 paste("Positive regressions:",length(unique(data$common_name[data$slope_dir %in% c('+')])))
-# 39 species had a positive regression or slope value
+# 39 species had a positive regression/slope value
 
 ## visualization
-fig_aruRate_abund_reg <- ggplot(data, aes(x = aruRate,
+fig_abund_detec_reg <- ggplot(data, aes(x = aruRate,
                                               y = abundance_pc)) +
   geom_point(color = "#9CC3D5",size = 1.2) +
   geom_smooth(data = data, aes(group = common_name,
@@ -200,14 +211,14 @@ fig_aruRate_abund_reg <- ggplot(data, aes(x = aruRate,
               method = 'lm', se = FALSE, 
               linewidth = 0.7) +
   scale_color_manual(values=c("#1B9E77", "#D95F02")) +
-  labs(x="\nAcoustic detection rate", 
+  labs(x="\nAcoustic detection rate (from acoustic data)", 
        y="Abundance (from point count data)\n") + 
   theme_bw() +
-  annotate("text", y=18, x=0.9, 
+  annotate("text", y=18, x=0.7, 
            label= "Slope:", col = "grey30", size = 12) + 
-  annotate("text", y=16, x=0.9, 
+  annotate("text", y=16, x=0.7, 
            label= "+", col = "#D95F02", size = 12) + 
-  annotate("text", y = 13, x=0.9, 
+  annotate("text", y = 13, x=0.7, 
            label = "-", col = "#1B9E77", size = 12)+
   theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
@@ -217,7 +228,7 @@ fig_aruRate_abund_reg <- ggplot(data, aes(x = aruRate,
       size = 18, face = "bold"),
       legend.position = "none")
 
-ggsave(fig_aruRate_abund_reg, filename = "figs/fig_aruRate_vs_abundance_regressions.png", width = 14, height = 12, device = png(), units = "in", dpi = 300)
+ggsave(fig_abund_detec_reg, filename = "figs/fig_abundance_vs_acousticDetectionRate_regressions_allSpecies.png", width = 14, height = 16, device = png(), units = "in", dpi = 300)
 dev.off() 
 
 # extract the slope, t_value, pearson correlation and the adjusted r square
@@ -225,12 +236,12 @@ lm_output <- data %>%
   dplyr::select(common_name, t_value, slope, pearson, slope_dir,r_sq) %>% distinct()
 
 # write the values to file
-write.csv(lm_output, "results/aruRates-abundance-regressions.csv",
+write.csv(lm_output, "results/abundance-acousticDetectionRate-regressions.csv",
           row.names = F)
 ```
-![Of the 46 species for which acoustic detection rates were regressed with abundance (from point count data), 39 species showed a positive slope.](figs/fig_aruRate_vs_abundance_regressions.png)
+![Of the 44 species for which acoustic detections were regressed with abundance (from point count data), 39 species show](figs/fig_abundance_vs_acousticDetectionRate_regressions_allSpecies.png)
 
-## Plotting species-specific regression plots of abundance and acoustic detection rate
+## Plotting species-specific regression plots  
 
 ```{r}
 # visualization
@@ -238,7 +249,7 @@ plots <- list()
 
 for(i in 1:length(unique(data$common_name))){
   
-  # extract species common name
+  # extract species scientific name
   a <- unique(data$common_name)[i]
   
   # subset data for plotting
@@ -252,7 +263,7 @@ for(i in 1:length(unique(data$common_name))){
     method = 'lm', se = TRUE, 
               linewidth = 0.7) +
     labs(title = paste0(a,"  ","r_sq = ", signif(for_plot$r_sq, digits = 2), "  ", paste0("slope = ",signif(for_plot$slope, digits = 4))),
-      x="\nAcoustic detection rates (from acoustic data)", 
+      x="\nAcoustic Detection Rate (from acoustic data)", 
        y="Abundance (from point count data)\n") +
     theme_bw() +
   theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
@@ -266,8 +277,7 @@ for(i in 1:length(unique(data$common_name))){
 
 # plot and save as a single pdf
 cairo_pdf(
-  filename = "figs/aruRate-abundance-by-species-regressions.pdf",
-  width = 13, height = 12,
+  filename = "figs/abundance-acousticDetectionRate-by-species-regressions.pdf",width = 13, height = 12,
   onefile = TRUE
 )
 plots
@@ -282,14 +292,13 @@ Here, we run a generalized linear mixed effects model to test for associations b
 ## all birds model
 m1 <- glmmTMB(abundance_pc ~ aruRate +
                 (1|common_name) + (1|site_id),
-              family=gaussian(),
+              family=poisson(),
                data = data)
 
 summary(m1)
 plot_model(m1, type = "re")
 plot(ggpredict(m1))
 
-r2(m1)
 ```
 
 
