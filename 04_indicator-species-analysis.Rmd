@@ -105,57 +105,56 @@ Multilevel pattern analysis
  Association function: r.g
  Significance level (alpha): 0.05
 
- Total number of species: 85
- Selected number of species: 28 
- Number of species associated to 1 group: 21 
- Number of species associated to 2 groups: 7 
+ Total number of species: 83
+ Selected number of species: 29 
+ Number of species associated to 1 group: 20 
+ Number of species associated to 2 groups: 9 
 
  List of species associated to each combination: 
 
- Group AR  #sps.  3 
-                        stat p.value  
-Psittacula columboides 0.398   0.030 *
-Zosterops palpebrosus  0.387   0.023 *
-Corvus macrorhynchos   0.383   0.037 *
+ Group AR  #sps.  1 
+                       stat p.value  
+Zosterops palpebrosus 0.408    0.02 *
 
- Group BM  #sps.  14 
+ Group BM  #sps.  15 
                                stat p.value    
-Alcippe poioicephala          0.799   0.001 ***
-Culicicapa ceylonensis        0.781   0.001 ***
-Harpactes fasciatus           0.617   0.001 ***
-Hypothymis azurea             0.580   0.001 ***
-Pellorneum ruficeps           0.553   0.002 ** 
-Cyornis pallidipes            0.535   0.001 ***
-Phylloscopus magnirostris     0.526   0.003 ** 
-Ducula badia                  0.498   0.002 ** 
-Leptocoma minima              0.469   0.008 ** 
-Irena puella                  0.452   0.006 ** 
-Dicrurus paradiseus           0.451   0.012 *  
-Dicrurus aeneus               0.441   0.008 ** 
-Chalcophaps indica            0.412   0.029 *  
-Chrysocolaptes guttacristatus 0.385   0.036 *  
+Alcippe poioicephala          0.851   0.001 ***
+Culicicapa ceylonensis        0.737   0.001 ***
+Hypothymis azurea             0.636   0.001 ***
+Ducula badia                  0.563   0.002 ** 
+Cyornis pallidipes            0.556   0.001 ***
+Phylloscopus magnirostris     0.553   0.001 ***
+Pellorneum ruficeps           0.532   0.001 ***
+Harpactes fasciatus           0.492   0.001 ***
+Leptocoma minima              0.485   0.002 ** 
+Chalcophaps indica            0.462   0.011 *  
+Irena puella                  0.451   0.010 ** 
+Dicrurus paradiseus           0.435   0.009 ** 
+Dicrurus aeneus               0.423   0.008 ** 
+Larvivora brunnea             0.375   0.033 *  
+Chrysocolaptes guttacristatus 0.356   0.049 *  
 
  Group NR  #sps.  4 
                         stat p.value    
-Cinnyris asiaticus     0.660   0.001 ***
-Acrocephalus dumetorum 0.547   0.002 ** 
-Argya subrufa          0.423   0.016 *  
-Copsychus saularis     0.386   0.029 *  
+Cinnyris asiaticus     0.651   0.001 ***
+Acrocephalus dumetorum 0.553   0.001 ***
+Argya subrufa          0.380   0.031 *  
+Machlolophus aplonotus 0.329   0.037 *  
 
- Group AR+BM  #sps.  2 
-                  stat p.value    
-Iole indica      0.546   0.001 ***
-Muscicapa muttui 0.479   0.005 ** 
+ Group AR+BM  #sps.  3 
+                      stat p.value    
+Iole indica          0.564   0.001 ***
+Muscicapa muttui     0.515   0.002 ** 
+Terpsiphone paradisi 0.348   0.050 *  
 
- Group AR+NR  #sps.  5 
+ Group AR+NR  #sps.  6 
                          stat p.value    
-Streptopelia chinensis  0.766   0.001 ***
-Pycnonotus jocosus      0.757   0.001 ***
-Dicaeum concolor        0.455   0.009 ** 
-Psittacula cyanocephala 0.411   0.019 *  
-Orthotomus sutorius     0.392   0.023 *  
-
-Signif. codes:  0 ‘*** 0.001 ** 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1    
+Streptopelia chinensis  0.740   0.001 ***
+Pycnonotus jocosus      0.730   0.001 ***
+Dicaeum concolor        0.452   0.005 ** 
+Psittacula cyanocephala 0.420   0.010 ** 
+Psittacula columboides  0.408   0.027 *  
+Orthotomus sutorius     0.390   0.021 *  
 
 ## Indicator species analysis for acoustic data    
 
@@ -180,52 +179,53 @@ Multilevel pattern analysis
  Association function: r.g
  Significance level (alpha): 0.05
 
- Total number of species: 112
- Selected number of species: 30 
- Number of species associated to 1 group: 22 
- Number of species associated to 2 groups: 8 
+ Total number of species: 113
+ Selected number of species: 32 
+ Number of species associated to 1 group: 21 
+ Number of species associated to 2 groups: 11 
 
  List of species associated to each combination: 
 
  Group AR  #sps.  1 
-                      stat p.value  
-Chloropsis aurifrons 0.396    0.04 *
+                    stat p.value   
+Halcyon smyrnensis 0.416    0.01 **
 
- Group BM  #sps.  14 
-                           stat p.value    
-Alcippe poioicephala      0.693   0.001 ***
-Phylloscopus magnirostris 0.637   0.001 ***
-Hypothymis azurea         0.624   0.001 ***
-Cyornis pallidipes        0.619   0.001 ***
-Sitta frontalis           0.558   0.001 ***
-Culicicapa ceylonensis    0.553   0.001 ***
-Ducula badia              0.506   0.004 ** 
-Leptocoma minima          0.488   0.004 ** 
-Dicrurus paradiseus       0.473   0.003 ** 
-Irena puella              0.449   0.008 ** 
-Harpactes fasciatus       0.443   0.009 ** 
-Muscicapa muttui          0.430   0.015 *  
-Iole indica               0.396   0.019 *  
-Dryocopus javensis        0.386   0.017 *  
+ Group BM  #sps.  15 
+                               stat p.value    
+Alcippe poioicephala          0.702   0.001 ***
+Phylloscopus magnirostris     0.697   0.001 ***
+Cyornis pallidipes            0.686   0.001 ***
+Hypothymis azurea             0.587   0.001 ***
+Sitta frontalis               0.582   0.001 ***
+Culicicapa ceylonensis        0.547   0.001 ***
+Ducula badia                  0.513   0.002 ** 
+Leptocoma minima              0.508   0.002 ** 
+Dryocopus javensis            0.451   0.003 ** 
+Accipiter trivirgatus         0.426   0.033 *  
+Harpactes fasciatus           0.401   0.017 *  
+Chrysocolaptes guttacristatus 0.388   0.026 *  
+Irena puella                  0.381   0.039 *  
+Muscicapa muttui              0.379   0.023 *  
+Dicrurus paradiseus           0.368   0.049 *  
 
- Group NR  #sps.  7 
-                        stat p.value    
-Streptopelia chinensis 0.511   0.001 ***
-Orthotomus sutorius    0.467   0.006 ** 
-Carpodacus erythrinus  0.421   0.017 *  
-Phylloscopus affinis   0.408   0.025 *  
-Tephrodornis sylvicola 0.365   0.035 *  
-Lonchura kelaarti      0.361   0.043 *  
-Dumetia atriceps       0.351   0.043 *  
+ Group NR  #sps.  5 
+                       stat p.value  
+Carpodacus erythrinus 0.407   0.028 *
+Pycnonotus cafer      0.387   0.030 *
+Prinia hodgsonii      0.378   0.050 *
+Treron affinis        0.369   0.029 *
+Hierococcyx varius    0.352   0.040 *
 
- Group AR+NR  #sps.  8 
+ Group AR+NR  #sps.  11 
                          stat p.value    
-Pycnonotus jocosus      0.824   0.001 ***
-Acrocephalus dumetorum  0.534   0.004 ** 
-Corvus splendens        0.507   0.001 ***
-Psittacula cyanocephala 0.462   0.007 ** 
-Copsychus saularis      0.453   0.010 ** 
-Pavo cristatus          0.450   0.003 ** 
-Merops leschenaulti     0.404   0.026 *  
-Dicrurus leucophaeus    0.388   0.027 *  
-
+Pycnonotus jocosus      0.851   0.001 ***
+Orthotomus sutorius     0.527   0.001 ***
+Streptopelia chinensis  0.508   0.001 ***
+Pavo cristatus          0.508   0.002 ** 
+Acrocephalus dumetorum  0.475   0.005 ** 
+Merops leschenaulti     0.465   0.007 ** 
+Psittacula cyanocephala 0.444   0.007 ** 
+Zosterops palpebrosus   0.431   0.011 *  
+Corvus splendens        0.408   0.012 *  
+Copsychus saularis      0.405   0.024 *  
+Aegithina tiphia        0.362   0.046 *  
