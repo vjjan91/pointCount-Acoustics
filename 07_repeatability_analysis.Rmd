@@ -104,13 +104,17 @@ for (i in 1:length(unique(data$common_name))){
   # grouping point count data
   # 1st, 3rd, and 5th visit
   abundance_groupA <- for_plot %>%
-    filter(visit_number %in% c(1,3,5)) %>%
-    mutate(abundance_groupA = abundance_pc)
+    filter(visit_number %in% c(1,3)) %>%
+    group_by(scientific_name, common_name,
+             site_id) %>%
+    summarise(abundance_groupA = sum(abundance_pc))
   
   # 2nd, 4th and 6th visit
   abundance_groupB <- for_plot %>%
-    filter(visit_number %in% c(2,4,6)) %>%
-    mutate(abundance_groupB = abundance_pc)
+    filter(visit_number %in% c(2,4)) %>%
+    group_by(scientific_name, common_name,
+             site_id) %>%
+    summarise(abundance_groupB = sum(abundance_pc))
   
   # create a single dataframe
   abund_data_group <- full_join(abundance_groupA, abundance_groupB) %>%
@@ -124,8 +128,8 @@ for (i in 1:length(unique(data$common_name))){
                         size = 8) +
   stat_regline_equation(label.x.npc = "middle", aes(label = ..rr.label..),
                         size = 8) +
-  labs(y="Abundance data from the 2nd, 4th, and 6th visits", 
-       x="Abundance data from the 1st, 3rd, and 5th visits",
+  labs(y="Abundance data from the 2nd, and 4th visits", 
+       x="Abundance data from the 1st and 3rd visits",
        title = a) +
   theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
@@ -160,8 +164,10 @@ Here we run analyses separately for point count data and acoustic data. First, w
 
 ```{r}
 # subset data
-# we have 46 species in total
-aruData <- aruRate %>%
+# we have xx species in total
+aruData <- aruRate 
+
+%>%
   filter(common_name %in% spp_subset$common_name)
 
 # creating empty objects to save outputs
@@ -179,16 +185,20 @@ for (i in 1:length(unique(aruData$common_name))){
   # grouping aruData data
   # 1st, 3rd, and 5th visit
   aru_groupA <- for_plot %>%
-    filter(visit_number %in% c(1,3,5)) %>%
-    mutate(aru_groupA = aruRate)
+    filter(visit_number %in% c(1,3)) %>%
+    group_by(scientific_name, common_name,
+             site_id) %>%
+    summarise(aru_groupA = mean(aruRate))
   
   # 2nd, 4th and 6th visit
   aru_groupB <- for_plot %>%
-    filter(visit_number %in% c(2,4,6)) %>%
-    mutate(aru_groupB = aruRate)
+    filter(visit_number %in% c(2,4)) %>%
+    group_by(scientific_name, common_name,
+             site_id) %>%
+    summarise(aru_groupB = mean(aruRate))
   
   # create a single dataframe
-  aru_data_group <- full_join(aru_groupA, aru_groupB) %>%
+  aru_data_group2 <- full_join(aru_groupB, aru_groupA) %>%
     replace_na(list(aru_groupA = 0, aru_groupB = 0)) 
 
   # regression
@@ -199,8 +209,8 @@ for (i in 1:length(unique(aruData$common_name))){
                         size = 8) +
   stat_regline_equation(label.x.npc = "middle", aes(label = ..rr.label..),
                         size = 8) +
-  labs(y="Acoustic detection rate from the 2nd, 4th, and 6th visits", 
-       x="Acoustic detection rate from the 1st, 3rd, and 5th visits",
+  labs(y="Acoustic detection rate from the 2nd and 4th visits", 
+       x="Acoustic detection rate from the 1st and 3rd visits",
        title = a) +
   theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
       size = 18, face = "bold"),
