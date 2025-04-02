@@ -1,32 +1,34 @@
 "scientific_name","common_name","habitat","foraging_habit","totDetections"
-"Accipiter badius","Shikra","OC","MID",9
-"Accipiter trivirgatus","Crested Goshawk","RF","CAN",16
-"Amaurornis phoenicurus","White-breasted Waterhen","OC","AQU",73
-"Argya striata","Jungle Babbler","OC","GRD",24
+"Accipiter badius","Shikra","OC","MID",16
+"Accipiter trivirgatus","Crested Goshawk","RF","CAN",12
+"Amaurornis phoenicurus","White-breasted Waterhen","OC","AQU",72
+"Argya striata","Jungle Babbler","OC","GRD",108
 "Arundinax aedon","Thick-billed Warbler","OC","UND",80
 "Cacomantis passerinus","Gray-bellied Cuckoo","OC","MID",3
 "Caprimulgus indicus","Jungle Nightjar","OC","GRD",1
-"Carpodacus erythrinus","Common Rosefinch","OC","CAN",92
-"Chrysomma sinense","Yellow-eyed Babbler","OC","UND",56
-"Cyornis tickelliae","Tickell's Blue Flycatcher","OC","MID",18
-"Dendronanthus indicus","Forest Wagtail","RF","GRD",50
-"Dicaeum erythrorhynchos","Pale-billed Flowerpecker","OC","CAN",44
+"Carpodacus erythrinus","Common Rosefinch","OC","CAN",70
+"Chrysomma sinense","Yellow-eyed Babbler","OC","UND",46
+"Corvus splendens","House Crow","OC","GRD",182
+"Cyornis tickelliae","Tickell's Blue Flycatcher","OC","MID",23
+"Dendronanthus indicus","Forest Wagtail","RF","GRD",14
+"Dicaeum erythrorhynchos","Pale-billed Flowerpecker","OC","CAN",49
 "Hemicircus canente","Heart-spotted Woodpecker","RF","CAN",17
-"Ketupa nipalensis","Spot-bellied Eagle-Owl","RF","CAN",10
+"Hierococcyx varius","Common Hawk-Cuckoo","OC","CAN",76
+"Ketupa nipalensis","Spot-bellied Eagle-Owl","RF","CAN",9
 "Ketupa zeylonensis","Brown Fish-Owl","RF","AQU",2
-"Lonchura kelaarti","Black-throated Munia","RF","GRD",22
+"Lonchura kelaarti","Black-throated Munia","RF","GRD",24
 "Lonchura striata","White-rumped Munia","OC","UND",6
-"Micropternus brachyurus","Rufous Woodpecker","OC","MID",25
+"Micropternus brachyurus","Rufous Woodpecker","OC","MID",31
 "Oriolus xanthornus","Black-hooded Oriole","OC","CAN",2
 "Otus bakkamoena","Indian Scops-Owl","RF","MID",1
-"Pavo cristatus","Indian Peafowl","OC","GRD",55
-"Pernis ptilorhynchus","Oriental Honey-buzzard","RF","CAN",13
-"Phylloscopus affinis","Tickell's Leaf Warbler","RF","UND",15
-"Picumnus innominatus","Speckled Piculet","RF","CAN",101
-"Pitta brachyura","Indian Pitta","RF","GRD",21
-"Prinia hodgsonii","Gray-breasted Prinia","OC","UND",117
-"Pycnonotus cafer","Red-vented Bulbul","OC","MID",29
-"Spilornis cheela","Crested Serpent-Eagle","RF","GRD",216
+"Pavo cristatus","Indian Peafowl","OC","GRD",152
+"Pernis ptilorhynchus","Oriental Honey-buzzard","RF","CAN",39
+"Phylloscopus affinis","Tickell's Leaf Warbler","RF","UND",11
+"Picumnus innominatus","Speckled Piculet","RF","CAN",110
+"Pitta brachyura","Indian Pitta","RF","GRD",24
+"Prinia hodgsonii","Gray-breasted Prinia","OC","UND",183
+"Pycnonotus cafer","Red-vented Bulbul","OC","MID",70
+"Spilornis cheela","Crested Serpent-Eagle","RF","GRD",312
 "Strix leptogrammica","Brown Wood-owl","RF","CAN",1
-"Upupa epops","Eurasian Hoopoe","OC","GRD",255
-"Vanellus indicus","Red-wattled Lapwing","OC","AQU",67
+"Upupa epops","Eurasian Hoopoe","OC","GRD",229
+"Vanellus indicus","Red-wattled Lapwing","OC","AQU",59
