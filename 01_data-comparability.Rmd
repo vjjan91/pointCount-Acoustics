@@ -78,6 +78,7 @@ acoustic_data <- acoustic_data %>%
 acoustic_data <- separate(acoustic_data, col = Filename, into = c("site", "date", "time", "splits"), sep = "_")
 ```
 
+
 ## Subset acoustic data and point count data
 
 To ensure that the datasets are comparable, we carry out the following:
@@ -115,7 +116,7 @@ nSitesDays <- point_counts %>%
   arrange(site_id) %>%
   count(site_id)
 
-# we observed that some sites had as many as 7 visits. We will subset these to choose only six/five visits (see reasoning above)
+# we observed that some sites had as many as 7 visits. We will subset these to choose only six visits (see reasoning above)
 
 # unique date site combination to give you a sense of sampling
 uniqueSiteDate <- point_counts %>%
@@ -231,7 +232,7 @@ aru_subset <- full_join(for_aru_subset, aru_to_remove)
 For the point count dataset, we shall remove the extra columns. For the acoustic dataset, we will dplyr::pivot_longer() and add the same columns as point count dataset before binding rows to create a single dataframe.  
 ```{r}
 # remove unnecessary columns from the point-count dataset
-pc_subset <- pc_subset[, -c(4, 5, 6, 9, 11, 15, 17, 19, 20)]
+pc_subset <- pc_subset[, -c(4, 5, 6, 9, 11, 15, 17, 18)]
 
 # add a time of day column to the point-count dataset for future calculations and a data_type column
 pc_subset <- pc_subset %>%
@@ -252,7 +253,7 @@ aru_subset <- rename(aru_subset, restoration_type = Restoration.Type..Benchmark.
 
 # pivot_longer the acoustic data and remove zero values
 aru_subset <- aru_subset %>%
-  group_by(site_id, date, time, restoration_type) %>%
+  group_by(site_id, date, time) %>%
   transform() %>%
   replace(is.na(.), 0) %>%
   summarise_at(.vars = vars(c("INPE":"TBWA")), .funs = sum) %>%
@@ -261,7 +262,7 @@ aru_subset <- aru_subset %>%
   filter(number != 0) # one way to remove zeros
 
 # add a start_time column based on the time the acoustic visit was started at that site-day combination
-# for example, if HP36P1B's first data point/visit came from 091000, then the start_time for all the 16-min would have the value 091000
+# for example, if HP36P1B's first data point/visit came from 091000, then the start_time for all the 15-min would have the value 091000
 aru_subset <- aru_subset %>%
   group_by(site_id, date) %>%
   mutate(start_time = min(time)) %>%
@@ -289,9 +290,11 @@ aru_subset <- rename(aru_subset, time_segment = time)
 aru_subset$HSF <- "H"
 aru_subset$distance <- NA
 
+names(aru_subset)[4] <- "species_annotation_codes"
+
 # add species scientific_name and common_name to the aru_subset data
-aru_subset <- left_join(aru_subset, species_codes[, c(1, 2, 4)],
-  by = "eBird_codes"
+aru_subset <- left_join(aru_subset, species_codes[, c(1, 2, 3)],
+  by = "species_annotation_codes"
 )
 ```
 
@@ -308,22 +311,7 @@ pc_subset$start_time <- as.character(pc_subset$start_time)
 pc_subset$time_segment <- as.character(pc_subset$time_segment)
 
 # bind_rows to create a single dataframe
-datSubset <- bind_rows(pc_subset, aru_subset)
-
-# rename values within the restoration_type column to acronyms (for ease of plotting)
-datSubset <- datSubset %>%
-  mutate(
-    restoration_type =
-      str_replace(restoration_type, "Benchmark", "BM")
-  ) %>%
-  mutate(
-    restoration_type =
-      str_replace(restoration_type, "Active", "AR")
-  ) %>%
-  mutate(
-    restoration_type =
-      str_replace(restoration_type, "Passive", "NR")
-  )
+datSubset <- bind_rows(pc_subset[,-c(3,11)], aru_subset[,-4])
 
 # write to file
 write.csv(datSubset, "results/datSubset.csv", row.names = F)
@@ -350,8 +338,6 @@ write.csv(datSubset, "results/datSubset.csv", row.names = F)
 **HSF**: Heard/Seen/Flying was recorded for the point count dataset and indicated by H/S/F. For the acoustic data, the column has been filled with the letter H only (str: Character)
 
 **scientificName**: Species scientific name (str: Character)
-
-**eBirdCodes**: The four-letter quick common name codes are indicated in this column and can be cross-referenced with the *species-annotation-codes.csv* file (str: Character)
 
 **timeOfDay**: Depending on the start times of the point count or the acoustic data survey/visit, this column indicates if a survey was within any one-hour duration between 6AM to 10AM. For example, if the start time of the point count was '7.42', this column would indicate the timeOfDay as '7AM to 8AM'. Similarly, if the start time of the acoustic survey was '091000', this column would indicated the timeOfDay as '9AM to 10AM' (str: Character)
 

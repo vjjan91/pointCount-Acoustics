@@ -47,10 +47,18 @@ Here, we make a distinction before running correlative analyses that abundance c
 abundance <- datSubset %>%
   filter(data_type == "point_count") %>%
   group_by(site_id, scientific_name,
-           common_name, eBird_codes, date) %>% 
-  summarise(abundance_pc = sum(number)) %>%
+           common_name, date) %>% 
+  summarise(abundance_pc = sum(number)) 
+
+# add visit number
+abundance <- abundance %>%
+  group_by(site_id) %>%
+  distinct(date) %>%  # This keeps only unique dates per site
+  arrange(site_id, date) %>%
   mutate(visit_number = row_number()) %>%
-  ungroup()
+  ungroup() %>%
+  # Now join this back to your original abundance data
+  right_join(abundance, by = c("site_id", "date"))
 
 # estimate total number of detections across the acoustic data
 # note: we cannot call this abundance as it refers to the total number of vocalizations across all sites
@@ -58,10 +66,18 @@ abundance <- datSubset %>%
 detections <- datSubset %>%
   filter(data_type == "acoustic_data") %>%
   group_by(site_id, scientific_name,
-           common_name, eBird_codes, date) %>% 
-  summarise(detections_aru = sum(number)) %>%
+           common_name, date) %>% 
+  summarise(detections_aru = sum(number)) 
+
+# add visit number
+detections <- detections %>%
+  group_by(site_id) %>%
+  distinct(date) %>%  # This keeps only unique dates per site
+  arrange(site_id, date) %>%
   mutate(visit_number = row_number()) %>%
-  ungroup()
+  ungroup() %>%
+  # Now join this back to your original abundance data
+  right_join(detections, by = c("site_id", "date"))
 
 # estimating acoustic detection rates for each species for each site and visit
 aruRate <- detections %>%
@@ -82,9 +98,19 @@ spp_subset <-  abundance %>%
   filter(abundance_pc >=20)
 
 # subset data
-# we have 44 species in total
+# we have 45 species in total
 data <- abundance %>%
   filter(common_name %in% spp_subset$common_name)
+
+# let's create a dataframe to understand abundance for each species across visits
+abundance_across_visits <- data %>%
+  pivot_wider(names_from = "visit_number",
+              values_from = "abundance_pc") %>%
+  transform() %>%
+  replace(is.na(.),0) %>%
+    group_by(site_id, common_name,
+             scientific_name) %>%
+  summarise_at(.vars = vars(c("1":"6")), .funs = sum)
 
 # creating empty objects to save outputs
 plots <- list()
@@ -165,6 +191,16 @@ Here we run analyses separately for point count data and acoustic data. First, w
 aruData <- aruRate %>%
   filter(common_name %in% spp_subset$common_name)
 
+# let's create a dataframe to understand abundance for each species across visits
+aruRate_across_visits <- aruData %>%
+  pivot_wider(names_from = "visit_number",
+              values_from = "aruRate") %>%
+  transform() %>%
+  replace(is.na(.),0) %>%
+    group_by(site_id, common_name,
+             scientific_name) %>%
+  summarise_at(.vars = vars(c("1":"6")), .funs = sum)
+
 # creating empty objects to save outputs
 plots <- list()
 r2_aru <- data.frame()
@@ -218,7 +254,7 @@ for (i in 1:length(unique(aruData$common_name))){
   df <- data.frame(r_squared = summary(lm(aru_groupB ~ aru_groupA,    
                                           data = aru_data_group))$r.squared,
                       common_name = a,
-                      analysis = "acousticDetectionRate_repeatability")
+                      analysis = "acousticDetection_repeatability")
   # save r2 values
   r2_aru <- bind_rows(r2_aru, df)
 }
@@ -254,8 +290,7 @@ data_regressions <- left_join(regressions[,c(1,6)],r2[,c(1,2)]) %>%
   left_join(., r2_aru[,c(1,2)])
 
 # saving file
-write.csv(data_regressions,"results/r_squared_repeatability_regressions.csv",
-          row.names = F)
+write.csv(data_regressions,"results/r_squared_repeatability_regressions.csv", row.names = F)
 ```
 
 
