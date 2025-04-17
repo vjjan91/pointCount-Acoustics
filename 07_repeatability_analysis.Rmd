@@ -27,6 +27,9 @@ library(ggpubr)
 library(gridtext)
 library(broom)
 library(rptR)
+library(tidyr)
+library(foreach)
+library(doParallel)
 
 # Source any custom/other internal functions necessary for analysis
 source("code/01_internal-functions.R")
@@ -58,7 +61,8 @@ abundance <- abundance %>%
   mutate(visit_number = row_number()) %>%
   ungroup() %>%
   # Now join this back to your original abundance data
-  right_join(abundance, by = c("site_id", "date"))
+  right_join(abundance, by = c("site_id", "date")) %>%
+  mutate(data_type = "point_count")
 
 # estimate total number of detections across the acoustic data
 # note: we cannot call this abundance as it refers to the total number of vocalizations across all sites
@@ -81,7 +85,8 @@ detections <- detections %>%
 
 # estimating acoustic detection rates for each species for each site and visit
 aruRate <- detections %>%
-  mutate(aruRate = detections_aru/90)
+  mutate(aruRate = detections_aru/90) %>%
+  mutate(data_type = "acoustic_data")
 
 # Note that the column aruRate can vary between 0 to 1 for each species for each site (this value can vary across sites for each species, referring to how vocally active a species is)
 ```
@@ -112,82 +117,103 @@ abundance_across_visits <- data %>%
              scientific_name) %>%
   summarise_at(.vars = vars(c("1":"6")), .funs = sum)
 
-# creating empty objects to save outputs
-plots <- list()
-r2 <- data.frame()
+# bootstrapping the repeatability analysis
+# here, we randomly sample and sum the abundance across any three visits and then regress one group against another
+# we calculate the r-squared value for each bootstrapped iteration and then print the mean r-squared value for each species
 
-for (i in 1:length(unique(data$common_name))){
+# Create a complete grid of all combinations
+all_combinations_pointCount <- expand_grid(
+  site_id = unique(data$site_id),
+  common_name = unique(data$common_name),
+  visit_number = 1:6  # assuming 6 visits, adjust if different
+)
 
- # extract species common name
-  a <- unique(data$common_name)[i]
-  
-  # subset data for plotting
-  for_plot <- data[data$common_name==a,]
-  
-  # grouping point count data
-  # 1st, 3rd, and 5th visit
-  abundance_groupA <- for_plot %>%
-    filter(visit_number %in% c(1,3,5)) %>%
-    group_by(scientific_name, common_name,
-             site_id) %>%
-    summarise(abundance_groupA = sum(abundance_pc))
-  
-  # 2nd, 4th and 6th visit
-  abundance_groupB <- for_plot %>%
-    filter(visit_number %in% c(2,4,6)) %>%
-    group_by(scientific_name, common_name,
-             site_id) %>%
-    summarise(abundance_groupB = sum(abundance_pc))
-  
-  # create a single dataframe
-  abund_data_group <- full_join(abundance_groupA, abundance_groupB) %>%
-    replace_na(list(abundance_groupA = 0, abundance_groupB = 0)) 
+# Join with actual data
+data_complete <- all_combinations %>%
+  left_join(data, by = c("site_id", "common_name", "visit_number")) %>%
+  mutate(
+    abundance_pc = replace(abundance_pc, is.na(abundance_pc), 0)  # replace NA with 0
+  )
 
-  # regression
-  plots[[i]] <- ggplot(abund_data_group, mapping = aes(x=abundance_groupA,y=abundance_groupB)) +  geom_point(shape = 21, colour = "black", fill = "white", size = 2, stroke = 1)+ 
-  geom_smooth(method="lm", se=TRUE, fullrange=FALSE, level=0.95,linetype="solid") +  
-  theme_bw() +
-  stat_regline_equation(label.x.npc = "left", aes(label = ..eq.label..),
-                        size = 8) +
-  stat_regline_equation(label.x.npc = "middle", aes(label = ..rr.label..),
-                        size = 8) +
-  labs(y="Abundance data from the 2nd, 4th and 6th visits", 
-       x="Abundance data from the 1st, 3rd and 5th visits",
-       title = a) +
-  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"))
+# Number of bootstrap iterations
+bootstrap_iterations <- 1000
+
+# Number of cores to use for parallel processing
+n_cores <- parallel::detectCores() - 1
+
+# Initialize parallel backend
+cl <- makeCluster(n_cores)
+registerDoParallel(cl)
+
+# Get the unique species common names
+unique_species <- unique(data_complete$common_name)
+
+# Initialize a dataframe to store the mean R2 value for each species
+r_squared_all_species <- data.frame(species = character(), mean_r_squared = numeric())
+
+# Loop over each species
+for (i in 1:length(unique_species)) {
   
-  # to extract the R2 value
-  df <- data.frame(r_squared = summary(lm(abundance_groupB ~ abundance_groupA,    data = abund_data_group))$r.squared,
-                      common_name = a,
-                      analysis = "abundance_repeatability")
-  # save r2 values
-  r2 <- bind_rows(r2, df)
+  a <- unique_species[i]
+  for_plot <- data_complete[data_complete$common_name == a,]
+  unique_visits <- unique(for_plot$visit_number)
+  
+  # Continue only if there are at least 6 unique visit numbers
+  if (length(unique_visits) >= 6) {
+    
+    # Parallel loop for bootstrap iterations
+    r_squared_values <- foreach(b = 1:bootstrap_iterations, .combine = c, .packages = c('dplyr', 'tidyr')) %dopar% {
+      # Randomly sample 3 visits for group A and the remaining for group B from any of the six visits
+      all_visits <- sample(unique_visits, 6, replace = FALSE)
+      group_A_visits <- sample(all_visits, 3, replace = FALSE)
+      group_B_visits <- setdiff(all_visits, group_A_visits)
+      
+      # Group point count data for random visits
+      abundance_groupA <- for_plot %>%
+        filter(visit_number %in% group_A_visits) %>%
+        group_by(site_id) %>%
+        summarise(abundance_groupA = sum(abundance_pc))
+      
+      abundance_groupB <- for_plot %>%
+        filter(visit_number %in% group_B_visits) %>%
+        group_by(site_id) %>%
+        summarise(abundance_groupB = sum(abundance_pc))
+      
+      abund_data_group <- full_join(abundance_groupA, abundance_groupB)
+        
+      # Linear regression model
+      model <- lm(abundance_groupB ~ abundance_groupA, data = abund_data_group)
+      summary(model)$r.squared
+    }
+    
+    # Calculate mean R2 value for this species
+    mean_r_squared <- mean(r_squared_values)
+    r_squared_all_species <- r_squared_all_species %>%
+      add_row(species = a, mean_r_squared = mean_r_squared)
+    
+    # Print the mean R2 value for the species
+    cat("Species:", a, "- Mean R2:", mean_r_squared, "\n")
+    
+  } else {
+    cat("Species:", a, "- Not enough unique visits, skipping bootstrap.\n")
+  }
 }
 
-# save the r2 values and the plots
-cairo_pdf(
-  filename = "figs/abundance_vs_abundance_repeatability.pdf",
-  width = 13, height = 12,
-  onefile = TRUE
-)
-plots
-dev.off() 
+# Stop the parallel backend
+stopCluster(cl)
 
-write.csv(r2, "results/abundance_vs_abundance_repeatabilityR2.csv", row.names = F)
+# write the r-squared values to file
+write.csv(r_squared_all_species, "results/mean-rSquared-abundance-abundance.csv", row.names = F)
 ```
+
 
 ## Run analysis at the level of each species (across all sites and treatments combined) for acoustic data 
 
-Here we run analyses separately for point count data and acoustic data. First, we will filter data by visits (choosing the 1st, 3rd and 5th visit) to a site and calculate total acoustic detection rate for each species. We will repeat the above by choosing the 2nd, 4th, and 6th visit to a site and calculate total abundance for each species. 
+Here we run analyses separately for acoustic data. First, we will filter data by visits (choosing the 1st, 3rd and 5th visit) to a site and calculate total acoustic detection rate for each species. We will repeat the above by choosing the 2nd, 4th, and 6th visit to a site and calculate total abundance for each species. 
 
 ```{r}
 # subset data
-# we have 44 species in total
+# we have 45 species in total
 aruData <- aruRate %>%
   filter(common_name %in% spp_subset$common_name)
 
@@ -201,75 +227,202 @@ aruRate_across_visits <- aruData %>%
              scientific_name) %>%
   summarise_at(.vars = vars(c("1":"6")), .funs = sum)
 
-# creating empty objects to save outputs
-plots <- list()
-r2_aru <- data.frame()
+# Create a complete grid of all combinations
+all_combinations_acoustic <- expand_grid(
+  site_id = unique(aruData$site_id),
+  common_name = unique(aruData$common_name),
+  visit_number = 1:6  # assuming 6 visits, adjust if different
+)
 
-for (i in 1:length(unique(aruData$common_name))){
+# Join with actual data
+aruData_complete <- all_combinations_acoustic %>%
+  left_join(aruData, by = c("site_id", "common_name", 
+                            "visit_number")) %>%
+  mutate(
+    aruRate = replace(aruRate, is.na(aruRate), 0)  # replace NA with 0
+  )
 
- # extract species common name
-  a <- unique(aruData$common_name)[i]
-  
-  # subset aruData for plotting
-  for_plot <- aruData[aruData$common_name==a,]
-  
-  # grouping aruData data
-  # 1st, 3rd, and 5th visit
-  aru_groupA <- for_plot %>%
-    filter(visit_number %in% c(1,3,5)) %>%
-    group_by(scientific_name, common_name,
-             site_id) %>%
-    summarise(aru_groupA = mean(aruRate))
-  
-  # 2nd, 4th and 6th visit
-  aru_groupB <- for_plot %>%
-    filter(visit_number %in% c(2,4,6)) %>%
-    group_by(scientific_name, common_name,
-             site_id) %>%
-    summarise(aru_groupB = mean(aruRate))
-  
-  # create a single dataframe
-  aru_data_group <- full_join(aru_groupB, aru_groupA) %>%
-    replace_na(list(aru_groupA = 0, aru_groupB = 0)) 
+# Number of bootstrap iterations
+bootstrap_iterations <- 1000
 
-  # regression
-  plots[[i]] <- ggplot(aru_data_group, mapping = aes(x=aru_groupA,y=aru_groupB)) +  geom_point(shape = 21, colour = "black", fill = "white", size = 2, stroke = 1)+ 
-  geom_smooth(method="lm", se=TRUE, fullrange=FALSE, level=0.95,linetype="solid") +  
-  theme_bw() +
-  stat_regline_equation(label.x.npc = "left", aes(label = ..eq.label..),
-                        size = 8) +
-  stat_regline_equation(label.x.npc = "middle", aes(label = ..rr.label..),
-                        size = 8) +
-  labs(y="Acoustic detection rate from the 2nd, 4th and 6th visits", 
-       x="Acoustic detection rate from the 1st, 3rd and 5th visits",
-       title = a) +
-  theme(text = element_text(family = "Century Gothic", size = 18, face = "bold"),plot.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"),
-      plot.subtitle = element_text(family = "Century Gothic", 
-      size = 15, face = "bold",color="#1b2838"),
-      axis.title = element_text(family = "Century Gothic",
-      size = 18, face = "bold"))
+# Number of cores to use for parallel processing
+n_cores <- parallel::detectCores() - 1
+
+# Initialize parallel backend
+cl <- makeCluster(n_cores)
+registerDoParallel(cl)
+
+# Get the unique species common names
+unique_species <- unique(aruData_complete$common_name)
+
+# Initialize a dataframe to store the mean R2 value for each species
+r_squared_all_species <- data.frame(species = character(), mean_r_squared = numeric())
+
+# Loop over each species
+for (i in 1:length(unique_species)) {
   
-  # to extract the R2 value
-  df <- data.frame(r_squared = summary(lm(aru_groupB ~ aru_groupA,    
-                                          data = aru_data_group))$r.squared,
-                      common_name = a,
-                      analysis = "acousticDetection_repeatability")
-  # save r2 values
-  r2_aru <- bind_rows(r2_aru, df)
+  a <- unique_species[i]
+  for_plot <- aruData_complete[aruData_complete$common_name == a,]
+  unique_visits <- unique(for_plot$visit_number)
+  
+  # Continue only if there are at least 6 unique visit numbers
+  if (length(unique_visits) >= 6) {
+    
+    # Parallel loop for bootstrap iterations
+    r_squared_values <- foreach(b = 1:bootstrap_iterations, .combine = c, .packages = c('dplyr', 'tidyr')) %dopar% {
+      # Randomly sample 3 visits for group A and the remaining for group B from any of the six visits
+      all_visits <- sample(unique_visits, 6, replace = FALSE)
+      group_A_visits <- sample(all_visits, 3, replace = FALSE)
+      group_B_visits <- setdiff(all_visits, group_A_visits)
+      
+      # Group point count data for random visits
+      aru_groupA <- for_plot %>%
+        filter(visit_number %in% group_A_visits) %>%
+        group_by(site_id) %>%
+        summarise(aru_groupA = mean(aruRate))
+      
+      aru_groupB <- for_plot %>%
+        filter(visit_number %in% group_B_visits) %>%
+        group_by(site_id) %>%
+        summarise(aru_groupB = mean(aruRate))
+      
+       aru_data_group <- full_join(aru_groupB, aru_groupA)
+       
+      # Linear regression model
+      model <- lm(aru_groupB ~ aru_groupA, data = aru_data_group)
+      summary(model)$r.squared
+    }
+    
+    # Calculate mean R2 value for this species
+    mean_r_squared <- mean(r_squared_values)
+    r_squared_all_species <- r_squared_all_species %>%
+      add_row(species = a, mean_r_squared = mean_r_squared)
+    
+    # Print the mean R2 value for the species
+    cat("Species:", a, "- Mean R2:", mean_r_squared, "\n")
+    
+  } else {
+    cat("Species:", a, "- Not enough unique visits, skipping bootstrap.\n")
+  }
 }
 
-# save the r2 values and the plots
-cairo_pdf(
-  filename = "figs/acousticDetectionRate_vs_acousticDetectionRate_repeatability.pdf",
-  width = 13, height = 12,
-  onefile = TRUE
-)
-plots
-dev.off() 
+# Stop the parallel backend
+stopCluster(cl)
 
-write.csv(r2, "results/acousticDetectionRate_vs_acousticDetectionRate_repeatabilityR2.csv", row.names = F)
+# write the r-squared values to file
+write.csv(r_squared_all_species, "results/mean-rSquared-adr-adr.csv", row.names = F)
 ```
+
+## Repeatability analysis between abundance and acoustic detection rates
+
+```{r}
+# join both datasets
+aru_pc <- full_join(abundance[,-c(2,4)], aruRate[,-c(2,4,6)])
+
+# subset data
+# we have 45 species in total
+aru_pc <- aru_pc %>%
+  filter(common_name %in% spp_subset$common_name)
+
+# create a complete grid of all combinations
+all_combinations_pc_aru <- expand_grid(
+  site_id = unique(aru_pc$site_id),
+  common_name = unique(aru_pc$common_name),
+  data_type = unique(aru_pc$data_type),
+  visit_number = 1:6  # assuming 6 visits, adjust if different
+)
+
+# Join with actual data
+aru_pc_complete <- all_combinations_pc_aru %>%
+  left_join(aru_pc, by = c("site_id", "common_name", 
+                            "visit_number","data_type")) %>%
+  mutate(
+    aruRate = replace(aruRate, is.na(aruRate), 0),
+    abundance_pc = replace(abundance_pc, is.na(abundance_pc), 0)# replace NA with 0
+  )
+
+# Number of bootstrap iterations
+bootstrap_iterations <- 1000
+
+# Number of cores to use for parallel processing
+n_cores <- parallel::detectCores() - 1
+
+# Initialize parallel backend
+cl <- makeCluster(n_cores)
+registerDoParallel(cl)
+
+# Get the unique species common names
+unique_species <- unique(aru_pc_complete$common_name)
+
+# Initialize a dataframe to store the mean R2 value for each species
+r_squared_all_species <- data.frame(species = character(), mean_r_squared = numeric())
+
+# Loop over each species
+for (i in 1:length(unique_species)) {
+  
+  a <- unique_species[i]
+  for_plot <- aru_pc_complete[aru_pc_complete$common_name == a,]
+  unique_visits <- unique(for_plot$visit_number)
+  
+  # Continue only if there are at least 6 unique visit numbers
+  if (length(unique_visits) >= 6) {
+    
+    # Parallel loop for bootstrap iterations
+    r_squared_values <- foreach(b = 1:bootstrap_iterations, .combine = c, .packages = c('dplyr', 'tidyr')) %dopar% {
+      # Randomly sample 3 visits for group A and the remaining for group B from any of the six visits
+      all_visits <- sample(unique_visits, 6, replace = FALSE)
+      group_A_visits <- sample(all_visits, 3, replace = FALSE)
+      group_B_visits <- setdiff(all_visits, group_A_visits)
+      
+      # Group point count data for random visits
+      abundance_groupA <- for_plot %>%
+        filter(data_type == "point_count") %>%
+        filter(visit_number %in% group_A_visits) %>%
+        group_by(site_id) %>%
+        summarise(abundance_groupA = sum(abundance_pc))
+      
+      aru_groupB <- for_plot %>%
+        filter(data_type == "acoustic_data") %>%
+        filter(visit_number %in% group_B_visits) %>%
+        group_by(site_id) %>%
+        summarise(aru_groupB = mean(aruRate))
+      
+       aru_pc_data_group <- full_join(aru_groupB, abundance_groupA)
+       
+      # Linear regression model
+      model <- lm(abundance_groupA ~ aru_groupB, 
+                  data = aru_pc_data_group)
+      summary(model)$r.squared
+    }
+    
+    # Calculate mean R2 value for this species
+    mean_r_squared <- mean(r_squared_values)
+    r_squared_all_species <- r_squared_all_species %>%
+      add_row(species = a, mean_r_squared = mean_r_squared)
+    
+    # Print the mean R2 value for the species
+    cat("Species:", a, "- Mean R2:", mean_r_squared, "\n")
+    
+  } else {
+    cat("Species:", a, "- Not enough unique visits, skipping bootstrap.\n")
+  }
+}
+
+# Stop the parallel backend
+stopCluster(cl)
+
+# write the r-squared values to file
+write.csv(r_squared_all_species, "results/mean-rSquared-abundance-adr.csv", row.names = F)
+
+
+```
+
+
+
+
+
+
+
 
 ## Regressions between abundance and acoustic detection rates  
 
@@ -290,7 +443,8 @@ data_regressions <- left_join(regressions[,c(1,6)],r2[,c(1,2)]) %>%
   left_join(., r2_aru[,c(1,2)])
 
 # saving file
-write.csv(data_regressions,"results/r_squared_repeatability_regressions.csv", row.names = F)
+write.csv(data_regressions,"results/r_squared_repeatability_regressions.csv",
+          row.names = F)
 ```
 
 

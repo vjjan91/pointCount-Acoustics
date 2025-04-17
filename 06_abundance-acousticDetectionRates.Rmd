@@ -292,12 +292,65 @@ Here, we run a generalized linear mixed effects model to test for associations b
 ## all birds model
 m1 <- glmmTMB(abundance_pc ~ aruRate +
                 (1|common_name) + (1|site_id),
+              ziformula = ~1,
               family=poisson(),
                data = data)
 
 summary(m1)
 plot_model(m1, type = "re")
 plot(ggpredict(m1))
+
+# Create a sequence of aruRate values for predictions
+aruRate_seq <- seq(min(data$aruRate), max(data$aruRate), length.out = 100)
+
+# Create a new data frame for predictions
+new_data <- expand.grid(aruRate = aruRate_seq, common_name = unique(data$common_name))
+
+# To make the predict function work we need to "recreate" a full dataset with dummy site_id values
+site_ids_dummy <- unique(data$site_id)[1] # Use the first unique value of site_id
+
+# Adding dummy site_id to new_data
+new_data$site_id <- site_ids_dummy
+
+# Add fixed effect predictions
+new_data$predict_fixed <- predict(m1, newdata = new_data, re.form = NA)
+
+# Extract random effects
+ranef_common_name <- ranef(m1)$cond$common_name
+ranef_common_name_data <- data.frame(common_name = rownames(ranef_common_name), ranef = ranef_common_name[,1])
+
+# Merge random effects with new data
+new_data <- merge(new_data, ranef_common_name_data, by = "common_name")
+
+# Add random effects to the predictions
+new_data$predict_all <- new_data$predict_fixed + new_data$ranef
+
+# Calculate confidence intervals for fixed effects
+pred_var <- predict(m1, newdata = new_data, re.form = NA, se.fit = TRUE)
+new_data$ci_lower <- new_data$predict_fixed - 1.96 * pred_var$se.fit
+new_data$ci_upper <- new_data$predict_fixed + 1.96 * pred_var$se.fit
+
+# Plot using ggplot2 and facet by common_name
+ggplot(new_data, aes(x = aruRate, y = exp(predict_all))) +
+  geom_line() +
+  geom_ribbon(aes(ymin = exp(ci_lower), ymax = exp(ci_upper)), alpha = 0.2) +
+  facet_wrap(~ common_name) +
+  theme_minimal() +
+  labs(title = "Predicted Abundance by Common Name",
+       y = "Predicted Abundance",
+       x = "ARU Rate")
+
+# Model diagnostics
+library(DHARMa)
+simulation_output <- simulateResiduals(fittedModel = m1)
+
+# Plot residuals
+plot(simulation_output)
+
+# Perform tests
+testUniformity(simulation_output)
+testDispersion(simulation_output)
+testZeroInflation(simulation_output)
 ```
 
 
